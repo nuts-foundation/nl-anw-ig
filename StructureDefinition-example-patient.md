@@ -41,7 +41,7 @@ Other representations of profile: [CSV](StructureDefinition-example-patient.csv)
   "name" : "NLPatient",
   "title" : "Voorbeeld patient",
   "status" : "draft",
-  "date" : "2025-10-15T10:55:58+00:00",
+  "date" : "2025-10-15T11:05:45+00:00",
   "publisher" : "Stichting Nuts",
   "contact" : [
     {

@@ -1,13 +1,9 @@
-<!-- get modelType -->
-
-
-
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE HTML>
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title> - Netherlands - ANW implementation guide v0.1.0</title>
+    <title>Home - Netherlands - ANW implementation guide v0.1.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -45,8 +41,8 @@
 	  <script src="assets/js/prism.js"></script>
     <script type="text/javascript" src="assets/js/mermaid.js"></script>
     <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
-    <style type="text/css">h2{--heading-prefix:""}
-    h3,h4,h5,h6{--heading-prefix:""}</style>
+    <style type="text/css">h2{--heading-prefix:"1"}
+    h3,h4,h5,h6{--heading-prefix:"1"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
       <div class="container">  <!-- container -->
 
@@ -100,7 +96,7 @@
     <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
       <div class="container">  <!-- container -->
         <ul class="breadcrumb">
-          
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><b>Home</b></li>
 
         </ul>
       </div>  <!-- /container -->
@@ -112,77 +108,42 @@
         <div class="row">
           <div class="inner-wrapper">
 
-<div style="counter-reset: section 6" class="col-12">
+<style type="text/css">
+h2:before{color:silver;counter-increment:section;content:var(--heading-prefix) " ";}
+h3:before{color:silver;counter-increment:sub-section;content:var(--heading-prefix) "." counter(sub-section) " ";}
+h4:before{color:silver;counter-increment:composite;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) " ";}
+h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) " ";}
+h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
+</style>
+<div class="col-12">
   <!--ReleaseHeader--><p id="publish-box">Netherlands - ANW implementation guide - Local Development build (v0.1.0) built by the FHIR (HL7® FHIR® Standard) Build Tools. See the <a href='http://nuts-foundation.github.io/nl-generic-anw-ig/history.html'>Directory of published versions</a></p><!--EndReleaseHeader-->
+  <h2>Home</h2>
   
 
 
 
 
 
-
-
-
-
-
-
-<ul class="nav nav-tabs">
-
-  <li>
-    <a href="StructureDefinition-example-capability-statement.html">Content</a>
-  </li>
-
-
-
-  <li>
-    <a href="StructureDefinition-example-capability-statement-definitions.html">Detailed Descriptions</a>
-  </li>
-
-
-
-  
-    <li>
-      <a href="StructureDefinition-example-capability-statement-mappings.html">Mappings</a>
-    </li>
-  
-
-
-
-
-
-
-
-  
-    <li>
-      <a href="StructureDefinition-example-capability-statement.profile.xml.html">XML</a>
-    </li>
-  
-
-
-  
-    <li>
-      <a href="StructureDefinition-example-capability-statement.profile.json.html">JSON</a>
-    </li>
-  
-
-
-  
-    <li>
-      <a href="StructureDefinition-example-capability-statement.profile.ttl.html">TTL</a>
-    </li>
-  
-
-
-</ul>
-
-
-  <a name="root"> </a>
-  <h2 id="root">Resource Profile: ANWCapabilityStatement - Examples</h2>
 
   <table class="colsd">
+
+    <tr>
+      <td colspan="4"><i>Official URL</i>: <span class="copy-text">http://nuts-foundation.github.io/nl-generic-anw-ig/ImplementationGuide/nl.nuts.anw<button title="Click to copy URL" class="btn-copy" data-clipboard-text="http://nuts-foundation.github.io/nl-generic-anw-ig/ImplementationGuide/nl.nuts.anw"/></span>
+      </td>
+      <td><i>Version</i>:
+      <span class="copy-text">0.1.0<button title="Click to copy versioned URL" class="btn-copy" data-clipboard-text="http://nuts-foundation.github.io/nl-generic-anw-ig/ImplementationGuide/nl.nuts.anw|0.1.0"/></span>
+      </td>
+    </tr>
+
     <tr>
 
-      <td colspan="2">
+
+
+
+
+
+
+      <td colspan="4">
         
           Draft
           
@@ -191,27 +152,53 @@
         
       </td>
 
+
+
+      <td><i>Computable Name</i>: <span style="font-family: monospace;">NLAnwIG</span></td>
     </tr>
+
+
+
+
   </table>
 
 
-   <!-- insert intro if present -->
-    
 
 
 
 
 
-  <p><b>No examples are currently available for the  Profile.</b></p>
 
 
-<!-- insert notes if present -->
+    <p><!-- white space is critical inside of capture --></p>
+<div>
+<!-- do not remove - needed to prevent Jekyll from adding a p tag to any non block level element in the markdown.-->
+</div>
+<h1 id="anw-implementation-guide">ANW Implementation Guide</h1>
+
+<p>This implementation guide defines FHIR profiles, extensions, and other resources needed for the ANW (Avond-, Nacht- en Weekendzorg) use case in the Netherlands.</p>
+
+<h2 id="overview">Overview</h2>
+
+<p>The ANW use case covers evening, night, and weekend care services. This implementation guide provides the necessary FHIR resources to support data exchange for these healthcare services.</p>
+
+<h2 id="contents">Contents</h2>
+
+<ul>
+  <li><a href="artifacts.html">Artifacts</a> - Profiles, extensions, and other FHIR artifacts defined in this IG</li>
+</ul>
+
+<h2 id="authors-and-contributors">Authors and Contributors</h2>
+
+<ul>
+  <li><strong>Publisher</strong>: Stichting Nuts</li>
+  <li><strong>Contact</strong>: <a href="https://www.nuts.nl">https://www.nuts.nl</a></li>
+</ul>
 
 
 
 
 </div>
-
         </div>  <!-- /inner-wrapper -->
       </div>  <!-- /row -->
     </div>  <!-- /container -->
@@ -219,8 +206,6 @@
 
   <script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
   <script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
-
-  <script type="text/javascript" src="assets/js/tabs.js"> </script>
 
   <script type="text/javascript" src="assets/js/window-hash.js"> </script>
   <a name="bottom"> </a>

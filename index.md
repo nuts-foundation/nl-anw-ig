@@ -1,4 +1,31 @@
-# Resource Netherlands - ANW implementation guide
+# Home - Netherlands - ANW implementation guide v0.1.0
+
+* [**Table of Contents**](toc.md)
+* **Home**
+
+## Home
+
+| | |
+| :--- | :--- |
+| *Official URL*:http://nuts-foundation.github.io/nl-generic-anw-ig/ImplementationGuide/nl.nuts.anw | *Version*:0.1.0 |
+| Draft as of 2025-10-15 | *Computable Name*:NLAnwIG |
+
+# ANW Implementation Guide
+
+This implementation guide defines FHIR profiles, extensions, and other resources needed for the ANW (Avond-, Nacht- en Weekendzorg) use case in the Netherlands.
+
+## Overview
+
+The ANW use case covers evening, night, and weekend care services. This implementation guide provides the necessary FHIR resources to support data exchange for these healthcare services.
+
+## Contents
+
+* [Artifacts](artifacts.md) - Profiles, extensions, and other FHIR artifacts defined in this IG
+
+## Authors and Contributors
+
+* **Publisher**: Stichting Nuts
+* **Contact**: [https://www.nuts.nl](https://www.nuts.nl)
 
 
 
@@ -14,7 +41,7 @@
   "name" : "NLAnwIG",
   "title" : "Netherlands - ANW implementation guide",
   "status" : "draft",
-  "date" : "2025-10-15T10:55:58+00:00",
+  "date" : "2025-10-15T11:05:45+00:00",
   "publisher" : "Stichting Nuts",
   "contact" : [
     {
@@ -763,7 +790,20 @@
       ],
       "nameUrl" : "toc.html",
       "title" : "Table of Contents",
-      "generation" : "html"
+      "generation" : "html",
+      "page" : [
+        {
+          "extension" : [
+            {
+              "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+              "valueUrl" : "index.html"
+            }
+          ],
+          "nameUrl" : "index.html",
+          "title" : "Home",
+          "generation" : "markdown"
+        }
+      ]
     },
     "parameter" : [
       {

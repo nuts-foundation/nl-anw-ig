@@ -19,7 +19,7 @@
   fhir:name [ fhir:v "NLAnwIG"] ; # 
   fhir:title [ fhir:v "Netherlands - ANW implementation guide"] ; # 
   fhir:status [ fhir:v "draft"] ; # 
-  fhir:date [ fhir:v "2025-10-15T10:55:58+00:00"^^xsd:dateTime] ; # 
+  fhir:date [ fhir:v "2025-10-15T11:05:45+00:00"^^xsd:dateTime] ; # 
   fhir:publisher [ fhir:v "Stichting Nuts"] ; # 
   fhir:contact ( [
      fhir:name [ fhir:v "Stichting Nuts" ] ;
@@ -877,7 +877,22 @@
          fhir:v "toc.html"^^xsd:anyURI
        ] ;
        fhir:title [ fhir:v "Table of Contents" ] ;
-       fhir:generation [ fhir:v "html" ]
+       fhir:generation [ fhir:v "html" ] ;
+       fhir:page ( [
+         fhir:extension ( [
+           fhir:url [ fhir:v "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name"^^xsd:anyURI ] ;
+           fhir:value [
+             a fhir:url ;
+             fhir:v "index.html"^^xsd:anyURI
+           ]
+         ] ) ;
+         fhir:name [
+           a fhir:url ;
+           fhir:v "index.html"^^xsd:anyURI
+         ] ;
+         fhir:title [ fhir:v "Home" ] ;
+         fhir:generation [ fhir:v "markdown" ]
+       ] )
      ] ;
      fhir:parameter ( [
        fhir:code [ fhir:v "path-resource" ] ;

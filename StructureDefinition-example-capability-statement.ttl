@@ -18,7 +18,7 @@
   fhir:name [ fhir:v "ANWCapabilityStatement"] ; # 
   fhir:title [ fhir:v "Voorbeeld capability statement"] ; # 
   fhir:status [ fhir:v "draft"] ; # 
-  fhir:date [ fhir:v "2025-10-15T10:55:58+00:00"^^xsd:dateTime] ; # 
+  fhir:date [ fhir:v "2025-10-15T11:05:45+00:00"^^xsd:dateTime] ; # 
   fhir:publisher [ fhir:v "Stichting Nuts"] ; # 
   fhir:contact ( [
      fhir:name [ fhir:v "Stichting Nuts" ] ;

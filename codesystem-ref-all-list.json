@@ -164,8 +164,8 @@
       "description" : "The set of interactions defined by the RESTful part of the FHIR specification.",
       "uses" : {
       },
-      "http://hl7.org/fhir/R4/valueset-type-restful-interaction.html" : "TypeRestfulInteraction",
-      "http://hl7.org/fhir/R4/valueset-system-restful-interaction.html" : "SystemRestfulInteraction"
+      "http://hl7.org/fhir/R4/valueset-system-restful-interaction.html" : "SystemRestfulInteraction",
+      "http://hl7.org/fhir/R4/valueset-type-restful-interaction.html" : "TypeRestfulInteraction"
     },
     {
       "url" : "http://hl7.org/fhir/search-param-type",
