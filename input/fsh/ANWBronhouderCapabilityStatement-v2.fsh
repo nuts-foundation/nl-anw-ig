@@ -1,7 +1,7 @@
 Instance: ANWBronhouderCapabilityStatement-v2
 InstanceOf: CapabilityStatement
 Usage: #definition
-Title: "ANW Server Capability Statement v2.0"
+Title: "ANW Bronhouder Capability Statement v2.0"
 Description: "Capability statement describing the extended requirements for ANW FHIR servers (version 2.0)"
 * url = "http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWBronhouderCapabilityStatement"
 * version = "2.0.0"
