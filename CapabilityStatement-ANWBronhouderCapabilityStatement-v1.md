@@ -1,10 +1,10 @@
-# ANW Server Capability Statement v1.0 - Netherlands - ANW implementation guide v0.1.0
+# ANW Bronhouder Capability Statement v1.0 - Netherlands - ANW implementation guide v0.1.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
-* **ANW Server Capability Statement v1.0**
+* **ANW Bronhouder Capability Statement v1.0**
 
-## CapabilityStatement: ANW Server Capability Statement v1.0 
+## CapabilityStatement: ANW Bronhouder Capability Statement v1.0 
 
 | | |
 | :--- | :--- |
@@ -16,7 +16,7 @@ Version 1.0 capability statement defining the basic requirements for ANW FHIR se
 
  [Raw OpenAPI-Swagger Definition file](ANWBronhouderCapabilityStatement-v1.openapi.json) | [Download](ANWBronhouderCapabilityStatement-v1.openapi.json) 
 
-## ANW Server Capability Statement v1.0
+## ANW Bronhouder Capability Statement v1.0
 
 * Implementation Guide Version: 0.1.0 
 * FHIR Version: 4.0.1 

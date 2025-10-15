@@ -1,10 +1,10 @@
-# ANW Server Capability Statement v1.0 - Netherlands - ANW implementation guide v0.1.0
+# ANW Zorgverlener Capability Statement v1.0 - Netherlands - ANW implementation guide v0.1.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
-* **ANW Server Capability Statement v1.0**
+* **ANW Zorgverlener Capability Statement v1.0**
 
-## CapabilityStatement: ANW Server Capability Statement v1.0 
+## CapabilityStatement: ANW Zorgverlener Capability Statement v1.0 
 
 | | |
 | :--- | :--- |
@@ -16,7 +16,7 @@ Version 1.0 capability statement defining the basic requirements for ANW FHIR se
 
  [Raw OpenAPI-Swagger Definition file](ANWZorgverlenerCapabilityStatement-v1.openapi.json) | [Download](ANWZorgverlenerCapabilityStatement-v1.openapi.json) 
 
-## ANW Server Capability Statement v1.0
+## ANW Zorgverlener Capability Statement v1.0
 
 * Implementation Guide Version: 0.1.0 
 * FHIR Version: 4.0.1 
@@ -97,7 +97,7 @@ Search Parameters
   "url" : "http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWZorgverlenerCapabilityStatement",
   "version" : "0.1.0",
   "name" : "ANWZorgverlenerCapabilityStatementV1",
-  "title" : "ANW Server Capability Statement v1.0",
+  "title" : "ANW Zorgverlener Capability Statement v1.0",
   "status" : "active",
   "date" : "2025-10-15",
   "publisher" : "Stichting Nuts",

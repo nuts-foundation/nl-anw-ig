@@ -1,10 +1,10 @@
-# ANW Server Capability Statement v2.0 - Netherlands - ANW implementation guide v0.1.0
+# ANW Bronhouder Capability Statement v2.0 - Netherlands - ANW implementation guide v0.1.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
-* **ANW Server Capability Statement v2.0**
+* **ANW Bronhouder Capability Statement v2.0**
 
-## CapabilityStatement: ANW Server Capability Statement v2.0 
+## CapabilityStatement: ANW Bronhouder Capability Statement v2.0 
 
 | | |
 | :--- | :--- |
@@ -16,7 +16,7 @@ Version 2.0 capability statement with extended requirements for ANW FHIR servers
 
  [Raw OpenAPI-Swagger Definition file](ANWBronhouderCapabilityStatement-v2.openapi.json) | [Download](ANWBronhouderCapabilityStatement-v2.openapi.json) 
 
-## ANW Server Capability Statement v2.0
+## ANW Bronhouder Capability Statement v2.0
 
 * Implementation Guide Version: 0.1.0 
 * FHIR Version: 4.0.1 
@@ -145,7 +145,7 @@ Search Parameters
   "url" : "http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWBronhouderCapabilityStatement",
   "version" : "0.1.0",
   "name" : "ANWBronhouderCapabilityStatementV2",
-  "title" : "ANW Server Capability Statement v2.0",
+  "title" : "ANW Bronhouder Capability Statement v2.0",
   "status" : "active",
   "date" : "2025-10-15",
   "publisher" : "Stichting Nuts",

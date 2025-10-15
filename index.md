@@ -41,7 +41,7 @@ The ANW use case covers evening, night, and weekend care services. This implemen
   "name" : "NLAnwIG",
   "title" : "Netherlands - ANW implementation guide",
   "status" : "draft",
-  "date" : "2025-10-15T12:12:48+00:00",
+  "date" : "2025-10-15T12:17:44+00:00",
   "publisher" : "Stichting Nuts",
   "contact" : [
     {
@@ -762,35 +762,7 @@ The ANW use case covers evening, night, and weekend care services. This implemen
         "reference" : {
           "reference" : "CapabilityStatement/ANWBronhouderCapabilityStatement-v1"
         },
-        "name" : "ANW Server Capability Statement v1.0",
-        "description" : "Capability statement describing the basic requirements for ANW FHIR servers (version 1.0)",
-        "exampleBoolean" : false
-      },
-      {
-        "extension" : [
-          {
-            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-            "valueString" : "CapabilityStatement"
-          }
-        ],
-        "reference" : {
-          "reference" : "CapabilityStatement/ANWRegisseurCapabilityStatement-v1"
-        },
-        "name" : "ANW Server Capability Statement v1.0",
-        "description" : "Capability statement describing the basic requirements for ANW FHIR servers (version 1.0)",
-        "exampleBoolean" : false
-      },
-      {
-        "extension" : [
-          {
-            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-            "valueString" : "CapabilityStatement"
-          }
-        ],
-        "reference" : {
-          "reference" : "CapabilityStatement/ANWZorgverlenerCapabilityStatement-v1"
-        },
-        "name" : "ANW Server Capability Statement v1.0",
+        "name" : "ANW Bronhouder Capability Statement v1.0",
         "description" : "Capability statement describing the basic requirements for ANW FHIR servers (version 1.0)",
         "exampleBoolean" : false
       },
@@ -804,8 +776,36 @@ The ANW use case covers evening, night, and weekend care services. This implemen
         "reference" : {
           "reference" : "CapabilityStatement/ANWBronhouderCapabilityStatement-v2"
         },
-        "name" : "ANW Server Capability Statement v2.0",
+        "name" : "ANW Bronhouder Capability Statement v2.0",
         "description" : "Capability statement describing the extended requirements for ANW FHIR servers (version 2.0)",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "CapabilityStatement"
+          }
+        ],
+        "reference" : {
+          "reference" : "CapabilityStatement/ANWRegisseurCapabilityStatement-v1"
+        },
+        "name" : "ANW Regisseur Capability Statement v1.0",
+        "description" : "Capability statement describing the basic requirements for ANW FHIR servers (version 1.0)",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "CapabilityStatement"
+          }
+        ],
+        "reference" : {
+          "reference" : "CapabilityStatement/ANWZorgverlenerCapabilityStatement-v1"
+        },
+        "name" : "ANW Zorgverlener Capability Statement v1.0",
+        "description" : "Capability statement describing the basic requirements for ANW FHIR servers (version 1.0)",
         "exampleBoolean" : false
       },
       {

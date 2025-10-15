@@ -16,7 +16,7 @@ Patient profiel met verplicht BSN nummer.
 
 **Usages:**
 
-* CapabilityStatements using this Profile: [ANW Server Capability Statement v1.0](CapabilityStatement-ANWBronhouderCapabilityStatement-v1.md), [ANW Server Capability Statement v2.0](CapabilityStatement-ANWBronhouderCapabilityStatement-v2.md), [ANW Server Capability Statement v1.0](CapabilityStatement-ANWRegisseurCapabilityStatement-v1.md) and [ANW Server Capability Statement v1.0](CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1.md)
+* CapabilityStatements using this Profile: [ANW Bronhouder Capability Statement v1.0](CapabilityStatement-ANWBronhouderCapabilityStatement-v1.md), [ANW Bronhouder Capability Statement v2.0](CapabilityStatement-ANWBronhouderCapabilityStatement-v2.md), [ANW Regisseur Capability Statement v1.0](CapabilityStatement-ANWRegisseurCapabilityStatement-v1.md) and [ANW Zorgverlener Capability Statement v1.0](CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1.md)
 * This Profile is not used by any profiles in this Implementation Guide
 
 You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/nl.nuts.anw|current/StructureDefinition/example-patient)
@@ -42,7 +42,7 @@ Other representations of profile: [CSV](StructureDefinition-example-patient.csv)
   "name" : "NLPatient",
   "title" : "Voorbeeld patient",
   "status" : "draft",
-  "date" : "2025-10-15T12:12:48+00:00",
+  "date" : "2025-10-15T12:17:44+00:00",
   "publisher" : "Stichting Nuts",
   "contact" : [
     {
