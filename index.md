@@ -41,7 +41,7 @@ The ANW use case covers evening, night, and weekend care services. This implemen
   "name" : "NLAnwIG",
   "title" : "Netherlands - ANW implementation guide",
   "status" : "draft",
-  "date" : "2025-10-15T11:05:45+00:00",
+  "date" : "2025-10-15T11:37:17+00:00",
   "publisher" : "Stichting Nuts",
   "contact" : [
     {
@@ -756,14 +756,14 @@ The ANW use case covers evening, night, and weekend care services. This implemen
         "extension" : [
           {
             "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-            "valueString" : "StructureDefinition:resource"
+            "valueString" : "CapabilityStatement"
           }
         ],
         "reference" : {
-          "reference" : "StructureDefinition/example-capability-statement"
+          "reference" : "CapabilityStatement/ANWServerCapabilityStatement"
         },
-        "name" : "Voorbeeld capability statement",
-        "description" : "CapabilityStatement profiel test.",
+        "name" : "ANW Server Capability Statement",
+        "description" : "Capability statement describing the requirements for ANW FHIR servers",
         "exampleBoolean" : false
       },
       {

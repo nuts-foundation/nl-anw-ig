@@ -9,8 +9,11 @@
 
 ### Resource Profiles
 
-* [Voorbeeld capability statement](StructureDefinition-example-capability-statement.md)
 * [Voorbeeld patient](StructureDefinition-example-patient.md)
+
+### CapabilityStatements
+
+* [ANW Server Capability Statement](CapabilityStatement-ANWServerCapabilityStatement.md)
 
 ### ImplementationGuides
 

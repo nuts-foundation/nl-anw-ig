@@ -1,17 +1,17 @@
 [
   {
+    "id" : "ANWServerCapabilityStatement",
+    "type" : "CapabilityStatement",
+    "url" : "http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWServerCapabilityStatement",
+    "version" : "0.1.0",
+    "name" : "ANWServerCapabilityStatement"
+  },
+  {
     "id" : "nl.nuts.anw",
     "type" : "ImplementationGuide",
     "url" : "http://nuts-foundation.github.io/nl-generic-anw-ig/ImplementationGuide/nl.nuts.anw",
     "version" : "0.1.0",
     "name" : "NLAnwIG"
-  },
-  {
-    "id" : "example-capability-statement",
-    "type" : "StructureDefinition",
-    "url" : "http://nuts-foundation.github.io/nl-generic-anw-ig/StructureDefinition/example-capability-statement",
-    "version" : "0.1.0",
-    "name" : "ANWCapabilityStatement"
   },
   {
     "id" : "example-patient",

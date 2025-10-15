@@ -5,12 +5,6 @@
   "jurisdiction": "NL",
   "extensions": [],
   "profiles": {
-    "CapabilityStatement": [
-      {
-        "url": "http://nuts-foundation.github.io/nl-generic-anw-ig/StructureDefinition/example-capability-statement",
-        "title": "Voorbeeld capability statement"
-      }
-    ],
     "Patient": [
       {
         "url": "http://nuts-foundation.github.io/nl-generic-anw-ig/StructureDefinition/example-patient",

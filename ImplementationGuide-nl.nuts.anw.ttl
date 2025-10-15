@@ -19,7 +19,7 @@
   fhir:name [ fhir:v "NLAnwIG"] ; # 
   fhir:title [ fhir:v "Netherlands - ANW implementation guide"] ; # 
   fhir:status [ fhir:v "draft"] ; # 
-  fhir:date [ fhir:v "2025-10-15T11:05:45+00:00"^^xsd:dateTime] ; # 
+  fhir:date [ fhir:v "2025-10-15T11:37:17+00:00"^^xsd:dateTime] ; # 
   fhir:publisher [ fhir:v "Stichting Nuts"] ; # 
   fhir:contact ( [
      fhir:name [ fhir:v "Stichting Nuts" ] ;
@@ -832,15 +832,15 @@
          fhir:url [ fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ] ;
          fhir:value [
            a fhir:string ;
-           fhir:v "StructureDefinition:resource"
+           fhir:v "CapabilityStatement"
          ]
        ] ) ;
        fhir:reference [
-         fhir:link <http://nuts-foundation.github.io/nl-generic-anw-ig/StructureDefinition/example-capability-statement> ;
-         fhir:reference [ fhir:v "StructureDefinition/example-capability-statement" ]
+         fhir:link <http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWServerCapabilityStatement> ;
+         fhir:reference [ fhir:v "CapabilityStatement/ANWServerCapabilityStatement" ]
        ] ;
-       fhir:name [ fhir:v "Voorbeeld capability statement" ] ;
-       fhir:description [ fhir:v "CapabilityStatement profiel test." ] ;
+       fhir:name [ fhir:v "ANW Server Capability Statement" ] ;
+       fhir:description [ fhir:v "Capability statement describing the requirements for ANW FHIR servers" ] ;
        fhir:example [
          a fhir:boolean ;
          fhir:v false

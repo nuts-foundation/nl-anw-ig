@@ -1,4 +1,4 @@
 Source File	Size	loadResources	load	generateSnapshots	load-configure	scan	loadDepInfo	loadInfo	checkR4R4B	generateNarratives	validate	loadLists	checkConformanceResources	checkConformanceResources2	checkConformanceResources3	generateLogicalMaps	validateExpressions	scanForUsageStats	checkURLsUnique	processProvenanceDetails	generate1	generate2	generateLogicals	makeDependencies	generateExampleZip	generateValidationPack	scanProfilesForR5	scanExamplesForR5
-/fsh-generated/resources/ImplementationGuide-nl.nuts.anw.json	1793	-	0	0	0	0	0	0	11	82	0	0	0	0	0	0	0	0	0	0	63	85	0	0	0	2	0	0
-fsh-generated/resources/StructureDefinition-example-capability-statement.json	706	15	0	174	0	0	0	1	0	119	0	0	1	0	0	0	0	3	0	0	289	1758	0	0	0	12	1	1
-fsh-generated/resources/StructureDefinition-example-patient.json	1240	17	0	60	0	0	0	0	0	56	0	0	0	0	0	0	0	1	0	0	153	513	0	0	0	7	0	1
+/fsh-generated/resources/ImplementationGuide-nl.nuts.anw.json	1830	-	0	0	0	0	0	0	12	83	1	0	0	0	0	0	0	1	0	0	68	61	0	0	0	4	0	2
+fsh-generated/resources/CapabilityStatement-ANWServerCapabilityStatement.json	2005	15	0	0	1	0	0	0	1	55	0	0	0	0	0	0	0	0	0	0	26	37	0	0	0	1	0	0
+fsh-generated/resources/StructureDefinition-example-patient.json	1240	14	0	87	0	0	0	1	0	79	0	0	0	0	0	0	0	1	0	0	216	1017	0	0	0	11	1	2

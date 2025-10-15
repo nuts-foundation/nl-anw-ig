@@ -1,13 +1,13 @@
 NLAnwIG : Validation Results
 =========================================
 
-err = 1, warn = 7, info = 1
+err = 1, warn = 5, info = 1
 $--
 Generated $--. FHIR version $-- for nl.nuts.anw#$-- (canonical = http://nuts-foundation.github.io/nl-generic-anw-ig)
  Build Errors : 1 / 4 / 0
+ /github/workspace/fsh-generated/resources/CapabilityStatement-ANWServerCapabilityStatement : 0 / 0 / 1
  /github/workspace/fsh-generated/resources/ImplementationGuide-nl.nuts.anw : 0 / 0 / 1
- /github/workspace/fsh-generated/resources/StructureDefinition-example-capability-statement : 0 / 2 / 2
- /github/workspace/fsh-generated/resources/StructureDefinition-example-patient : 0 / 1 / 1
+ /github/workspace/fsh-generated/resources/StructureDefinition-example-patient : 0 / 1 / 2
 </table>
 == n/a ==
 ERROR: ImplementationGuide.definition.parameter[23].value: Supressed messages file not found
@@ -15,10 +15,8 @@ WARNING: 1: The HTML fragment 'ip-statements.xhtml' is not included anywhere in 
 WARNING: 2: An HTML fragment from the set [cross-version-analysis.xhtml, cross-version-analysis-inline.xhtml] is not included anywhere in the produced implementation guide
 WARNING: 3: An HTML fragment from the set [dependency-table.xhtml, dependency-table-short.xhtml, dependency-table-nontech.xhtml] is not included anywhere in the produced implementation guide
 WARNING: 4: The HTML fragment 'globals-table.xhtml' is not included anywhere in the produced implementation guide
+== fsh-generated/resources/CapabilityStatement-ANWServerCapabilityStatement.json ==
 == fsh-generated/resources/ImplementationGuide-nl.nuts.anw.json ==
-== fsh-generated/resources/StructureDefinition-example-capability-statement.json ==
-WARNING: StructureDefinition/example-capability-statement: StructureDefinition.snapshot.element[0].constraint[6].xpath: value should not start or finish with whitespace ' not(f:kind/@value='instance') or (not(exists(f:implementation)) and exists(f:software))'
-INFORMATION: StructureDefinition/example-capability-statement: StructureDefinition.snapshot.element[4].binding.extension[0]: The extension http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet|5.2.0 is deprecated
-WARNING: StructureDefinition.where(url = 'http://nuts-foundation.github.io/nl-generic-anw-ig/StructureDefinition/example-capability-statement'): The Implementation Guide contains no examples for this profile
 == fsh-generated/resources/StructureDefinition-example-patient.json ==
+INFORMATION: StructureDefinition/example-patient: StructureDefinition.snapshot.element[4].binding.extension[0]: The extension http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet|5.2.0 is deprecated
 WARNING: StructureDefinition.where(url = 'http://nuts-foundation.github.io/nl-generic-anw-ig/StructureDefinition/example-patient'): The Implementation Guide contains no examples for this profile
