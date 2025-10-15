@@ -1,0 +1,16 @@
+# nl.nuts.anw#0.1.0: Netherlands - ANW implementation guide
+
+## Pages
+
+* [Artifacts Summary](artifacts.md)
+
+## Resources
+
+### Resource Profiles
+
+* [Voorbeeld capability statement](StructureDefinition-example-capability-statement.md)
+* [Voorbeeld patient](StructureDefinition-example-patient.md)
+
+### ImplementationGuides
+
+* [Netherlands - ANW implementation guide](index.md)
