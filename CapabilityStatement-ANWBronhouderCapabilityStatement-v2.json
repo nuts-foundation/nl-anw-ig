@@ -1,0 +1,111 @@
+{
+  "resourceType" : "CapabilityStatement",
+  "id" : "ANWBronhouderCapabilityStatement-v2",
+  "text" : {
+    "status" : "extensions",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: CapabilityStatement ANWBronhouderCapabilityStatement-v2</b></p><a name=\"ANWBronhouderCapabilityStatement-v2\"> </a><a name=\"hcANWBronhouderCapabilityStatement-v2\"> </a><h2 id=\"title\">ANW Server Capability Statement v2.0</h2><ul><li>Implementation Guide Version: 0.1.0 </li><li>FHIR Version: 4.0.1 </li><li>Supported Formats: <code>json</code>, <code>xml</code></li><li>Published on: 2025-10-15 </li><li>Published by: Stichting Nuts </li></ul><blockquote class=\"impl-note\"><p><strong>Note to Implementers: FHIR Capabilities</strong></p><p>Any FHIR capability may be 'allowed' by the system unless explicitly marked as 'SHALL NOT'. A few items are marked as MAY in the Implementation Guide to highlight their potential relevance to the use case.</p></blockquote><h2 id=\"rest\">FHIR RESTful Capabilities</h2><div class=\"panel panel-default\"><div class=\"panel-heading\"><h3 id=\"mode1\" class=\"panel-title\">Mode: <code>server</code></h3></div><div class=\"panel-body\"><div><p>ANW FHIR Server v2.0 - supporting Patient and Observation resources with read, write and search operations</p>\n</div></div></div><h3 id=\"resourcesCap1\">Capabilities by Resource/Profile</h3><h4 id=\"resourcesSummary1\">Summary</h4><p>The summary table lists the resources that are part of this configuration, and for each resource it lists:</p><ul><li>The relevant profiles (if any)</li><li>The interactions supported by each resource (<b><span class=\"bg-info\">R</span></b>ead, <b><span class=\"bg-info\">S</span></b>earch, <b><span class=\"bg-info\">U</span></b>pdate, and <b><span class=\"bg-info\">C</span></b>reate, are always shown, while <b><span class=\"bg-info\">VR</span></b>ead, <b><span class=\"bg-info\">P</span></b>atch, <b><span class=\"bg-info\">D</span></b>elete, <b><span class=\"bg-info\">H</span></b>istory on <b><span class=\"bg-info\">I</span></b>nstance, or <b><span class=\"bg-info\">H</span></b>istory on <b><span class=\"bg-info\">T</span></b>ype are only present if at least one of the resources has support for them.</li><li><span>The required, recommended, and some optional search parameters (if any). </span></li><li>The linked resources enabled for <code>_include</code></li><li>The other resources enabled for <code>_revinclude</code></li><li>The operations on the resource (if any)</li></ul><div class=\"table-responsive\"><table class=\"table table-condensed table-hover\"><thead><tr><th><b>Resource Type</b></th><th><b>Profile</b></th><th class=\"text-center\"><b title=\"GET a resource (read interaction)\">R</b></th><th class=\"text-center\"><b title=\"GET all set of resources of the type (search interaction)\">S</b></th><th class=\"text-center\"><b title=\"PUT a new resource version (update interaction)\">U</b></th><th class=\"text-center\"><b title=\"POST a new resource (create interaction)\">C</b></th><th><b title=\"Required and recommended search parameters\">Searches</b></th><th><code><b>_include</b></code></th><th><code><b>_revinclude</b></code></th><th><b>Operations</b></th></tr></thead><tbody><tr><td><a href=\"#Patient1-1\">Patient</a></td><td><a href=\"StructureDefinition-example-patient.html\">http://nuts-foundation.github.io/nl-generic-anw-ig/StructureDefinition/example-patient</a></td><td class=\"text-center\">y</td><td class=\"text-center\">y</td><td class=\"text-center\">y</td><td class=\"text-center\">y</td><td>identifier, family, birthdate, _lastUpdated</td><td/><td/><td/></tr><tr><td><a href=\"#Observation1-2\">Observation</a></td><td><a href=\"http://hl7.org/fhir/R4/observation.html\">http://hl7.org/fhir/StructureDefinition/Observation</a></td><td class=\"text-center\">y</td><td class=\"text-center\">y</td><td class=\"text-center\"/><td class=\"text-center\">y</td><td>patient, code, date</td><td/><td/><td/></tr></tbody></table></div><hr/><div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 id=\"Patient1-1\" class=\"panel-title\"><span style=\"float: right;\">Resource Conformance: supported </span>Patient</h4></div><div class=\"panel-body\"><div class=\"container\"><div class=\"row\"><div class=\"col-lg-6\"><span class=\"lead\">Base System Profile</span><br/><a href=\"StructureDefinition-example-patient.html\">Voorbeeld patient</a></div><div class=\"col-lg-3\"><span class=\"lead\">Profile Conformance</span><br/><b>SHALL</b></div><div class=\"col-lg-3\"><span class=\"lead\">Reference Policy</span><br/></div></div><p/><div class=\"row\"><div class=\"col-lg-6\"><span class=\"lead\">Interaction summary</span><br/><ul><li>Supports <br/><code>read</code><div><p>Read a Patient resource by id</p>\n</div><code>search-type</code><div><p>Search for Patient resources</p>\n</div><code>create</code><div><p>Create a new Patient resource</p>\n</div><code>update</code><div><p>Update an existing Patient resource</p>\n</div></li></ul></div></div><p/><div class=\"row\"><div class=\"col-12\"><span class=\"lead\">Documentation</span><blockquote><div><p>Support for Patient resources conforming to the ANW Patient profile</p>\n</div></blockquote></div></div><div class=\"row\"><div class=\"col-lg-7\"><span class=\"lead\">Search Parameters</span><table class=\"table table-condensed table-hover\"><thead><tr><th>Conformance</th><th>Parameter</th><th>Type</th><th>Documentation</th></tr></thead><tbody><tr><td><b>SHALL</b></td><td>identifier</td><td><code>token</code></td><td><div><p>Search Patient by identifier (e.g., BSN)</p>\n</div></td></tr><tr><td><b>SHALL</b></td><td>family</td><td><code>string</code></td><td><div><p>Search Patient by family name</p>\n</div></td></tr><tr><td><b>SHALL</b></td><td>birthdate</td><td><code>date</code></td><td><div><p>Search Patient by birth date</p>\n</div></td></tr><tr><td><b>SHALL</b></td><td>_lastUpdated</td><td><code>date</code></td><td><div><p>Search Patient by last updated date</p>\n</div></td></tr></tbody></table></div><div class=\"col-lg-5\">\u00a0</div></div></div></div></div><div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 id=\"Observation1-2\" class=\"panel-title\"><span style=\"float: right;\">Resource Conformance: supported </span>Observation</h4></div><div class=\"panel-body\"><div class=\"container\"><div class=\"row\"><div class=\"col-lg-6\"><span class=\"lead\">Base System Profile</span><br/><a href=\"http://hl7.org/fhir/R4/observation.html\">Observation</a></div><div class=\"col-lg-3\"><span class=\"lead\">Profile Conformance</span><br/><b>SHALL</b></div><div class=\"col-lg-3\"><span class=\"lead\">Reference Policy</span><br/></div></div><p/><div class=\"row\"><div class=\"col-lg-6\"><span class=\"lead\">Interaction summary</span><br/><ul><li>Supports <br/><code>read</code><div><p>Read an Observation resource by id</p>\n</div><code>search-type</code><div><p>Search for Observation resources</p>\n</div><code>create</code><div><p>Create a new Observation resource</p>\n</div></li></ul></div></div><p/><div class=\"row\"><div class=\"col-12\"><span class=\"lead\">Documentation</span><blockquote><div><p>Support for Observation resources - clinical observations and measurements</p>\n</div></blockquote></div></div><div class=\"row\"><div class=\"col-lg-7\"><span class=\"lead\">Search Parameters</span><table class=\"table table-condensed table-hover\"><thead><tr><th>Conformance</th><th>Parameter</th><th>Type</th><th>Documentation</th></tr></thead><tbody><tr><td><b>SHALL</b></td><td>patient</td><td><code>reference</code></td><td><div><p>Search Observation by patient reference</p>\n</div></td></tr><tr><td><b>SHALL</b></td><td>code</td><td><code>token</code></td><td><div><p>Search Observation by observation code</p>\n</div></td></tr><tr><td><b>SHALL</b></td><td>date</td><td><code>date</code></td><td><div><p>Search Observation by observation date</p>\n</div></td></tr></tbody></table></div><div class=\"col-lg-5\">\u00a0</div></div></div></div></div></div>"
+  },
+  "url" : "http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWBronhouderCapabilityStatement",
+  "version" : "0.1.0",
+  "name" : "ANWBronhouderCapabilityStatementV2",
+  "title" : "ANW Server Capability Statement v2.0",
+  "status" : "active",
+  "date" : "2025-10-15",
+  "publisher" : "Stichting Nuts",
+  "contact" : [{
+    "name" : "Stichting Nuts",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.nuts.nl"
+    }]
+  }],
+  "description" : "Version 2.0 capability statement with extended requirements for ANW FHIR servers - adds support for Observation resources and write operations",
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "NL",
+      "display" : "Netherlands"
+    }]
+  }],
+  "kind" : "requirements",
+  "fhirVersion" : "4.0.1",
+  "format" : ["json",
+  "xml"],
+  "rest" : [{
+    "mode" : "server",
+    "documentation" : "ANW FHIR Server v2.0 - supporting Patient and Observation resources with read, write and search operations",
+    "resource" : [{
+      "type" : "Patient",
+      "profile" : "http://nuts-foundation.github.io/nl-generic-anw-ig/StructureDefinition/example-patient",
+      "documentation" : "Support for Patient resources conforming to the ANW Patient profile",
+      "interaction" : [{
+        "code" : "read",
+        "documentation" : "Read a Patient resource by id"
+      },
+      {
+        "code" : "search-type",
+        "documentation" : "Search for Patient resources"
+      },
+      {
+        "code" : "create",
+        "documentation" : "Create a new Patient resource"
+      },
+      {
+        "code" : "update",
+        "documentation" : "Update an existing Patient resource"
+      }],
+      "searchParam" : [{
+        "name" : "identifier",
+        "type" : "token",
+        "documentation" : "Search Patient by identifier (e.g., BSN)"
+      },
+      {
+        "name" : "family",
+        "type" : "string",
+        "documentation" : "Search Patient by family name"
+      },
+      {
+        "name" : "birthdate",
+        "type" : "date",
+        "documentation" : "Search Patient by birth date"
+      },
+      {
+        "name" : "_lastUpdated",
+        "type" : "date",
+        "documentation" : "Search Patient by last updated date"
+      }]
+    },
+    {
+      "type" : "Observation",
+      "profile" : "http://hl7.org/fhir/StructureDefinition/Observation",
+      "documentation" : "Support for Observation resources - clinical observations and measurements",
+      "interaction" : [{
+        "code" : "read",
+        "documentation" : "Read an Observation resource by id"
+      },
+      {
+        "code" : "search-type",
+        "documentation" : "Search for Observation resources"
+      },
+      {
+        "code" : "create",
+        "documentation" : "Create a new Observation resource"
+      }],
+      "searchParam" : [{
+        "name" : "patient",
+        "type" : "reference",
+        "documentation" : "Search Observation by patient reference"
+      },
+      {
+        "name" : "code",
+        "type" : "token",
+        "documentation" : "Search Observation by observation code"
+      },
+      {
+        "name" : "date",
+        "type" : "date",
+        "documentation" : "Search Observation by observation date"
+      }]
+    }]
+  }]
+}

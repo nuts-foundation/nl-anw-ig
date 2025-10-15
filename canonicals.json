@@ -1,17 +1,31 @@
 [
   {
-    "id" : "ANWServerCapabilityStatement-v1",
+    "id" : "ANWBronhouderCapabilityStatement-v1",
     "type" : "CapabilityStatement",
-    "url" : "http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWServerCapabilityStatement",
+    "url" : "http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWBronhouderCapabilityStatement",
     "version" : "0.1.0",
-    "name" : "ANWServerCapabilityStatementV1"
+    "name" : "ANWBronhouderCapabilityStatementV1"
   },
   {
-    "id" : "ANWServerCapabilityStatement-v2",
+    "id" : "ANWBronhouderCapabilityStatement-v2",
     "type" : "CapabilityStatement",
-    "url" : "http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWServerCapabilityStatement",
+    "url" : "http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWBronhouderCapabilityStatement",
     "version" : "0.1.0",
-    "name" : "ANWServerCapabilityStatementV2"
+    "name" : "ANWBronhouderCapabilityStatementV2"
+  },
+  {
+    "id" : "ANWRegisseurCapabilityStatement-v1",
+    "type" : "CapabilityStatement",
+    "url" : "http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWRegisseurCapabilityStatement",
+    "version" : "0.1.0",
+    "name" : "ANWRegisseurCapabilityStatementV1"
+  },
+  {
+    "id" : "ANWZorgverlenerCapabilityStatement-v1",
+    "type" : "CapabilityStatement",
+    "url" : "http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWZorgverlenerCapabilityStatement",
+    "version" : "0.1.0",
+    "name" : "ANWZorgverlenerCapabilityStatementV1"
   },
   {
     "id" : "nl.nuts.anw",

@@ -1,12 +1,14 @@
 NLAnwIG : Validation Results
 =========================================
 
-err = 9, warn = 5, info = 1
+err = 15, warn = 5, info = 1
 $--
 Generated $--. FHIR version $-- for nl.nuts.anw#$-- (canonical = http://nuts-foundation.github.io/nl-generic-anw-ig)
  Build Errors : 1 / 4 / 0
- /github/workspace/fsh-generated/resources/CapabilityStatement-ANWServerCapabilityStatement-v1 : 4 / 0 / 1
- /github/workspace/fsh-generated/resources/CapabilityStatement-ANWServerCapabilityStatement-v2 : 4 / 0 / 1
+ /github/workspace/fsh-generated/resources/CapabilityStatement-ANWBronhouderCapabilityStatement-v1 : 4 / 0 / 1
+ /github/workspace/fsh-generated/resources/CapabilityStatement-ANWBronhouderCapabilityStatement-v2 : 4 / 0 / 1
+ /github/workspace/fsh-generated/resources/CapabilityStatement-ANWRegisseurCapabilityStatement-v1 : 3 / 0 / 1
+ /github/workspace/fsh-generated/resources/CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1 : 3 / 0 / 1
  /github/workspace/fsh-generated/resources/ImplementationGuide-nl.nuts.anw : 0 / 0 / 1
  /github/workspace/fsh-generated/resources/StructureDefinition-example-patient : 0 / 1 / 2
 </table>
@@ -16,16 +18,24 @@ WARNING: 1: The HTML fragment 'ip-statements.xhtml' is not included anywhere in 
 WARNING: 2: An HTML fragment from the set [cross-version-analysis.xhtml, cross-version-analysis-inline.xhtml] is not included anywhere in the produced implementation guide
 WARNING: 3: An HTML fragment from the set [dependency-table.xhtml, dependency-table-short.xhtml, dependency-table-nontech.xhtml] is not included anywhere in the produced implementation guide
 WARNING: 4: The HTML fragment 'globals-table.xhtml' is not included anywhere in the produced implementation guide
-== fsh-generated/resources/CapabilityStatement-ANWServerCapabilityStatement-v1.json ==
-ERROR: CapabilityStatement.where(url = 'http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWServerCapabilityStatement'): Conformance resource /github/workspace/fsh-generated/resources/CapabilityStatement-ANWServerCapabilityStatement-v1.json - the canonical URL (http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWServerCapabilityStatement-v1) does not match the URL (http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWServerCapabilityStatement). Use the special-url parameter if you really mean for it not to match
-ERROR: CapabilityStatement.url: Resource id/url mismatch: ANWServerCapabilityStatement-v1/http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWServerCapabilityStatement
-ERROR: Resource: The URL 'http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWServerCapabilityStatement' is also used by ANWServerCapabilityStatement-v2 in /github/workspace/fsh-generated/resources/CapabilityStatement-ANWServerCapabilityStatement-v2
-ERROR: /github/workspace/fsh-generated/resources/CapabilityStatement-ANWServerCapabilityStatement-v1: URL Mismatch http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWServerCapabilityStatement-v1 vs http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWServerCapabilityStatement
-== fsh-generated/resources/CapabilityStatement-ANWServerCapabilityStatement-v2.json ==
-ERROR: CapabilityStatement.where(url = 'http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWServerCapabilityStatement'): Conformance resource /github/workspace/fsh-generated/resources/CapabilityStatement-ANWServerCapabilityStatement-v2.json - the canonical URL (http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWServerCapabilityStatement-v2) does not match the URL (http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWServerCapabilityStatement). Use the special-url parameter if you really mean for it not to match
-ERROR: CapabilityStatement.url: Resource id/url mismatch: ANWServerCapabilityStatement-v2/http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWServerCapabilityStatement
-ERROR: Resource: The URL 'http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWServerCapabilityStatement' has already been used by ANWServerCapabilityStatement-v1 in /github/workspace/fsh-generated/resources/CapabilityStatement-ANWServerCapabilityStatement-v1
-ERROR: /github/workspace/fsh-generated/resources/CapabilityStatement-ANWServerCapabilityStatement-v2: URL Mismatch http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWServerCapabilityStatement-v2 vs http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWServerCapabilityStatement
+== fsh-generated/resources/CapabilityStatement-ANWBronhouderCapabilityStatement-v1.json ==
+ERROR: CapabilityStatement.where(url = 'http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWBronhouderCapabilityStatement'): Conformance resource /github/workspace/fsh-generated/resources/CapabilityStatement-ANWBronhouderCapabilityStatement-v1.json - the canonical URL (http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWBronhouderCapabilityStatement-v1) does not match the URL (http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWBronhouderCapabilityStatement). Use the special-url parameter if you really mean for it not to match
+ERROR: CapabilityStatement.url: Resource id/url mismatch: ANWBronhouderCapabilityStatement-v1/http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWBronhouderCapabilityStatement
+ERROR: Resource: The URL 'http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWBronhouderCapabilityStatement' is also used by ANWBronhouderCapabilityStatement-v2 in /github/workspace/fsh-generated/resources/CapabilityStatement-ANWBronhouderCapabilityStatement-v2
+ERROR: /github/workspace/fsh-generated/resources/CapabilityStatement-ANWBronhouderCapabilityStatement-v1: URL Mismatch http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWBronhouderCapabilityStatement-v1 vs http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWBronhouderCapabilityStatement
+== fsh-generated/resources/CapabilityStatement-ANWBronhouderCapabilityStatement-v2.json ==
+ERROR: CapabilityStatement.where(url = 'http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWBronhouderCapabilityStatement'): Conformance resource /github/workspace/fsh-generated/resources/CapabilityStatement-ANWBronhouderCapabilityStatement-v2.json - the canonical URL (http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWBronhouderCapabilityStatement-v2) does not match the URL (http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWBronhouderCapabilityStatement). Use the special-url parameter if you really mean for it not to match
+ERROR: CapabilityStatement.url: Resource id/url mismatch: ANWBronhouderCapabilityStatement-v2/http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWBronhouderCapabilityStatement
+ERROR: Resource: The URL 'http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWBronhouderCapabilityStatement' has already been used by ANWBronhouderCapabilityStatement-v1 in /github/workspace/fsh-generated/resources/CapabilityStatement-ANWBronhouderCapabilityStatement-v1
+ERROR: /github/workspace/fsh-generated/resources/CapabilityStatement-ANWBronhouderCapabilityStatement-v2: URL Mismatch http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWBronhouderCapabilityStatement-v2 vs http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWBronhouderCapabilityStatement
+== fsh-generated/resources/CapabilityStatement-ANWRegisseurCapabilityStatement-v1.json ==
+ERROR: CapabilityStatement.where(url = 'http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWRegisseurCapabilityStatement'): Conformance resource /github/workspace/fsh-generated/resources/CapabilityStatement-ANWRegisseurCapabilityStatement-v1.json - the canonical URL (http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWRegisseurCapabilityStatement-v1) does not match the URL (http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWRegisseurCapabilityStatement). Use the special-url parameter if you really mean for it not to match
+ERROR: CapabilityStatement.url: Resource id/url mismatch: ANWRegisseurCapabilityStatement-v1/http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWRegisseurCapabilityStatement
+ERROR: /github/workspace/fsh-generated/resources/CapabilityStatement-ANWRegisseurCapabilityStatement-v1: URL Mismatch http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWRegisseurCapabilityStatement-v1 vs http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWRegisseurCapabilityStatement
+== fsh-generated/resources/CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1.json ==
+ERROR: CapabilityStatement.where(url = 'http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWZorgverlenerCapabilityStatement'): Conformance resource /github/workspace/fsh-generated/resources/CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1.json - the canonical URL (http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWZorgverlenerCapabilityStatement-v1) does not match the URL (http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWZorgverlenerCapabilityStatement). Use the special-url parameter if you really mean for it not to match
+ERROR: CapabilityStatement.url: Resource id/url mismatch: ANWZorgverlenerCapabilityStatement-v1/http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWZorgverlenerCapabilityStatement
+ERROR: /github/workspace/fsh-generated/resources/CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1: URL Mismatch http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWZorgverlenerCapabilityStatement-v1 vs http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWZorgverlenerCapabilityStatement
 == fsh-generated/resources/ImplementationGuide-nl.nuts.anw.json ==
 == fsh-generated/resources/StructureDefinition-example-patient.json ==
 INFORMATION: StructureDefinition/example-patient: StructureDefinition.snapshot.element[4].binding.extension[0]: The extension http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet|5.2.0 is deprecated

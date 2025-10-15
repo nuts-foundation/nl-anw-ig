@@ -1,132 +1,30 @@
 {
-  "date" : "Wed, 15 Oct, 2025 12:02:05 +0000",
+  "date" : "Wed, 15 Oct, 2025 12:13:19 +0000",
   "doco" : "For each file: start is seconds after start activity occurred. Length = milliseconds activity took",
   "files" : [
     {
       "name" : "/fsh-generated/resources/ImplementationGuide-nl.nuts.anw.json",
-      "size" : 2193,
+      "size" : 2874,
       "processes" : [
         {
           "activity" : "load",
-          "start" : 30,
-          "length" : 20
+          "start" : 31,
+          "length" : 19
         },
         {
           "activity" : "checkR4R4B",
           "start" : 31,
-          "length" : 11
+          "length" : 12
         },
         {
           "activity" : "generateNarratives",
           "start" : 31,
-          "length" : 78
+          "length" : 77
         },
         {
           "activity" : "validate",
           "start" : 33,
-          "length" : 2124
-        },
-        {
-          "activity" : "generate1",
-          "start" : 35,
-          "length" : 70
-        },
-        {
-          "activity" : "generate2",
-          "start" : 36,
-          "length" : 71
-        },
-        {
-          "activity" : "generateValidationPack",
-          "start" : 46,
-          "length" : 3
-        },
-        {
-          "activity" : "scanExamplesForR5",
-          "start" : 49,
-          "length" : 2
-        }
-      ]
-    },
-    {
-      "name" : "fsh-generated/resources/CapabilityStatement-ANWServerCapabilityStatement-v1.json",
-      "size" : 2087,
-      "processes" : [
-        {
-          "activity" : "loadResources",
-          "start" : 30,
-          "length" : 15
-        },
-        {
-          "activity" : "load",
-          "start" : 30,
-          "length" : 18
-        },
-        {
-          "activity" : "load-configure",
-          "start" : 31,
-          "length" : 1
-        },
-        {
-          "activity" : "checkR4R4B",
-          "start" : 31,
-          "length" : 1
-        },
-        {
-          "activity" : "generateNarratives",
-          "start" : 31,
-          "length" : 55
-        },
-        {
-          "activity" : "validate",
-          "start" : 32,
-          "length" : 199
-        },
-        {
-          "activity" : "generate1",
-          "start" : 35,
-          "length" : 26
-        },
-        {
-          "activity" : "generate2",
-          "start" : 36,
-          "length" : 36
-        },
-        {
-          "activity" : "generateValidationPack",
-          "start" : 46,
-          "length" : 1
-        }
-      ]
-    },
-    {
-      "name" : "fsh-generated/resources/CapabilityStatement-ANWServerCapabilityStatement-v2.json",
-      "size" : 3723,
-      "processes" : [
-        {
-          "activity" : "loadResources",
-          "start" : 30,
-          "length" : 14
-        },
-        {
-          "activity" : "load",
-          "start" : 30,
-          "length" : 16
-        },
-        {
-          "activity" : "checkR4R4B",
-          "start" : 31,
-          "length" : 1
-        },
-        {
-          "activity" : "generateNarratives",
-          "start" : 31,
-          "length" : 35
-        },
-        {
-          "activity" : "validate",
-          "start" : 33,
-          "length" : 21
+          "length" : 2094
         },
         {
           "activity" : "scanForUsageStats",
@@ -136,16 +34,195 @@
         {
           "activity" : "generate1",
           "start" : 35,
-          "length" : 34
+          "length" : 60
         },
         {
           "activity" : "generate2",
-          "start" : 36,
-          "length" : 21
+          "start" : 48,
+          "length" : 62
         },
         {
           "activity" : "generateValidationPack",
-          "start" : 46,
+          "start" : 57,
+          "length" : 3
+        },
+        {
+          "activity" : "scanExamplesForR5",
+          "start" : 60,
+          "length" : 2
+        }
+      ]
+    },
+    {
+      "name" : "fsh-generated/resources/CapabilityStatement-ANWBronhouderCapabilityStatement-v1.json",
+      "size" : 2099,
+      "processes" : [
+        {
+          "activity" : "loadResources",
+          "start" : 31,
+          "length" : 14
+        },
+        {
+          "activity" : "load",
+          "start" : 31,
+          "length" : 22
+        },
+        {
+          "activity" : "load-configure",
+          "start" : 31,
+          "length" : 1
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 31,
+          "length" : 52
+        },
+        {
+          "activity" : "validate",
+          "start" : 33,
+          "length" : 233
+        },
+        {
+          "activity" : "generate1",
+          "start" : 35,
+          "length" : 20
+        },
+        {
+          "activity" : "generate2",
+          "start" : 48,
+          "length" : 40
+        },
+        {
+          "activity" : "generateValidationPack",
+          "start" : 57,
+          "length" : 1
+        }
+      ]
+    },
+    {
+      "name" : "fsh-generated/resources/CapabilityStatement-ANWBronhouderCapabilityStatement-v2.json",
+      "size" : 3735,
+      "processes" : [
+        {
+          "activity" : "loadResources",
+          "start" : 31,
+          "length" : 17
+        },
+        {
+          "activity" : "load",
+          "start" : 31,
+          "length" : 12
+        },
+        {
+          "activity" : "checkR4R4B",
+          "start" : 31,
+          "length" : 1
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 31,
+          "length" : 33
+        },
+        {
+          "activity" : "validate",
+          "start" : 33,
+          "length" : 21
+        },
+        {
+          "activity" : "generate1",
+          "start" : 35,
+          "length" : 27
+        },
+        {
+          "activity" : "generate2",
+          "start" : 48,
+          "length" : 23
+        },
+        {
+          "activity" : "generateValidationPack",
+          "start" : 57,
+          "length" : 1
+        }
+      ]
+    },
+    {
+      "name" : "fsh-generated/resources/CapabilityStatement-ANWRegisseurCapabilityStatement-v1.json",
+      "size" : 2096,
+      "processes" : [
+        {
+          "activity" : "loadResources",
+          "start" : 31,
+          "length" : 16
+        },
+        {
+          "activity" : "load",
+          "start" : 31,
+          "length" : 17
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 31,
+          "length" : 26
+        },
+        {
+          "activity" : "validate",
+          "start" : 33,
+          "length" : 12
+        },
+        {
+          "activity" : "generate1",
+          "start" : 35,
+          "length" : 21
+        },
+        {
+          "activity" : "generate2",
+          "start" : 48,
+          "length" : 16
+        }
+      ]
+    },
+    {
+      "name" : "fsh-generated/resources/CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1.json",
+      "size" : 2105,
+      "processes" : [
+        {
+          "activity" : "loadResources",
+          "start" : 31,
+          "length" : 16
+        },
+        {
+          "activity" : "load",
+          "start" : 31,
+          "length" : 11
+        },
+        {
+          "activity" : "checkR4R4B",
+          "start" : 31,
+          "length" : 1
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 31,
+          "length" : 25
+        },
+        {
+          "activity" : "validate",
+          "start" : 33,
+          "length" : 11
+        },
+        {
+          "activity" : "generate1",
+          "start" : 35,
+          "length" : 17
+        },
+        {
+          "activity" : "generate2",
+          "start" : 48,
+          "length" : 15
+        },
+        {
+          "activity" : "generateValidationPack",
+          "start" : 57,
           "length" : 1
         }
       ]
@@ -156,28 +233,28 @@
       "processes" : [
         {
           "activity" : "loadResources",
-          "start" : 30,
-          "length" : 16
+          "start" : 31,
+          "length" : 13
         },
         {
           "activity" : "load",
-          "start" : 30,
-          "length" : 19
+          "start" : 31,
+          "length" : 18
         },
         {
           "activity" : "generateSnapshots",
-          "start" : 30,
-          "length" : 77
+          "start" : 31,
+          "length" : 106
         },
         {
           "activity" : "generateNarratives",
           "start" : 31,
-          "length" : 77
+          "length" : 74
         },
         {
           "activity" : "validate",
           "start" : 31,
-          "length" : 1536
+          "length" : 1590
         },
         {
           "activity" : "checkConformanceResources",
@@ -187,32 +264,37 @@
         {
           "activity" : "scanForUsageStats",
           "start" : 35,
-          "length" : 1
+          "length" : 2
         },
         {
           "activity" : "generate1",
           "start" : 35,
-          "length" : 170
+          "length" : 156
         },
         {
           "activity" : "generate2",
-          "start" : 36,
-          "length" : 924
+          "start" : 48,
+          "length" : 976
         },
         {
           "activity" : "generate2",
-          "start" : 37,
-          "length" : 1580
+          "start" : 49,
+          "length" : 1337
         },
         {
           "activity" : "generateValidationPack",
-          "start" : 46,
-          "length" : 11
+          "start" : 57,
+          "length" : 7
+        },
+        {
+          "activity" : "scanProfilesForR5",
+          "start" : 60,
+          "length" : 1
         },
         {
           "activity" : "scanExamplesForR5",
-          "start" : 49,
-          "length" : 1
+          "start" : 60,
+          "length" : 2
         }
       ]
     }

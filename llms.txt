@@ -3,13 +3,13 @@
 ## Pages
 
 * [Home](index.md)
+* [ANW Server Capability Statement v1.0 - XML Representation](CapabilityStatement-ANWBronhouderCapabilityStatement-v1.xml.md)
+* [ANW Server Capability Statement v1.0 - JSON Representation](CapabilityStatement-ANWBronhouderCapabilityStatement-v1.json.md)
+* [ANW Server Capability Statement v1.0 - Testing](CapabilityStatement-ANWBronhouderCapabilityStatement-v1-testing.md)
+* [ANW Server Capability Statement v1.0 - TTL Representation](CapabilityStatement-ANWBronhouderCapabilityStatement-v1.ttl.md)
 * [Artifacts Summary](artifacts.md)
-* [ANW Server Capability Statement v1.0 - XML Representation](CapabilityStatement-ANWServerCapabilityStatement-v1.xml.md)
-* [ANW Server Capability Statement v1.0 - Testing](CapabilityStatement-ANWServerCapabilityStatement-v1-testing.md)
-* [ANW Server Capability Statement v1.0 - TTL Representation](CapabilityStatement-ANWServerCapabilityStatement-v1.ttl.md)
-* [](CapabilityStatement-ANWServerCapabilityStatement-v1.change.history.md)
-* [ANW Server Capability Statement v1.0 - JSON Representation](CapabilityStatement-ANWServerCapabilityStatement-v1.json.md)
-* [ANW Server Capability Statement v1.0](CapabilityStatement-ANWServerCapabilityStatement-v1.md)
+* [ANW Server Capability Statement v1.0](CapabilityStatement-ANWBronhouderCapabilityStatement-v1.md)
+* [](CapabilityStatement-ANWBronhouderCapabilityStatement-v1.change.history.md)
 
 ## Resources
 
@@ -19,8 +19,10 @@
 
 ### CapabilityStatements
 
-* [ANW Server Capability Statement v1.0](CapabilityStatement-ANWServerCapabilityStatement-v2.md)
-* [ANW Server Capability Statement v2.0](CapabilityStatement-ANWServerCapabilityStatement-v2.md)
+* [ANW Server Capability Statement v1.0](CapabilityStatement-ANWBronhouderCapabilityStatement-v2.md)
+* [ANW Server Capability Statement v2.0](CapabilityStatement-ANWBronhouderCapabilityStatement-v2.md)
+* [ANW Server Capability Statement v1.0](CapabilityStatement-ANWRegisseurCapabilityStatement-v1.md)
+* [ANW Server Capability Statement v1.0](CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1.md)
 
 ### ImplementationGuides
 

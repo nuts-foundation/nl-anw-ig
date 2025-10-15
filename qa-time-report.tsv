@@ -1,5 +1,7 @@
 Source File	Size	loadResources	load	generateSnapshots	load-configure	scan	loadDepInfo	loadInfo	checkR4R4B	generateNarratives	validate	loadLists	checkConformanceResources	checkConformanceResources2	checkConformanceResources3	generateLogicalMaps	validateExpressions	scanForUsageStats	checkURLsUnique	processProvenanceDetails	generate1	generate2	generateLogicals	makeDependencies	generateExampleZip	generateValidationPack	scanProfilesForR5	scanExamplesForR5
-/fsh-generated/resources/ImplementationGuide-nl.nuts.anw.json	2193	-	0	0	0	0	0	0	11	78	0	0	0	0	0	0	0	0	0	0	70	71	0	0	0	3	0	2
-fsh-generated/resources/CapabilityStatement-ANWServerCapabilityStatement-v1.json	2087	15	0	0	1	0	0	0	1	55	0	0	0	0	0	0	0	0	0	0	26	36	0	0	0	1	0	0
-fsh-generated/resources/CapabilityStatement-ANWServerCapabilityStatement-v2.json	3723	14	0	0	0	0	0	0	1	35	0	0	0	0	0	0	0	1	0	0	34	21	0	0	0	1	0	0
-fsh-generated/resources/StructureDefinition-example-patient.json	1240	16	0	77	0	0	0	0	0	77	0	0	1	0	0	0	0	1	0	0	170	924	0	0	0	11	0	1
+/fsh-generated/resources/ImplementationGuide-nl.nuts.anw.json	2874	-	0	0	0	0	0	0	12	77	0	0	0	0	0	0	0	1	0	0	60	62	0	0	0	3	0	2
+fsh-generated/resources/CapabilityStatement-ANWBronhouderCapabilityStatement-v1.json	2099	14	0	0	1	0	0	0	0	52	0	0	0	0	0	0	0	0	0	0	20	40	0	0	0	1	0	0
+fsh-generated/resources/CapabilityStatement-ANWBronhouderCapabilityStatement-v2.json	3735	17	0	0	0	0	0	0	1	33	0	0	0	0	0	0	0	0	0	0	27	23	0	0	0	1	0	0
+fsh-generated/resources/CapabilityStatement-ANWRegisseurCapabilityStatement-v1.json	2096	16	0	0	0	0	0	0	0	26	0	0	0	0	0	0	0	0	0	0	21	16	0	0	0	0	0	0
+fsh-generated/resources/CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1.json	2105	16	0	0	0	0	0	0	1	25	0	0	0	0	0	0	0	0	0	0	17	15	0	0	0	1	0	0
+fsh-generated/resources/StructureDefinition-example-patient.json	1240	13	0	106	0	0	0	0	0	74	0	0	1	0	0	0	0	2	0	0	156	976	0	0	0	7	1	2

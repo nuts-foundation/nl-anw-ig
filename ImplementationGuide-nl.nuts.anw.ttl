@@ -19,7 +19,7 @@
   fhir:name [ fhir:v "NLAnwIG"] ; # 
   fhir:title [ fhir:v "Netherlands - ANW implementation guide"] ; # 
   fhir:status [ fhir:v "draft"] ; # 
-  fhir:date [ fhir:v "2025-10-15T12:01:34+00:00"^^xsd:dateTime] ; # 
+  fhir:date [ fhir:v "2025-10-15T12:12:48+00:00"^^xsd:dateTime] ; # 
   fhir:publisher [ fhir:v "Stichting Nuts"] ; # 
   fhir:contact ( [
      fhir:name [ fhir:v "Stichting Nuts" ] ;
@@ -836,8 +836,8 @@
          ]
        ] ) ;
        fhir:reference [
-         fhir:link <http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWServerCapabilityStatement-v1> ;
-         fhir:reference [ fhir:v "CapabilityStatement/ANWServerCapabilityStatement-v1" ]
+         fhir:link <http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWBronhouderCapabilityStatement-v1> ;
+         fhir:reference [ fhir:v "CapabilityStatement/ANWBronhouderCapabilityStatement-v1" ]
        ] ;
        fhir:name [ fhir:v "ANW Server Capability Statement v1.0" ] ;
        fhir:description [ fhir:v "Capability statement describing the basic requirements for ANW FHIR servers (version 1.0)" ] ;
@@ -854,8 +854,44 @@
          ]
        ] ) ;
        fhir:reference [
-         fhir:link <http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWServerCapabilityStatement-v2> ;
-         fhir:reference [ fhir:v "CapabilityStatement/ANWServerCapabilityStatement-v2" ]
+         fhir:link <http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWRegisseurCapabilityStatement-v1> ;
+         fhir:reference [ fhir:v "CapabilityStatement/ANWRegisseurCapabilityStatement-v1" ]
+       ] ;
+       fhir:name [ fhir:v "ANW Server Capability Statement v1.0" ] ;
+       fhir:description [ fhir:v "Capability statement describing the basic requirements for ANW FHIR servers (version 1.0)" ] ;
+       fhir:example [
+         a fhir:boolean ;
+         fhir:v false
+       ]
+     ] [
+       fhir:extension ( [
+         fhir:url [ fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ] ;
+         fhir:value [
+           a fhir:string ;
+           fhir:v "CapabilityStatement"
+         ]
+       ] ) ;
+       fhir:reference [
+         fhir:link <http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWZorgverlenerCapabilityStatement-v1> ;
+         fhir:reference [ fhir:v "CapabilityStatement/ANWZorgverlenerCapabilityStatement-v1" ]
+       ] ;
+       fhir:name [ fhir:v "ANW Server Capability Statement v1.0" ] ;
+       fhir:description [ fhir:v "Capability statement describing the basic requirements for ANW FHIR servers (version 1.0)" ] ;
+       fhir:example [
+         a fhir:boolean ;
+         fhir:v false
+       ]
+     ] [
+       fhir:extension ( [
+         fhir:url [ fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ] ;
+         fhir:value [
+           a fhir:string ;
+           fhir:v "CapabilityStatement"
+         ]
+       ] ) ;
+       fhir:reference [
+         fhir:link <http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWBronhouderCapabilityStatement-v2> ;
+         fhir:reference [ fhir:v "CapabilityStatement/ANWBronhouderCapabilityStatement-v2" ]
        ] ;
        fhir:name [ fhir:v "ANW Server Capability Statement v2.0" ] ;
        fhir:description [ fhir:v "Capability statement describing the extended requirements for ANW FHIR servers (version 2.0)" ] ;
