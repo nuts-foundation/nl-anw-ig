@@ -1,10 +1,17 @@
 [
   {
-    "id" : "ANWServerCapabilityStatement",
+    "id" : "ANWServerCapabilityStatement-v1",
     "type" : "CapabilityStatement",
     "url" : "http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWServerCapabilityStatement",
     "version" : "0.1.0",
-    "name" : "ANWServerCapabilityStatement"
+    "name" : "ANWServerCapabilityStatementV1"
+  },
+  {
+    "id" : "ANWServerCapabilityStatement-v2",
+    "type" : "CapabilityStatement",
+    "url" : "http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWServerCapabilityStatement",
+    "version" : "0.1.0",
+    "name" : "ANWServerCapabilityStatementV2"
   },
   {
     "id" : "nl.nuts.anw",

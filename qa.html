@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<!-- broken links = 0, errors = 1, warn = 5, info = 1-->
+<!-- broken links = 0, errors = 9, warn = 5, info = 1-->
 <head>
   <title>NLAnwIG : Validation Results</title>
   <link href="fhir.css" rel="stylesheet"/>
@@ -47,12 +47,12 @@
 </head>
 <body style="margin: 20px; background-color: #ffffff">
  <h1>Validation Results for NLAnwIG</h1>
- <p>Generated Wed Oct 15 11:38:05 UTC 2025, FHIR version 4.0.1 for nl.nuts.anw#0.1.0 (canonical = <a href="http://nuts-foundation.github.io/nl-generic-anw-ig">http://nuts-foundation.github.io/nl-generic-anw-ig</a> (<a href="http://nuts-foundation.github.io/nl-generic-anw-ig/history.html">history</a>)). See <a href="qa.min.html">Errors Only</a> &amp; <a href="qa-ipreview.html">IP</a></p>
+ <p>Generated Wed Oct 15 12:02:23 UTC 2025, FHIR version 4.0.1 for nl.nuts.anw#0.1.0 (canonical = <a href="http://nuts-foundation.github.io/nl-generic-anw-ig">http://nuts-foundation.github.io/nl-generic-anw-ig</a> (<a href="http://nuts-foundation.github.io/nl-generic-anw-ig/history.html">history</a>)). See <a href="qa.min.html">Errors Only</a> &amp; <a href="qa-ipreview.html">IP</a></p>
 <table class="grid"> <tr><td colspan=2><b>Quality Checks</b></td></tr>
  <tr><td>Publisher Version:</td><td><span>IG Publisher Version: v2.0.21</span></td></tr>
  <tr><td>Publication Code:</td><td>n/a<span style="color: maroon; font-weight: bold"> </span>. PackageId = nl.nuts.anw, Canonical = http://nuts-foundation.github.io/nl-generic-anw-ig</td></tr>
  <tr><td>Realm Check for n/a:</td><td><span style="color: maroon; font-weight: bold"></span><ul><li>n/a</li></ul></td></tr>
- <tr><td>Language Info:</td><td>Stated Languages: n/a. IG Resource Lang: en-US. 1 of 3 (33%) of resources have a language. <a href="https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-resource-language-policy">Population Policy</a>: NONE</td></tr>
+ <tr><td>Language Info:</td><td>Stated Languages: n/a. IG Resource Lang: en-US. 1 of 4 (25%) of resources have a language. <a href="https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-resource-language-policy">Population Policy</a>: NONE</td></tr>
  <tr><td>Publication Request:</td><td><ul><li><span title="Not Found">This IG has never been published</span> <img src="information.png" height="16px" width="16px"/></li>
 <li>No publication request found <img src="information.png" height="16px" width="16px"/></li>
 </ul>
@@ -88,7 +88,7 @@ hl7.fhir.r4.core#4.0.1:     <a href="http://hl7.org/fhir/R4/codesystem-guide-par
  <tr><td>IPA Comparison:</td><td> n/a</td></tr>
  <tr><td>IPS Comparison:</td><td> n/a</td></tr>
  <tr><td>Validation Flags:</td><td> On: autoLoad; Off: hintAboutNonMustSupport, anyExtensionsAllowed, checkAggregation, showReferenceMessages, noExperimentalContent, displayWarnings</td></tr>
- <tr><td>Summary:</td><td> errors = 1, warn = 5, info = 1, broken links = 0, pinned = n/a.  <button onclick="toggleCodes()">Show Message Ids</button></td></tr>
+ <tr><td>Summary:</td><td> errors = 9, warn = 5, info = 1, broken links = 0, pinned = n/a.  <button onclick="toggleCodes()">Show Message Ids</button></td></tr>
 </table>
  <table class="grid">
    <tr>
@@ -97,8 +97,11 @@ hl7.fhir.r4.core#4.0.1:     <a href="http://hl7.org/fhir/R4/codesystem-guide-par
    <tr style="background-color: #ffcccc">
      <td><a href="#internal"><b>Build Errors</b></a></td><td><b>1</b></td><td><b>4</b></td><td><b>0</b></td>
    </tr>
-   <tr style="background-color: #EFFFEF">
-     <td><a href="#_github_workspace_fsh-generated_resources_CapabilityStatement-ANWServerCapabilityStatement"><b>/github/workspace/fsh-generated/resources/CapabilityStatement-ANWServerCapabilityStatement</b></a></td><td><b>0</b></td><td><b>0</b></td><td><b>0</b></td>
+   <tr style="background-color: #ffcccc">
+     <td><a href="#_github_workspace_fsh-generated_resources_CapabilityStatement-ANWServerCapabilityStatement-v1"><b>/github/workspace/fsh-generated/resources/CapabilityStatement-ANWServerCapabilityStatement-v1</b></a></td><td><b>4</b></td><td><b>0</b></td><td><b>0</b></td>
+   </tr>
+   <tr style="background-color: #ffcccc">
+     <td><a href="#_github_workspace_fsh-generated_resources_CapabilityStatement-ANWServerCapabilityStatement-v2"><b>/github/workspace/fsh-generated/resources/CapabilityStatement-ANWServerCapabilityStatement-v2</b></a></td><td><b>4</b></td><td><b>0</b></td><td><b>0</b></td>
    </tr>
    <tr style="background-color: #EFFFEF">
      <td><a href="#_github_workspace_fsh-generated_resources_ImplementationGuide-nl.nuts.anw"><b>/github/workspace/fsh-generated/resources/ImplementationGuide-nl.nuts.anw</b></a></td><td><b>0</b></td><td><b>0</b></td><td><b>0</b></td>
@@ -129,19 +132,53 @@ hl7.fhir.r4.core#4.0.1:     <a href="http://hl7.org/fhir/R4/codesystem-guide-par
    </tr>
 </table>
 <hr/>
-<a name="_github_workspace_fsh-generated_resources_CapabilityStatement-ANWServerCapabilityStatement"> </a>
-<h2><a href="CapabilityStatement-ANWServerCapabilityStatement.html">fsh-generated/resources/CapabilityStatement-ANWServerCapabilityStatement.json</a> <span id="svi1" class="toggle" onclick="toggle('vi1')">Show Validation Information</span> <span class="vcount" onclick="toggle('vi1')">(1)</span></h2>
+<a name="_github_workspace_fsh-generated_resources_CapabilityStatement-ANWServerCapabilityStatement-v1"> </a>
+<h2><a href="CapabilityStatement-ANWServerCapabilityStatement-v1.html">fsh-generated/resources/CapabilityStatement-ANWServerCapabilityStatement-v1.json</a> <span id="svi1" class="toggle" onclick="toggle('vi1')">Show Validation Information</span> <span class="vcount" onclick="toggle('vi1')">(1)</span></h2>
  <div style="border: 1px grey solid; display: none" id="vi1"><ul style="font-size: 7px"><li>CapabilityStatement: Validated against <a href="http://hl7.org/fhir">fhir</a>.<a href="http://hl7.org/fhir/R4/capabilitystatement.html">CapabilityStatement</a></li></ul>
 </div>
  <table class="grid">
    <tr>
-     <td>&check;</td>
+     <td><b>Path</b></td><td><b>Severity</b></td><td><b>Message</b></td>
+   </tr>
+   <tr style="background-color: #ffcccc">
+     <td><b>CapabilityStatement&#8203;.where(url = 'http:&#8203;/&#8203;/nuts-foundation&#8203;.github&#8203;.io&#8203;/nl-generic-anw-ig&#8203;/CapabilityStatement&#8203;/ANWServerCapabilityStatement')</b></td><td><b>error</b></td><td><b>Conformance resource /github/workspace/fsh-generated/resources/CapabilityStatement-ANWServerCapabilityStatement-v1.json - the canonical URL (http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWServerCapabilityStatement-v1) does not match the URL (http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWServerCapabilityStatement). Use the special-url parameter if you really mean for it not to match</b> <span class="code-value code-hidden" style="font-size: 8px; color: navy">RESOURCE_CANONICAL_MISMATCH</span></td>
+   </tr>
+   <tr style="background-color: #ffcccc">
+     <td><b>CapabilityStatement.url</b></td><td><b>error</b></td><td><b>Resource id/url mismatch: ANWServerCapabilityStatement-v1/http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWServerCapabilityStatement</b> <span class="code-value code-hidden" style="font-size: 8px; color: navy">RESOURCE_ID_MISMATCH</span></td>
+   </tr>
+   <tr style="background-color: #ffcccc">
+     <td><b>Resource</b></td><td><b>error</b></td><td><b>The URL 'http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWServerCapabilityStatement' is also used by ANWServerCapabilityStatement-v2 in /github/workspace/fsh-generated/resources/CapabilityStatement-ANWServerCapabilityStatement-v2</b> <span class="code-value code-hidden" style="font-size: 8px; color: navy"></span></td>
+   </tr>
+   <tr style="background-color: #ffcccc">
+     <td><b>fsh-generated&#8203;/resources&#8203;/CapabilityStatement-ANWServerCapabilityStatement-v1</b></td><td><b>error</b></td><td><b>URL Mismatch http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWServerCapabilityStatement-v1 vs http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWServerCapabilityStatement</b> <span class="code-value code-hidden" style="font-size: 8px; color: navy"></span></td>
+   </tr>
+</table>
+<hr/>
+<a name="_github_workspace_fsh-generated_resources_CapabilityStatement-ANWServerCapabilityStatement-v2"> </a>
+<h2><a href="CapabilityStatement-ANWServerCapabilityStatement-v2.html">fsh-generated/resources/CapabilityStatement-ANWServerCapabilityStatement-v2.json</a> <span id="svi2" class="toggle" onclick="toggle('vi2')">Show Validation Information</span> <span class="vcount" onclick="toggle('vi2')">(1)</span></h2>
+ <div style="border: 1px grey solid; display: none" id="vi2"><ul style="font-size: 7px"><li>CapabilityStatement: Validated against <a href="http://hl7.org/fhir">fhir</a>.<a href="http://hl7.org/fhir/R4/capabilitystatement.html">CapabilityStatement</a></li></ul>
+</div>
+ <table class="grid">
+   <tr>
+     <td><b>Path</b></td><td><b>Severity</b></td><td><b>Message</b></td>
+   </tr>
+   <tr style="background-color: #ffcccc">
+     <td><b>CapabilityStatement&#8203;.where(url = 'http:&#8203;/&#8203;/nuts-foundation&#8203;.github&#8203;.io&#8203;/nl-generic-anw-ig&#8203;/CapabilityStatement&#8203;/ANWServerCapabilityStatement')</b></td><td><b>error</b></td><td><b>Conformance resource /github/workspace/fsh-generated/resources/CapabilityStatement-ANWServerCapabilityStatement-v2.json - the canonical URL (http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWServerCapabilityStatement-v2) does not match the URL (http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWServerCapabilityStatement). Use the special-url parameter if you really mean for it not to match</b> <span class="code-value code-hidden" style="font-size: 8px; color: navy">RESOURCE_CANONICAL_MISMATCH</span></td>
+   </tr>
+   <tr style="background-color: #ffcccc">
+     <td><b>CapabilityStatement.url</b></td><td><b>error</b></td><td><b>Resource id/url mismatch: ANWServerCapabilityStatement-v2/http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWServerCapabilityStatement</b> <span class="code-value code-hidden" style="font-size: 8px; color: navy">RESOURCE_ID_MISMATCH</span></td>
+   </tr>
+   <tr style="background-color: #ffcccc">
+     <td><b>Resource</b></td><td><b>error</b></td><td><b>The URL 'http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWServerCapabilityStatement' has already been used by ANWServerCapabilityStatement-v1 in /github/workspace/fsh-generated/resources/CapabilityStatement-ANWServerCapabilityStatement-v1</b> <span class="code-value code-hidden" style="font-size: 8px; color: navy"></span></td>
+   </tr>
+   <tr style="background-color: #ffcccc">
+     <td><b>fsh-generated&#8203;/resources&#8203;/CapabilityStatement-ANWServerCapabilityStatement-v2</b></td><td><b>error</b></td><td><b>URL Mismatch http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWServerCapabilityStatement-v2 vs http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWServerCapabilityStatement</b> <span class="code-value code-hidden" style="font-size: 8px; color: navy"></span></td>
    </tr>
 </table>
 <hr/>
 <a name="_github_workspace_fsh-generated_resources_ImplementationGuide-nl.nuts.anw"> </a>
-<h2><a href="index.html">fsh-generated/resources/ImplementationGuide-nl.nuts.anw.json</a> <span id="svi2" class="toggle" onclick="toggle('vi2')">Show Validation Information</span> <span class="vcount" onclick="toggle('vi2')">(1)</span></h2>
- <div style="border: 1px grey solid; display: none" id="vi2"><ul style="font-size: 7px"><li>ImplementationGuide/nl.nuts.anw: ImplementationGuide: Validated against <a href="http://hl7.org/fhir">fhir</a>.<a href="http://hl7.org/fhir/R4/implementationguide.html">ImplementationGuide</a></li></ul>
+<h2><a href="index.html">fsh-generated/resources/ImplementationGuide-nl.nuts.anw.json</a> <span id="svi3" class="toggle" onclick="toggle('vi3')">Show Validation Information</span> <span class="vcount" onclick="toggle('vi3')">(1)</span></h2>
+ <div style="border: 1px grey solid; display: none" id="vi3"><ul style="font-size: 7px"><li>ImplementationGuide/nl.nuts.anw: ImplementationGuide: Validated against <a href="http://hl7.org/fhir">fhir</a>.<a href="http://hl7.org/fhir/R4/implementationguide.html">ImplementationGuide</a></li></ul>
 </div>
  <table class="grid">
    <tr>
@@ -150,8 +187,8 @@ hl7.fhir.r4.core#4.0.1:     <a href="http://hl7.org/fhir/R4/codesystem-guide-par
 </table>
 <hr/>
 <a name="_github_workspace_fsh-generated_resources_StructureDefinition-example-patient"> </a>
-<h2><a href="StructureDefinition-example-patient.html">fsh-generated/resources/StructureDefinition-example-patient.json</a> <span id="svi3" class="toggle" onclick="toggle('vi3')">Show Validation Information</span> <span class="vcount" onclick="toggle('vi3')">(1)</span></h2>
- <div style="border: 1px grey solid; display: none" id="vi3"><ul style="font-size: 7px"><li>StructureDefinition: Validated against <a href="http://hl7.org/fhir">fhir</a>.<a href="http://hl7.org/fhir/R4/structuredefinition.html">StructureDefinition</a></li></ul>
+<h2><a href="StructureDefinition-example-patient.html">fsh-generated/resources/StructureDefinition-example-patient.json</a> <span id="svi4" class="toggle" onclick="toggle('vi4')">Show Validation Information</span> <span class="vcount" onclick="toggle('vi4')">(1)</span></h2>
+ <div style="border: 1px grey solid; display: none" id="vi4"><ul style="font-size: 7px"><li>StructureDefinition: Validated against <a href="http://hl7.org/fhir">fhir</a>.<a href="http://hl7.org/fhir/R4/structuredefinition.html">StructureDefinition</a></li></ul>
 </div>
  <table class="grid">
    <tr>
@@ -174,6 +211,28 @@ hl7.fhir.r4.core#4.0.1:     <a href="http://hl7.org/fhir/R4/codesystem-guide-par
  <table class="grid">
    <tr style="background-color: #fffff2">
      <td><a href="StructureDefinition-example-patient.html">fsh-generated/resources/StructureDefinition-example-patient.json</a></td><td><b>The extension http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet|5.2.0 is deprecated</b></td>
+   </tr>
+</table>
+<hr/>
+<a name="RESOURCE_CANONICAL_MISMATCH"> </a>
+<h2>RESOURCE_CANONICAL_MISMATCH</h2>
+ <table class="grid">
+   <tr style="background-color: #ffeeee">
+     <td><a href="CapabilityStatement-ANWServerCapabilityStatement-v1.html">fsh-generated/resources/CapabilityStatement-ANWServerCapabilityStatement-v1.json</a></td><td><b>Conformance resource /github/workspace/fsh-generated/resources/CapabilityStatement-ANWServerCapabilityStatement-v1.json - the canonical URL (http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWServerCapabilityStatement-v1) does not match the URL (http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWServerCapabilityStatement). Use the special-url parameter if you really mean for it not to match</b></td>
+   </tr>
+   <tr style="background-color: #ffeeee">
+     <td><a href="CapabilityStatement-ANWServerCapabilityStatement-v2.html">fsh-generated/resources/CapabilityStatement-ANWServerCapabilityStatement-v2.json</a></td><td><b>Conformance resource /github/workspace/fsh-generated/resources/CapabilityStatement-ANWServerCapabilityStatement-v2.json - the canonical URL (http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWServerCapabilityStatement-v2) does not match the URL (http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWServerCapabilityStatement). Use the special-url parameter if you really mean for it not to match</b></td>
+   </tr>
+</table>
+<hr/>
+<a name="RESOURCE_ID_MISMATCH"> </a>
+<h2>RESOURCE_ID_MISMATCH</h2>
+ <table class="grid">
+   <tr style="background-color: #ffeeee">
+     <td><a href="CapabilityStatement-ANWServerCapabilityStatement-v1.html">fsh-generated/resources/CapabilityStatement-ANWServerCapabilityStatement-v1.json</a></td><td><b>Resource id/url mismatch: ANWServerCapabilityStatement-v1/http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWServerCapabilityStatement</b></td>
+   </tr>
+   <tr style="background-color: #ffeeee">
+     <td><a href="CapabilityStatement-ANWServerCapabilityStatement-v2.html">fsh-generated/resources/CapabilityStatement-ANWServerCapabilityStatement-v2.json</a></td><td><b>Resource id/url mismatch: ANWServerCapabilityStatement-v2/http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWServerCapabilityStatement</b></td>
    </tr>
 </table>
 </body>

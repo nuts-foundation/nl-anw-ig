@@ -1,8 +1,8 @@
 ﻿{
   "openapi": "3.0.2",
   "info": {
-    "title": "ANW Server Capability Statement",
-    "description": "This capability statement defines the expected capabilities of FHIR servers supporting the ANW use case",
+    "title": "ANW Server Capability Statement v1.0",
+    "description": "Version 1.0 capability statement defining the basic requirements for ANW FHIR servers - supports Patient resources with read and search operations",
     "license": {
       "name": "GNU General Public License v3.0 or later",
       "url": "http://spdx.org/licenses/GPL-3.0-or-later.html"

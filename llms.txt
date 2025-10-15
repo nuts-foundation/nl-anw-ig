@@ -4,6 +4,12 @@
 
 * [Home](index.md)
 * [Artifacts Summary](artifacts.md)
+* [ANW Server Capability Statement v1.0 - XML Representation](CapabilityStatement-ANWServerCapabilityStatement-v1.xml.md)
+* [ANW Server Capability Statement v1.0 - Testing](CapabilityStatement-ANWServerCapabilityStatement-v1-testing.md)
+* [ANW Server Capability Statement v1.0 - TTL Representation](CapabilityStatement-ANWServerCapabilityStatement-v1.ttl.md)
+* [](CapabilityStatement-ANWServerCapabilityStatement-v1.change.history.md)
+* [ANW Server Capability Statement v1.0 - JSON Representation](CapabilityStatement-ANWServerCapabilityStatement-v1.json.md)
+* [ANW Server Capability Statement v1.0](CapabilityStatement-ANWServerCapabilityStatement-v1.md)
 
 ## Resources
 
@@ -13,7 +19,8 @@
 
 ### CapabilityStatements
 
-* [ANW Server Capability Statement](CapabilityStatement-ANWServerCapabilityStatement.md)
+* [ANW Server Capability Statement v1.0](CapabilityStatement-ANWServerCapabilityStatement-v2.md)
+* [ANW Server Capability Statement v2.0](CapabilityStatement-ANWServerCapabilityStatement-v2.md)
 
 ### ImplementationGuides
 
