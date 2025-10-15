@@ -1,0 +1,84 @@
+# OS-specific files
+## macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+__MACOSX/
+
+## Linux
+*~
+.nfs*
+
+## Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Build / Output directories
+build/
+bin/
+out/
+dist/
+target/
+release/
+*.log
+
+# IDE / Editor specific
+## IntelliJ / IDEA / Android Studio
+.idea/
+*.iml
+
+## VS Code
+.vscode/
+
+## Eclipse
+.project
+.classpath
+.settings/
+
+## NetBeans
+.nb-gradle/
+
+# Node / Frontend
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+coverage/
+.env
+.env.local
+.env.*.local
+
+# Java / Kotlin / Gradle
+.gradle/
+!gradle/wrapper/gradle-wrapper.jar
+*.class
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+
+# Miscellaneous
+*.tmp
+
+## Backup files
+*.bak
+*.swp
+*.swo
+*.old
+
+## Temporary files
+tmp/
+temp/
+
+# System caches
+.cache/
+.trash/
+
+# Sushi
+output/
+fsh-generated/
+publisher.jar
