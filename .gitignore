@@ -78,6 +78,9 @@ temp/
 .cache/
 .trash/
 
+# AI
+.claude
+
 # Sushi
 output/
 fsh-generated/
