@@ -35,6 +35,19 @@ Description: "Capability statement describing the basic requirements for ANW FHI
 * rest.resource[1].type = #Observation
 * rest.resource[1].profile = "http://nictiz.nl/fhir/StructureDefinition/zib-PulseRate"
 * rest.resource[1].interaction[0].code = #search-type
+* rest.resource[1].searchParam[0].name = "patient"
+* rest.resource[1].searchParam[0].type = #reference
+* rest.resource[1].searchParam[1].name = "_profile"
+* rest.resource[1].searchParam[1].type = #string
+* rest.resource[1].searchParam[2].name = "_sort"
+* rest.resource[1].searchParam[2].type = #string
+* rest.resource[1].searchParam[3].name = "_count"
+* rest.resource[1].searchParam[3].type = #number
+
+// Observation: BloodPressure
+* rest.resource[1].type = #Observation
+* rest.resource[1].profile = "http://nictiz.nl/fhir/StructureDefinition/zib-BloodPressure"
+* rest.resource[1].interaction[0].code = #search-type
 * rest.resource[1].interaction[1].code = #create
 * rest.resource[1].searchParam[0].name = "patient"
 * rest.resource[1].searchParam[0].type = #reference
