@@ -1,41 +1,35 @@
 Instance: ANWZorgverlenerCapabilityStatement-v1
 InstanceOf: CapabilityStatement
 Usage: #definition
-Title: "ANW Zorgverlener Capability Statement v1.0"
-Description: "Capability statement describing the basic requirements for ANW FHIR servers (version 1.0)"
-* url = "http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWZorgverlenerCapabilityStatement"
+Title: "ANW Zorgverlener Capability Statement v1.0.0"
+Description: "Capability statement describing the basic requirements for ANW FHIR servers (version 1.0.0, ANW-Zorgverlener)"
+* url = "http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Zorgverlener"
 * version = "1.0.0"
-* name = "ANWZorgverlenerCapabilityStatementV1"
+* name = "ANW-Zorgverlener"
 * status = #active
 * date = "2025-10-15"
 * kind = #requirements
-* fhirVersion = #4.0.1
+* fhirVersion = #3.0.2
 * format[0] = #json
 * format[1] = #xml
 * publisher = "Stichting Nuts"
 * contact[0].name = "Stichting Nuts"
 * contact[0].telecom[0].system = #url
 * contact[0].telecom[0].value = "https://www.nuts.nl"
-* description = "Version 1.0 capability statement defining the basic requirements for ANW FHIR servers - supports Patient resources with read and search operations"
+* description = "Version 1.0 capability statement defining the basic requirements for ANW FHIR servers wanting to support the ANW-Zorgverlener usecase."
 
 // Server capabilities
 * rest.mode = #server
 * rest.documentation = "ANW FHIR Server v1.0 - supporting Patient resources with ANW-specific profiles"
 
-// Patient resource support
-* rest.resource[0].type = #Patient
-* rest.resource[0].profile = "http://nuts-foundation.github.io/nl-generic-anw-ig/StructureDefinition/example-patient"
-* rest.resource[0].documentation = "Support for Patient resources conforming to the ANW Patient profile"
-* rest.resource[0].interaction[0].code = #read
-* rest.resource[0].interaction[0].documentation = "Read a Patient resource by id"
-* rest.resource[0].interaction[1].code = #search-type
-* rest.resource[0].interaction[1].documentation = "Search for Patient resources"
-* rest.resource[0].searchParam[0].name = "identifier"
-* rest.resource[0].searchParam[0].type = #token
-* rest.resource[0].searchParam[0].documentation = "Search Patient by identifier (e.g., BSN)"
-* rest.resource[0].searchParam[1].name = "family"
-* rest.resource[0].searchParam[1].type = #string
-* rest.resource[0].searchParam[1].documentation = "Search Patient by family name"
-* rest.resource[0].searchParam[2].name = "birthdate"
-* rest.resource[0].searchParam[2].type = #date
-* rest.resource[0].searchParam[2].documentation = "Search Patient by birth date"
+// Practitioner resource support
+* rest[0].resource[0].type = #Practitioner
+* rest[0].resource[0].interaction[0].code = #search-type
+
+
+//notification
+* rest[0].operation[0].name = "zorgverlener-notification-endpoint"
+* rest[0].operation[0].definition = "https://github.com/nuts-foundation/bolts/blob/master/anw/TD-ANWv2024.1.md#anw-zorgverlener"
+
+* rest[0].operation[1].name = "ANW-zorg"
+* rest[0].operation[1].definition = "http://nuts-foundation.github.io/nl-generic-anw-ig/OperationDefinition/ANW-zorg"
