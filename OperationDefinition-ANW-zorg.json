@@ -1,0 +1,36 @@
+{
+  "resourceType" : "OperationDefinition",
+  "id" : "ANW-zorg",
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: OperationDefinition ANW-zorg</b></p><a name=\"ANW-zorg\"> </a><a name=\"hcANW-zorg\"> </a><p>URL: [base]/Practitioner?_query=ANW-zorg&amp;...</p><p>URL: [base]/Patient?_query=ANW-zorg&amp;...</p><h3>Parameters</h3><table class=\"grid\"><tr><td><b>Use</b></td><td><b>Name</b></td><td><b>Scope</b></td><td><b>Cardinality</b></td><td><b>Type</b></td><td><b>Binding</b></td><td><b>Documentation</b></td></tr></table></div>"
+  },
+  "url" : "http://nuts-foundation.github.io/nl-generic-anw-ig/OperationDefinition/ANW-zorg",
+  "version" : "0.1.0",
+  "name" : "ANW-zorg",
+  "status" : "active",
+  "kind" : "query",
+  "date" : "2025-10-22T11:35:21+00:00",
+  "publisher" : "Stichting Nuts",
+  "contact" : [{
+    "name" : "Stichting Nuts",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.nuts.nl"
+    }]
+  }],
+  "description" : "Custom named query on Practitioner or Patient, invoked with _query=ANW-zorg",
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "NL",
+      "display" : "Netherlands"
+    }]
+  }],
+  "code" : "ANW-zorg",
+  "resource" : ["Practitioner",
+  "Patient"],
+  "system" : false,
+  "type" : true,
+  "instance" : false
+}

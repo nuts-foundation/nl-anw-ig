@@ -13,16 +13,15 @@ The following artifacts define the specific capabilities that different types of
 
 | | |
 | :--- | :--- |
-| [ANW Bronhouder Capability Statement v1.0](CapabilityStatement-ANWBronhouderCapabilityStatement-v1.md) | Capability statement describing the basic requirements for ANW FHIR servers (version 1.0) |
-| [ANW Bronhouder Capability Statement v2.0](CapabilityStatement-ANWBronhouderCapabilityStatement-v2.md) | Capability statement describing the extended requirements for ANW FHIR servers (version 2.0) |
-| [ANW Regisseur Capability Statement v1.0](CapabilityStatement-ANWRegisseurCapabilityStatement-v1.md) | Capability statement describing the basic requirements for ANW FHIR servers (version 1.0) |
-| [ANW Zorgverlener Capability Statement v1.0](CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1.md) | Capability statement describing the basic requirements for ANW FHIR servers (version 1.0) |
+| [ANW Bronhouder Capability Statement v1.0](CapabilityStatement-ANWBronhouderCapabilityStatement-v1.md) | Capability statement describing the basic requirements for ANW FHIR servers (version 1.0.0, ANW-bronhouder) |
+| [ANW Regisseur Capability Statement v1.0](CapabilityStatement-ANWRegisseurCapabilityStatement-v1.md) | Capability statement describing the basic requirements for ANW FHIR servers (version 1.0.0, ANW-Regisseur) |
+| [ANW Zorgverlener Capability Statement v1.0.0](CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1.md) | Capability statement describing the basic requirements for ANW FHIR servers (version 1.0.0, ANW-Zorgverlener) |
 
-### Structures: Resource Profiles 
+### Behavior: Operation Definitions 
 
-These define constraints on FHIR resources for systems conforming to this implementation guide.
+These are custom operations that can be supported by and/or invoked by systems conforming to this implementation guide.
 
 | | |
 | :--- | :--- |
-| [Voorbeeld patient](StructureDefinition-example-patient.md) | Patient profiel met verplicht BSN nummer. |
+| [ANW-zorg](OperationDefinition-ANW-zorg.md) | Custom named query on Practitioner or Patient, invoked with _query=ANW-zorg |
 

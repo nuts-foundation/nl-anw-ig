@@ -2,30 +2,23 @@
   {
     "id" : "ANWBronhouderCapabilityStatement-v1",
     "type" : "CapabilityStatement",
-    "url" : "http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWBronhouderCapabilityStatement",
+    "url" : "http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Bronhouder",
     "version" : "0.1.0",
-    "name" : "ANWBronhouderCapabilityStatementV1"
-  },
-  {
-    "id" : "ANWBronhouderCapabilityStatement-v2",
-    "type" : "CapabilityStatement",
-    "url" : "http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWBronhouderCapabilityStatement",
-    "version" : "0.1.0",
-    "name" : "ANWBronhouderCapabilityStatementV2"
+    "name" : "ANW-Bronhouder"
   },
   {
     "id" : "ANWRegisseurCapabilityStatement-v1",
     "type" : "CapabilityStatement",
-    "url" : "http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWRegisseurCapabilityStatement",
+    "url" : "http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Regisseur",
     "version" : "0.1.0",
-    "name" : "ANWRegisseurCapabilityStatementV1"
+    "name" : "ANW-Regisseur"
   },
   {
     "id" : "ANWZorgverlenerCapabilityStatement-v1",
     "type" : "CapabilityStatement",
-    "url" : "http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWZorgverlenerCapabilityStatement",
+    "url" : "http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Zorgverlener",
     "version" : "0.1.0",
-    "name" : "ANWZorgverlenerCapabilityStatementV1"
+    "name" : "ANW-Zorgverlener"
   },
   {
     "id" : "nl.nuts.anw",
@@ -35,10 +28,10 @@
     "name" : "NLAnwIG"
   },
   {
-    "id" : "example-patient",
-    "type" : "StructureDefinition",
-    "url" : "http://nuts-foundation.github.io/nl-generic-anw-ig/StructureDefinition/example-patient",
+    "id" : "ANW-zorg",
+    "type" : "OperationDefinition",
+    "url" : "http://nuts-foundation.github.io/nl-generic-anw-ig/OperationDefinition/ANW-zorg",
     "version" : "0.1.0",
-    "name" : "NLPatient"
+    "name" : "ANW-zorg"
   }
 ]

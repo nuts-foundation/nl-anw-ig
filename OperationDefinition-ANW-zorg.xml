@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<OperationDefinition xmlns="http://hl7.org/fhir">
+  <id value="ANW-zorg"/>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: OperationDefinition ANW-zorg</b></p><a name="ANW-zorg"> </a><a name="hcANW-zorg"> </a><p>URL: [base]/Practitioner?_query=ANW-zorg&amp;...</p><p>URL: [base]/Patient?_query=ANW-zorg&amp;...</p><h3>Parameters</h3><table class="grid"><tr><td><b>Use</b></td><td><b>Name</b></td><td><b>Scope</b></td><td><b>Cardinality</b></td><td><b>Type</b></td><td><b>Binding</b></td><td><b>Documentation</b></td></tr></table></div>
+  </text>
+  <url value="http://nuts-foundation.github.io/nl-generic-anw-ig/OperationDefinition/ANW-zorg"/>
+  <version value="0.1.0"/>
+  <name value="ANW-zorg"/>
+  <status value="active"/>
+  <kind value="query"/>
+  <date value="2025-10-22T11:35:21+00:00"/>
+  <publisher value="Stichting Nuts"/>
+  <contact>
+    <name value="Stichting Nuts"/>
+    <telecom>
+      <system value="url"/>
+      <value value="https://www.nuts.nl"/>
+    </telecom>
+  </contact>
+  <description value="Custom named query on Practitioner or Patient, invoked with _query=ANW-zorg"/>
+  <jurisdiction>
+    <coding>
+      <system value="urn:iso:std:iso:3166"/>
+      <code value="NL"/>
+      <display value="Netherlands"/>
+    </coding>
+  </jurisdiction>
+  <code value="ANW-zorg"/>
+  <resource value="Practitioner"/>
+  <resource value="Patient"/>
+  <system value="false"/>
+  <type value="true"/>
+  <instance value="false"/>
+</OperationDefinition>

@@ -8,7 +8,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://nuts-foundation.github.io/nl-generic-anw-ig/ImplementationGuide/nl.nuts.anw | *Version*:0.1.0 |
-| Draft as of 2025-10-15 | *Computable Name*:NLAnwIG |
+| Draft as of 2025-10-22 | *Computable Name*:NLAnwIG |
 
 # ANW Implementation Guide
 
@@ -41,7 +41,7 @@ The ANW use case covers evening, night, and weekend care services. This implemen
   "name" : "NLAnwIG",
   "title" : "Netherlands - ANW implementation guide",
   "status" : "draft",
-  "date" : "2025-10-15T12:17:44+00:00",
+  "date" : "2025-10-22T11:35:21+00:00",
   "publisher" : "Stichting Nuts",
   "contact" : [
     {
@@ -763,21 +763,7 @@ The ANW use case covers evening, night, and weekend care services. This implemen
           "reference" : "CapabilityStatement/ANWBronhouderCapabilityStatement-v1"
         },
         "name" : "ANW Bronhouder Capability Statement v1.0",
-        "description" : "Capability statement describing the basic requirements for ANW FHIR servers (version 1.0)",
-        "exampleBoolean" : false
-      },
-      {
-        "extension" : [
-          {
-            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-            "valueString" : "CapabilityStatement"
-          }
-        ],
-        "reference" : {
-          "reference" : "CapabilityStatement/ANWBronhouderCapabilityStatement-v2"
-        },
-        "name" : "ANW Bronhouder Capability Statement v2.0",
-        "description" : "Capability statement describing the extended requirements for ANW FHIR servers (version 2.0)",
+        "description" : "Capability statement describing the basic requirements for ANW FHIR servers  (version 1.0.0, ANW-bronhouder)",
         "exampleBoolean" : false
       },
       {
@@ -791,7 +777,7 @@ The ANW use case covers evening, night, and weekend care services. This implemen
           "reference" : "CapabilityStatement/ANWRegisseurCapabilityStatement-v1"
         },
         "name" : "ANW Regisseur Capability Statement v1.0",
-        "description" : "Capability statement describing the basic requirements for ANW FHIR servers (version 1.0)",
+        "description" : "Capability statement describing the basic requirements for ANW FHIR servers  (version 1.0.0, ANW-Regisseur)",
         "exampleBoolean" : false
       },
       {
@@ -804,22 +790,22 @@ The ANW use case covers evening, night, and weekend care services. This implemen
         "reference" : {
           "reference" : "CapabilityStatement/ANWZorgverlenerCapabilityStatement-v1"
         },
-        "name" : "ANW Zorgverlener Capability Statement v1.0",
-        "description" : "Capability statement describing the basic requirements for ANW FHIR servers (version 1.0)",
+        "name" : "ANW Zorgverlener Capability Statement v1.0.0",
+        "description" : "Capability statement describing the basic requirements for ANW FHIR servers (version 1.0.0, ANW-Zorgverlener)",
         "exampleBoolean" : false
       },
       {
         "extension" : [
           {
             "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-            "valueString" : "StructureDefinition:resource"
+            "valueString" : "OperationDefinition"
           }
         ],
         "reference" : {
-          "reference" : "StructureDefinition/example-patient"
+          "reference" : "OperationDefinition/ANW-zorg"
         },
-        "name" : "Voorbeeld patient",
-        "description" : "Patient profiel met verplicht BSN nummer.",
+        "name" : "ANW-zorg",
+        "description" : "Custom named query on Practitioner or Patient, invoked with _query=ANW-zorg",
         "exampleBoolean" : false
       }
     ],

@@ -8,18 +8,18 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWRegisseurCapabilityStatement | *Version*:0.1.0 |
-| Active as of 2025-10-15 | *Computable Name*:ANWRegisseurCapabilityStatementV1 |
+| *Official URL*:http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Regisseur | *Version*:0.1.0 |
+| Active as of 2025-10-15 | *Computable Name*:ANW-Regisseur |
 
  
-Version 1.0 capability statement defining the basic requirements for ANW FHIR servers - supports Patient resources with read and search operations 
+Version 1.0 capability statement defining the basic requirements for ANW FHIR servers wanting to support the ANW-Regisseur usecase. 
 
  [Raw OpenAPI-Swagger Definition file](ANWRegisseurCapabilityStatement-v1.openapi.json) | [Download](ANWRegisseurCapabilityStatement-v1.openapi.json) 
 
 ## ANW Regisseur Capability Statement v1.0
 
 * Implementation Guide Version: 0.1.0 
-* FHIR Version: 4.0.1 
+* FHIR Version: 3.0.2 
 * Supported Formats: `json`, `xml`
 * Published on: 2025-10-15 
 * Published by: Stichting Nuts 
@@ -47,19 +47,15 @@ The summary table lists the resources that are part of this configuration, and f
 
 | | | | | | | | | | |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| [Patient](#Patient1-1) | [http://nuts-foundation.github.io/nl-generic-anw-ig/StructureDefinition/example-patient](StructureDefinition-example-patient.md) | y | y |  |  | identifier, family, birthdate |  |  |  |
+| [Task](#Task1-1) |   | y |  | y |  |  |  |  |  |
 
 -------
 
-#### Resource Conformance: supported Patient
+#### Resource Conformance: supported Task
 
-Base System Profile
+Core FHIR Resource
 
-[Voorbeeld patient](StructureDefinition-example-patient.md)
-
-Profile Conformance
-
-**SHALL**
+[Task](http://hl7.org/fhir/R3/task.html)
 
 Reference Policy
 
@@ -68,23 +64,12 @@ Interaction summary
 * Supports 
 `read`
 
-Read a Patient resource by id
+Retrieval of fhir task from reggiseur
 
-`search-type`
+`update`
 
-Search for Patient resources
+Update of fhir task of reggiseur
 
-
-Documentation
-> 
-
-Support for Patient resources conforming to the ANW Patient profile
-
-
-Search Parameters
-
-
- 
 
 
 
@@ -94,9 +79,9 @@ Search Parameters
 {
   "resourceType" : "CapabilityStatement",
   "id" : "ANWRegisseurCapabilityStatement-v1",
-  "url" : "http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWRegisseurCapabilityStatement",
+  "url" : "http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Regisseur",
   "version" : "0.1.0",
-  "name" : "ANWRegisseurCapabilityStatementV1",
+  "name" : "ANW-Regisseur",
   "title" : "ANW Regisseur Capability Statement v1.0",
   "status" : "active",
   "date" : "2025-10-15",
@@ -112,7 +97,7 @@ Search Parameters
       ]
     }
   ],
-  "description" : "Version 1.0 capability statement defining the basic requirements for ANW FHIR servers - supports Patient resources with read and search operations",
+  "description" : "Version 1.0 capability statement defining the basic requirements for ANW FHIR servers wanting to support the ANW-Regisseur usecase.",
   "jurisdiction" : [
     {
       "coding" : [
@@ -125,7 +110,7 @@ Search Parameters
     }
   ],
   "kind" : "requirements",
-  "fhirVersion" : "4.0.1",
+  "fhirVersion" : "3.0.2",
   "format" : ["json", "xml"],
   "rest" : [
     {
@@ -133,34 +118,15 @@ Search Parameters
       "documentation" : "ANW FHIR Server v1.0 - supporting Patient resources with ANW-specific profiles",
       "resource" : [
         {
-          "type" : "Patient",
-          "profile" : "http://nuts-foundation.github.io/nl-generic-anw-ig/StructureDefinition/example-patient",
-          "documentation" : "Support for Patient resources conforming to the ANW Patient profile",
+          "type" : "Task",
           "interaction" : [
             {
               "code" : "read",
-              "documentation" : "Read a Patient resource by id"
+              "documentation" : "Retrieval of fhir task from reggiseur"
             },
             {
-              "code" : "search-type",
-              "documentation" : "Search for Patient resources"
-            }
-          ],
-          "searchParam" : [
-            {
-              "name" : "identifier",
-              "type" : "token",
-              "documentation" : "Search Patient by identifier (e.g., BSN)"
-            },
-            {
-              "name" : "family",
-              "type" : "string",
-              "documentation" : "Search Patient by family name"
-            },
-            {
-              "name" : "birthdate",
-              "type" : "date",
-              "documentation" : "Search Patient by birth date"
+              "code" : "update",
+              "documentation" : "Update of fhir task of reggiseur"
             }
           ]
         }

@@ -1,25 +1,25 @@
-# ANW Zorgverlener Capability Statement v1.0 - Netherlands - ANW implementation guide v0.1.0
+# ANW Zorgverlener Capability Statement v1.0.0 - Netherlands - ANW implementation guide v0.1.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
-* **ANW Zorgverlener Capability Statement v1.0**
+* **ANW Zorgverlener Capability Statement v1.0.0**
 
-## CapabilityStatement: ANW Zorgverlener Capability Statement v1.0 
+## CapabilityStatement: ANW Zorgverlener Capability Statement v1.0.0 
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWZorgverlenerCapabilityStatement | *Version*:0.1.0 |
-| Active as of 2025-10-15 | *Computable Name*:ANWZorgverlenerCapabilityStatementV1 |
+| *Official URL*:http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Zorgverlener | *Version*:0.1.0 |
+| Active as of 2025-10-15 | *Computable Name*:ANW-Zorgverlener |
 
  
-Version 1.0 capability statement defining the basic requirements for ANW FHIR servers - supports Patient resources with read and search operations 
+Version 1.0 capability statement defining the basic requirements for ANW FHIR servers wanting to support the ANW-Zorgverlener usecase. 
 
  [Raw OpenAPI-Swagger Definition file](ANWZorgverlenerCapabilityStatement-v1.openapi.json) | [Download](ANWZorgverlenerCapabilityStatement-v1.openapi.json) 
 
-## ANW Zorgverlener Capability Statement v1.0
+## ANW Zorgverlener Capability Statement v1.0.0
 
 * Implementation Guide Version: 0.1.0 
-* FHIR Version: 4.0.1 
+* FHIR Version: 3.0.2 
 * Supported Formats: `json`, `xml`
 * Published on: 2025-10-15 
 * Published by: Stichting Nuts 
@@ -31,6 +31,9 @@ Version 1.0 capability statement defining the basic requirements for ANW FHIR se
 ### Mode: server
 
 ANW FHIR Server v1.0 - supporting Patient resources with ANW-specific profiles
+
+Summary of System-wide Operations
+
 
 ### Capabilities by Resource/Profile
 
@@ -47,44 +50,21 @@ The summary table lists the resources that are part of this configuration, and f
 
 | | | | | | | | | | |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| [Patient](#Patient1-1) | [http://nuts-foundation.github.io/nl-generic-anw-ig/StructureDefinition/example-patient](StructureDefinition-example-patient.md) | y | y |  |  | identifier, family, birthdate |  |  |  |
+| [Practitioner](#Practitioner1-1) |   |  | y |  |  |  |  |  |  |
 
 -------
 
-#### Resource Conformance: supported Patient
+#### Resource Conformance: supported Practitioner
 
-Base System Profile
+Core FHIR Resource
 
-[Voorbeeld patient](StructureDefinition-example-patient.md)
-
-Profile Conformance
-
-**SHALL**
+[Practitioner](http://hl7.org/fhir/R3/practitioner.html)
 
 Reference Policy
 
 Interaction summary
 
-* Supports 
-`read`
-
-Read a Patient resource by id
-
-`search-type`
-
-Search for Patient resources
-
-
-Documentation
-> 
-
-Support for Patient resources conforming to the ANW Patient profile
-
-
-Search Parameters
-
-
- 
+* Supports `search-type`.
 
 
 
@@ -94,10 +74,10 @@ Search Parameters
 {
   "resourceType" : "CapabilityStatement",
   "id" : "ANWZorgverlenerCapabilityStatement-v1",
-  "url" : "http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWZorgverlenerCapabilityStatement",
+  "url" : "http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Zorgverlener",
   "version" : "0.1.0",
-  "name" : "ANWZorgverlenerCapabilityStatementV1",
-  "title" : "ANW Zorgverlener Capability Statement v1.0",
+  "name" : "ANW-Zorgverlener",
+  "title" : "ANW Zorgverlener Capability Statement v1.0.0",
   "status" : "active",
   "date" : "2025-10-15",
   "publisher" : "Stichting Nuts",
@@ -112,7 +92,7 @@ Search Parameters
       ]
     }
   ],
-  "description" : "Version 1.0 capability statement defining the basic requirements for ANW FHIR servers - supports Patient resources with read and search operations",
+  "description" : "Version 1.0 capability statement defining the basic requirements for ANW FHIR servers wanting to support the ANW-Zorgverlener usecase.",
   "jurisdiction" : [
     {
       "coding" : [
@@ -125,7 +105,7 @@ Search Parameters
     }
   ],
   "kind" : "requirements",
-  "fhirVersion" : "4.0.1",
+  "fhirVersion" : "3.0.2",
   "format" : ["json", "xml"],
   "rest" : [
     {
@@ -133,36 +113,22 @@ Search Parameters
       "documentation" : "ANW FHIR Server v1.0 - supporting Patient resources with ANW-specific profiles",
       "resource" : [
         {
-          "type" : "Patient",
-          "profile" : "http://nuts-foundation.github.io/nl-generic-anw-ig/StructureDefinition/example-patient",
-          "documentation" : "Support for Patient resources conforming to the ANW Patient profile",
+          "type" : "Practitioner",
           "interaction" : [
             {
-              "code" : "read",
-              "documentation" : "Read a Patient resource by id"
-            },
-            {
-              "code" : "search-type",
-              "documentation" : "Search for Patient resources"
-            }
-          ],
-          "searchParam" : [
-            {
-              "name" : "identifier",
-              "type" : "token",
-              "documentation" : "Search Patient by identifier (e.g., BSN)"
-            },
-            {
-              "name" : "family",
-              "type" : "string",
-              "documentation" : "Search Patient by family name"
-            },
-            {
-              "name" : "birthdate",
-              "type" : "date",
-              "documentation" : "Search Patient by birth date"
+              "code" : "search-type"
             }
           ]
+        }
+      ],
+      "operation" : [
+        {
+          "name" : "zorgverlener-notification-endpoint",
+          "definition" : "https://github.com/nuts-foundation/bolts/blob/master/anw/TD-ANWv2024.1.md#anw-zorgverlener"
+        },
+        {
+          "name" : "ANW-zorg",
+          "definition" : "http://nuts-foundation.github.io/nl-generic-anw-ig/OperationDefinition/ANW-zorg"
         }
       ]
     }

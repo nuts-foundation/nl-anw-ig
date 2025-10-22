@@ -131,7 +131,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
          <a href="#1">Behavior: Capability Statements</a>
       </li>
       <li>
-         <a href="#2">Structures: Resource Profiles</a>
+         <a href="#2">Behavior: Operation Definitions</a>
       </li>
    </ul>
 </div>
@@ -151,16 +151,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
                   title="CapabilityStatement/ANWBronhouderCapabilityStatement-v1">ANW Bronhouder Capability Statement v1.0</a>
             </td>
             <td>
-<p>Capability statement describing the basic requirements for ANW FHIR servers (version 1.0)</p>
-</td>
-         </tr>
-         <tr>
-            <td style="column-width:30%">
-               <a href="CapabilityStatement-ANWBronhouderCapabilityStatement-v2.html"
-                  title="CapabilityStatement/ANWBronhouderCapabilityStatement-v2">ANW Bronhouder Capability Statement v2.0</a>
-            </td>
-            <td>
-<p>Capability statement describing the extended requirements for ANW FHIR servers (version 2.0)</p>
+<p>Capability statement describing the basic requirements for ANW FHIR servers  (version 1.0.0, ANW-bronhouder)</p>
 </td>
          </tr>
          <tr>
@@ -169,33 +160,33 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
                   title="CapabilityStatement/ANWRegisseurCapabilityStatement-v1">ANW Regisseur Capability Statement v1.0</a>
             </td>
             <td>
-<p>Capability statement describing the basic requirements for ANW FHIR servers (version 1.0)</p>
+<p>Capability statement describing the basic requirements for ANW FHIR servers  (version 1.0.0, ANW-Regisseur)</p>
 </td>
          </tr>
          <tr>
             <td style="column-width:30%">
                <a href="CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1.html"
-                  title="CapabilityStatement/ANWZorgverlenerCapabilityStatement-v1">ANW Zorgverlener Capability Statement v1.0</a>
+                  title="CapabilityStatement/ANWZorgverlenerCapabilityStatement-v1">ANW Zorgverlener Capability Statement v1.0.0</a>
             </td>
             <td>
-<p>Capability statement describing the basic requirements for ANW FHIR servers (version 1.0)</p>
+<p>Capability statement describing the basic requirements for ANW FHIR servers (version 1.0.0, ANW-Zorgverlener)</p>
 </td>
          </tr>
       </tbody>
    </table>
    <a name="2"> </a>
-   <h3>Structures: Resource Profiles </h3>
-    <p>These define constraints on FHIR resources for systems conforming to this implementation guide.</p>
+   <h3>Behavior: Operation Definitions </h3>
+    <p>These are custom operations that can be supported by and/or invoked by systems conforming to this implementation guide.</p>
 <table class="grid">
       <col style="width:20%"/>
       <tbody>
          <tr>
             <td style="column-width:30%">
-               <a href="StructureDefinition-example-patient.html"
-                  title="StructureDefinition/example-patient">Voorbeeld patient</a>
+               <a href="OperationDefinition-ANW-zorg.html"
+                  title="OperationDefinition/ANW-zorg">ANW-zorg</a>
             </td>
             <td>
-<p>Patient profiel met verplicht BSN nummer.</p>
+<p>Custom named query on Practitioner or Patient, invoked with _query=ANW-zorg</p>
 </td>
          </tr>
       </tbody>
@@ -218,7 +209,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.nuts.nl">Stichting Nuts</a>.  Package nl.nuts.anw#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Oct 15, 2025 12:18+0000">2025-10-15</span>
+          IG &#169; 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.nuts.nl">Stichting Nuts</a>.  Package nl.nuts.anw#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Oct 22, 2025 11:35+0000">2025-10-22</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

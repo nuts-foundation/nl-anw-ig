@@ -11,7 +11,7 @@
   <name value="NLAnwIG"/>
   <title value="Netherlands - ANW implementation guide"/>
   <status value="draft"/>
-  <date value="2025-10-15T12:17:44+00:00"/>
+  <date value="2025-10-22T11:35:21+00:00"/>
   <publisher value="Stichting Nuts"/>
   <contact>
     <name value="Stichting Nuts"/>
@@ -458,18 +458,7 @@
         <reference value="CapabilityStatement/ANWBronhouderCapabilityStatement-v1"/>
       </reference>
       <name value="ANW Bronhouder Capability Statement v1.0"/>
-      <description value="Capability statement describing the basic requirements for ANW FHIR servers (version 1.0)"/>
-      <exampleBoolean value="false"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="CapabilityStatement"/>
-      </extension>
-      <reference>
-        <reference value="CapabilityStatement/ANWBronhouderCapabilityStatement-v2"/>
-      </reference>
-      <name value="ANW Bronhouder Capability Statement v2.0"/>
-      <description value="Capability statement describing the extended requirements for ANW FHIR servers (version 2.0)"/>
+      <description value="Capability statement describing the basic requirements for ANW FHIR servers  (version 1.0.0, ANW-bronhouder)"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -480,7 +469,7 @@
         <reference value="CapabilityStatement/ANWRegisseurCapabilityStatement-v1"/>
       </reference>
       <name value="ANW Regisseur Capability Statement v1.0"/>
-      <description value="Capability statement describing the basic requirements for ANW FHIR servers (version 1.0)"/>
+      <description value="Capability statement describing the basic requirements for ANW FHIR servers  (version 1.0.0, ANW-Regisseur)"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -490,19 +479,19 @@
       <reference>
         <reference value="CapabilityStatement/ANWZorgverlenerCapabilityStatement-v1"/>
       </reference>
-      <name value="ANW Zorgverlener Capability Statement v1.0"/>
-      <description value="Capability statement describing the basic requirements for ANW FHIR servers (version 1.0)"/>
+      <name value="ANW Zorgverlener Capability Statement v1.0.0"/>
+      <description value="Capability statement describing the basic requirements for ANW FHIR servers (version 1.0.0, ANW-Zorgverlener)"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:resource"/>
+        <valueString value="OperationDefinition"/>
       </extension>
       <reference>
-        <reference value="StructureDefinition/example-patient"/>
+        <reference value="OperationDefinition/ANW-zorg"/>
       </reference>
-      <name value="Voorbeeld patient"/>
-      <description value="Patient profiel met verplicht BSN nummer."/>
+      <name value="ANW-zorg"/>
+      <description value="Custom named query on Practitioner or Patient, invoked with _query=ANW-zorg"/>
       <exampleBoolean value="false"/>
     </resource>
     <page>

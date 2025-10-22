@@ -19,7 +19,7 @@
   fhir:name [ fhir:v "NLAnwIG"] ; # 
   fhir:title [ fhir:v "Netherlands - ANW implementation guide"] ; # 
   fhir:status [ fhir:v "draft"] ; # 
-  fhir:date [ fhir:v "2025-10-15T12:17:44+00:00"^^xsd:dateTime] ; # 
+  fhir:date [ fhir:v "2025-10-22T11:35:21+00:00"^^xsd:dateTime] ; # 
   fhir:publisher [ fhir:v "Stichting Nuts"] ; # 
   fhir:contact ( [
      fhir:name [ fhir:v "Stichting Nuts" ] ;
@@ -840,25 +840,7 @@
          fhir:reference [ fhir:v "CapabilityStatement/ANWBronhouderCapabilityStatement-v1" ]
        ] ;
        fhir:name [ fhir:v "ANW Bronhouder Capability Statement v1.0" ] ;
-       fhir:description [ fhir:v "Capability statement describing the basic requirements for ANW FHIR servers (version 1.0)" ] ;
-       fhir:example [
-         a fhir:boolean ;
-         fhir:v false
-       ]
-     ] [
-       fhir:extension ( [
-         fhir:url [ fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ] ;
-         fhir:value [
-           a fhir:string ;
-           fhir:v "CapabilityStatement"
-         ]
-       ] ) ;
-       fhir:reference [
-         fhir:link <http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWBronhouderCapabilityStatement-v2> ;
-         fhir:reference [ fhir:v "CapabilityStatement/ANWBronhouderCapabilityStatement-v2" ]
-       ] ;
-       fhir:name [ fhir:v "ANW Bronhouder Capability Statement v2.0" ] ;
-       fhir:description [ fhir:v "Capability statement describing the extended requirements for ANW FHIR servers (version 2.0)" ] ;
+       fhir:description [ fhir:v "Capability statement describing the basic requirements for ANW FHIR servers  (version 1.0.0, ANW-bronhouder)" ] ;
        fhir:example [
          a fhir:boolean ;
          fhir:v false
@@ -876,7 +858,7 @@
          fhir:reference [ fhir:v "CapabilityStatement/ANWRegisseurCapabilityStatement-v1" ]
        ] ;
        fhir:name [ fhir:v "ANW Regisseur Capability Statement v1.0" ] ;
-       fhir:description [ fhir:v "Capability statement describing the basic requirements for ANW FHIR servers (version 1.0)" ] ;
+       fhir:description [ fhir:v "Capability statement describing the basic requirements for ANW FHIR servers  (version 1.0.0, ANW-Regisseur)" ] ;
        fhir:example [
          a fhir:boolean ;
          fhir:v false
@@ -893,8 +875,8 @@
          fhir:link <http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWZorgverlenerCapabilityStatement-v1> ;
          fhir:reference [ fhir:v "CapabilityStatement/ANWZorgverlenerCapabilityStatement-v1" ]
        ] ;
-       fhir:name [ fhir:v "ANW Zorgverlener Capability Statement v1.0" ] ;
-       fhir:description [ fhir:v "Capability statement describing the basic requirements for ANW FHIR servers (version 1.0)" ] ;
+       fhir:name [ fhir:v "ANW Zorgverlener Capability Statement v1.0.0" ] ;
+       fhir:description [ fhir:v "Capability statement describing the basic requirements for ANW FHIR servers (version 1.0.0, ANW-Zorgverlener)" ] ;
        fhir:example [
          a fhir:boolean ;
          fhir:v false
@@ -904,15 +886,15 @@
          fhir:url [ fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ] ;
          fhir:value [
            a fhir:string ;
-           fhir:v "StructureDefinition:resource"
+           fhir:v "OperationDefinition"
          ]
        ] ) ;
        fhir:reference [
-         fhir:link <http://nuts-foundation.github.io/nl-generic-anw-ig/StructureDefinition/example-patient> ;
-         fhir:reference [ fhir:v "StructureDefinition/example-patient" ]
+         fhir:link <http://nuts-foundation.github.io/nl-generic-anw-ig/OperationDefinition/ANW-zorg> ;
+         fhir:reference [ fhir:v "OperationDefinition/ANW-zorg" ]
        ] ;
-       fhir:name [ fhir:v "Voorbeeld patient" ] ;
-       fhir:description [ fhir:v "Patient profiel met verplicht BSN nummer." ] ;
+       fhir:name [ fhir:v "ANW-zorg" ] ;
+       fhir:description [ fhir:v "Custom named query on Practitioner or Patient, invoked with _query=ANW-zorg" ] ;
        fhir:example [
          a fhir:boolean ;
          fhir:v false
