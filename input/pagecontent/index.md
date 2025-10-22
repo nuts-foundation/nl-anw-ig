@@ -9,6 +9,7 @@ The ANW use case covers evening, night, and weekend care services. This implemen
 ## Contents
 
 - [Artifacts](artifacts.html) - Profiles, extensions, and other FHIR artifacts defined in this IG
+- [Technical documentation (NL)](technical-documentation-v1.md) - Technical documentation in Dutch
 
 ## Authors and Contributors
 
