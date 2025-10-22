@@ -21,6 +21,7 @@ The ANW use case covers evening, night, and weekend care services. This implemen
 ## Contents
 
 * [Artifacts](artifacts.md) - Profiles, extensions, and other FHIR artifacts defined in this IG
+* [Technical documentation (NL)](technical-documentation-v1.md) - Technical documentation in Dutch
 
 ## Authors and Contributors
 
@@ -41,7 +42,7 @@ The ANW use case covers evening, night, and weekend care services. This implemen
   "name" : "NLAnwIG",
   "title" : "Netherlands - ANW implementation guide",
   "status" : "draft",
-  "date" : "2025-10-22T11:35:21+00:00",
+  "date" : "2025-10-22T12:10:37+00:00",
   "publisher" : "Stichting Nuts",
   "contact" : [
     {

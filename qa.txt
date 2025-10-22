@@ -3,8 +3,8 @@ NLAnwIG : Validation Results
 
 err = 15, warn = 20, info = 0
 IG Publisher Version: 2.0.22
-Generated Wed Oct 22 11:36:11 UTC 2025. FHIR version 4.0.1 for nl.nuts.anw#0.1.0 (canonical = http://nuts-foundation.github.io/nl-generic-anw-ig)
- Build Errors : 1 / 4 / 0
+Generated Wed Oct 22 12:11:28 UTC 2025. FHIR version 4.0.1 for nl.nuts.anw#0.1.0 (canonical = http://nuts-foundation.github.io/nl-generic-anw-ig)
+ Build Errors : 2 / 4 / 0
  /github/workspace/fsh-generated/resources/CapabilityStatement-ANWBronhouderCapabilityStatement-v1 : 4 / 12 / 1
  /github/workspace/fsh-generated/resources/CapabilityStatement-ANWRegisseurCapabilityStatement-v1 : 5 / 1 / 1
  /github/workspace/fsh-generated/resources/CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1 : 5 / 2 / 1
@@ -13,6 +13,7 @@ Generated Wed Oct 22 11:36:11 UTC 2025. FHIR version 4.0.1 for nl.nuts.anw#0.1.0
 </table>
 == n/a ==
 ERROR: ImplementationGuide.definition.parameter[23].value: Supressed messages file not found
+ERROR: index.html#/html/body/div/div/div/div/div/ul/li/a at Line 189, column 8: The link 'technical-documentation-v1.md' for "Technical documentation (NL)" cannot be resolved
 WARNING: 1: The HTML fragment 'ip-statements.xhtml' is not included anywhere in the produced implementation guide
 WARNING: 2: An HTML fragment from the set [cross-version-analysis.xhtml, cross-version-analysis-inline.xhtml] is not included anywhere in the produced implementation guide
 WARNING: 3: An HTML fragment from the set [dependency-table.xhtml, dependency-table-short.xhtml, dependency-table-nontech.xhtml] is not included anywhere in the produced implementation guide

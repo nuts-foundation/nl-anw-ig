@@ -2,6 +2,7 @@ NLAnwIG
 =========================================
 
 Generic: line 0, col 0, Error - Supressed messages file not found (NOTFOUND)
+Generic: line 0, col 0, Error - The link 'technical-documentation-v1.md' for "Technical documentation (NL)" cannot be resolved (NOTFOUND)
 Generic: line 0, col 0, Warning - The HTML fragment 'ip-statements.xhtml' is not included anywhere in the produced implementation guide (NOTFOUND)
 Generic: line 0, col 0, Warning - An HTML fragment from the set [cross-version-analysis.xhtml, cross-version-analysis-inline.xhtml] is not included anywhere in the produced implementation guide (NOTFOUND)
 Generic: line 0, col 0, Warning - An HTML fragment from the set [dependency-table.xhtml, dependency-table-short.xhtml, dependency-table-nontech.xhtml] is not included anywhere in the produced implementation guide (NOTFOUND)
