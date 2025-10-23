@@ -83,7 +83,6 @@ De regisseur heeft toegang tot het NUTS-adresboek, hierin kunnen de leveranciers
 
 De regisseur heeft een functionaliteit tot zijn beschikking waarmee hij eenvoudig cliënten en medewerkers met elkaar kan koppelen. Dit kan zowel zijn eigen ECD zijn als een applicatie van derden, zie onderstaande afbeelding.
 
-ANW Koppeling
 Het uitgangspunt is dat de regisseur een eigen NUTS-node heeft draaien. De regisseur kan met behulp van zijn eigen node een access token opvragen om hiermee de cliënt- en medewerkergegevens van de verschillende zorgaanbieders op te vragen.
 
 Deze zorgaanbieders vinden de regisseur door binnen het NUTS-adresboek op de service “ANW-Bronhouder” en “ANW-Zorgverlener” te filteren. Hiervan krijgt hij de endpoints terug die gebruikt kunnen worden om de informatie mee op te vragen.
@@ -109,7 +108,6 @@ De zorgaanbieder retourneert de lijst met cliënten en medewerkers aan de regiss
 
 #### Sequentie diagram
 
-ANW Regisseur Sequence Diagram
 #### Voorbeeld verifiable credential Regisseur (om cliënten/medewerkers op te halen)
 
 Onderstaande credential wordt uitgegeven door het bronsysteem.
@@ -637,7 +635,6 @@ Hieronder staan de endpoints die beschikbaar gesteld moeten worden door de parti
 
 #### Sequentie diagram
 
-ANW Koppel Sequence Diagram
 ##### Toelichting per stap
 
 | | |

@@ -1,6 +1,6 @@
 Source File	Size	loadResources	load	generateSnapshots	load-configure	scan	loadDepInfo	loadInfo	checkR4R4B	generateNarratives	validate	loadLists	checkConformanceResources	checkConformanceResources2	checkConformanceResources3	generateLogicalMaps	validateExpressions	scanForUsageStats	checkURLsUnique	processProvenanceDetails	generate1	generate2	generateLogicals	makeDependencies	generateExampleZip	generateValidationPack	scanProfilesForR5	scanExamplesForR5
-/fsh-generated/resources/ImplementationGuide-nl.nuts.anw.json	2791	-	0	0	0	0	0	0	12	73	0	0	0	0	0	0	0	1	0	0	72	97	0	0	0	4	0	2
-fsh-generated/resources/CapabilityStatement-ANWBronhouderCapabilityStatement-v1.json	8650	24	0	0	0	0	0	0	2	97	0	0	0	0	0	0	0	0	0	0	61	53	0	0	0	2	0	0
-fsh-generated/resources/CapabilityStatement-ANWRegisseurCapabilityStatement-v1.json	1322	22	0	0	0	0	0	0	0	25	0	0	0	0	0	0	0	0	0	0	20	13	0	0	0	1	0	0
-fsh-generated/resources/CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1.json	1533	22	0	0	0	0	0	0	1	13	0	0	0	0	0	0	0	0	0	0	21	12	0	0	0	1	0	0
-fsh-generated/resources/OperationDefinition-ANW-zorg.json	448	20	0	0	1	0	0	0	0	6	0	0	0	0	0	0	0	0	0	0	10	10	0	0	0	0	0	0
+/fsh-generated/resources/ImplementationGuide-nl.nuts.anw.json	2791	-	0	0	0	0	0	0	12	72	0	0	0	0	0	0	0	1	0	0	72	76	0	0	0	3	0	3
+fsh-generated/resources/CapabilityStatement-ANWBronhouderCapabilityStatement-v1.json	8650	23	0	0	1	0	0	0	2	84	0	0	0	0	0	0	0	0	0	0	68	61	0	1	0	2	0	0
+fsh-generated/resources/CapabilityStatement-ANWRegisseurCapabilityStatement-v1.json	1322	14	0	0	0	0	0	0	1	19	0	0	0	0	0	0	0	0	0	0	20	19	0	0	0	1	0	0
+fsh-generated/resources/CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1.json	1533	13	0	0	0	0	0	0	0	22	0	0	0	0	0	0	0	0	0	0	22	12	0	0	0	0	0	0
+fsh-generated/resources/OperationDefinition-ANW-zorg.json	448	13	0	0	0	0	0	0	1	15	0	0	0	0	0	0	0	0	0	0	9	11	0	0	0	0	0	0
