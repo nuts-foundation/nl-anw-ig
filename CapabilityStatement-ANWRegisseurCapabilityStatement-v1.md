@@ -1,10 +1,10 @@
-# ANW Regisseur Capability Statement v1.0 - Netherlands - ANW implementation guide v0.1.0
+# ANW Regisseur Capability Statement v1.0.0 - Netherlands - ANW implementation guide v0.1.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
-* **ANW Regisseur Capability Statement v1.0**
+* **ANW Regisseur Capability Statement v1.0.0**
 
-## CapabilityStatement: ANW Regisseur Capability Statement v1.0 
+## CapabilityStatement: ANW Regisseur Capability Statement v1.0.0 
 
 | | |
 | :--- | :--- |
@@ -16,7 +16,7 @@ Version 1.0 capability statement defining the basic requirements for ANW FHIR se
 
  [Raw OpenAPI-Swagger Definition file](ANWRegisseurCapabilityStatement-v1.openapi.json) | [Download](ANWRegisseurCapabilityStatement-v1.openapi.json) 
 
-## ANW Regisseur Capability Statement v1.0
+## ANW Regisseur Capability Statement v1.0.0
 
 * Implementation Guide Version: 0.1.0 
 * FHIR Version: 3.0.2 
@@ -82,7 +82,7 @@ Update of fhir task of reggiseur
   "url" : "http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Regisseur",
   "version" : "0.1.0",
   "name" : "ANW-Regisseur",
-  "title" : "ANW Regisseur Capability Statement v1.0",
+  "title" : "ANW Regisseur Capability Statement v1.0.0",
   "status" : "active",
   "date" : "2025-10-15",
   "publisher" : "Stichting Nuts",

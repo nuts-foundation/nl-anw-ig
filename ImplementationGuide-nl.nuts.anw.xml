@@ -11,7 +11,7 @@
   <name value="NLAnwIG"/>
   <title value="Netherlands - ANW implementation guide"/>
   <status value="draft"/>
-  <date value="2025-10-23T08:44:30+00:00"/>
+  <date value="2025-10-23T08:57:57+00:00"/>
   <publisher value="Stichting Nuts"/>
   <contact>
     <name value="Stichting Nuts"/>
@@ -457,7 +457,7 @@
       <reference>
         <reference value="CapabilityStatement/ANWBronhouderCapabilityStatement-v1"/>
       </reference>
-      <name value="ANW Bronhouder Capability Statement v1.0"/>
+      <name value="ANW Bronhouder Capability Statement v1.0.0"/>
       <description value="Capability statement describing the basic requirements for ANW FHIR servers  (version 1.0.0, ANW-bronhouder)"/>
       <exampleBoolean value="false"/>
     </resource>
@@ -468,7 +468,7 @@
       <reference>
         <reference value="CapabilityStatement/ANWRegisseurCapabilityStatement-v1"/>
       </reference>
-      <name value="ANW Regisseur Capability Statement v1.0"/>
+      <name value="ANW Regisseur Capability Statement v1.0.0"/>
       <description value="Capability statement describing the basic requirements for ANW FHIR servers  (version 1.0.0, ANW-Regisseur)"/>
       <exampleBoolean value="false"/>
     </resource>

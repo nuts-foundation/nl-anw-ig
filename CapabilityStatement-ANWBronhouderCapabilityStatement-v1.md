@@ -1,10 +1,10 @@
-# ANW Bronhouder Capability Statement v1.0 - Netherlands - ANW implementation guide v0.1.0
+# ANW Bronhouder Capability Statement v1.0.0 - Netherlands - ANW implementation guide v0.1.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
-* **ANW Bronhouder Capability Statement v1.0**
+* **ANW Bronhouder Capability Statement v1.0.0**
 
-## CapabilityStatement: ANW Bronhouder Capability Statement v1.0 
+## CapabilityStatement: ANW Bronhouder Capability Statement v1.0.0 
 
 | | |
 | :--- | :--- |
@@ -16,7 +16,7 @@ Version 1.0 capability statement defining the basic requirements for ANW FHIR se
 
  [Raw OpenAPI-Swagger Definition file](ANWBronhouderCapabilityStatement-v1.openapi.json) | [Download](ANWBronhouderCapabilityStatement-v1.openapi.json) 
 
-## ANW Bronhouder Capability Statement v1.0
+## ANW Bronhouder Capability Statement v1.0.0
 
 * Implementation Guide Version: 0.1.0 
 * FHIR Version: 4.0.1 
@@ -51,16 +51,17 @@ The summary table lists the resources that are part of this configuration, and f
 | | | | | | | | | | |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | [Patient](#Patient1-1) |   | y | y |  |  | _id | `PractitionerRole:organization` |  |  |
-| [Observation](#Observation1-2) | http://nictiz.nl/fhir/StructureDefinition/zib-BloodPressure |  | y |  | y | patient, _profile, _sort, _count |  |  |  |
-| [Observation](#Observation1-3) | http://nictiz.nl/fhir/StructureDefinition/zib-BodyTemperature |  | y |  | y | patient, _profile, _sort, _count |  |  |  |
-| [Observation](#Observation1-4) | http://nictiz.nl/fhir/StructureDefinition/zib-BodyHeight |  | y |  | y | patient, _profile, _sort, _count |  |  |  |
-| [Observation](#Observation1-5) | http://nictiz.nl/fhir/StructureDefinition/zib-BodyWeight |  | y |  |  | patient, _profile, _sort, _count |  |  |  |
-| [Observation](#Observation1-6) | http://nictiz.nl/fhir/StructureDefinition/zib-Respiration |  | y |  |  | patient, _profile, _sort, _count |  |  |  |
-| [Observation](#Observation1-7) | https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport |  | y |  | y | patient, _profile, _sort, _count |  |  |  |
-| [Observation](#Observation1-8) | http://nictiz.nl/fhir/StructureDefinition/zib-LivingSituation |  | y |  |  | patient, _profile, _sort, _count |  |  |  |
-| [Flag](#Flag1-9) | http://nictiz.nl/fhir/StructureDefinition/zib-Alert |  | y |  |  | patient, _profile |  |  |  |
-| [Consent](#Consent1-10) | http://nictiz.nl/fhir/StructureDefinition/zib-AdvanceDirective |  | y |  |  | patient, _profile |  |  |  |
-| [AllergyIntolerance](#AllergyIntolerance1-11) | http://nictiz.nl/fhir/StructureDefinition/zib-AllergyIntolerance |  | y |  |  | patient, _profile |  |  |  |
+| [Observation](#Observation1-2) | http://nictiz.nl/fhir/StructureDefinition/zib-PulseRate |  | y |  |  | patient, _profile, _sort, _count |  |  |  |
+| [Observation](#Observation1-3) | http://nictiz.nl/fhir/StructureDefinition/zib-BloodPressure |  | y |  | y | patient, _profile, _sort, _count |  |  |  |
+| [Observation](#Observation1-4) | http://nictiz.nl/fhir/StructureDefinition/zib-BodyTemperature |  | y |  | y | patient, _profile, _sort, _count |  |  |  |
+| [Observation](#Observation1-5) | http://nictiz.nl/fhir/StructureDefinition/zib-BodyHeight |  | y |  | y | patient, _profile, _sort, _count |  |  |  |
+| [Observation](#Observation1-6) | http://nictiz.nl/fhir/StructureDefinition/zib-BodyWeight |  | y |  |  | patient, _profile, _sort, _count |  |  |  |
+| [Observation](#Observation1-7) | http://nictiz.nl/fhir/StructureDefinition/zib-Respiration |  | y |  |  | patient, _profile, _sort, _count |  |  |  |
+| [Observation](#Observation1-8) | https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport |  | y |  | y | patient, _profile, _sort, _count |  |  |  |
+| [Observation](#Observation1-9) | http://nictiz.nl/fhir/StructureDefinition/zib-LivingSituation |  | y |  |  | patient, _profile, _sort, _count |  |  |  |
+| [Flag](#Flag1-10) | http://nictiz.nl/fhir/StructureDefinition/zib-Alert |  | y |  |  | patient, _profile |  |  |  |
+| [Consent](#Consent1-11) | http://nictiz.nl/fhir/StructureDefinition/zib-AdvanceDirective |  | y |  |  | patient, _profile |  |  |  |
+| [AllergyIntolerance](#AllergyIntolerance1-12) | http://nictiz.nl/fhir/StructureDefinition/zib-AllergyIntolerance |  | y |  |  | patient, _profile |  |  |  |
 
 -------
 
@@ -75,6 +76,27 @@ Reference Policy
 Interaction summary
 
 * Supports `read`, `search-type`.
+
+Search Parameters
+
+
+ 
+
+#### Resource Conformance: supported Observation
+
+Base System Profile
+
+`http://nictiz.nl/fhir/StructureDefinition/zib-PulseRate`
+
+Profile Conformance
+
+**SHALL**
+
+Reference Policy
+
+Interaction summary
+
+* Supports `search-type`.
 
 Search Parameters
 
@@ -302,7 +324,7 @@ Search Parameters
   "url" : "http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Bronhouder",
   "version" : "0.1.0",
   "name" : "ANW-Bronhouder",
-  "title" : "ANW Bronhouder Capability Statement v1.0",
+  "title" : "ANW Bronhouder Capability Statement v1.0.0",
   "status" : "active",
   "date" : "2025-10-15",
   "publisher" : "Stichting Nuts",
@@ -352,6 +374,33 @@ Search Parameters
             {
               "name" : "_id",
               "type" : "token"
+            }
+          ]
+        },
+        {
+          "type" : "Observation",
+          "profile" : "http://nictiz.nl/fhir/StructureDefinition/zib-PulseRate",
+          "interaction" : [
+            {
+              "code" : "search-type"
+            }
+          ],
+          "searchParam" : [
+            {
+              "name" : "patient",
+              "type" : "reference"
+            },
+            {
+              "name" : "_profile",
+              "type" : "string"
+            },
+            {
+              "name" : "_sort",
+              "type" : "string"
+            },
+            {
+              "name" : "_count",
+              "type" : "number"
             }
           ]
         },

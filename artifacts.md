@@ -13,8 +13,8 @@ The following artifacts define the specific capabilities that different types of
 
 | | |
 | :--- | :--- |
-| [ANW Bronhouder Capability Statement v1.0](CapabilityStatement-ANWBronhouderCapabilityStatement-v1.md) | Capability statement describing the basic requirements for ANW FHIR servers (version 1.0.0, ANW-bronhouder) |
-| [ANW Regisseur Capability Statement v1.0](CapabilityStatement-ANWRegisseurCapabilityStatement-v1.md) | Capability statement describing the basic requirements for ANW FHIR servers (version 1.0.0, ANW-Regisseur) |
+| [ANW Bronhouder Capability Statement v1.0.0](CapabilityStatement-ANWBronhouderCapabilityStatement-v1.md) | Capability statement describing the basic requirements for ANW FHIR servers (version 1.0.0, ANW-bronhouder) |
+| [ANW Regisseur Capability Statement v1.0.0](CapabilityStatement-ANWRegisseurCapabilityStatement-v1.md) | Capability statement describing the basic requirements for ANW FHIR servers (version 1.0.0, ANW-Regisseur) |
 | [ANW Zorgverlener Capability Statement v1.0.0](CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1.md) | Capability statement describing the basic requirements for ANW FHIR servers (version 1.0.0, ANW-Zorgverlener) |
 
 ### Behavior: Operation Definitions 

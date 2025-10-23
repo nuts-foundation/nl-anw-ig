@@ -1,7 +1,7 @@
 ﻿{
   "openapi": "3.0.2",
   "info": {
-    "title": "ANW Bronhouder Capability Statement v1.0",
+    "title": "ANW Bronhouder Capability Statement v1.0.0",
     "description": "Version 1.0 capability statement defining the basic requirements for ANW FHIR servers wanting to support the ANW-Bronhouder usecase.",
     "license": {
       "name": "GNU General Public License v3.0 or later",
@@ -237,6 +237,46 @@
           }
         },
         "parameters": [
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          },
+          {
+            "name": "patient",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "_profile",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "_sort",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "_count",
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          },
           {
             "$ref": "#/components/parameters/format"
           },
