@@ -3,7 +3,7 @@ NLAnwIG : Validation Results
 
 err = 15, warn = 21, info = 0
 IG Publisher Version: 2.0.22
-Generated Thu Oct 23 08:58:58 UTC 2025. FHIR version 4.0.1 for nl.nuts.anw#0.1.0 (canonical = http://nuts-foundation.github.io/nl-generic-anw-ig)
+Generated Thu Oct 23 09:12:17 UTC 2025. FHIR version 4.0.1 for nl.nuts.anw#0.1.0 (canonical = http://nuts-foundation.github.io/nl-generic-anw-ig)
  Build Errors : 4 / 4 / 0
  /github/workspace/fsh-generated/resources/CapabilityStatement-ANWBronhouderCapabilityStatement-v1 : 4 / 13 / 1
  /github/workspace/fsh-generated/resources/CapabilityStatement-ANWRegisseurCapabilityStatement-v1 : 5 / 1 / 1
@@ -13,9 +13,9 @@ Generated Thu Oct 23 08:58:58 UTC 2025. FHIR version 4.0.1 for nl.nuts.anw#0.1.0
 </table>
 == n/a ==
 ERROR: ImplementationGuide.definition.parameter[23].value: Supressed messages file not found
-ERROR: technical-documentation-v1.html#/html/body/div/div/div/div/div/figure/img at Line 351, column 4: The image source 'ANW_regisseur_sequence.png' cannot be resolved
-ERROR: technical-documentation-v1.html#/html/body/div/div/div/div/div/p/a at Line 595, column 7: The link '#ANW-Regisseur' for "Endpoints voor data regisseur" cannot be resolved (valid targets: 68 targets) - case is wrong ('anw-regisseur')
-ERROR: technical-documentation-v1.html#/html/body/div/div/div/div/div/table/tbody/tr/td/a at Line 1082, column 19: The link '#Endpoints-voor-data-overdracht' for "GET endpoints" cannot be resolved (valid targets: 68 targets) - case is wrong ('endpoints-voor-data-overdracht')
+ERROR: technical-documentation-v1.html#/html/body/div/div/div/div/div/figure/img at Line 365, column 4: The image source 'ANW_regisseur_sequence.png' cannot be resolved
+ERROR: technical-documentation-v1.html#/html/body/div/div/div/div/div/p/a at Line 609, column 7: The link '#ANW-Regisseur' for "Endpoints voor data regisseur" cannot be resolved (valid targets: 68 targets) - case is wrong ('anw-regisseur')
+ERROR: technical-documentation-v1.html#/html/body/div/div/div/div/div/table/tbody/tr/td/a at Line 1096, column 19: The link '#Endpoints-voor-data-overdracht' for "GET endpoints" cannot be resolved (valid targets: 68 targets) - case is wrong ('endpoints-voor-data-overdracht')
 WARNING: 1: The HTML fragment 'ip-statements.xhtml' is not included anywhere in the produced implementation guide
 WARNING: 2: An HTML fragment from the set [cross-version-analysis.xhtml, cross-version-analysis-inline.xhtml] is not included anywhere in the produced implementation guide
 WARNING: 3: An HTML fragment from the set [dependency-table.xhtml, dependency-table-short.xhtml, dependency-table-nontech.xhtml] is not included anywhere in the produced implementation guide
