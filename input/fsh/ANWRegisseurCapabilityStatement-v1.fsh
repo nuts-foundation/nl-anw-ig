@@ -1,7 +1,7 @@
 Instance: ANWRegisseurCapabilityStatement-v1
 InstanceOf: CapabilityStatement
 Usage: #definition
-Title: "ANW Regisseur Capability Statement v1.0"
+Title: "ANW Regisseur Capability Statement v1.0.0"
 Description: "Capability statement describing the basic requirements for ANW FHIR servers  (version 1.0.0, ANW-Regisseur)"
 * url = "http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Regisseur"
 * version = "1.0.0"
