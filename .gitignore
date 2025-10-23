@@ -85,3 +85,13 @@ temp/
 output/
 fsh-generated/
 publisher.jar
+
+# IG generation
+_build.bat
+_build.sh
+_gencontinuous.bat
+_gencontinuous.sh
+_genonce.bat
+_updatePublisher.bat
+input-cache/
+template/
