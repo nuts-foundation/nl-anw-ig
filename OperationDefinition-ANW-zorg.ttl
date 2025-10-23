@@ -18,7 +18,7 @@
   fhir:name [ fhir:v "ANW-zorg"] ; # 
   fhir:status [ fhir:v "active"] ; # 
   fhir:kind [ fhir:v "query"] ; # 
-  fhir:date [ fhir:v "2025-10-23T08:32:12+00:00"^^xsd:dateTime] ; # 
+  fhir:date [ fhir:v "2025-10-23T08:32:32+00:00"^^xsd:dateTime] ; # 
   fhir:publisher [ fhir:v "Stichting Nuts"] ; # 
   fhir:contact ( [
      fhir:name [ fhir:v "Stichting Nuts" ] ;
