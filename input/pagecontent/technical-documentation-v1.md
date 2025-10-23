@@ -78,7 +78,7 @@ te geven tot deze regisseur met als service “ANW-Regisseur”.
 De regisseur heeft een functionaliteit tot zijn beschikking waarmee hij eenvoudig cliënten en medewerkers met elkaar kan
 koppelen. Dit kan zowel zijn eigen ECD zijn als een applicatie van derden, zie onderstaande afbeelding.
 
-{% include img.html img="ANW_koppelen.png" caption="ANW Koppeling" %}  
+{% include img.html img="ANW_koppelen.png" %}  
 Het uitgangspunt is dat de regisseur een eigen NUTS-node heeft draaien. De regisseur kan met behulp van zijn eigen node
 een access token opvragen om hiermee de
 cliënt- en medewerkergegevens van de verschillende zorgaanbieders op te vragen.
@@ -118,7 +118,7 @@ gebruiken om zelf te filteren op de gewenste cliënten / medewerkers.
 
 #### Sequentie diagram
 
-{% include img.html img="ANW_regisseur_sequence.png" caption="ANW Regisseur Sequence Diagram" %}
+{% include img.html img="ANW_regisseur_sequence.png" %}
 
 #### Voorbeeld verifiable credential Regisseur (om cliënten/medewerkers op te halen)
 
@@ -673,7 +673,7 @@ met een parameter zoals een include extra gegevens meekomen.
 
 #### Sequentie diagram
 
-{% include img.html img="ANWSequence_V3.png" caption="ANW Koppel Sequence Diagram" %}
+{% include img.html img="ANWSequence_V3.png" %}
 
 ##### Toelichting per stap
 
