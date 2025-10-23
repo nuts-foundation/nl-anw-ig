@@ -18,6 +18,13 @@ jobs:
           mkdir -p input-cache
           curl -L https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar -o input-cache/publisher.jar
 
+      - name: Generate PlantUML diagrams
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y plantuml
+          cd input/images
+          plantuml -tpng *.puml
+
       - name: Run SUSHI
         uses: docker://hl7fhir/ig-publisher-base:latest
         with:

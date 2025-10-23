@@ -17,3 +17,10 @@ jurisdiction: urn:iso:std:iso:3166#NL "Netherlands" # https://www.hl7.org/fhir/v
 publisher:
   name: Stichting Nuts
   url: https://www.nuts.nl
+
+menu:
+  Home: index.html
+  Documentation:
+    Technical Documentation v1: technical-documentation-v1.html
+    Diagrams: diagrams.html
+  Artifacts: artifacts.html

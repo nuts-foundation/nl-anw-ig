@@ -1,0 +1,26 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+title Sequentie voor het ophalen van de benodigde gegevens voor de regisseursfunctie
+
+autonumber
+actor ANWEmpl as "medewerker\nANW-Regisseur"
+participant ANWSystem as "Applicatie \nANW-Regisseur"
+control nNodeA as "Nutsnode \nANW-Regisseur"
+collections VVTB as "ECDs \n- ANW-Bronhouder\n- ANW-Zorgverlener"
+
+ANWEmpl -> ANWSystem ++: Authenticeert zichzelf in ANW-systeem
+ANWSystem -> nNodeA ++: Verkrijgen credentials in ANW-regio
+return
+loop per credential van organisatie
+par parallel
+ANWSystem  -> VVTB ++: ophalen ANW-medewerkers
+return
+else parallel
+ANWSystem -> VVTB ++: ophalen ANW-cliënten
+return
+end par
+end loop
+return Geeft "koppel medewerker\naan patiënt" mogelijkheid
+
+@enduml
