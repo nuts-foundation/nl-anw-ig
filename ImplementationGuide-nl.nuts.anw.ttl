@@ -19,7 +19,7 @@
   fhir:name [ fhir:v "NLAnwIG"] ; # 
   fhir:title [ fhir:v "Netherlands - ANW implementation guide"] ; # 
   fhir:status [ fhir:v "draft"] ; # 
-  fhir:date [ fhir:v "2025-10-23T08:32:32+00:00"^^xsd:dateTime] ; # 
+  fhir:date [ fhir:v "2025-10-23T08:37:27+00:00"^^xsd:dateTime] ; # 
   fhir:publisher [ fhir:v "Stichting Nuts"] ; # 
   fhir:contact ( [
      fhir:name [ fhir:v "Stichting Nuts" ] ;
