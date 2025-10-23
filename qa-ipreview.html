@@ -50,7 +50,7 @@ ISO maintains the copyright on the country codes, and controls its use carefully
     <ul>
       <li>
 
-          IG &copy; 2025+ Stichting Nuts.  Package nl.nuts.anw#0.1.0 based on FHIR 4.0.1. Generated 2025-10-22 
+          IG &copy; 2025+ Stichting Nuts.  Package nl.nuts.anw#0.1.0 based on FHIR 4.0.1. Generated 2025-10-23 
           
           
                       Links: Table of Contents |
@@ -98,7 +98,7 @@ Netherlands - ANW implementation guide - Local Development build (v0.1.0) built 
 
           IG &copy; 2025+           <a style="color:var(--footer-hyperlink-text-color)" href="https://www.nuts.nl">Stichting Nuts</a>
 .  Package nl.nuts.anw#0.1.0 based on           <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>
-. Generated           <span title="Wed, Oct 22, 2025 12:11+0000">2025-10-22</span>
+. Generated           <span title="Thu, Oct 23, 2025 07:23+0000">2025-10-23</span>
 
                     <br/>
 
@@ -126,8 +126,51 @@ Netherlands - ANW implementation guide - Local Development build (v0.1.0) built 
 :           <a href="https://www.nuts.nl">https://www.nuts.nl</a>
         </td>
       </tr>
+      <tr>
+        <td>
+          <a href="technical-documentation-v1.html">web</a>
+        </td>
+        <td>
+          <a href="http://nictiz.nl/fhir/StructureDefinition/zib-AllergyIntolerance">nictiz.nl</a>
+        </td>
+        <td>
+          <a href="http://nictiz.nl/fhir/StructureDefinition/zib-AllergyIntolerance">http://nictiz.nl/fhir/StructureDefinition/zib-AllergyIntolerance</a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a href="technical-documentation-v1.html">web</a>
+        </td>
+        <td>
+          <a href="https://informatiestandaarden.nictiz.nl/wiki/FHIR:V1.0_FHIR_IG_STU3#Handling_errors">informatiestandaarden.nictiz.nl</a>
+        </td>
+        <td>
+In het geval van een fout bij de registratie antwoord het bronsysteem met een OperationOutcome.
+Zie           <a href="https://informatiestandaarden.nictiz.nl/wiki/FHIR:V1.0_FHIR_IG_STU3#Handling_errors">Fout afhandeling/Handling Errors</a>
+
+in de implementatiegids van Nictiz. De           <a href="https://hl7.org/fhir/STU3/operationoutcome.html">operation outcome</a>
+ kan door een
+systeem gebruikt worden om aan te geven richting de
+zorgverlener wat er fout is gegaan. In het geval van inhoudelijke fouten die niet zijn toegestaan volgens de
+Nictiz-profielen geeft de operationoutcome aan welke fout dit betreft. Zodat de zorgverlener de nodige aanpassing kan
+doen.
+        </td>
+      </tr>
     </table>
     <h2>Internal Images</h2>
-    <table class="grid"></table>
+    <table class="grid">
+      <tr>
+        <td>
+ANWSequence_V3.png          <br/>
+          <img src="ANWSequence_V3.png" alt="ANWSequence_V3.png" width="600px" height="auto"/>
+        </td>
+      </tr>
+      <tr>
+        <td>
+ANW_koppelen.png          <br/>
+          <img src="ANW_koppelen.png" alt="ANW_koppelen.png" width="600px" height="auto"/>
+        </td>
+      </tr>
+    </table>
   </body>
 </html>

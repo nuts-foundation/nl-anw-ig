@@ -1,0 +1,44 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+title Sequentie voor autorisatie en notificatie aan ANW-medewerker
+
+autonumber
+actor ZMWANW as "Medewerker \nANW-regisseur"<<geauthenticeerd>>
+participant ANWSystem as "Applicatie \nANW-Regisseur"
+actor ANWEmpl as "medewerker \nANW-zorgverlener"<<geauthenticeerd>>
+control nNodeB as "Nuts-Node \nANW-Zorgverlener"
+participant VVTA as "ECD \nANW-zorgverlener"
+participant VVTB as "ECD \nANW-Bronhouder"
+
+ref over ZMWANW:Ophalen benodige\ndata voor regisseur
+-> ZMWANW ++: Melding
+ZMWANW -> ZMWANW: Triage
+ZMWANW -> ANWEmpl ++: Belt medewerker
+return Akkoord
+ZMWANW -> ANWSystem++: Koppelt medewerker\naan patiënt
+ZMWANW --
+ANWSystem -> ANWSystem : Maakt een Task \nmet status "requested" \nmet bijbehorende credentials
+ANWSystem -> VVTB++: Notificeert dat er een nieuwe Task is aangemaakt voor Client
+VVTB --> ANWSystem: Accepted
+VVTB -> ANWSystem ++: Haalt Task op
+ANWSystem --> VVTB: Task
+ANWSystem --
+VVTB -> VVTB: Creëert benodige credentials \nvoor ANW-Zorgverlener uit Task
+VVTB --> ANWSystem --: Update de Task met VC-ID, location reference en status "ready"
+ANWSystem -> VVTA ++: Notificatie dat er een Task klaar staat voor zorgverlener
+VVTA --> ANWSystem: Accepted
+VVTA -> ANWSystem ++: Haalt Task op
+ANWSystem --> VVTA: Task
+ANWSystem --
+ANWSystem --
+VVTA -> ANWEmpl ++: Notificatie van nieuwe zorgtoewijzing
+
+ANWEmpl -> VVTA: Opent ANW-dossier
+VVTA -> nNodeB: Zoekt VC met VC-ID uit Task
+nNodeB --> VVTA: VC
+VVTA -> VVTB ++: Haalt dossier op
+return dossier volgens ANW-specificiaties
+VVTA --> ANWEmpl: Toont ANW-dossier
+
+@enduml

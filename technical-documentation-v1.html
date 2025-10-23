@@ -1,0 +1,1320 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <title>Technical Documentation v 1 - Netherlands - ANW implementation guide v0.1.0</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="http://hl7.org/fhir"/>
+
+    <link rel="stylesheet" href="fhir.css"/>
+
+      <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="assets/css/bootstrap-fhir.css"/>
+
+      <!-- Project extras -->
+    <link rel="stylesheet" href="assets/css/project.css"/>
+    <link rel="stylesheet" href="assets/css/pygments-manni.css"/>
+    <link rel="stylesheet" href="assets/css/jquery-ui.css"/>
+  	<link rel="stylesheet" href="assets/css/prism.css"/>
+  	<link rel="stylesheet" href="assets/css/cqf.css"/>
+      <!-- Placeholder for child template CSS declarations -->
+
+    <script src="fhir-table-scripts.js" type="text/javascript"> </script>
+
+      <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+      <!-- [if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif] -->
+
+      <!-- Favicons -->
+    <link sizes="144x144" rel="apple-touch-icon-precomposed" href="assets/ico/icon-fhir-144.png"/>
+    <link sizes="114x114" rel="apple-touch-icon-precomposed" href="assets/ico/icon-fhir-114.png"/>
+    <link sizes="72x72" rel="apple-touch-icon-precomposed" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+  </head>
+  <body onload="document.body.style.opacity='1'">
+
+	  <script src="assets/js/prism.js"></script>
+    <script src="assets/js/mermaid.js" type="text/javascript"></script>
+    <script src="assets/js/mermaid-init.js" type="text/javascript"></script>
+    <style type="text/css">h2{--heading-prefix:"2"}
+    h3,h4,h5,h6{--heading-prefix:"2"}</style>
+    <div id="segment-header" class="segment">    <!-- segment-header -->
+      <div class="container">    <!-- container -->
+
+          <!-- Placeholder for child template header declarations -->
+
+
+        <div id="ig-status">
+          <p><span style="font-size:12pt;font-weight:bold">Netherlands - ANW implementation guide</span>
+            <br/>
+            <span style="display:inline-block;">0.1.0 - ci-build
+
+
+
+  <img src="assets/images/nld.svg" alt="Netherlands flag" title="Netherlands" height="16"/>
+
+
+            </span>
+          </p>
+        </div>
+      </div>   <!-- /container -->
+    </div>    <!-- /segment-header -->
+
+    <div id="segment-navbar" class="segment">    <!-- segment-navbar -->
+      <div id="stripe"> </div>
+      <div class="container">    <!-- container -->
+          <!-- HEADER CONTENT -->
+
+        <nav class="navbar navbar-inverse">
+            <!-- status-bar -->
+          <div class="container">
+            <button data-target=".navbar-inverse-collapse" data-toggle="collapse" type="button" class="navbar-toggle">
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+            </button>
+            <a href="http://hl7.org/fhir/R4/index.html" class="navbar-brand hidden">FHIR</a>
+            <div class="nav-collapse collapse navbar-inverse-collapse">
+              <ul class="nav navbar-nav">
+  <li><a href="index.html">Home</a></li>
+  <li><a href="artifacts.html">Artifacts</a></li>
+</ul>
+
+            </div>    <!-- /.nav-collapse -->
+          </div>    <!-- /.container -->
+        </nav>    <!-- /.navbar -->
+        <!-- /HEADER CONTENT -->
+      </div>    <!-- /container -->
+    </div>    <!-- /segment-navbar -->
+      <!-- status-bar -->
+
+    <div id="segment-breadcrumb" class="segment">    <!-- segment-breadcrumb -->
+      <div class="container">    <!-- container -->
+        <ul class="breadcrumb">
+          <li><a href="toc.html"><b>Table of Contents</b></a></li><li><b>Technical Documentation v 1</b></li>
+
+        </ul>
+      </div>    <!-- /container -->
+    </div>    <!-- /segment-breadcrumb -->
+
+    <a name="top"> </a>
+    <div id="segment-content" class="segment">    <!-- segment-content -->
+      <div class="container">    <!-- container -->
+        <div class="row">
+          <div class="inner-wrapper">
+
+<style type="text/css">
+h2:before{color:silver;counter-increment:section;content:var(--heading-prefix) " ";}
+h3:before{color:silver;counter-increment:sub-section;content:var(--heading-prefix) "." counter(sub-section) " ";}
+h4:before{color:silver;counter-increment:composite;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) " ";}
+h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) " ";}
+h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
+</style>
+<div class="col-12">
+    <!-- ReleaseHeader --><p id="publish-box">Netherlands - ANW implementation guide - Local Development build (v0.1.0) built by the FHIR (HL7&reg; FHIR&reg; Standard) Build Tools. See the <a href="http://nuts-foundation.github.io/nl-generic-anw-ig/history.html">Directory of published versions</a></p>  <!-- EndReleaseHeader -->
+  <h2>Technical Documentation v 1</h2>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+    <p>  <!-- white space is critical inside of capture --></p>
+<div class="markdown-toc">
+<ul id="markdown-toc">
+  <li><a href="#anw" id="markdown-toc-anw">ANW</a></li>
+  <li><a href="#inhoudsopgave" id="markdown-toc-inhoudsopgave">Inhoudsopgave</a>    <ul>
+      <li><a href="#uitgeschreven-proces-flow" id="markdown-toc-uitgeschreven-proces-flow">Uitgeschreven proces flow</a>        <ul>
+          <li><a href="#uitgangspunten" id="markdown-toc-uitgangspunten">Uitgangspunten</a></li>
+          <li><a href="#woordenlijst" id="markdown-toc-woordenlijst">Woordenlijst</a></li>
+          <li><a href="#nuts-adresboek" id="markdown-toc-nuts-adresboek">NUTS-adresboek</a></li>
+          <li><a href="#regisseur-vraagt-de-cliënt--medewerker-gegevens-op-in-alle-ecds" id="markdown-toc-regisseur-vraagt-de-cliënt--medewerker-gegevens-op-in-alle-ecds">Regisseur vraagt de cliënt / medewerker gegevens op in alle ECD’s</a></li>
+          <li><a href="#onderstaande-credential-geeft-het-inzagesysteem-uit" id="markdown-toc-onderstaande-credential-geeft-het-inzagesysteem-uit">Onderstaande credential geeft het inzagesysteem uit.</a></li>
+          <li><a href="#regisseur-kent-medewerker-toe-aan-cliënt" id="markdown-toc-regisseur-kent-medewerker-toe-aan-cliënt">Regisseur kent medewerker toe aan cliënt</a></li>
+          <li><a href="#medewerker-haalt-gegevens-op-bij-het-bronsysteem" id="markdown-toc-medewerker-haalt-gegevens-op-bij-het-bronsysteem">Medewerker haalt gegevens op bij het bronsysteem</a></li>
+        </ul>
+      </li>
+      <li><a href="#logging" id="markdown-toc-logging">Logging</a></li>
+      <li><a href="#nuts-register" id="markdown-toc-nuts-register">Nuts register</a>        <ul>
+          <li><a href="#anw-regisseur" id="markdown-toc-anw-regisseur">ANW-Regisseur</a></li>
+          <li><a href="#anw-bronhouder" id="markdown-toc-anw-bronhouder">ANW-Bronhouder</a></li>
+          <li><a href="#anw-zorgverlener" id="markdown-toc-anw-zorgverlener">ANW-Zorgverlener</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#uitbreidingen" id="markdown-toc-uitbreidingen">Uitbreidingen</a>    <ul>
+      <li><a href="#registeren-van-metingen" id="markdown-toc-registeren-van-metingen">Registeren van metingen</a></li>
+      <li><a href="#foutafhandeling-van-registraties-naar-het-brondossier" id="markdown-toc-foutafhandeling-van-registraties-naar-het-brondossier">Foutafhandeling van registraties naar het brondossier</a></li>
+      <li><a href="#woningtoegang" id="markdown-toc-woningtoegang">Woningtoegang</a>        <ul>
+          <li><a href="#todo" id="markdown-toc-todo">TODO</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+</div>
+<h1 id="anw">ANW</h1>
+
+<h1 id="inhoudsopgave">Inhoudsopgave</h1>
+
+  <!-- TOC -->
+<ul>
+  <li><a href="#anw">ANW</a></li>
+  <li><a href="#inhoudsopgave">Inhoudsopgave</a>
+    <ul>
+      <li><a href="#uitgeschreven-proces-flow">Uitgeschreven proces flow</a>
+        <ul>
+          <li><a href="#uitgangspunten">Uitgangspunten</a></li>
+          <li><a href="#woordenlijst">Woordenlijst</a></li>
+          <li><a href="#nuts-adresboek">NUTS-adresboek</a></li>
+          <li><a href="#regisseur-vraagt-de-cliënt--medewerker-gegevens-op-in-alle-ecds">Regisseur vraagt de cliënt / medewerker gegevens op in alle ECD’s</a>
+            <ul>
+              <li><a href="#omschrijving">Omschrijving</a></li>
+              <li><a href="#endpoints-voor-data-regisseur">Endpoints voor data regisseur</a></li>
+              <li><a href="#sequentie-diagram">Sequentie diagram</a></li>
+              <li><a href="#voorbeeld-verifiable-credential-regisseur-om-cliëntenmedewerkers-op-te-halen">Voorbeeld verifiable credential Regisseur (om cliënten/medewerkers op te halen)</a></li>
+            </ul>
+          </li>
+          <li><a href="#onderstaande-credential-geeft-het-inzagesysteem-uit">Onderstaande credential geeft het inzagesysteem uit.</a></li>
+          <li><a href="#regisseur-kent-medewerker-toe-aan-cliënt">Regisseur kent medewerker toe aan cliënt</a>
+            <ul>
+              <li><a href="#omschrijving-1">Omschrijving</a></li>
+            </ul>
+          </li>
+          <li><a href="#medewerker-haalt-gegevens-op-bij-het-bronsysteem">Medewerker haalt gegevens op bij het bronsysteem</a>
+            <ul>
+              <li><a href="#voorbeeld-task">Voorbeeld task</a></li>
+              <li><a href="#voorbeeld-update-task">Voorbeeld update task</a></li>
+              <li><a href="#voorbeeld-verifiable-credential-regisseur-getput-op-task">Voorbeeld verifiable credential Regisseur (get/put op task)</a>
+                <ul>
+                  <li><a href="#bronhouder">Bronhouder</a></li>
+                  <li><a href="#zorgverlener">Zorgverlener</a></li>
+                </ul>
+              </li>
+              <li><a href="#voorbeeld-verifiable-credential-bronhouder-informatie-opvragen">Voorbeeld verifiable credential bronhouder (informatie opvragen)</a></li>
+              <li><a href="#endpoints-voor-data-overdracht">Endpoints voor data overdracht</a></li>
+              <li><a href="#sequentie-diagram-1">Sequentie diagram</a>
+                <ul>
+                  <li><a href="#toelichting-per-stap">Toelichting per stap</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a href="#logging">Logging</a></li>
+      <li><a href="#nuts-register">Nuts register</a>
+        <ul>
+          <li><a href="#anw-regisseur">ANW-Regisseur</a></li>
+          <li><a href="#anw-bronhouder">ANW-Bronhouder</a></li>
+          <li><a href="#anw-zorgverlener">ANW-Zorgverlener</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#uitbreidingen">Uitbreidingen</a>
+    <ul>
+      <li><a href="#registeren-van-metingen">Registeren van metingen</a></li>
+      <li><a href="#foutafhandeling-van-registraties-naar-het-brondossier">Foutafhandeling van registraties naar het brondossier</a></li>
+      <li><a href="#woningtoegang">Woningtoegang</a>
+        <ul>
+          <li><a href="#todo">TODO</a>
+  <!-- TOC --></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="uitgeschreven-proces-flow">Uitgeschreven proces flow</h2>
+
+<h3 id="uitgangspunten">Uitgangspunten</h3>
+
+<ul>
+  <li>De regisseur is op de hoogte van de medewerkersplanning. Dit kan bijvoorbeeld met Excellijsten die wekelijks gedeeld
+worden, zoals het al in de huidige situatie gebeurd. De implementatie die in dit document beschreven wordt, houdt geen
+rekening met het
+ontsluiten van de planning.</li>
+  <li>Er is een samenwerkingsverband tussen de regisseur en de zorgaanbieders.</li>
+  <li>Wij maken gebruik van directe aanroepen per Fhirresource en niet van compositions zoals bij de eOverdracht. Hiervoor
+is gekozen omdat de meest actuele gegevens
+nodig zijn voor de ANW-usecase. Zoals het ophalen van de laatste vijf rapportages.</li>
+</ul>
+
+<h3 id="woordenlijst">Woordenlijst</h3>
+
+<ul>
+  <li><strong>Regisseur</strong>: De partij die de koppeling tussen de cliënten en ANW-zorgmedewerker maakt.</li>
+  <li><strong>Bronsysteem</strong>: Het systeem/zorgaanbieder waar de cliënt in bekend is.</li>
+  <li><strong>Ontvanger</strong>: Het systeem/zorgaanbieder waar de ANW-zorgmedewerker werkt.</li>
+  <li><strong>ANW-Bronhouder</strong>: is het bronsysteem</li>
+  <li><strong>ANW-Zorgverlener</strong>: is de ontvanger</li>
+  <li><strong>ANW-regisseur</strong>: is de regisseur</li>
+  <li><strong>VC</strong>: Verifiable credential</li>
+  <li><strong>VP</strong>: Verifiable presentation</li>
+</ul>
+
+<h3 id="nuts-adresboek">NUTS-adresboek</h3>
+
+<p>De regisseur heeft toegang tot het NUTS-adresboek, hierin kunnen de leveranciers voor elke organisatie die onderdeel uit
+maken het ANW-netwerk aanduiden dat de betreffende organisatie de service “ANW-Zorgverlener”
+en “ANW-Bronhouder” aanbiedt. De regisseur is zelf ook te vinden in het adresboek voor de bronhouder en zorgverlener om
+toegang
+te geven tot deze regisseur met als service “ANW-Regisseur”.</p>
+
+<h3 id="regisseur-vraagt-de-cliënt--medewerker-gegevens-op-in-alle-ecds">Regisseur vraagt de cliënt / medewerker gegevens op in alle ECD’s</h3>
+
+<h4 id="omschrijving">Omschrijving</h4>
+
+<p>De regisseur heeft een functionaliteit tot zijn beschikking waarmee hij eenvoudig cliënten en medewerkers met elkaar kan
+koppelen. Dit kan zowel zijn eigen ECD zijn als een applicatie van derden, zie onderstaande afbeelding.</p>
+
+<figure class="figure">
+  <img src="ANW_koppelen.png" alt="ANW Koppeling" class="figure-img img-responsive img-rounded center-block"/>
+  
+  <figcaption class="figure-caption">ANW Koppeling</figcaption>
+  
+</figure>
+
+<p>Het uitgangspunt is dat de regisseur een eigen NUTS-node heeft draaien. De regisseur kan met behulp van zijn eigen node
+een access token opvragen om hiermee de
+cliënt- en medewerkergegevens van de verschillende zorgaanbieders op te vragen.</p>
+
+<p>Deze zorgaanbieders vinden de regisseur door binnen het NUTS-adresboek op de service “ANW-Bronhouder” en
+“ANW-Zorgverlener” te filteren. Hiervan krijgt hij de endpoints terug die gebruikt kunnen worden om de informatie mee op
+te vragen.</p>
+
+<p>Binnen dit access token wordt gespecificeerd wie de bevraging uitvoert. Wanneer er een samenwerkingsverband is, is het
+niet
+nodig vertrouwensniveau substantieel te gebruiken. Het bevragen van de cliënt en medewerker gegevens wordt door de
+regisseur geïnitialiseerd. Dit kan op eender welk moment plaatsvinden met een door de regisseur te bepalen frequentie.</p>
+
+<p>Op basis van het ontvangen access token kan de zorgaanbieder bepalen tot welke endpoints de regisseur toegang heeft. Dit
+zijn voor deze usecase de volgende twee: <a href="#endpoints-voor-data-regisseur">Endpoints voor data regisseur</a></p>
+
+<p>Als query wordt de query “ANW-zorg” meegegeven. Hiermee kan de zorgaanbieder bepalen welke
+cliënten/medewerkers teruggestuurd moeten worden.</p>
+
+<p>Elke leverancier maakt het mogelijk voor organisaties om cliënten als "ANW" cliënt te kenmerken in hun ECD. Afspraak
+is dat alleen “In zorg” zijnde cliënten teruggegeven worden voor de ANW-usecase en ook alleen “In dienst (actief
+contract)” zijnde medewerkers teruggegeven worden voor de ANW-usecase.</p>
+
+<p>Alle gekenmerkte cliënten worden teruggeven, onafhankelijk of er een BSN staat geregistreerd of niet. Het is de
+verantwoordelijkheid van de regisseur applicatie om cliënten die niet aan de door hun gestelde voorwaarden voldoen, niet
+te tonen.</p>
+
+<p>De zorgaanbieder retourneert de lijst met cliënten en medewerkers aan de regisseur. Deze kan vervolgens de lijsten
+gebruiken om zelf te filteren op de gewenste cliënten / medewerkers.</p>
+
+<h4 id="endpoints-voor-data-regisseur">Endpoints voor data regisseur</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">ZIB</th>
+      <th style="text-align: left">Endpoint</th>
+      <th style="text-align: left">Profiel</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Patient</td>
+      <td style="text-align: left">/fhir/Patient?_query=ANW-zorg</td>
+      <td style="text-align: left"><a href="https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954638">https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954638</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Zorgmedewerker</td>
+      <td style="text-align: left">/fhir/Practitioner?_query=ANW-zorg</td>
+      <td style="text-align: left"><a href="https://simplifier.net/nictizstu3-zib2017/nl-core-practitioner">https://simplifier.net/nictizstu3-zib2017/nl-core-practitioner</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="sequentie-diagram">Sequentie diagram</h4>
+
+<figure class="figure"><a name="l684">​</a>
+  <img src="ANW_regisseur_sequence.png" alt="ANW Regisseur Sequence Diagram" class="figure-img img-responsive img-rounded center-block"/>
+  
+  <figcaption class="figure-caption">ANW Regisseur Sequence Diagram</figcaption>
+  
+</figure>
+
+<h4 id="voorbeeld-verifiable-credential-regisseur-om-cliëntenmedewerkers-op-te-halen">Voorbeeld verifiable credential Regisseur (om cliënten/medewerkers op te halen)</h4>
+
+<p>Onderstaande credential wordt uitgegeven door het bronsysteem.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"verifiableCredential"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"@context"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"https://nuts.nl/credentials/v1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"https://www.w3.org/2018/credentials/v1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"https://w3c-ccg.github.io/lds-jws2020/contexts/lds-jws2020-v1.json"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"NutsAuthorizationCredential"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"VerifiableCredential"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"credentialSubject"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"did:nuts:{Did van regisseur}"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"purposeOfUse"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANW-Bronhouder-RegisseurToegang"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"resources"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"search"</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/Patient?_query=ANW-zorg"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"userContext"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"create"</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/notification"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"userContext"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"proof"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-01-18T16:27:52.939738279+01:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"jws"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJhbGciOiJFU......"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"proofPurpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"assertionMethod"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JsonWebSignature2020"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"verificationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"did:nuts:Eb1U3ap94wcziQhUfZSW........"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Onderstaand is een voorbeeld van een POST voor het aanmaken van deze credential:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"did:nuts:{DID van de bronhouder}"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NutsAuthorizationCredential"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"credentialSubject"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"did:nuts:{Did van de regiseur}"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"purposeOfUse"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANW-Bronhouder-RegisseurToegang"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"resources"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"search"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/Patient?_query=ANW-zorg"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"userContext"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"create"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/notification"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"userContext"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"visibility"</span><span class="p">:</span><span class="w"> </span><span class="s2">"private"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="onderstaande-credential-geeft-het-inzagesysteem-uit">Onderstaande credential geeft het inzagesysteem uit.</h3>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"verifiableCredential"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"@context"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"https://nuts.nl/credentials/v1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"https://www.w3.org/2018/credentials/v1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"https://w3c-ccg.github.io/lds-jws2020/contexts/lds-jws2020-v1.json"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"NutsAuthorizationCredential"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"VerifiableCredential"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"credentialSubject"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"did:nuts:{Did van regisseur}"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"purposeOfUse"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANW-Zorgverlener-RegisseurToegang"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"resources"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"search"</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/Practitioner?_query=ANW-zorg"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"userContext"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"create"</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/notification"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"userContext"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"proof"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-01-18T16:27:52.939738279+01:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"jws"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJhbGciOiJFU......"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"proofPurpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"assertionMethod"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JsonWebSignature2020"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"verificationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"did:nuts:Eb1U3ap94wcziQhUfZSW........"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Onderstaand is een voorbeeld van een POST voor het aanmaken van deze credential:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"did:nuts:{Did van de zorgverlener organisatie}"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NutsAuthorizationCredential"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"credentialSubject"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"did:nuts:{did van de regisseur}"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"purposeOfUse"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANW-Zorgverlener-RegisseurToegang"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"resources"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"search"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/Practitioner?_query=ANW-zorg"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"userContext"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"create"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/notification"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"userContext"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"visibility"</span><span class="p">:</span><span class="w"> </span><span class="s2">"private"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Voor het aanmaken van deze credentials moet door de leverancier een functionaliteit ontwikkeld worden waar voor de twee
+services rechten worden verleend aan een regisseur.</p>
+
+<h3 id="regisseur-kent-medewerker-toe-aan-cliënt">Regisseur kent medewerker toe aan cliënt</h3>
+
+<h4 id="omschrijving-1">Omschrijving</h4>
+
+<p>Wanneer de regisseur een medewerker en cliënt aan elkaar gekoppeld heeft, zal deze een “Task” aanmaken. Deze “Task”
+omschrijft dat er een “Verifiable credential” aangemaakt moet worden in het bronsysteem. Die task heeft als
+status “<a href="https://www.hl7.org/fhir/STU3/valueset-task-status.html">Requested</a>”. Binnen de “Task” staat gedefinieerd voor
+wie en wat de credential uitgegeven moet worden.</p>
+
+<p>De task houdt volgende in:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Veld</th>
+      <th style="text-align: left">Beschrijving</th>
+      <th style="text-align: left">Nuts</th>
+      <th style="text-align: left">Data type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Requester</td>
+      <td style="text-align: left">Wie de autorisatie will aanmaken(ANW regisseur app)</td>
+      <td style="text-align: left">Organization DID Regisseur App</td>
+      <td style="text-align: left">DID</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Authorizer</td>
+      <td style="text-align: left">Bron systeem van wie de data(patient) is</td>
+      <td style="text-align: left">Organization DID bronsysteem</td>
+      <td style="text-align: left">DID</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Accessor</td>
+      <td style="text-align: left">Systeem wat de data gaat bevragen en tonen in een weergave (eigenaar Practitioner)</td>
+      <td style="text-align: left">Organization DID partij met toegang tot de data</td>
+      <td style="text-align: left">DID</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">PractitionerId</td>
+      <td style="text-align: left">MedewerkerId die toegang heeft tot het systeem</td>
+      <td style="text-align: left">&nbsp;</td>
+      <td style="text-align: left">ID</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">PatientId</td>
+      <td style="text-align: left">Patiënt waar toegang voor verleend moet worden</td>
+      <td style="text-align: left">&nbsp;</td>
+      <td style="text-align: left">ID</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Vervolgens maakt de regisseur een verifiable credential aan voor de Task waarmee aan het bronsysteem en het ontvangende
+systeem lees- en schrijfrechten worden gegeven. Aansluitend stuurt de regisseur een notificatie richting het bronsysteem
+waarmee de Task daar kenbaar gemaakt wordt.</p>
+
+<p>Het bronsysteem maakt een verifiable credential aan met de gegevens in de task voor de medewerker-cliëntcombinatie. Die
+credentials hebben een geldigheidsduur van 48 uur. Deze geldigheidsduur staat beschreven in zowel de Task als de
+Nuts-autorisatiecredential.</p>
+
+<p>In dit credential is gedefinieerd welke profielen bevraagd mogen worden. De profiel-URL’s die opgenomen zijn kunnen in
+het volgende hoofdstuk teruggelezen worden: <a href="#endpoints-voor-data-regisseur">Endpoints voor data regisseur</a></p>
+
+<p>Zodra de credential gemaakt is, wordt deze automatisch (in de huidige opzet) binnen het NUTS netwerk kenbaar gemaakt.
+Het bronsysteem zet hierbij de status van de ontvangen “Task”
+op “<a href="https://www.hl7.org/fhir/STU3/valueset-task-status.html">Ready</a>” bij de regisseur. Ook stuurt het bronsysteem het
+id van de uitgegeven verifiable credential mee in de PUT van de task. Deze id kan door de zorgverlener gebruikt worden
+om het juiste VC te zoeken en mee te sturen naar het bronsysteem. Hiermee wordt voorkomen dat meerdere VC’s door de
+zorgverlener worden verstuurd indien aan één cliënt meerdere medewerkers worden toegekend.</p>
+
+<p>Zodra de task de status “Ready” krijgt, stuurt de regisseur een “Notify” naar de ontvanger. Binnen deze “Notify” is de
+task-id gedefinieerd waaronder het credential is aangemaakt. De notify specificeert richting de ontvanger dat medewerker
+X de gegevens van cliënt Y kan gaan opvragen in het bronsysteem.</p>
+
+<h3 id="medewerker-haalt-gegevens-op-bij-het-bronsysteem">Medewerker haalt gegevens op bij het bronsysteem</h3>
+
+<p>Zodra de medewerker de gegevens wil inzien, zoekt het ECD of er een verifiable credential is uitgegeven. Nadat dit
+gevonden is authenticeert de medewerker zich via het niveau dat het bronsysteem heeft gespecificeerd bij de op te halen
+endpoints. Op het moment van schrijven zal altijd het niveau “Low” aangehouden worden. Eens geautoriseerd wordt er een
+Access token opgehaald waarmee de individuele endpoints bevraagd kunnen worden om de cliënt gegevens te krijgen. Het
+is de verantwoordelijkheid van de ontvanger dat alleen de medewerker uit de task de informatie in het bronsysteem
+ophaalt.</p>
+
+<p><a name="l1842">​</a>De endpoints die bevraagd worden zijn bepaald door de ECD-applicatie en niet door de endpoints in het “verifiable
+credential”. Voor nu houden wij hier de eerder gespecificeerde endpoints voor
+aan: <a href="#ANW-Regisseur">Endpoints voor data regisseur</a></p>
+
+<p>Zodra het token opgehaald is, kan de ontvanger bij het bronsysteem de gegevens ophalen. Het bronsysteem gaat kijken of
+de ontvanger gemachtigd is via het credential om de gegevens op te halen. Dit gebeurt via de profielen in het
+credential. Indien de ontvanger niet gemachtigd is voor een endpoint krijgt hij hierop een “403 forbidden” terug.</p>
+
+<p>Ervan uitgaande dat de ontvanger rechten heeft tot alle gegevens vastgesteld voor de ANW-usecase, worden de opgevraagde
+gegevens teruggestuurd naar de ontvanger. De ontvanger kan vervolgens de gegevens op een door hem gekozen manier tonen
+in zijn eigen ECD.</p>
+
+<p>Voor nu is het bijwerken van de Task naar "Voltooid" buiten scope gelaten omdat het functionele gevolg hiervan nog niet
+helder is.</p>
+
+<h4 id="voorbeeld-task">Voorbeeld task</h4>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Task"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"af10c4c8-bc4d-40c7-a335-fb63fe7158d3"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"profile"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"https://nuts.nl/fhir/StructureDefinition/nl-core-authorization-request"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"intent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANW-autorisatie-verzoek"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"for"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient/{patientId}"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"patient display name"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"authoredOn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-01-23T13:23:42.1885689+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"requester"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"agent"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://nuts.nl"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{DID regiseur}"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Regiseur A"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"onBehalfOf"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://nuts.nl"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{DID authorizing party}"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Authorizing party C (data owner)"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://nuts.nl"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{DID accessing party}"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Accessing party B (data accessor)"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"reason"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{optional user input of the regisseur}"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"restriction"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"period"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-01-23T14:23:42.2264869+01:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-01-26T13:23:42.2295674+00:00"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"recipient"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Practitioner/{practitioner with access Id}"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"anw practitioner display name"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h4 id="voorbeeld-update-task">Voorbeeld update task</h4>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Task"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"af10c4c8-bc4d-40c7-a335-fb63fe7158d3"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"profile"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"https://nuts.nl/fhir/StructureDefinition/nl-core-authorization-request"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"intent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANW-autorisatie-verzoek"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"for"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient/{patientId}"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"patient display name"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"authoredOn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-01-23T13:23:42.1885689+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"requester"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"agent"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://nuts.nl"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{DID regiseur}"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Regiseur A"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"onBehalfOf"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://nuts.nl"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{DID authorizing party}"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Authorizing party C (data owner)"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://nuts.nl"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{DID accessing party}"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Accessing party B (data accessor)"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"reason"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{optional user input of the regisseur}"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"restriction"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"period"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-01-23T14:23:42.2264869+01:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-01-26T13:23:42.2295674+00:00"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"recipient"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Practitioner/{practitioner with access Id}"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"anw practitioner display name"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"output"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://nuts.nl"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vc-id"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"valueString"</span><span class="p">:</span><span class="w"> </span><span class="s2">"did:nuts:EwVMYK2ugaMvRHUbGFBhuyF423JuNQbtpes35eHhkQic#b53bda82-712a-4d20-b673-e67efaf60acc"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Het bronsysteem stuurt in de update het ID van het aangemaakt VC mee, waarmee het bevragende systeem het juiste VC kan
+vinden voor het ophalen van de data.</p>
+
+<h4 id="voorbeeld-verifiable-credential-regisseur-getput-op-task">Voorbeeld verifiable credential Regisseur (get/put op task)</h4>
+
+<p>Deze wordt uitgegeven door de regisseur, hiermee kan de ontvanger en bronsysteem de task die de regisseur klaarzet
+bijwerken. Hiervoor heb je er één voor de Bronhouder en één voor de Zorgverlener:</p>
+
+<h5 id="bronhouder">Bronhouder</h5>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"verifiableCredential"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"@context"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"https://nuts.nl/credentials/v1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"https://www.w3.org/2018/credentials/v1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"https://w3c-ccg.github.io/lds-jws2020/contexts/lds-jws2020-v1.json"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"credentialSubject"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"did:nuts:{DID van bronhouder}"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"purposeOfUse"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANW-Regisseur-Autorisatieverzoek"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"resources"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"read"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"update"</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/Task/3b63dc7f-b4d2-49bf-b8ca-a91cdafdc464"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"userContext"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"did:nuts:AVoXh5Ls6kgFkENFqu6ag8jKgRVB9epvUoCuCTSqMKeb#f25de109-16bc-4323-bfda-dd36974777e1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"issuanceDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-09-26T08:05:52.83885377Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"did:nuts:AVoXh5Ls6kgFkENFqu6ag8jKgRVB9epvUoCuCTSqMKeb"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"proof"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-09-26T08:05:52.839289486Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"jws"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJhbGciOiJFUzI1NiIsImI2NCI6ZmFsc2UsImNyaXQiOlsiYjY0Il0sImtpZCI6ImRpZDpudXRzOkFWb1hoNUxzNmtnRmtFTkZxdTZhZzhqS2dSVkI5ZXB2VW9DdUNUU3FNS2ViI0N1alVqQWlSdU1MSHQ3RV9KcTlueUJfc0tMRjQxc1paRklMSklpVFZxeFEifQ..e01dnQNAJ00L_iPj-TsAZvqWZrEEkZV3IRB9pSdTJd-kCzk450qMrf1l-k7iJ-T3zp4zOr1MuqUR0XnUf3cdKg"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"proofPurpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"assertionMethod"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JsonWebSignature2020"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"verificationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"did:nuts:AVoXh5Ls6kgFkENFqu6ag8jKgRVB9epvUoCuCTSqMKebCujUjAiRuMLHt7E_Jq9nyB_sKLF41sZZFILJIiTVqxQ"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"NutsAuthorizationCredential"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"VerifiableCredential"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h5 id="zorgverlener">Zorgverlener</h5>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"verifiableCredential"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"@context"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"https://nuts.nl/credentials/v1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"https://www.w3.org/2018/credentials/v1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"https://w3c-ccg.github.io/lds-jws2020/contexts/lds-jws2020-v1.json"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"credentialSubject"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"did:nuts:{Did van zorgverlener}"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"purposeOfUse"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANW-Regisseur-Inzageverzoek"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"resources"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"read"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"update"</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/Task/3b63dc7f-b4d2-49bf-b8ca-a91cdafdc464"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"userContext"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"did:nuts:AVoXh5Ls6kgFkENFqu6ag8jKgRVB9epvUoCuCTSqMKeb#f25de109-16bc-4323-bfda-dd36974777e1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"issuanceDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-09-26T08:05:52.83885377Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"did:nuts:AVoXh5Ls6kgFkENFqu6ag8jKgRVB9epvUoCuCTSqMKeb"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"proof"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-09-26T08:05:52.839289486Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"jws"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJhbGciOiJFUzI1NiIsImI2NCI6ZmFsc2UsImNyaXQiOlsiYjY0Il0sImtpZCI6ImRpZDpudXRzOkFWb1hoNUxzNmtnRmtFTkZxdTZhZzhqS2dSVkI5ZXB2VW9DdUNUU3FNS2ViI0N1alVqQWlSdU1MSHQ3RV9KcTlueUJfc0tMRjQxc1paRklMSklpVFZxeFEifQ..e01dnQNAJ00L_iPj-TsAZvqWZrEEkZV3IRB9pSdTJd-kCzk450qMrf1l-k7iJ-T3zp4zOr1MuqUR0XnUf3cdKg"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"proofPurpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"assertionMethod"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JsonWebSignature2020"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"verificationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"did:nuts:AVoXh5Ls6kgFkENFqu6ag8jKgRVB9epvUoCuCTSqMKeb#CujUjAiRuMLHt7E_Jq9nyB_sKLF41sZZFILJIiTVqxQ"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"NutsAuthorizationCredential"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"VerifiableCredential"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h4 id="voorbeeld-verifiable-credential-bronhouder-informatie-opvragen">Voorbeeld verifiable credential bronhouder (informatie opvragen)</h4>
+
+<p>Deze wordt uitgegeven door de bronhouder. Hiermee kan de ontvanger het cliëntdossier opvragen.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"verifiableCredential"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"@context"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"https://nuts.nl/credentials/v1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"https://www.w3.org/2018/credentials/v1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"https://w3c-ccg.github.io/lds-jws2020/contexts/lds-jws2020-v1.json"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"NutsAuthorizationCredential"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"VerifiableCredential"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"credentialSubject"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"did:nuts:SjkuVHVqZndMVVJwcnUzbjhuZklhODB1M1M0LW9LcWY0WUs5S2"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"purposeOfUse"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANW-Bronhouder-Gegevensinzage"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"resources"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"read"</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/Patient/{patientId}"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"userContext"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/Observation?patient={patientId}&amp;code=http://loinc.org|8310-5&amp;date=gt{received-date-minus-3-days}"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"search"</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="nl">"userContext"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/Observation?patient={patientId}&amp;code=http://loinc.org|85354-9"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"search"</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="nl">"userContext"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/Observation?patient={patientId}&amp;code=http://loinc.org|8893-0"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"search"</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="nl">"userContext"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/Flag?patient={patientId}}&amp;_profile=http://nictiz.nl/fhir/StructureDefinition/zib-Alert"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"search"</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="nl">"userContext"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"etc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"etc"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"proof"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-01-18T16:27:52.939738279+01:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"jws"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJhbGciOiJFU......"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"proofPurpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"assertionMethod"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JsonWebSignature2020"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"verificationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"did:nuts:Eb1U3ap94wcziQhUfZSW........"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h4 id="endpoints-voor-data-overdracht">Endpoints voor data overdracht</h4>
+
+<p>Hieronder staan de endpoints die beschikbaar gesteld moeten worden door de partijen die toegang tot het ophalen en
+wegschrijven van data aan partijen die ANW-zorg verlenen. Ter verheldering zijn de kolommen Sort en Count toegevoegd om
+aan te tonen hoeveel resultaten er geretourneerd worden en op welke manier deze worden gesorteerd. Het is van belang dat
+bij een aanroep alle parameters gebruikt worden die in de tabel staan en ook geen extra. Dit heeft te maken met de
+controle die de systemen doen op de verifiable credentials. Die controle wordt op die manier gedaan om te voorkomen dat
+met een parameter zoals een include extra gegevens meekomen.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">ZIB</th>
+      <th>Method</th>
+      <th>Sort</th>
+      <th>Count</th>
+      <th style="text-align: left">Endpoint</th>
+      <th style="text-align: left">Profiel</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Patiënt, Contactpersoon, Behandelaar(huisarts), Zorgaanbieder</td>
+      <td>GET</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="text-align: left">/fhir/Patient?_id={patientId}&amp;_include=Patient:general-practitioner&amp;_include:iterate=PractitionerRole:organization</td>
+      <td style="text-align: left"><a href="https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954638">https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954638</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Bloeddruk</td>
+      <td>GET</td>
+      <td>Date DESC</td>
+      <td>5</td>
+      <td style="text-align: left">/fhir/Observation?patient={patientId}&amp;_profile=http://nictiz.nl/fhir/StructureDefinition/zib-BloodPressure&amp;_sort=-date&amp;_count=5</td>
+      <td style="text-align: left"><a href="https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.3.1/files/2980633">https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.3.1/files/2980633</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Lichaamstemperatuur</td>
+      <td>GET</td>
+      <td>Date DESC</td>
+      <td>5</td>
+      <td style="text-align: left">/fhir/Observation?patient={patientId}&amp;_profile=http://nictiz.nl/fhir/StructureDefinition/zib-BodyTemperature&amp;_sort=-date&amp;_count=5</td>
+      <td style="text-align: left"><a href="https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954748">https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954748</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Lichaamslengte</td>
+      <td>GET</td>
+      <td>Date DESC</td>
+      <td>5</td>
+      <td style="text-align: left">/fhir/Observation?patient={patientId}&amp;_profile=http://nictiz.nl/fhir/StructureDefinition/zib-BodyHeight&amp;_sort=-date&amp;_count=5</td>
+      <td style="text-align: left"><a href="https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954746">https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954746</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Lichaamsgewicht</td>
+      <td>GET</td>
+      <td>Date DESC</td>
+      <td>5</td>
+      <td style="text-align: left">/fhir/Observation?patient={patientId}&amp;_profile=http://nictiz.nl/fhir/StructureDefinition/zib-BodyWeight&amp;_sort=-date&amp;_count=5</td>
+      <td style="text-align: left"><a href="https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954750">https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954750</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Respiration</td>
+      <td>GET</td>
+      <td>Date DESC</td>
+      <td>5</td>
+      <td style="text-align: left">/fhir/Observation?patient={patientId}&amp;_profile=http://nictiz.nl/fhir/StructureDefinition/zib-Respiration&amp;_sort=-date&amp;_count=5</td>
+      <td style="text-align: left"><a href="https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954947">https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954947</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Rapportage</td>
+      <td>GET</td>
+      <td>Date DESC</td>
+      <td>10</td>
+      <td style="text-align: left">/fhir/Observation?patient={patientId}&amp;_profile=https://nuts.nl/fhir/StructureDefinition/nl-core-nursingreport&amp;_sort=-date&amp;_count=10</td>
+      <td style="text-align: left"><a href="https://simplifier.net/anw/nl-core-nursingreport">https://simplifier.net/anw/nl-core-nursi ngreport</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Rapportage (aanmaken)</td>
+      <td>POST</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="text-align: left">/fhir/Observation</td>
+      <td style="text-align: left"><a href="https://simplifier.net/anw/nl-core-nursingreport">https://simplifier.net/anw/nl-core-nursingreport</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Woonsituatie</td>
+      <td>GET</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="text-align: left">/fhir/Observation?patient={patientId}&amp;_profile=http://nictiz.nl/fhir/StructureDefinition/zib-LivingSituation</td>
+      <td style="text-align: left"><a href="https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954848">https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954848</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Alerts</td>
+      <td>GET</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="text-align: left">/fhir/Flag?patient={patientId}}&amp;_profile=http://nictiz.nl/fhir/StructureDefinition/zib-Alert</td>
+      <td style="text-align: left"><a href="https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954733">https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954733</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Wilsverklaring</td>
+      <td>GET</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="text-align: left">/fhir/Consent?patient={patientId}&amp;_profile=http://nictiz.nl/fhir/StructureDefinition/zib-AdvanceDirective</td>
+      <td style="text-align: left"><a href="https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954726">https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954726</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Allergie</td>
+      <td>GET</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td style="text-align: left">/fhir/AllergyIntolerance?patient={patientId}&amp;_profile=http://nictiz.nl/fhir/StructureDefinition/zib-AllergyIntolerance</td>
+      <td style="text-align: left"><a href="http://nictiz.nl/fhir/StructureDefinition/zib-AllergyIntolerance">http://nictiz.nl/fhir/StructureDefinition/zib-AllergyIntolerance</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="sequentie-diagram-1">Sequentie diagram</h4>
+
+<figure class="figure">
+  <img src="ANWSequence_V3.png" alt="ANW Koppel Sequence Diagram" class="figure-img img-responsive img-rounded center-block"/>
+  
+  <figcaption class="figure-caption">ANW Koppel Sequence Diagram</figcaption>
+  
+</figure>
+
+<h5 id="toelichting-per-stap">Toelichting per stap</h5>
+
+<table>
+  <thead>
+    <tr>
+      <th>Stapnr.</th>
+      <th>Toelichting</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>7</td>
+      <td>Gebruikt hierbij het notificatie-endpoint dat gevonden is met de service "ANW-Bronhouder". In het AccessToken gebruik je de purposeOfUse "ANW-Bronhouder-RegisseurToegang"</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Gebruikt hierbij het fhir-endpoint dat gevonden is met de service "ANW-Regisseur". In het AccessToken gebruik je de purposeOfUse "ANW-Regisseur-Autorisatieverzoek"</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Gebruikt hierbij het fhir-endpoint dat gevonden is met de service "ANW-Regisseur". In het AccessToken gebruik je de purposeOfUse "ANW-Regisseur-Autorisatieverzoek"</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Gebruikt hierbij het notificatie-endpoint dat gevonden is met de service "ANW-Zorgverlener". In het AccessToken gebruik je de purposeOfUse "ANW-Zorgverlener-RegisseurToegang"</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>Gebruikt hierbij het fhir-endpoint dat gevonden is met de service "ANW-Regisseur". In het AccessToken gebruik je de purposeOfUse "ANW-Regisseur-Autorisatieverzoek"</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>Het VC-ID dat in de uit stap 12 opgehaalde task kan gebruikt worden om de bijbehorende Verifiable credential te vinden.</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td><a name="l4389">​</a>Zie de <a href="#Endpoints-voor-data-overdracht">GET endpoints</a>. Afhankelijk van de implementatie per leverancier wanneer de GET requests worden uitgevoerd voor het opbouwen van het "ANW-Dossier"</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="logging">Logging</h2>
+
+<p>Voor logging gaan we er vanuit dat implementeerders voldoen aan de huidige wet en regelgeving omtrent het inzien van
+medische gegevens.</p>
+
+<h2 id="nuts-register">Nuts register</h2>
+
+<p>Hier staan de verschillende nutsservices die de verschillende partijen moeten registreren met daarbij de endpoints die
+ze beschikbaar moeten stellen.</p>
+
+<h3 id="anw-regisseur">ANW-Regisseur</h3>
+
+<ul>
+  <li>Service: <strong>ANW-Regisseur</strong></li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Endpoint</th>
+      <th style="text-align: left">Beschrijving</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">fhir</td>
+      <td style="text-align: left">Base fhir endpoint waar de Task opgehaald en geüpdatet kan worden.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">oauth</td>
+      <td style="text-align: left">Volledige URL van de n2n/auth/v1/accesstoken van de nutsnode van de regisseur</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="anw-bronhouder">ANW-Bronhouder</h3>
+
+<ul>
+  <li>Service: <strong>ANW-Bronhouder</strong></li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Endpoint</th>
+      <th style="text-align: left">Beschrijving</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">fhir</td>
+      <td style="text-align: left">Base fhir endpoint waar de patienten ontsloten worden voor de regisseur en waar de data opgehaald kan worden voor de “ANW-Zorgverlener”</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">oauth</td>
+      <td style="text-align: left">Volledige URL van de n2n/auth/v1/accesstoken van de nutsnode van de bronhouder van de data</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">notification</td>
+      <td style="text-align: left">Endpoint waar de notificatie naar toe gestuurd kan worden voor het verzoek om een autorisatie aan te maken voor een “ANW-Zorgverlener”</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="anw-zorgverlener">ANW-Zorgverlener</h3>
+
+<ul>
+  <li>Service: <strong>ANW-Zorgverlener</strong></li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Endpoint</th>
+      <th style="text-align: left">Beschrijving</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">fhir</td>
+      <td style="text-align: left">Base fhir endpoint waar de Practitioners ontsloten worden waarop geautoriseerd kan worden</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">oauth</td>
+      <td style="text-align: left">Volledige URL van de n2n/auth/v1/accesstoken van de nutsnode van de inzage applicatie</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">notification</td>
+      <td style="text-align: left">Endpoint waar de notificatie naar toe gestuurd kan worden om mee te delen dat er een authorisatie door een “ANW-Bronhouder” is aangemaakt</td>
+    </tr>
+  </tbody>
+</table>
+
+<h1 id="uitbreidingen">Uitbreidingen</h1>
+
+<h2 id="registeren-van-metingen">Registeren van metingen</h2>
+
+<p>Eerste uitbreiding op ANW is het registreren van metingen richting het brondossier. Om te registreren is geen
+uitbreiding nodig op de bestaande authorization credentials. Vanwege de tekstrapportage is de POST voor observation
+toegestaan. Het is aan de
+leverancier welke registraties beschikbaar zijn richting het brondossier voor de zorgverlener. Het brondossier
+<strong>accepteert te allen tijde</strong> een valide meting volgens de onderstaande Nictiz-profielen. Hoe het brondossier dit
+vervolgens
+verder verwerkt is aan de leverancier. De registratie zijn losse create requests per meting. Dit gebeurt in dezelfde
+stap als het registreren van de tekstrapportage. Voor de onderstaande drie metingen is gekozen vanwege wat er nu
+mogelijk is aan de ontvangende kant.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">ZIB</th>
+      <th style="text-align: left">Fhir-profiel</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Bloeddruk</td>
+      <td style="text-align: left"><a href="https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.3.1/files/2980633">https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.3.1/files/2980633</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Lichaamstemperatuur</td>
+      <td style="text-align: left"><a href="https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954748">https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954748</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Lichaamslengte</td>
+      <td style="text-align: left"><a href="https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954746">https://simplifier.net/packages/nictiz.fhir.nl.stu3.zib2017/2.2.10/files/1954746</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="foutafhandeling-van-registraties-naar-het-brondossier">Foutafhandeling van registraties naar het brondossier</h2>
+
+<p>In het geval van een fout bij de registratie antwoord het bronsysteem met een OperationOutcome.
+Zie <a href="https://informatiestandaarden.nictiz.nl/wiki/FHIR:V1.0_FHIR_IG_STU3#Handling_errors">Fout afhandeling/Handling Errors</a>
+in de implementatiegids van Nictiz. De <a href="https://hl7.org/fhir/STU3/operationoutcome.html">operation outcome</a> kan door een
+systeem gebruikt worden om aan te geven richting de
+zorgverlener wat er fout is gegaan. In het geval van inhoudelijke fouten die niet zijn toegestaan volgens de
+Nictiz-profielen geeft de operationoutcome aan welke fout dit betreft. Zodat de zorgverlener de nodige aanpassing kan
+doen.</p>
+
+<h2 id="woningtoegang">Woningtoegang</h2>
+
+<p>Als er woningtoegang informatie beschikbaar is in het bronsysteem van de cliënt, dan is dit zeer nuttig om te delen met
+de zorgverlener. De location resource is hiervoor geschikt. De overweging is gemaakt dit niet in het adres van de cliënt
+te stoppen. Het patient.address veld is hier minder voor geschikt, omdat een nieuw profiel nodig zou zijn om te
+voorkomen dat
+woningtoegang mee kan komen met alle patiënten volgens het profiel nl-core-patients. Vooral een probleem buiten de
+usecase van ANW.</p>
+
+<p>De location resource relateert niet direct met de cliënt. Het bronsysteem voegt de referentie naar die resource toe aan
+de inputs voor de task. Dit gebeurt in stap 12 van <a href="#sequentie-diagram-1">het sequentiediagram</a> voordat de PUT-actie
+richting de regisseur is gedaan.</p>
+
+<p>Het is belangrijk voor het zorgverlenersysteem dat de regisseur de inputs ook overneemt in de task. Dit betreft een
+absolute referentie. Zie hieronder een voorbeeld van input met de woningtoegang die binnen een task valt.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"..."</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"input"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"woningtoegang"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"valueReference"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{FHIR-SERVER}/Location/101"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>In de location resource moet de description gevuld zijn met de informatie om toegang tot de woning te verkrijgen. Zie
+het onderstaande voorbeeld met de relevante informatie.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Location"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"101"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sleutel onder de tuinkabouter"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="todo">TODO</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">userContext</code> voor het opvragen van de lijst van Patient/Practitioner voor ANW-zorg moet duidelijk gemaakt worden:
+<code class="language-plaintext highlighter-rouge">true</code> of <code class="language-plaintext highlighter-rouge">false</code>? Mogelijk moet dit om data protection redenen op <code class="language-plaintext highlighter-rouge">true</code> (immers grote lijst van namen). Voordat dit
+duidelijk werd is bij een eerder technisch overleg overeengekomen voorlopig te gaan voor <code class="language-plaintext highlighter-rouge">false</code>, om (pre-)caching
+makkelijker te maken. Bij moment van schrijven op 24 juli 2024 worden de VCs bij alle partijen nog aangemaakt voor
+<code class="language-plaintext highlighter-rouge">false</code>, en vanuit Nedap worden de requests alvast altijd uitgevoerd met een aanwezige user context (in andere
+woorden, Nuts-elevatie is verplicht alvorens het regisseursscherm geopend kan worden) en gecached per user.</li>
+</ul>
+
+
+
+
+</div>
+        </div>    <!-- /inner-wrapper -->
+      </div>    <!-- /row -->
+    </div>    <!-- /container -->
+  </div>    <!-- /segment-content -->
+
+  <script src="assets/js/jquery.js" type="text/javascript"> </script>       <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+  <script src="assets/js/jquery-ui.min.js" type="text/javascript"> </script>
+
+  <script src="assets/js/window-hash.js" type="text/javascript"> </script>
+  <a name="bottom"> </a>
+  <div igtool="footer" id="segment-footer" class="segment">    <!-- segment-footer -->
+    <div class="container">    <!-- container -->
+
+      <div class="inner-wrapper">
+        <p>
+          IG &copy; 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.nuts.nl">Stichting Nuts</a>.  Package nl.nuts.anw#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Oct 23, 2025 07:23+0000">2025-10-23</span>
+          <br/>
+          <span style="color: var(--footer-highlight-text-color)">
+                      Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
+                 
+                
+          </span>
+        </p>
+      </div>    <!-- /inner-wrapper -->
+    </div>    <!-- /container -->
+  </div>    <!-- /segment-footer -->
+  
+  <div id="segment-post-footer" class="segment hidden">    <!-- segment-post-footer -->
+    <div class="container">    <!-- container -->
+    </div>    <!-- /container -->
+  </div>    <!-- /segment-post-footer -->
+
+    <!-- JS and analytics only. -->
+    <!-- Bootstrap core JavaScript
+  ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+  <script src="assets/js/bootstrap.min.js" type="text/javascript"> </script>
+  <script src="assets/js/respond.min.js" type="text/javascript"> </script>
+  <script src="assets/js/anchor.min.js" type="text/javascript"> </script>
+  <script src="assets/js/clipboard.min.js" type="text/javascript"> </script>
+  <script src="assets/js/clipboard-btn.js" type="text/javascript"> </script>
+  <script src="assets/js/anchor-hover.js" type="text/javascript"> </script>
+    <!-- Analytics Below
+  ================================================== -->
+  </body>
+</html>
