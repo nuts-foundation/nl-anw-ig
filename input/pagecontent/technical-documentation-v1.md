@@ -742,7 +742,7 @@ Per unieke rol kan je aangeven welke versie(s) je ondersteund van de specifieke 
   ]
 }
 ```
-In het voorbeeld hierboven wordt er gebruik gemaakt van de versie van de ANW-Bronhouder rol die beschreven staat in het capability statement van wanneer je de link zou openen, in dit geval versie 1.0.0. 
+In het voorbeeld hierboven wordt er gebruik gemaakt van de versie van de ANW-Bronhouder rol die beschreven staat in het capability statement van wanneer je de link zou openen, in dit geval versie 1.0.0. Als sofware leverancier weet je op basis van welke URL's een andere partij in het instantiates heeft staan, welke versie van een rol die allemaal ondersteund.
 
 ## Huidige versies
 
