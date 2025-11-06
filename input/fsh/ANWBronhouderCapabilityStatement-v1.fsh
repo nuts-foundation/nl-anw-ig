@@ -9,7 +9,7 @@ Description: "Capability statement describing the basic requirements for ANW FHI
 * status = #active
 * date = "2025-10-15"
 * kind = #requirements
-* fhirVersion = #4.0.1
+* fhirVersion = #3.0.2
 * format[0] = #json
 * format[1] = #xml
 * publisher = "Stichting Nuts"

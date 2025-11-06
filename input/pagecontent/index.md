@@ -1,3 +1,7 @@
+## ⚠️ Disclaimer
+
+> **Belangerijk:**  
+> Op plekken op deze site kan verwezen worden naar fhir versie r4, dit is onterecht en een limitatie van de gebruikte technologie voor het modeleren van de capability statements en documentatie. Binnen de ANW use case die hier beschreven wordt, wordt er enkel gebruik gemaakt van fhir **STU3**.
 # ANW Implementation Guide
 
 This implementation guide defines FHIR profiles, extensions, and other resources needed for the ANW (Avond-, Nacht- en Weekendzorg) use case in the Netherlands.

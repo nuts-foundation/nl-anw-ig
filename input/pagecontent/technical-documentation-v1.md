@@ -1,42 +1,44 @@
 # ANW
-
 # Inhoudsopgave
 
 <!-- TOC -->
-* [ANW](#anw)
-* [Inhoudsopgave](#inhoudsopgave)
-  * [Uitgeschreven proces flow](#uitgeschreven-proces-flow)
-    * [Uitgangspunten](#uitgangspunten)
-    * [Woordenlijst](#woordenlijst)
-    * [NUTS-adresboek](#nuts-adresboek)
-    * [Regisseur vraagt de cliënt / medewerker gegevens op in alle ECD’s](#regisseur-vraagt-de-cliënt--medewerker-gegevens-op-in-alle-ecds)
-      * [Omschrijving](#omschrijving)
-      * [Endpoints voor data regisseur](#endpoints-voor-data-regisseur)
-      * [Sequentie diagram](#sequentie-diagram)
-      * [Voorbeeld verifiable credential Regisseur (om cliënten/medewerkers op te halen)](#voorbeeld-verifiable-credential-regisseur-om-cliëntenmedewerkers-op-te-halen)
-    * [Onderstaande credential geeft het inzagesysteem uit.](#onderstaande-credential-geeft-het-inzagesysteem-uit)
-    * [Regisseur kent medewerker toe aan cliënt](#regisseur-kent-medewerker-toe-aan-cliënt)
-      * [Omschrijving](#omschrijving-1)
-    * [Medewerker haalt gegevens op bij het bronsysteem](#medewerker-haalt-gegevens-op-bij-het-bronsysteem)
-      * [Voorbeeld task](#voorbeeld-task)
-      * [Voorbeeld update task](#voorbeeld-update-task)
-      * [Voorbeeld verifiable credential Regisseur (get/put op task)](#voorbeeld-verifiable-credential-regisseur-getput-op-task)
-        * [Bronhouder](#bronhouder)
-        * [Zorgverlener](#zorgverlener)
-      * [Voorbeeld verifiable credential bronhouder (informatie opvragen)](#voorbeeld-verifiable-credential-bronhouder-informatie-opvragen)
-      * [Endpoints voor data overdracht](#endpoints-voor-data-overdracht)
-      * [Sequentie diagram](#sequentie-diagram-1)
-        * [Toelichting per stap](#toelichting-per-stap)
-  * [Logging](#logging)
-  * [Nuts register](#nuts-register)
-    * [ANW-Regisseur](#anw-regisseur)
-    * [ANW-Bronhouder](#anw-bronhouder)
-    * [ANW-Zorgverlener](#anw-zorgverlener)
-* [Uitbreidingen](#uitbreidingen)
-  * [Registeren van metingen](#registeren-van-metingen)
-  * [Foutafhandeling van registraties naar het brondossier](#foutafhandeling-van-registraties-naar-het-brondossier)
-  * [Woningtoegang](#woningtoegang)
-    * [TODO](#todo)
+- [ANW](#anw)
+- [Inhoudsopgave](#inhoudsopgave)
+  - [Uitgeschreven proces flow](#uitgeschreven-proces-flow)
+    - [Uitgangspunten](#uitgangspunten)
+    - [Woordenlijst](#woordenlijst)
+    - [NUTS-adresboek](#nuts-adresboek)
+    - [Regisseur vraagt de cliënt / medewerker gegevens op in alle ECD’s](#regisseur-vraagt-de-cliënt--medewerker-gegevens-op-in-alle-ecds)
+      - [Omschrijving](#omschrijving)
+      - [Endpoints voor data regisseur](#endpoints-voor-data-regisseur)
+      - [Sequentie diagram](#sequentie-diagram)
+      - [Voorbeeld verifiable credential Regisseur (om cliënten/medewerkers op te halen)](#voorbeeld-verifiable-credential-regisseur-om-cliëntenmedewerkers-op-te-halen)
+    - [Onderstaande credential geeft het inzagesysteem uit.](#onderstaande-credential-geeft-het-inzagesysteem-uit)
+    - [Regisseur kent medewerker toe aan cliënt](#regisseur-kent-medewerker-toe-aan-cliënt)
+      - [Omschrijving](#omschrijving-1)
+    - [Medewerker haalt gegevens op bij het bronsysteem](#medewerker-haalt-gegevens-op-bij-het-bronsysteem)
+      - [Voorbeeld task](#voorbeeld-task)
+      - [Voorbeeld update task](#voorbeeld-update-task)
+      - [Voorbeeld verifiable credential Regisseur (get/put op task)](#voorbeeld-verifiable-credential-regisseur-getput-op-task)
+        - [Bronhouder](#bronhouder)
+        - [Zorgverlener](#zorgverlener)
+      - [Voorbeeld verifiable credential bronhouder (informatie opvragen)](#voorbeeld-verifiable-credential-bronhouder-informatie-opvragen)
+      - [Endpoints voor data overdracht](#endpoints-voor-data-overdracht)
+      - [Sequentie diagram](#sequentie-diagram-1)
+        - [Toelichting per stap](#toelichting-per-stap)
+  - [Logging](#logging)
+  - [Nuts register](#nuts-register)
+    - [ANW-Regisseur](#anw-regisseur)
+    - [ANW-Bronhouder](#anw-bronhouder)
+    - [ANW-Zorgverlener](#anw-zorgverlener)
+- [Versie beheer](#versie-beheer)
+  - [Huidige versies](#huidige-versies)
+  - [Implementeren van een nieuwe versie](#implementeren-van-een-nieuwe-versie)
+- [Uitbreidingen (gemaakt zonder versiebeheer)](#uitbreidingen-gemaakt-zonder-versiebeheer)
+  - [Registeren van metingen](#registeren-van-metingen)
+  - [Foutafhandeling van registraties naar het brondossier](#foutafhandeling-van-registraties-naar-het-brondossier)
+  - [Woningtoegang](#woningtoegang)
+    - [TODO](#todo)
 <!-- TOC -->
 
 ## Uitgeschreven proces flow
@@ -726,7 +728,34 @@ ze beschikbaar moeten stellen.
 | oauth        | Volledige URL van de n2n/auth/v1/accesstoken van de nutsnode van de inzage applicatie                                                     |
 | notification | Endpoint waar de notificatie naar toe gestuurd kan worden om mee te delen dat er een authorisatie door een “ANW-Bronhouder” is aangemaakt |
 
-# Uitbreidingen
+# Versie beheer
+Voor versie beheer van de usecase wordt er gebruikt gemaakt van capability statements in fhir. Een capability statement beschrijft alle functionaliteit die een fhir server beschikbaar heeft. Het capability statement van een fhir server is aan te roepen op het {baseUrl}/metadata endpoint. Dit endpoint moet publiekelijk, zonder authenticatie, aan te roepen zijn.
+
+*Hoe geef je als server aan welke versie van een rol ondersteund?*
+
+Per unieke rol kan je aangeven welke versie(s) je ondersteund van de specifieke rol. Het capability statement heeft een *instantiates* veld waarin meerdere url's kunnen worden vastgelegd. M.b.v. het instantiates kan je verwijzen naar een capability statement die je fhir server implementeerd. In deze documentatie hebben we de capability statements vast gelegd van de versies van de verschillende rollen die er zijn, deze zijn terug te vinden onder de [artifacts](artifacts.html). In het capability statement ziet dit er dan als voorbeeld als volgt uit:
+```json
+{
+  "resourceType": "CapabilityStatement",
+  "instantiates": [
+    "https://nuts-foundation.github.io/nl-anw-ig/CapabilityStatement-ANWBronhouderCapabilityStatement-v1.json"
+  ]
+}
+```
+In het voorbeeld hierboven wordt er gebruik gemaakt van de versie van de ANW-Bronhouder rol die beschreven staat in het capability statement van wanneer je de link zou openen, in dit geval versie 1.0.0. 
+
+## Huidige versies
+
+|Rol | Versie | Url | artificat |
+|----|--------|-----|-----------|
+|ANW-Bronhouder| 1.0.0 | https://nuts-foundation.github.io/nl-anw-ig/CapabilityStatement-ANWBronhouderCapabilityStatement-v1.json | [link](CapabilityStatement-ANWBronhouderCapabilityStatement-v1.html) |
+|ANW-Zorgverlener|1.0.0 |https://nuts-foundation.github.io/nl-anw-ig/CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1.json | [link](CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1.html) |
+|ANW-Regisseur|1.0.0|https://nuts-foundation.github.io/nl-anw-ig/CapabilityStatement-ANWRegisseurCapabilityStatement-v1.json| [link](CapabilityStatement-ANWRegisseurCapabilityStatement-v1.html) |
+
+## Implementeren van een nieuwe versie
+Op het moment wanneer er een nieuwe functionaliteit voor een rol uitgedacht wordt, dan resulteerd dit in een nieuwe versie van het capability statement. In de documentatie hier zal dan een nieuw hoofdstuk komen van de functionaliteit die nieuw is en welke nieuwe versies van het capability statement daarbij horen. Wanneer een leverancier de nieuwe functionaliteit ontwikkeld heeft dan kan deze de bijbehorende link naar het nieuwe capability statement toevoegen bij de instantiates, welke aangeeft dat de nieuwe functionaliteit beschikbaar is en de aanroepende kanten van het metadata hier op kunnen sturen. **Let op**: Het is hier wel belangerijk dat voorgaande links naar versies van een dezelfde rol nog wel in het capability statement van het metadata endpoint blijven staan. Zo geef je aan dat je ook nog de voorgaande versie ondersteund en backwards compatible bent. Als voorbeeld er komt een versie 2.x.x beschikbaar en de vorige versie is 1.x.x, dan op het moment dat je de functionaliteit van 2.x.x aanzet in je capability statement vervang je niet de link naar 1.x.x, deze blijft ook in het capability statement staan. Dit blijft todat iedereen gebruik maakend van een rol over is op de nieuwere versies, dan kunnen oudere versies uitgefaseerd worden.
+
+# Uitbreidingen (gemaakt zonder versiebeheer)
 
 ## Registeren van metingen
 
