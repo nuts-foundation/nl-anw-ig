@@ -1,6 +1,22 @@
 Source File	Size	loadResources	load	generateSnapshots	load-configure	scan	loadDepInfo	loadInfo	checkR4R4B	generateNarratives	validate	loadLists	checkConformanceResources	checkConformanceResources2	checkConformanceResources3	generateLogicalMaps	validateExpressions	scanForUsageStats	checkURLsUnique	processProvenanceDetails	generate1	generate2	generateLogicals	makeDependencies	generateExampleZip	generateValidationPack	scanProfilesForR5	scanExamplesForR5
-/fsh-generated/resources/ImplementationGuide-nl.nuts.anw.json	2791	-	0	0	0	0	0	0	12	72	0	0	0	0	0	0	0	1	0	0	72	76	0	0	0	3	0	3
-fsh-generated/resources/CapabilityStatement-ANWBronhouderCapabilityStatement-v1.json	8650	23	0	0	1	0	0	0	2	84	0	0	0	0	0	0	0	0	0	0	68	61	0	1	0	2	0	0
-fsh-generated/resources/CapabilityStatement-ANWRegisseurCapabilityStatement-v1.json	1322	14	0	0	0	0	0	0	1	19	0	0	0	0	0	0	0	0	0	0	20	19	0	0	0	1	0	0
-fsh-generated/resources/CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1.json	1533	13	0	0	0	0	0	0	0	22	0	0	0	0	0	0	0	0	0	0	22	12	0	0	0	0	0	0
-fsh-generated/resources/OperationDefinition-ANW-zorg.json	448	13	0	0	0	0	0	0	1	15	0	0	0	0	0	0	0	0	0	0	9	11	0	0	0	0	0	0
+/fsh-generated/resources/ImplementationGuide-nl.nuts.anw.json	2791	-	0	0	0	0	0	0	13	66	0	0	0	0	0	0	0	0	0	0	72	64	0	0	0	3	0	2
+fsh-generated/resources/CapabilityStatement-ANWBronhouderCapabilityStatement-v1.json	8650	18	0	0	1	0	0	0	3	99	0	0	0	0	0	0	0	1	0	0	63	69	0	0	0	2	0	1
+fsh-generated/resources/CapabilityStatement-ANWRegisseurCapabilityStatement-v1.json	1322	14	0	0	0	0	0	0	0	16	0	0	0	0	0	0	0	0	0	0	18	14	0	0	0	0	0	0
+fsh-generated/resources/CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1.json	1533	17	0	0	0	0	0	0	0	18	0	0	0	0	0	0	0	0	0	0	15	13	0	0	0	0	0	0
+fsh-generated/resources/OperationDefinition-ANW-zorg.json	448	15	0	0	0	0	0	0	1	15	0	0	0	0	1	0	0	0	0	0	7	11	0	0	0	1	0	0
+/input/includes/img.html	287	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+/fsh-generated/includes/fsh-link-references.md	347	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+/fsh-generated/includes/menu.xml	1334	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+/input/pagecontent/technical-documentation-v1.md	43866	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	6	0	0	0	0	0	0
+/input/pagecontent/index.md	1061	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+/template/config	0	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+/template/config/_config.yml	140	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+/input/images	0	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+/input/images/etransfer.puml	2884	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0
+/input/images/ANW_Regisseur_sequence.png	48169	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+/input/images/ANW_Regisseur_sequence.puml	741	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+/input/images/ANWSequence_V3.png	94816	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+/input/images/ANWSequence_V3.puml	1591	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+/input/images/etransfer.png	141348	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+/input/images/ANW_koppelen.png	336944	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0
+/temp/pages/_includes/artifacts.xml	3515	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	0	0	0	0	0	0	0

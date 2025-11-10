@@ -46,7 +46,11 @@
 * [ANW-Zorgverlener](#anw-zorgverlener)
  
  
-* [Uitbreidingen](#uitbreidingen) 
+* [Versie beheer](#versie-beheer) 
+* [Huidige versies](#huidige-versies)
+* [Implementeren van een nieuwe versie](#implementeren-van-een-nieuwe-versie)
+ 
+* [Uitbreidingen (gemaakt zonder versiebeheer)](#uitbreidingen-gemaakt-zonder-versiebeheer) 
 * [Registeren van metingen](#registeren-van-metingen)
 * [Foutafhandeling van registraties naar het brondossier](#foutafhandeling-van-registraties-naar-het-brondossier)
 * [Woningtoegang](#woningtoegang) 
@@ -684,7 +688,39 @@ Hier staan de verschillende nutsservices die de verschillende partijen moeten re
 | oauth | Volledige URL van de n2n/auth/v1/accesstoken van de nutsnode van de inzage applicatie |
 | notification | Endpoint waar de notificatie naar toe gestuurd kan worden om mee te delen dat er een authorisatie door een “ANW-Bronhouder” is aangemaakt |
 
-# Uitbreidingen
+# Versie beheer
+
+Voor versie beheer van de usecase wordt er gebruikt gemaakt van capability statements in FHIR. Een capability statement beschrijft alle functionaliteit die een FHIR server beschikbaar heeft. Het capability statement van FHIR fhir server is aan te roepen op het {baseUrl}/metadata endpoint. Dit endpoint moet publiekelijk, zonder authenticatie, aan te roepen zijn.
+
+**Hoe geef je als server aan welke versie van een rol ondersteund?**
+
+Per unieke rol kan je aangeven welke versie(s) je ondersteund van de specifieke rol. Het capability statement heeft een **instantiates** veld waarin meerdere url's kunnen worden vastgelegd. M.b.v. instantiates kan je verwijzen naar een capability statement die je FHIR server implementeerd. In deze documentatie hebben we de capability statements vastgelegd van de versies van de verschillende rollen die er zijn, deze zijn terug te vinden onder de [artifacts](artifacts.md). In het capability statement ziet dit er dan als voorbeeld als volgt uit:
+
+```
+{
+  "resourceType": "CapabilityStatement",
+  "instantiates": [
+    "https://nuts-foundation.github.io/nl-anw-ig/CapabilityStatement-ANWBronhouderCapabilityStatement-v1.json"
+  ]
+}
+
+```
+
+In het voorbeeld hierboven wordt er gebruik gemaakt van de versie van de ANW-Bronhouder rol die beschreven staat in het capability statement van wanneer je de link zou openen, in dit geval versie 1.0.0. Als software leverancier weet je op basis van welke URL's een andere partij in het instantiates heeft staan, welke versie van een rol die allemaal ondersteund.
+
+## Huidige versies
+
+| | | | |
+| :--- | :--- | :--- | :--- |
+| ANW-Bronhouder | 1.0.0 | https://nuts-foundation.github.io/nl-anw-ig/CapabilityStatement-ANWBronhouderCapabilityStatement-v1.json | [link](CapabilityStatement-ANWBronhouderCapabilityStatement-v1.md) |
+| ANW-Zorgverlener | 1.0.0 | https://nuts-foundation.github.io/nl-anw-ig/CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1.json | [link](CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1.md) |
+| ANW-Regisseur | 1.0.0 | https://nuts-foundation.github.io/nl-anw-ig/CapabilityStatement-ANWRegisseurCapabilityStatement-v1.json | [link](CapabilityStatement-ANWRegisseurCapabilityStatement-v1.md) |
+
+## Implementeren van een nieuwe versie
+
+Op het moment wanneer er een nieuwe functionaliteit voor een rol uitgedacht wordt, dan resulteert dit in een nieuwe versie van het capability statement. In de documentatie zal dan een nieuw hoofdstuk komen van de functionaliteit die nieuw is en welke nieuwe versies van het capability statement daarbij horen. Wanneer een leverancier de nieuwe functionaliteit ontwikkeld heeft dan kan deze de bijbehorende link naar het nieuwe capability statement toevoegen bij de instantiates, welke aangeeft dat de nieuwe functionaliteit beschikbaar is en de aanroepende kanten van het metadata hier op kunnen sturen. **Let op**: Het is hier wel belangrijk dat voorgaande links naar versies van een dezelfde rol nog wel in het capability statement van het metadata endpoint blijven staan. Zo geef je aan dat je ook nog de voorgaande versie ondersteund en backwards compatible bent. Als voorbeeld er komt een versie 2.x.x beschikbaar en de vorige versie is 1.x.x, dan op het moment dat je de functionaliteit van 2.x.x aanzet in je capability statement vervang je niet de link naar 1.x.x, deze blijft ook in het capability statement staan. Dit blijft tot dat iedereen gebruik maakt van een rol, over is op de nieuwere versies en kunnen oudere versies uitgefaseerd worden.
+
+# Uitbreidingen (gemaakt zonder versiebeheer)
 
 ## Registeren van metingen
 

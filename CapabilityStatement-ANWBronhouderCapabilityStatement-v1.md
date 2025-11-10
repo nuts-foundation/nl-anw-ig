@@ -19,7 +19,7 @@ Version 1.0 capability statement defining the basic requirements for ANW FHIR se
 ## ANW Bronhouder Capability Statement v1.0.0
 
 * Implementation Guide Version: 0.1.0 
-* FHIR Version: 4.0.1 
+* FHIR Version: 3.0.2 
 * Supported Formats: `json`, `xml`
 * Published on: 2025-10-15 
 * Published by: Stichting Nuts 
@@ -69,7 +69,7 @@ The summary table lists the resources that are part of this configuration, and f
 
 Core FHIR Resource
 
-[Patient](http://hl7.org/fhir/R4/patient.html)
+[Patient](http://hl7.org/fhir/R3/patient.html)
 
 Reference Policy
 
@@ -352,7 +352,7 @@ Search Parameters
     }
   ],
   "kind" : "requirements",
-  "fhirVersion" : "4.0.1",
+  "fhirVersion" : "3.0.2",
   "format" : ["json", "xml"],
   "rest" : [
     {

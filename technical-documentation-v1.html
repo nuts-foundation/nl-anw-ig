@@ -170,7 +170,12 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       </li>
     </ul>
   </li>
-  <li><a href="#uitbreidingen" id="markdown-toc-uitbreidingen">Uitbreidingen</a>    <ul>
+  <li><a href="#versie-beheer" id="markdown-toc-versie-beheer">Versie beheer</a>    <ul>
+      <li><a href="#huidige-versies" id="markdown-toc-huidige-versies">Huidige versies</a></li>
+      <li><a href="#implementeren-van-een-nieuwe-versie" id="markdown-toc-implementeren-van-een-nieuwe-versie">Implementeren van een nieuwe versie</a></li>
+    </ul>
+  </li>
+  <li><a href="#uitbreidingen-gemaakt-zonder-versiebeheer" id="markdown-toc-uitbreidingen-gemaakt-zonder-versiebeheer">Uitbreidingen (gemaakt zonder versiebeheer)</a>    <ul>
       <li><a href="#registeren-van-metingen" id="markdown-toc-registeren-van-metingen">Registeren van metingen</a></li>
       <li><a href="#foutafhandeling-van-registraties-naar-het-brondossier" id="markdown-toc-foutafhandeling-van-registraties-naar-het-brondossier">Foutafhandeling van registraties naar het brondossier</a></li>
       <li><a href="#woningtoegang" id="markdown-toc-woningtoegang">Woningtoegang</a>        <ul>
@@ -183,7 +188,6 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 </div>
 <h1 id="anw">ANW</h1>
-
 <h1 id="inhoudsopgave">Inhoudsopgave</h1>
 
   <!-- TOC -->
@@ -241,7 +245,13 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       </li>
     </ul>
   </li>
-  <li><a href="#uitbreidingen">Uitbreidingen</a>
+  <li><a href="#versie-beheer">Versie beheer</a>
+    <ul>
+      <li><a href="#huidige-versies">Huidige versies</a></li>
+      <li><a href="#implementeren-van-een-nieuwe-versie">Implementeren van een nieuwe versie</a></li>
+    </ul>
+  </li>
+  <li><a href="#uitbreidingen-gemaakt-zonder-versiebeheer">Uitbreidingen (gemaakt zonder versiebeheer)</a>
     <ul>
       <li><a href="#registeren-van-metingen">Registeren van metingen</a></li>
       <li><a href="#foutafhandeling-van-registraties-naar-het-brondossier">Foutafhandeling van registraties naar het brondossier</a></li>
@@ -359,7 +369,7 @@ gebruiken om zelf te filteren op de gewenste cliënten / medewerkers.</p>
 
 <h4 id="sequentie-diagram">Sequentie diagram</h4>
 
-<figure class="figure"><a name="l704">​</a>
+<figure class="figure"><a name="l736">​</a>
   <img src="ANW_regisseur_sequence.png" alt="null" class="figure-img img-responsive img-rounded center-block"/>
   
 </figure>
@@ -600,7 +610,7 @@ Access token opgehaald waarmee de individuele endpoints bevraagd kunnen worden o
 is de verantwoordelijkheid van de ontvanger dat alleen de medewerker uit de task de informatie in het bronsysteem
 ophaalt.</p>
 
-<p><a name="l1859">​</a>De endpoints die bevraagd worden zijn bepaald door de ECD-applicatie en niet door de endpoints in het “verifiable
+<p><a name="l1891">​</a>De endpoints die bevraagd worden zijn bepaald door de ECD-applicatie en niet door de endpoints in het “verifiable
 credential”. Voor nu houden wij hier de eerder gespecificeerde endpoints voor
 aan: <a href="#ANW-Regisseur">Endpoints voor data regisseur</a></p>
 
@@ -1087,7 +1097,7 @@ met een parameter zoals een include extra gegevens meekomen.</p>
     </tr>
     <tr>
       <td>17</td>
-      <td><a name="l4425">​</a>Zie de <a href="#Endpoints-voor-data-overdracht">GET endpoints</a>. Afhankelijk van de implementatie per leverancier wanneer de GET requests worden uitgevoerd voor het opbouwen van het "ANW-Dossier"</td>
+      <td><a name="l4457">​</a>Zie de <a href="#Endpoints-voor-data-overdracht">GET endpoints</a>. Afhankelijk van de implementatie per leverancier wanneer de GET requests worden uitgevoerd voor het opbouwen van het "ANW-Dossier"</td>
     </tr>
   </tbody>
 </table>
@@ -1185,19 +1195,62 @@ ze beschikbaar moeten stellen.</p>
   </tbody>
 </table>
 
-<h1 id="uitbreidingen">Uitbreidingen</h1>
+<h1 id="versie-beheer">Versie beheer</h1>
+<p>Voor versie beheer van de usecase wordt er gebruikt gemaakt van capability statements in FHIR. Een capability statement beschrijft alle functionaliteit die een FHIR server beschikbaar heeft. Het capability statement van FHIR fhir server is aan te roepen op het {baseUrl}/metadata endpoint. Dit endpoint moet publiekelijk, zonder authenticatie, aan te roepen zijn.</p>
+
+<p><em>Hoe geef je als server aan welke versie van een rol ondersteund?</em></p>
+
+<p>Per unieke rol kan je aangeven welke versie(s) je ondersteund van de specifieke rol. Het capability statement heeft een <em>instantiates</em> veld waarin meerdere url's kunnen worden vastgelegd. M.b.v. instantiates kan je verwijzen naar een capability statement die je FHIR server implementeerd. In deze documentatie hebben we de capability statements vastgelegd van de versies van de verschillende rollen die er zijn, deze zijn terug te vinden onder de <a href="artifacts.html">artifacts</a>. In het capability statement ziet dit er dan als voorbeeld als volgt uit:</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CapabilityStatement"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"instantiates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"https://nuts-foundation.github.io/nl-anw-ig/CapabilityStatement-ANWBronhouderCapabilityStatement-v1.json"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+<p>In het voorbeeld hierboven wordt er gebruik gemaakt van de versie van de ANW-Bronhouder rol die beschreven staat in het capability statement van wanneer je de link zou openen, in dit geval versie 1.0.0. Als software leverancier weet je op basis van welke URL's een andere partij in het instantiates heeft staan, welke versie van een rol die allemaal ondersteund.</p>
+
+<h2 id="huidige-versies">Huidige versies</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Rol</th>
+      <th>Versie</th>
+      <th>Url</th>
+      <th>artificat</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ANW-Bronhouder</td>
+      <td>1.0.0</td>
+      <td>https://nuts-foundation.github.io/nl-anw-ig/CapabilityStatement-ANWBronhouderCapabilityStatement-v1.json</td>
+      <td><a href="CapabilityStatement-ANWBronhouderCapabilityStatement-v1.html">link</a></td>
+    </tr>
+    <tr>
+      <td>ANW-Zorgverlener</td>
+      <td>1.0.0</td>
+      <td>https://nuts-foundation.github.io/nl-anw-ig/CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1.json</td>
+      <td><a href="CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1.html">link</a></td>
+    </tr>
+    <tr>
+      <td>ANW-Regisseur</td>
+      <td>1.0.0</td>
+      <td>https://nuts-foundation.github.io/nl-anw-ig/CapabilityStatement-ANWRegisseurCapabilityStatement-v1.json</td>
+      <td><a href="CapabilityStatement-ANWRegisseurCapabilityStatement-v1.html">link</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="implementeren-van-een-nieuwe-versie">Implementeren van een nieuwe versie</h2>
+<p>Op het moment wanneer er een nieuwe functionaliteit voor een rol uitgedacht wordt, dan resulteert dit in een nieuwe versie van het capability statement. In de documentatie zal dan een nieuw hoofdstuk komen van de functionaliteit die nieuw is en welke nieuwe versies van het capability statement daarbij horen. Wanneer een leverancier de nieuwe functionaliteit ontwikkeld heeft dan kan deze de bijbehorende link naar het nieuwe capability statement toevoegen bij de instantiates, welke aangeeft dat de nieuwe functionaliteit beschikbaar is en de aanroepende kanten van het metadata hier op kunnen sturen. <strong>Let op</strong>: Het is hier wel belangrijk dat voorgaande links naar versies van een dezelfde rol nog wel in het capability statement van het metadata endpoint blijven staan. Zo geef je aan dat je ook nog de voorgaande versie ondersteund en backwards compatible bent. Als voorbeeld er komt een versie 2.x.x beschikbaar en de vorige versie is 1.x.x, dan op het moment dat je de functionaliteit van 2.x.x aanzet in je capability statement vervang je niet de link naar 1.x.x, deze blijft ook in het capability statement staan. Dit blijft tot dat iedereen gebruik maakt van een rol, over is op de nieuwere versies en kunnen oudere versies uitgefaseerd worden.</p>
+
+<h1 id="uitbreidingen-gemaakt-zonder-versiebeheer">Uitbreidingen (gemaakt zonder versiebeheer)</h1>
 
 <h2 id="registeren-van-metingen">Registeren van metingen</h2>
 
-<p>Eerste uitbreiding op ANW is het registreren van metingen richting het brondossier. Om te registreren is geen
-uitbreiding nodig op de bestaande authorization credentials. Vanwege de tekstrapportage is de POST voor observation
-toegestaan. Het is aan de
-leverancier welke registraties beschikbaar zijn richting het brondossier voor de zorgverlener. Het brondossier
-<strong>accepteert te allen tijde</strong> een valide meting volgens de onderstaande Nictiz-profielen. Hoe het brondossier dit
-vervolgens
-verder verwerkt is aan de leverancier. De registratie zijn losse create requests per meting. Dit gebeurt in dezelfde
-stap als het registreren van de tekstrapportage. Voor de onderstaande drie metingen is gekozen vanwege wat er nu
-mogelijk is aan de ontvangende kant.</p>
+<p>Eerste uitbreiding op ANW is het registreren van metingen richting het brondossier. Om te registreren is geen uitbreiding nodig op de bestaande authorization credentials. Vanwege de tekstrapportage is de POST voor observation toegestaan. Het is aan de leverancier welke registraties beschikbaar zijn richting het brondossier voor de zorgverlener. Het brondossier <strong>accepteert te allen tijde</strong> een valide meting volgens de onderstaande Nictiz-profielen. Hoe het brondossier dit vervolgens verder verwerkt is aan de leverancier. De registratie zijn losse create requests per meting. Dit gebeurt in dezelfde stap als het registreren van de tekstrapportage. Voor de onderstaande drie metingen is gekozen vanwege wat er nu mogelijk is aan de ontvangende kant.</p>
 
 <table>
   <thead>
@@ -1303,7 +1356,7 @@ woorden, Nuts-elevatie is verplicht alvorens het regisseursscherm geopend kan wo
 
       <div class="inner-wrapper">
         <p>
-          IG &copy; 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.nuts.nl">Stichting Nuts</a>.  Package nl.nuts.anw#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Oct 23, 2025 09:26+0000">2025-10-23</span>
+          IG &copy; 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.nuts.nl">Stichting Nuts</a>.  Package nl.nuts.anw#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Nov 10, 2025 10:45+0000">2025-11-10</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

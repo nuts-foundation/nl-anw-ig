@@ -11,14 +11,17 @@
   fhir:id [ fhir:v "ANW-zorg"] ; # 
   fhir:text [
      fhir:status [ fhir:v "generated" ] ;
-     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: OperationDefinition ANW-zorg</b></p><a name=\"ANW-zorg\"> </a><a name=\"hcANW-zorg\"> </a><p>URL: [base]/Practitioner?_query=ANW-zorg&amp;...</p><p>URL: [base]/Patient?_query=ANW-zorg&amp;...</p><h3>Parameters</h3><table class=\"grid\"><tr><td><b>Use</b></td><td><b>Name</b></td><td><b>Scope</b></td><td><b>Cardinality</b></td><td><b>Type</b></td><td><b>Binding</b></td><td><b>Documentation</b></td></tr></table></div>"^^rdf:XMLLiteral
+     fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: OperationDefinition ANW-zorg</b></p><a name=\"ANW-zorg\"> </a><a name=\"hcANW-zorg\"> </a><p>URL: [base]/Practitioner?_query=ANW-zorg&amp;...</p><p>URL: [base]/Patient?_query=ANW-zorg&amp;...</p><h3>Parameters</h3><table class=\"grid\"><tr><td><b>Use</b></td><td><b>Name</b></td><td><b>Scope</b></td><td><b>Cardinality</b></td><td><b>Type</b></td><td><b>Binding</b></td><td><b>Documentation</b></td></tr></table></div>"^^rdf:XMLLiteral ]
   ] ; # 
-  fhir:url [ fhir:v "http://nuts-foundation.github.io/nl-generic-anw-ig/OperationDefinition/ANW-zorg"^^xsd:anyURI] ; # 
+  fhir:url [
+     fhir:v "http://nuts-foundation.github.io/nl-generic-anw-ig/OperationDefinition/ANW-zorg"^^xsd:anyURI ;
+     fhir:l <http://nuts-foundation.github.io/nl-generic-anw-ig/OperationDefinition/ANW-zorg>
+  ] ; # 
   fhir:version [ fhir:v "0.1.0"] ; # 
   fhir:name [ fhir:v "ANW-zorg"] ; # 
   fhir:status [ fhir:v "active"] ; # 
   fhir:kind [ fhir:v "query"] ; # 
-  fhir:date [ fhir:v "2025-10-23T09:26:20+00:00"^^xsd:dateTime] ; # 
+  fhir:date [ fhir:v "2025-11-10T10:45:36+00:00"^^xsd:dateTime] ; # 
   fhir:publisher [ fhir:v "Stichting Nuts"] ; # 
   fhir:contact ( [
      fhir:name [ fhir:v "Stichting Nuts" ] ;
@@ -30,7 +33,10 @@
   fhir:description [ fhir:v "Custom named query on Practitioner or Patient, invoked with _query=ANW-zorg"] ; # 
   fhir:jurisdiction ( [
      fhir:coding ( [
-       fhir:system [ fhir:v "urn:iso:std:iso:3166"^^xsd:anyURI ] ;
+       fhir:system [
+         fhir:v "urn:iso:std:iso:3166"^^xsd:anyURI ;
+         fhir:l <urn:iso:std:iso:3166>
+       ] ;
        fhir:code [ fhir:v "NL" ] ;
        fhir:display [ fhir:v "Netherlands" ]
      ] )

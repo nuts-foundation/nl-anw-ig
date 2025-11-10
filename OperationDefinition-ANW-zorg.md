@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://nuts-foundation.github.io/nl-generic-anw-ig/OperationDefinition/ANW-zorg | *Version*:0.1.0 |
-| Active as of 2025-10-23 | *Computable Name*:ANW-zorg |
+| Active as of 2025-11-10 | *Computable Name*:ANW-zorg |
 
  
 Custom named query on Practitioner or Patient, invoked with _query=ANW-zorg 
@@ -34,7 +34,7 @@ URL: [base]/Patient?_query=ANW-zorg&...
   "name" : "ANW-zorg",
   "status" : "active",
   "kind" : "query",
-  "date" : "2025-10-23T09:26:20+00:00",
+  "date" : "2025-11-10T10:45:36+00:00",
   "publisher" : "Stichting Nuts",
   "contact" : [
     {

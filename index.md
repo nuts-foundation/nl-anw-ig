@@ -8,9 +8,15 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://nuts-foundation.github.io/nl-generic-anw-ig/ImplementationGuide/nl.nuts.anw | *Version*:0.1.0 |
-| Draft as of 2025-10-23 | *Computable Name*:NLAnwIG |
+| Draft as of 2025-11-10 | *Computable Name*:NLAnwIG |
+
+## ⚠️ Disclaimer
+
+> **Belangerijk:**
+Op plekken op deze site kan verwezen worden naar fhir versie r4, dit is onterecht en een limitatie van de gebruikte technologie voor het modeleren van de capability statements en documentatie. Binnen de ANW use case die hier beschreven wordt, wordt er enkel gebruik gemaakt van fhir**STU3**.
 
 # ANW Implementation Guide
+
 
 This implementation guide defines FHIR profiles, extensions, and other resources needed for the ANW (Avond-, Nacht- en Weekendzorg) use case in the Netherlands.
 
@@ -42,7 +48,7 @@ The ANW use case covers evening, night, and weekend care services. This implemen
   "name" : "NLAnwIG",
   "title" : "Netherlands - ANW implementation guide",
   "status" : "draft",
-  "date" : "2025-10-23T09:26:20+00:00",
+  "date" : "2025-11-10T10:45:36+00:00",
   "publisher" : "Stichting Nuts",
   "contact" : [
     {
