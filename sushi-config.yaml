@@ -18,6 +18,10 @@ publisher:
   name: Stichting Nuts
   url: https://www.nuts.nl
 
+parameters:
+  apply-version: false  # Prevent overwriting resource-specific versions
+  default-version: true # Use IG version as fallback for resources without explicit version
+
 menu:
   Home: index.html
   Documentation:
