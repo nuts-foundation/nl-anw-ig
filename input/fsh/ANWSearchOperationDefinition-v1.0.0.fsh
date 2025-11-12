@@ -1,4 +1,4 @@
-Instance: ANW-zorg
+Instance: ANW-zorg-v1.0.0
 InstanceOf: OperationDefinition
 Usage: #definition
 * id = "ANW-zorg"
