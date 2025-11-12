@@ -733,12 +733,13 @@ Voor versie beheer van de usecase wordt er gebruikt gemaakt van capability state
 
 *Hoe geef je als server aan welke versie van een rol ondersteund?*
 
-Per unieke rol kan je aangeven welke versie je ondersteund van de specifieke rol. Het capability statement heeft een *instantiates* veld waarin meerdere url's kunnen worden vastgelegd. M.b.v. instantiates kan je verwijzen naar een capability statement die je FHIR server implementeerd. In deze documentatie hebben we de capability statements vastgelegd van de versies van de verschillende rollen die er zijn, deze zijn terug te vinden onder de [artifacts](artifacts.html). In het capability statement ziet dit er dan als voorbeeld als volgt uit:
+Per unieke rol kan je aangeven welke versie je ondersteund van de specifieke rol. Het capability statement heeft een *instantiates* veld waarin meerdere url's kunnen worden vastgelegd. M.b.v. instantiates kan je verwijzen naar een capability statement die je FHIR server implementeerd. In deze documentatie hebben we de capability statements vastgelegd van de versies van de verschillende rollen die er zijn, deze zijn terug te vinden onder de [artifacts](artifacts.html). In het capability statement ziet dit er dan als voorbeeld als volgt uit wanneer een FHIR server ondersteuning biedt voor de ANW Bronhouder en ANW Zorgverlener rol:
 ```json
 {
   "resourceType": "CapabilityStatement",
   "instantiates": [
-    "https://nuts-foundation.github.io/nl-anw-ig/CapabilityStatement-ANWBronhouderCapabilityStatement-v1.json"
+    "https://nuts-foundation.github.io/nl-anw-ig/CapabilityStatement-ANWBronhouderCapabilityStatement-v1.0.0.json",
+    "https://nuts-foundation.github.io/nl-anw-ig/CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1.0.0.json"
   ]
 }
 ```
