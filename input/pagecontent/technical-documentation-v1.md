@@ -755,7 +755,7 @@ In het voorbeeld hierboven wordt er gebruik gemaakt van de versie van de ANW-Bro
 
 ## Implementeren van een nieuwe versie
 Op het moment wanneer er een nieuwe functionaliteit voor een rol uitgedacht wordt, dan resulteert dit in een nieuwe versie van het capability statement. In de documentatie zal dan een nieuw hoofdstuk komen van de functionaliteit die nieuw is en welke nieuwe versies van het capability statement daarbij horen. Wanneer een leverancier de nieuwe functionaliteit ontwikkeld heeft dan kan deze de bijbehorende link naar het nieuwe capability statement toevoegen bij de instantiates, welke aangeeft dat de nieuwe functionaliteit beschikbaar is en de aanroepende kanten van het metadata hier op kunnen sturen. **Let op**: Het is hier wel belangrijk dat voorgaande links naar versies van een dezelfde rol nog wel in het capability statement van het metadata endpoint blijven staan. Zo geef je aan dat je ook nog de voorgaande versie ondersteund en backwards compatible bent. Als voorbeeld er komt een versie 2.x.x beschikbaar en de vorige versie is 1.x.x, dan op het moment dat je de functionaliteit van 2.x.x aanzet in je capability statement vervang je niet de link naar 1.x.x, deze blijft ook in het capability statement staan. Dit blijft tot dat iedereen gebruik maakt van een rol, over is op de nieuwere versies en kunnen oudere versies uitgefaseerd worden.
-[technical-documentation-v1.md](technical-documentation-v1.md)
+
 # Uitbreidingen (gemaakt zonder versiebeheer)
 
 ## Registeren van metingen
