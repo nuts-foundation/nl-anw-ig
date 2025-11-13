@@ -746,15 +746,20 @@ Per unieke rol kan je aangeven welke versie je ondersteund van de specifieke rol
 In het voorbeeld hierboven wordt er gebruik gemaakt van de versie van de ANW-Bronhouder rol die beschreven staat in het capability statement van wanneer je de link zou openen, in dit geval versie 1.0.0. Als software leverancier weet je op basis van welke URL's een andere partij in het instantiates heeft staan, welke versie van een rol die allemaal ondersteund.
 
 ## Huidige versies
-
 |Rol | Versie | Url | artificat |
 |----|--------|-----|-----------|
-|ANW-Bronhouder| 1.0.0 | https://nuts-foundation.github.io/nl-anw-ig/CapabilityStatement-ANWBronhouderCapabilityStatement-v1.json | [link](CapabilityStatement-ANWBronhouderCapabilityStatement-v1.html) |
-|ANW-Zorgverlener|1.0.0 |https://nuts-foundation.github.io/nl-anw-ig/CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1.json | [link](CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1.html) |
-|ANW-Regisseur|1.0.0|https://nuts-foundation.github.io/nl-anw-ig/CapabilityStatement-ANWRegisseurCapabilityStatement-v1.json| [link](CapabilityStatement-ANWRegisseurCapabilityStatement-v1.html) |
+|ANW-Bronhouder| 1.0.0 | https://nuts-foundation.github.io/nl-anw-ig/CapabilityStatement-ANWBronhouderCapabilityStatement-v1.0.0.json                                                         | [link](CapabilityStatement-ANWBronhouderCapabilityStatement-v1.0.0.html) |
+|ANW-Zorgverlener|1.0.0 | https://nuts-foundation.github.io/nl-anw-ig/CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1.0.0.json                                                       | [link](CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1.0.0.html) |
+|ANW-Regisseur|1.0.0| https://nuts-foundation.github.io/nl-anw-ig/CapabilityStatement-ANWRegisseurCapabilityStatement-v1.0.0.json | [link](CapabilityStatement-ANWRegisseurCapabilityStatement-v1.0.0.html) |
 
 ## Implementeren van een nieuwe versie
-Op het moment wanneer er een nieuwe functionaliteit voor een rol uitgedacht wordt, dan resulteert dit in een nieuwe versie van het capability statement. In de documentatie zal dan een nieuw hoofdstuk komen van de functionaliteit die nieuw is en welke nieuwe versies van het capability statement daarbij horen. Wanneer een leverancier de nieuwe functionaliteit ontwikkeld heeft dan kan deze de bijbehorende link naar het nieuwe capability statement toevoegen bij de instantiates, welke aangeeft dat de nieuwe functionaliteit beschikbaar is en de aanroepende kanten van het metadata hier op kunnen sturen. **Let op**: Het is hier wel belangrijk dat voorgaande links naar versies van een dezelfde rol nog wel in het capability statement van het metadata endpoint blijven staan. Zo geef je aan dat je ook nog de voorgaande versie ondersteund en backwards compatible bent. Als voorbeeld er komt een versie 2.x.x beschikbaar en de vorige versie is 1.x.x, dan op het moment dat je de functionaliteit van 2.x.x aanzet in je capability statement vervang je niet de link naar 1.x.x, deze blijft ook in het capability statement staan. Dit blijft tot dat iedereen gebruik maakt van een rol, over is op de nieuwere versies en kunnen oudere versies uitgefaseerd worden.
+Op het moment wanneer er een nieuwe functionaliteit voor een rol uitgedacht wordt, dan resulteert dit in een nieuwe versie van het capability statement. In de documentatie zal dan een nieuw hoofdstuk komen van de functionaliteit die nieuw is en welke nieuwe versies van het capability statement daarbij horen. 
+
+Wanneer een leverancier de nieuwe functionaliteit ontwikkeld heeft, dan kan deze de bijbehorende link naar het nieuwe capability statement toevoegen bij de instantiates, welke aangeeft dat de nieuwe functionaliteit beschikbaar is en de aanroepende kanten van het metadata hier op kunnen sturen.
+
+**Let op**: We hebben afgesproken dat we altijd per rol slechts één versie aanbieden. Dus als er een nieuwe versie 2.x.x beschikbaar is die de leverancier ondersteunt, hoeft de leverancier alleen deze aan te passen in het meta endpoint.
+
+Wanneer een nieuwe versie wordt geïmplementeerd, moet deze altijd backwards compatible zijn met de voorgaande versies. Dit betekent dat bestaande functionaliteit en koppelingen met eerdere versies blijven werken, zodat afnemers niet direct hoeven over te stappen.
 
 # Uitbreidingen (gemaakt zonder versiebeheer)
 
