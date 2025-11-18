@@ -48,7 +48,7 @@ The ANW use case covers evening, night, and weekend care services. This implemen
   "name" : "NLAnwIG",
   "title" : "Netherlands - ANW implementation guide",
   "status" : "draft",
-  "date" : "2025-11-18T10:04:21+00:00",
+  "date" : "2025-11-18T10:13:36+00:00",
   "publisher" : "Stichting Nuts",
   "contact" : [
     {
