@@ -747,11 +747,11 @@ Per unieke rol kan je aangeven welke versie je ondersteund van de specifieke rol
 In het voorbeeld hierboven wordt er gebruik gemaakt van de versie van de ANW-Bronhouder rol die beschreven staat in het capability statement van wanneer je de link zou openen, in dit geval versie 1.0.0. Als software leverancier weet je op basis van welke URL's een andere partij in het instantiates heeft staan, welke versie van een rol die allemaal ondersteund.
 
 ## Huidige versies
-| Rol             | Versie | URL                                                                                                    | Artifact                                                         |
-|------------------|--------|---------------------------------------------------------------------------------------------------------|------------------------------------------------------------------|
-| ANW-Bronhouder   | 1.0.0  | https://nuts-foundation.github.io/nl-anw-ig/CapabilityStatement-ANWBronhouderCapabilityStatement-v1.0.0.json  | [link](CapabilityStatement-ANWBronhouderCapabilityStatement-v1.0.0.html) |
-| ANW-Zorgverlener | 1.0.0  | https://nuts-foundation.github.io/nl-anw-ig/CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1.0.0.json | [link](CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1.0.0.html) |
-| ANW-Regisseur    | 1.0.0  | https://nuts-foundation.github.io/nl-anw-ig/CapabilityStatement-ANWRegisseurCapabilityStatement-v1.0.0.json    | [link](CapabilityStatement-ANWRegisseurCapabilityStatement-v1.0.0.html) |
+| Rol | Versie | URL | Artifact |
+|:-----------|:-----------|:-----------|:-----------|
+| ANW-Bronhouder   | 1.0.0 | https://nuts-foundation.github.io/nl-anw-ig/CapabilityStatement-ANWBronhouderCapabilityStatement-v1.0.0.json | [link](CapabilityStatement-ANWBronhouderCapabilityStatement-v1.0.0.html) |
+| ANW-Zorgverlener | 1.0.0 | https://nuts-foundation.github.io/nl-anw-ig/CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1.0.0.json | [link](CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1.0.0.html) |
+| ANW-Regisseur | 1.0.0 | https://nuts-foundation.github.io/nl-anw-ig/CapabilityStatement-ANWRegisseurCapabilityStatement-v1.0.0.json | [link](CapabilityStatement-ANWRegisseurCapabilityStatement-v1.0.0.html) |
 
 
 ## Implementeren van een nieuwe versie
