@@ -49,6 +49,7 @@
 * [Versie beheer](#versie-beheer) 
 * [Huidige versies](#huidige-versies)
 * [Implementeren van een nieuwe versie](#implementeren-van-een-nieuwe-versie)
+* [Versie controleren](#versie-controleren)
  
 * [Uitbreidingen (gemaakt zonder versiebeheer)](#uitbreidingen-gemaakt-zonder-versiebeheer) 
 * [Registeren van metingen](#registeren-van-metingen)
@@ -711,7 +712,7 @@ In het voorbeeld hierboven wordt er gebruik gemaakt van de versie van de ANW-Bro
 
 ## Huidige versies
 
-| Rol | Versie | Url | artificat | |—-|——–|—–|———–| | ANW-Bronhouder | 1.0.0 | https://nuts-foundation.github.io/nl-anw-ig/CapabilityStatement-ANWBronhouderCapabilityStatement-v1.0.0.json | [link](CapabilityStatement-ANWBronhouderCapabilityStatement-v1.0.0.md) | | ANW-Zorgverlener | 1.0.0 | https://nuts-foundation.github.io/nl-anw-ig/CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1.0.0.json | [link](CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1.0.0.md) | | ANW-Regisseur | 1.0.0 | https://nuts-foundation.github.io/nl-anw-ig/CapabilityStatement-ANWRegisseurCapabilityStatement-v1.0.0.json | [link](CapabilityStatement-ANWRegisseurCapabilityStatement-v1.0.0.md) |
+| Rol | Versie | URL | Artifact | |——————|——–|———————————————————————————————————|——————————————————————| | ANW-Bronhouder | 1.0.0 | https://nuts-foundation.github.io/nl-anw-ig/CapabilityStatement-ANWBronhouderCapabilityStatement-v1.0.0.json | [link](CapabilityStatement-ANWBronhouderCapabilityStatement-v1.0.0.md) | | ANW-Zorgverlener | 1.0.0 | https://nuts-foundation.github.io/nl-anw-ig/CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1.0.0.json | [link](CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1.0.0.md) |[text](https://nuts-foundation.github.io/nl-anw-ig/CapabilityStatement-ANWBronhouderCapabilityStatement-v1.0.0.json) | ANW-Regisseur | 1.0.0 | https://nuts-foundation.github.io/nl-anw-ig/CapabilityStatement-ANWRegisseurCapabilityStatement-v1.0.0.json | [link](CapabilityStatement-ANWRegisseurCapabilityStatement-v1.0.0.md) |
 
 ## Implementeren van een nieuwe versie
 
