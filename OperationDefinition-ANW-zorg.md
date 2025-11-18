@@ -34,7 +34,7 @@ URL: [base]/Patient?_query=ANW-zorg&...
   "name" : "ANW-zorg",
   "status" : "active",
   "kind" : "query",
-  "date" : "2025-11-18T08:39:27+00:00",
+  "date" : "2025-11-18T09:54:47+00:00",
   "publisher" : "Stichting Nuts",
   "contact" : [
     {
