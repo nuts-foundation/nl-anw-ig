@@ -762,8 +762,13 @@ Wanneer een leverancier de nieuwe functionaliteit ontwikkeld heeft, dan kan deze
 Wanneer een nieuwe versie wordt geïmplementeerd, moet deze altijd backwards compatible zijn met de voorgaande versies. Dit betekent dat bestaande functionaliteit en koppelingen met eerdere versies blijven werken, zodat afnemers niet direct hoeven over te stappen.
 
 ## Versie controleren
-Een aanvrager kan de versie van een rol controleren door het capability statement uit de instantiates te openen 
-(parsen) en hier de versie uit te lezen.
+Een aanvrager kan de versie van een rol controleren door binnen de instantie lijst in het meta endpoint alle IG met 
+betrekking tot ANW uit te lezen en hier de versie te resolven. De versie kan geresolved worden door het versie veld 
+binnen het capability statement uit te lezen. Als aanvrager kijk je dan dus of de versie gelijk of hoger is dan de 
+versie waarvan je als aanvrager de functionaliteit ondersteund. Bijvoorbeeld als je als aanvrager versie 1.2.0 hebt 
+en er komt versie 1.3.0 terug, dan doe je de vergelijking 1.3.0 > 1.2.0, wat betekent dat je als aanvrager alle 
+functionaliteit die je hebt kan gebruiken. Is de versie van de aanvrager hoger is dan de versie van de leverancier, 
+dan moeten er functionaliteiten verbogen worden.
 
 # Uitbreidingen (gemaakt zonder versiebeheer)
 
