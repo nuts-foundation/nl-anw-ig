@@ -761,6 +761,10 @@ Wanneer een leverancier de nieuwe functionaliteit ontwikkeld heeft, dan kan deze
 
 Wanneer een nieuwe versie wordt geïmplementeerd, moet deze altijd backwards compatible zijn met de voorgaande versies. Dit betekent dat bestaande functionaliteit en koppelingen met eerdere versies blijven werken, zodat afnemers niet direct hoeven over te stappen.
 
+## Versie controleren
+Een aanvrager kan de versie van een rol controleren door het capability statement uit de instantiates te openen 
+(parsen) en hier de versie uit te lezen.
+
 # Uitbreidingen (gemaakt zonder versiebeheer)
 
 ## Registeren van metingen
