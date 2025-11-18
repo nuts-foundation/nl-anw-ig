@@ -750,7 +750,7 @@ In het voorbeeld hierboven wordt er gebruik gemaakt van de versie van de ANW-Bro
 | Rol             | Versie | URL                                                                                                    | Artifact                                                         |
 |------------------|--------|---------------------------------------------------------------------------------------------------------|------------------------------------------------------------------|
 | ANW-Bronhouder   | 1.0.0  | https://nuts-foundation.github.io/nl-anw-ig/CapabilityStatement-ANWBronhouderCapabilityStatement-v1.0.0.json  | [link](CapabilityStatement-ANWBronhouderCapabilityStatement-v1.0.0.html) |
-| ANW-Zorgverlener | 1.0.0  | https://nuts-foundation.github.io/nl-anw-ig/CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1.0.0.json | [link](CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1.0.0.html) |[text](https://nuts-foundation.github.io/nl-anw-ig/CapabilityStatement-ANWBronhouderCapabilityStatement-v1.0.0.json)
+| ANW-Zorgverlener | 1.0.0  | https://nuts-foundation.github.io/nl-anw-ig/CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1.0.0.json | [link](CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1.0.0.html) |
 | ANW-Regisseur    | 1.0.0  | https://nuts-foundation.github.io/nl-anw-ig/CapabilityStatement-ANWRegisseurCapabilityStatement-v1.0.0.json    | [link](CapabilityStatement-ANWRegisseurCapabilityStatement-v1.0.0.html) |
 
 
