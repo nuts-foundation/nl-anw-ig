@@ -1,23 +1,23 @@
 [
   {
-    "id" : "ANWBronhouderCapabilityStatement-v1",
+    "id" : "ANWBronhouderCapabilityStatement-v1.0.0",
     "type" : "CapabilityStatement",
     "url" : "http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Bronhouder",
-    "version" : "0.1.0",
+    "version" : "1.0.0",
     "name" : "ANW-Bronhouder"
   },
   {
-    "id" : "ANWRegisseurCapabilityStatement-v1",
+    "id" : "ANWRegisseurCapabilityStatement-v1.0.0",
     "type" : "CapabilityStatement",
     "url" : "http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Regisseur",
-    "version" : "0.1.0",
+    "version" : "1.0.0",
     "name" : "ANW-Regisseur"
   },
   {
-    "id" : "ANWZorgverlenerCapabilityStatement-v1",
+    "id" : "ANWZorgverlenerCapabilityStatement-v1.0.0",
     "type" : "CapabilityStatement",
     "url" : "http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Zorgverlener",
-    "version" : "0.1.0",
+    "version" : "1.0.0",
     "name" : "ANW-Zorgverlener"
   },
   {

@@ -8,7 +8,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://nuts-foundation.github.io/nl-generic-anw-ig/ImplementationGuide/nl.nuts.anw | *Version*:0.1.0 |
-| Draft as of 2025-11-10 | *Computable Name*:NLAnwIG |
+| Draft as of 2025-11-18 | *Computable Name*:NLAnwIG |
 
 ## ⚠️ Disclaimer
 
@@ -48,7 +48,7 @@ The ANW use case covers evening, night, and weekend care services. This implemen
   "name" : "NLAnwIG",
   "title" : "Netherlands - ANW implementation guide",
   "status" : "draft",
-  "date" : "2025-11-10T10:45:36+00:00",
+  "date" : "2025-11-18T08:39:27+00:00",
   "publisher" : "Stichting Nuts",
   "contact" : [
     {
@@ -86,7 +86,7 @@ The ANW use case covers evening, night, and weekend care services. This implemen
       ],
       "uri" : "http://terminology.hl7.org/ImplementationGuide/hl7.terminology",
       "packageId" : "hl7.terminology.r4",
-      "version" : "6.5.0"
+      "version" : "7.0.0"
     },
     {
       "id" : "hl7ext",
@@ -125,6 +125,32 @@ The ANW use case covers evening, night, and weekend care services. This implemen
           {
             "url" : "value",
             "valueString" : "ci-build"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueString" : "apply-version"
+          },
+          {
+            "url" : "value",
+            "valueString" : "false"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueString" : "default-version"
+          },
+          {
+            "url" : "value",
+            "valueString" : "true"
           }
         ],
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
@@ -341,19 +367,6 @@ The ANW use case covers evening, night, and weekend care services. This implemen
         "extension" : [
           {
             "url" : "code",
-            "valueString" : "apply-version"
-          },
-          {
-            "url" : "value",
-            "valueString" : "true"
-          }
-        ],
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
-      },
-      {
-        "extension" : [
-          {
-            "url" : "code",
             "valueString" : "apply-wg"
           },
           {
@@ -454,6 +467,32 @@ The ANW use case covers evening, night, and weekend care services. This implemen
           {
             "url" : "value",
             "valueString" : "ci-build"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueCode" : "apply-version"
+          },
+          {
+            "url" : "value",
+            "valueString" : "false"
+          }
+        ],
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+      },
+      {
+        "extension" : [
+          {
+            "url" : "code",
+            "valueCode" : "default-version"
+          },
+          {
+            "url" : "value",
+            "valueString" : "true"
           }
         ],
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
@@ -670,19 +709,6 @@ The ANW use case covers evening, night, and weekend care services. This implemen
         "extension" : [
           {
             "url" : "code",
-            "valueCode" : "apply-version"
-          },
-          {
-            "url" : "value",
-            "valueString" : "true"
-          }
-        ],
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
-      },
-      {
-        "extension" : [
-          {
-            "url" : "code",
             "valueCode" : "apply-wg"
           },
           {
@@ -767,7 +793,7 @@ The ANW use case covers evening, night, and weekend care services. This implemen
           }
         ],
         "reference" : {
-          "reference" : "CapabilityStatement/ANWBronhouderCapabilityStatement-v1"
+          "reference" : "CapabilityStatement/ANWBronhouderCapabilityStatement-v1.0.0"
         },
         "name" : "ANW Bronhouder Capability Statement v1.0.0",
         "description" : "Capability statement describing the basic requirements for ANW FHIR servers  (version 1.0.0, ANW-bronhouder)",
@@ -781,7 +807,7 @@ The ANW use case covers evening, night, and weekend care services. This implemen
           }
         ],
         "reference" : {
-          "reference" : "CapabilityStatement/ANWRegisseurCapabilityStatement-v1"
+          "reference" : "CapabilityStatement/ANWRegisseurCapabilityStatement-v1.0.0"
         },
         "name" : "ANW Regisseur Capability Statement v1.0.0",
         "description" : "Capability statement describing the basic requirements for ANW FHIR servers  (version 1.0.0, ANW-Regisseur)",
@@ -795,7 +821,7 @@ The ANW use case covers evening, night, and weekend care services. This implemen
           }
         ],
         "reference" : {
-          "reference" : "CapabilityStatement/ANWZorgverlenerCapabilityStatement-v1"
+          "reference" : "CapabilityStatement/ANWZorgverlenerCapabilityStatement-v1.0.0"
         },
         "name" : "ANW Zorgverlener Capability Statement v1.0.0",
         "description" : "Capability statement describing the basic requirements for ANW FHIR servers (version 1.0.0, ANW-Zorgverlener)",
@@ -811,7 +837,7 @@ The ANW use case covers evening, night, and weekend care services. This implemen
         "reference" : {
           "reference" : "OperationDefinition/ANW-zorg"
         },
-        "name" : "ANW-zorg",
+        "name" : "ANW-zorg-v1.0.0",
         "description" : "Custom named query on Practitioner or Patient, invoked with _query=ANW-zorg",
         "exampleBoolean" : false
       }

@@ -1,15 +1,15 @@
-# ANW-zorg - Netherlands - ANW implementation guide v0.1.0
+# ANW-zorg-v1.0.0 - Netherlands - ANW implementation guide v0.1.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
-* **ANW-zorg**
+* **ANW-zorg-v1.0.0**
 
-## OperationDefinition: ANW-zorg 
+## OperationDefinition: ANW-zorg-v1.0.0 
 
 | | |
 | :--- | :--- |
 | *Official URL*:http://nuts-foundation.github.io/nl-generic-anw-ig/OperationDefinition/ANW-zorg | *Version*:0.1.0 |
-| Active as of 2025-11-10 | *Computable Name*:ANW-zorg |
+| Active as of 2025-11-18 | *Computable Name*:ANW-zorg |
 
  
 Custom named query on Practitioner or Patient, invoked with _query=ANW-zorg 
@@ -34,7 +34,7 @@ URL: [base]/Patient?_query=ANW-zorg&...
   "name" : "ANW-zorg",
   "status" : "active",
   "kind" : "query",
-  "date" : "2025-11-10T10:45:36+00:00",
+  "date" : "2025-11-18T08:39:27+00:00",
   "publisher" : "Stichting Nuts",
   "contact" : [
     {

@@ -11,7 +11,7 @@
   <name value="NLAnwIG"/>
   <title value="Netherlands - ANW implementation guide"/>
   <status value="draft"/>
-  <date value="2025-11-10T10:45:36+00:00"/>
+  <date value="2025-11-18T08:39:27+00:00"/>
   <publisher value="Stichting Nuts"/>
   <contact>
     <name value="Stichting Nuts"/>
@@ -36,7 +36,7 @@
     </extension>
     <uri value="http://terminology.hl7.org/ImplementationGuide/hl7.terminology"/>
     <packageId value="hl7.terminology.r4"/>
-    <version value="6.5.0"/>
+    <version value="7.0.0"/>
   </dependsOn>
   <dependsOn id="hl7ext">
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/implementationguide-dependency-comment">
@@ -61,6 +61,22 @@
       </extension>
       <extension url="value">
         <valueString value="ci-build"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="apply-version"/>
+      </extension>
+      <extension url="value">
+        <valueString value="false"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="default-version"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
       </extension>
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
@@ -193,14 +209,6 @@
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
       <extension url="code">
-        <valueString value="apply-version"/>
-      </extension>
-      <extension url="value">
-        <valueString value="true"/>
-      </extension>
-    </extension>
-    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
-      <extension url="code">
         <valueString value="apply-wg"/>
       </extension>
       <extension url="value">
@@ -264,6 +272,22 @@
       </extension>
       <extension url="value">
         <valueString value="ci-build"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="apply-version"/>
+      </extension>
+      <extension url="value">
+        <valueString value="false"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="default-version"/>
+      </extension>
+      <extension url="value">
+        <valueString value="true"/>
       </extension>
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
@@ -396,14 +420,6 @@
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
       <extension url="code">
-        <valueCode value="apply-version"/>
-      </extension>
-      <extension url="value">
-        <valueString value="true"/>
-      </extension>
-    </extension>
-    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
-      <extension url="code">
         <valueCode value="apply-wg"/>
       </extension>
       <extension url="value">
@@ -455,7 +471,7 @@
         <valueString value="CapabilityStatement"/>
       </extension>
       <reference>
-        <reference value="CapabilityStatement/ANWBronhouderCapabilityStatement-v1"/>
+        <reference value="CapabilityStatement/ANWBronhouderCapabilityStatement-v1.0.0"/>
       </reference>
       <name value="ANW Bronhouder Capability Statement v1.0.0"/>
       <description value="Capability statement describing the basic requirements for ANW FHIR servers  (version 1.0.0, ANW-bronhouder)"/>
@@ -466,7 +482,7 @@
         <valueString value="CapabilityStatement"/>
       </extension>
       <reference>
-        <reference value="CapabilityStatement/ANWRegisseurCapabilityStatement-v1"/>
+        <reference value="CapabilityStatement/ANWRegisseurCapabilityStatement-v1.0.0"/>
       </reference>
       <name value="ANW Regisseur Capability Statement v1.0.0"/>
       <description value="Capability statement describing the basic requirements for ANW FHIR servers  (version 1.0.0, ANW-Regisseur)"/>
@@ -477,7 +493,7 @@
         <valueString value="CapabilityStatement"/>
       </extension>
       <reference>
-        <reference value="CapabilityStatement/ANWZorgverlenerCapabilityStatement-v1"/>
+        <reference value="CapabilityStatement/ANWZorgverlenerCapabilityStatement-v1.0.0"/>
       </reference>
       <name value="ANW Zorgverlener Capability Statement v1.0.0"/>
       <description value="Capability statement describing the basic requirements for ANW FHIR servers (version 1.0.0, ANW-Zorgverlener)"/>
@@ -490,7 +506,7 @@
       <reference>
         <reference value="OperationDefinition/ANW-zorg"/>
       </reference>
-      <name value="ANW-zorg"/>
+      <name value="ANW-zorg-v1.0.0"/>
       <description value="Custom named query on Practitioner or Patient, invoked with _query=ANW-zorg"/>
       <exampleBoolean value="false"/>
     </resource>

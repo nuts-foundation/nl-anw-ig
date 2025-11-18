@@ -22,7 +22,7 @@
   fhir:name [ fhir:v "NLAnwIG"] ; # 
   fhir:title [ fhir:v "Netherlands - ANW implementation guide"] ; # 
   fhir:status [ fhir:v "draft"] ; # 
-  fhir:date [ fhir:v "2025-11-10T10:45:36+00:00"^^xsd:dateTime] ; # 
+  fhir:date [ fhir:v "2025-11-18T08:39:27+00:00"^^xsd:dateTime] ; # 
   fhir:publisher [ fhir:v "Stichting Nuts"] ; # 
   fhir:contact ( [
      fhir:name [ fhir:v "Stichting Nuts" ] ;
@@ -61,7 +61,7 @@
        fhir:l <http://terminology.hl7.org/ImplementationGuide/hl7.terminology>
      ] ;
      fhir:packageId [ fhir:v "hl7.terminology.r4" ] ;
-     fhir:version [ fhir:v "6.5.0" ]
+     fhir:version [ fhir:v "7.0.0" ]
   ] [
      fhir:id [ fhir:v "hl7ext" ] ;
      fhir:extension ( [
@@ -124,6 +124,54 @@
          fhir:value [
            a fhir:String ;
            fhir:v "ci-build"
+         ]
+       ] ) ;
+       fhir:url [
+         fhir:v "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"^^xsd:anyURI ;
+         fhir:l <http://hl7.org/fhir/tools/StructureDefinition/ig-parameter>
+       ]
+     ] [
+       fhir:extension ( [
+         fhir:url [
+           fhir:v "code"^^xsd:anyURI ;
+           fhir:l fhir:code
+         ] ;
+         fhir:value [
+           a fhir:String ;
+           fhir:v "apply-version"
+         ]
+       ] [
+         fhir:url [
+           fhir:v "value"^^xsd:anyURI ;
+           fhir:l fhir:value
+         ] ;
+         fhir:value [
+           a fhir:String ;
+           fhir:v "false"
+         ]
+       ] ) ;
+       fhir:url [
+         fhir:v "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"^^xsd:anyURI ;
+         fhir:l <http://hl7.org/fhir/tools/StructureDefinition/ig-parameter>
+       ]
+     ] [
+       fhir:extension ( [
+         fhir:url [
+           fhir:v "code"^^xsd:anyURI ;
+           fhir:l fhir:code
+         ] ;
+         fhir:value [
+           a fhir:String ;
+           fhir:v "default-version"
+         ]
+       ] [
+         fhir:url [
+           fhir:v "value"^^xsd:anyURI ;
+           fhir:l fhir:value
+         ] ;
+         fhir:value [
+           a fhir:String ;
+           fhir:v "true"
          ]
        ] ) ;
        fhir:url [
@@ -499,30 +547,6 @@
          fhir:value [
            a fhir:String ;
            fhir:v "apply-publisher"
-         ]
-       ] [
-         fhir:url [
-           fhir:v "value"^^xsd:anyURI ;
-           fhir:l fhir:value
-         ] ;
-         fhir:value [
-           a fhir:String ;
-           fhir:v "true"
-         ]
-       ] ) ;
-       fhir:url [
-         fhir:v "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"^^xsd:anyURI ;
-         fhir:l <http://hl7.org/fhir/tools/StructureDefinition/ig-parameter>
-       ]
-     ] [
-       fhir:extension ( [
-         fhir:url [
-           fhir:v "code"^^xsd:anyURI ;
-           fhir:l fhir:code
-         ] ;
-         fhir:value [
-           a fhir:String ;
-           fhir:v "apply-version"
          ]
        ] [
          fhir:url [
@@ -747,6 +771,54 @@
          ] ;
          fhir:value [
            a fhir:Code ;
+           fhir:v "apply-version"
+         ]
+       ] [
+         fhir:url [
+           fhir:v "value"^^xsd:anyURI ;
+           fhir:l fhir:value
+         ] ;
+         fhir:value [
+           a fhir:String ;
+           fhir:v "false"
+         ]
+       ] ) ;
+       fhir:url [
+         fhir:v "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"^^xsd:anyURI ;
+         fhir:l <http://hl7.org/fhir/tools/StructureDefinition/ig-parameter>
+       ]
+     ] [
+       fhir:extension ( [
+         fhir:url [
+           fhir:v "code"^^xsd:anyURI ;
+           fhir:l fhir:code
+         ] ;
+         fhir:value [
+           a fhir:Code ;
+           fhir:v "default-version"
+         ]
+       ] [
+         fhir:url [
+           fhir:v "value"^^xsd:anyURI ;
+           fhir:l fhir:value
+         ] ;
+         fhir:value [
+           a fhir:String ;
+           fhir:v "true"
+         ]
+       ] ) ;
+       fhir:url [
+         fhir:v "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"^^xsd:anyURI ;
+         fhir:l <http://hl7.org/fhir/tools/StructureDefinition/ig-parameter>
+       ]
+     ] [
+       fhir:extension ( [
+         fhir:url [
+           fhir:v "code"^^xsd:anyURI ;
+           fhir:l fhir:code
+         ] ;
+         fhir:value [
+           a fhir:Code ;
            fhir:v "autoload-resources"
          ]
        ] [
@@ -1131,30 +1203,6 @@
          ] ;
          fhir:value [
            a fhir:Code ;
-           fhir:v "apply-version"
-         ]
-       ] [
-         fhir:url [
-           fhir:v "value"^^xsd:anyURI ;
-           fhir:l fhir:value
-         ] ;
-         fhir:value [
-           a fhir:String ;
-           fhir:v "true"
-         ]
-       ] ) ;
-       fhir:url [
-         fhir:v "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"^^xsd:anyURI ;
-         fhir:l <http://hl7.org/fhir/tools/StructureDefinition/ig-parameter>
-       ]
-     ] [
-       fhir:extension ( [
-         fhir:url [
-           fhir:v "code"^^xsd:anyURI ;
-           fhir:l fhir:code
-         ] ;
-         fhir:value [
-           a fhir:Code ;
            fhir:v "apply-wg"
          ]
        ] [
@@ -1304,8 +1352,8 @@
          ]
        ] ) ;
        fhir:reference [
-         fhir:l <http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWBronhouderCapabilityStatement-v1> ;
-         fhir:reference [ fhir:v "CapabilityStatement/ANWBronhouderCapabilityStatement-v1" ]
+         fhir:l <http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWBronhouderCapabilityStatement-v1.0.0> ;
+         fhir:reference [ fhir:v "CapabilityStatement/ANWBronhouderCapabilityStatement-v1.0.0" ]
        ] ;
        fhir:name [ fhir:v "ANW Bronhouder Capability Statement v1.0.0" ] ;
        fhir:description [ fhir:v "Capability statement describing the basic requirements for ANW FHIR servers  (version 1.0.0, ANW-bronhouder)" ] ;
@@ -1325,8 +1373,8 @@
          ]
        ] ) ;
        fhir:reference [
-         fhir:l <http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWRegisseurCapabilityStatement-v1> ;
-         fhir:reference [ fhir:v "CapabilityStatement/ANWRegisseurCapabilityStatement-v1" ]
+         fhir:l <http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWRegisseurCapabilityStatement-v1.0.0> ;
+         fhir:reference [ fhir:v "CapabilityStatement/ANWRegisseurCapabilityStatement-v1.0.0" ]
        ] ;
        fhir:name [ fhir:v "ANW Regisseur Capability Statement v1.0.0" ] ;
        fhir:description [ fhir:v "Capability statement describing the basic requirements for ANW FHIR servers  (version 1.0.0, ANW-Regisseur)" ] ;
@@ -1346,8 +1394,8 @@
          ]
        ] ) ;
        fhir:reference [
-         fhir:l <http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWZorgverlenerCapabilityStatement-v1> ;
-         fhir:reference [ fhir:v "CapabilityStatement/ANWZorgverlenerCapabilityStatement-v1" ]
+         fhir:l <http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWZorgverlenerCapabilityStatement-v1.0.0> ;
+         fhir:reference [ fhir:v "CapabilityStatement/ANWZorgverlenerCapabilityStatement-v1.0.0" ]
        ] ;
        fhir:name [ fhir:v "ANW Zorgverlener Capability Statement v1.0.0" ] ;
        fhir:description [ fhir:v "Capability statement describing the basic requirements for ANW FHIR servers (version 1.0.0, ANW-Zorgverlener)" ] ;
@@ -1370,7 +1418,7 @@
          fhir:l <http://nuts-foundation.github.io/nl-generic-anw-ig/OperationDefinition/ANW-zorg> ;
          fhir:reference [ fhir:v "OperationDefinition/ANW-zorg" ]
        ] ;
-       fhir:name [ fhir:v "ANW-zorg" ] ;
+       fhir:name [ fhir:v "ANW-zorg-v1.0.0" ] ;
        fhir:description [ fhir:v "Custom named query on Practitioner or Patient, invoked with _query=ANW-zorg" ] ;
        fhir:example [
          a fhir:Boolean ;

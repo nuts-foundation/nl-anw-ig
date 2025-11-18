@@ -10,9 +10,9 @@
 
 ### CapabilityStatements
 
-* [ANW Bronhouder Capability Statement v1.0.0](CapabilityStatement-ANWBronhouderCapabilityStatement-v1.md)
-* [ANW Regisseur Capability Statement v1.0.0](CapabilityStatement-ANWRegisseurCapabilityStatement-v1.md)
-* [ANW Zorgverlener Capability Statement v1.0.0](CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1.md)
+* [ANW Bronhouder Capability Statement v1.0.0](CapabilityStatement-ANWBronhouderCapabilityStatement-v1.0.0.md)
+* [ANW Regisseur Capability Statement v1.0.0](CapabilityStatement-ANWRegisseurCapabilityStatement-v1.0.0.md)
+* [ANW Zorgverlener Capability Statement v1.0.0](CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1.0.0.md)
 
 ### ImplementationGuides
 
