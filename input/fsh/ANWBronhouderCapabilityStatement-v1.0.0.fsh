@@ -1,4 +1,4 @@
-Instance: ANWBronhouderCapabilityStatement-v1
+Instance: ANWBronhouderCapabilityStatement-v1.0.0
 InstanceOf: CapabilityStatement
 Usage: #definition
 Title: "ANW Bronhouder Capability Statement v1.0.0"

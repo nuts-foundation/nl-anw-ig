@@ -1,4 +1,4 @@
-Instance: ANWRegisseurCapabilityStatement-v1
+Instance: ANWRegisseurCapabilityStatement-v1.0.0
 InstanceOf: CapabilityStatement
 Usage: #definition
 Title: "ANW Regisseur Capability Statement v1.0.0"
