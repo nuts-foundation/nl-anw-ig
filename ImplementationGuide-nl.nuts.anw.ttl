@@ -22,7 +22,7 @@
   fhir:name [ fhir:v "NLAnwIG"] ; # 
   fhir:title [ fhir:v "Netherlands - ANW implementation guide"] ; # 
   fhir:status [ fhir:v "draft"] ; # 
-  fhir:date [ fhir:v "2025-11-18T15:01:34+00:00"^^xsd:dateTime] ; # 
+  fhir:date [ fhir:v "2025-12-04T12:52:11+00:00"^^xsd:dateTime] ; # 
   fhir:publisher [ fhir:v "Stichting Nuts"] ; # 
   fhir:contact ( [
      fhir:name [ fhir:v "Stichting Nuts" ] ;
@@ -1481,6 +1481,25 @@
            fhir:l fhir:technical-documentation-v1.html
          ] ;
          fhir:title [ fhir:v "Technical Documentation v 1" ] ;
+         fhir:generation [ fhir:v "markdown" ]
+       ] [
+         fhir:extension ( [
+           fhir:url [
+             fhir:v "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name"^^xsd:anyURI ;
+             fhir:l <http://hl7.org/fhir/tools/StructureDefinition/ig-page-name>
+           ] ;
+           fhir:value [
+             a fhir:Url ;
+             fhir:v "technical-implementation-time-registration.html"^^xsd:anyURI ;
+             fhir:l fhir:technical-implementation-time-registration.html
+           ]
+         ] ) ;
+         fhir:name [
+           a fhir:Url ;
+           fhir:v "technical-implementation-time-registration.html"^^xsd:anyURI ;
+           fhir:l fhir:technical-implementation-time-registration.html
+         ] ;
+         fhir:title [ fhir:v "Technical Implementation Time Registration" ] ;
          fhir:generation [ fhir:v "markdown" ]
        ] )
      ] ;

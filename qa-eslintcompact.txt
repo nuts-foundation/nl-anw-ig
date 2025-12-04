@@ -44,4 +44,4 @@ Generic: line 0, col 0, Warning - The HTML fragment 'globals-table.xhtml' is not
 /github/workspace/fsh-generated/resources/OperationDefinition-ANW-zorg.json: line 1, col 1217, Warning - Constraint failed: opd-0: 'Name should be usable as an identifier for the module by machine processing applications such as code generation (name.matches('[A-Z]([A-Za-z0-9_]){0,254}'))' (INVARIANT)
 
 err = 17, warn = 21, info = 0
-IG Publisher Version: 2.0.26
+IG Publisher Version: 2.0.27
