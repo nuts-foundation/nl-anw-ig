@@ -33,12 +33,10 @@ Voorbeeld FHIR resource:
     "profile": [
       "http://example.org/fhir/StructureDefinition/chargeitem-anw"
     ]
-  }
+  },
   "status": "billable",
-  "code": "ANW Zorg", // Moet matchen met de ingestelde uursoorten
   "quantity": {
     "value": 90,
-    "unit": "min", // Altijd de tijd in minuten
     "system": "http://unitsofmeasure.org",
     "code": "min"
   },
@@ -71,7 +69,6 @@ Voorbeeld FHIR resource:
     "reference": "Organization/Organization.123",
     "display": "Organisatie A"
   },
-  "enteredDate": "2025-01-16T09:30:00+01:00" // Optioneel
 }
 ```
 
@@ -107,11 +104,49 @@ De ZIB-profielen voorzien niet in kernconcepten zoals:
 * de registratiedatum versus het daadwerkelijke zorgmoment;
 * de administratieve en financiële verwerking van deze tijd.
 
-Om die reden zouden zowel Procedure als Encounter moeten worden uitgebreid met meerdere extensies en afwijkende interpretaties, wat leidt tot inconsistente implementaties, verwarring tussen leveranciers en een verhoogd risico op foutieve declaratiegegevens.
+Om die reden zouden zowel Procedure als Encounter moeten worden uitgebreid met meerdere extensies en afwijkende interpretaties, wat leidt tot inconsistenties, verwarring tussen leveranciers en een verhoogd risico op foutieve declaratiegegevens.
 
 ChargeItem daarentegen is specifiek ontworpen voor het beschrijven van leveringen, prestaties en declarabele zorgactiviteiten. Het biedt standaard ondersteuning voor hoeveelheid, type prestatie (uursoort), uitvoerende partij, verantwoordelijke medewerker, patiëntcontext en administratieve metadata. Hierdoor sluit ChargeItem direct en semantisch juist aan op het ANW-tijdregistratieproces zonder dat er constructies of extensies nodig zijn die buiten de bedoeling van het model vallen.
 
 Kortom: ChargeItem is niet alleen de best passende resource, maar ook de enige die de ANW-tijdregistratie op een gestandaardiseerde, uitwisselbare en declaratie-kloppende manier kan representeren. Hierdoor wordt een uniforme, toekomstbestendige implementatie mogelijk voor alle betrokken regio’s en leveranciers.
+
+## Afweging alternatieve resources
+
+Bij het bepalen van de juiste resource zijn ook andere FHIR-resources onderzocht:
+
+### Encounter (FMM5–6)
+- **Voordelen:** zeer volwassen, ondersteunt zorgcontact en organisatie.
+- **Nadelen:** niet bedoeld voor declarabele tijd; minuten, uursoorten en declaratiecontext ontbreken.
+
+### Procedure (FMM5)
+- **Voordelen:** stabiel en breed gebruikt voor zorgactiviteiten.
+- **Nadelen:** semantisch medisch; geen concept voor minuten of declaratie.
+
+### Observation (FMM6)
+- **Voordelen:** extreem flexibel.
+- **Nadelen:** bedoeld voor metingen; vervuilt het klinisch dossier met administratieve data.
+
+### Claim / Coverage / PaymentNotice / EligibilityRequest (Financial resources)
+
+Deze resources zijn onderzocht vanuit het perspectief van declaratie en financiering:
+
+#### Claim
+- **Voordelen:** ontworpen voor formele declaraties richting een verzekeraar of andere externe “payer”.
+- **Nadelen:** gaat uit van verzekerde zorg (Coverage), verzekeringsproducten en vaak landelijke declaratiestandaarden; past niet bij de interne ANW-tijdregistratie en onderlinge verrekening tussen organisaties binnen een regio. Te zwaar en te specifiek voor verzekeringsstromen.
+
+#### Coverage
+- **Voordelen:** geschikt om verzekeringsdekking te modelleren (verzekeraar, polis, dekkingsvorm).
+- **Nadelen:** ANW-tijdregistratie in deze context is niet direct gekoppeld aan verzekeringsgegevens. Coverage voegt niets toe aan het bronmodel voor minutenregistratie en maakt de oplossing complexer zonder functionele meerwaarde.
+
+### Conclusie
+Hoewel deze resources technisch toepasbaar zouden kunnen worden gemaakt, sluiten ze semantisch niet aan op ANW-tijdregistratie. ChargeItem is de enige resource die natively ondersteunt:
+- prestatie + tijdseenheid,
+- uursoorten,
+- uitvoerende en declarerende organisatie,
+- medewerker + patiënt context.
+
+Ondanks de lagere maturity in STU3 sluit ChargeItem inhoudelijk het beste aan. Met de maturity-stijging naar FMM1 in 
+FHIR R5 lijkt de gekozen richting bovendien toekomstvast.
 
 ## Uursoorten
 
