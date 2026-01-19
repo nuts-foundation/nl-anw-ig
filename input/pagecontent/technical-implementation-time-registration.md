@@ -1,10 +1,8 @@
-# Technisch voorstel tijdregistratie
+# Tijdregistratie (voorstel)
 
 Datum 19 januari 2026
 
-# FHIR resources
-
-## Tijdregistratie
+## FHIR resources
 
 Om tijdregistraties op een uniforme manier te kunnen versturen, maken we gebruik van FHIR STU3 en het [ChargeItem-resource](https://simplifier.net/packages/simplifier.core.stu3.resources/3.0.3/files/8278) .
 
@@ -79,7 +77,7 @@ Aangepast ChargeItem profiel waarbij bestaande velden verplicht zijn gemaakt.
 Profile: NLTimeChargeItem
 Parent: ChargeItem
 Id: nl-time-charge-item
-Title: "NL Tijdregistratie (generiek)"
+Title: "NL Tijdregistratie"
 Description: "Generiek NL-profiel voor declarabele tijdregistraties op basis van ChargeItem."
 
 // Verplichte elementen
@@ -88,13 +86,13 @@ Description: "Generiek NL-profiel voor declarabele tijdregistraties op basis van
 * performingOrganization 1..1
 * requestingOrganization 1..1
 
-* quantity ^short = "Aantal minuten ANW."
+* quantity ^short = "Aantal geleverde minuten."
 * occurence ^short = "De eind datum en tijd van werkzaamheden
 * performingOrganization ^short = "Uitvoerende organisatie."
 * requestingOrganization ^short = "Aanvragende organisatie."
 ```
 
-Bij de keuze voor een passende FHIR-resource voor ANW-tijdregistraties is gekeken naar bestaande ZIB-profielen zoals [zib-Procedure](https://simplifier.net/nictizstu3-zib2017/zib-procedure) en [zib-Encounter](https://simplifier.net/nictizstu3-zib2017/zib-encounter) . Hoewel deze profielen uitstekend geschikt zijn voor hun oorspronkelijke doel — namelijk het vastleggen van medische handelingen (Procedure) of contactmomenten tussen cliënt en zorgverlener (Encounter) — sluiten ze onvoldoende aan bij de functionele eisen van ANW-tijdregistratie.
+Bij de keuze voor een passende FHIR-resource voor tijdregistraties is gekeken naar bestaande ZIB-profielen zoals [zib-Procedure](https://simplifier.net/nictizstu3-zib2017/zib-procedure) en [zib-Encounter](https://simplifier.net/nictizstu3-zib2017/zib-encounter) . Hoewel deze profielen uitstekend geschikt zijn voor hun oorspronkelijke doel, namelijk het vastleggen van medische handelingen (Procedure) of contactmomenten tussen cliënt en zorgverlener (Encounter), sluiten ze onvoldoende aan bij de functionele eisen van een tijdregistratie.
 
 In de ANW-context draait het niet om het registreren van een medisch proces of een zorgcontact op zich, maar om het vastleggen van declarabele tijdseenheden, inclusief uursoort, aantal minuten, betrokken organisaties, verantwoordelijke medewerker en de administratieve/declaratieve context. Daarmee is het primaire doel geen verslaglegging van zorginhoud, maar het uitwisselen van factureerbare prestaties tussen systemen van verschillende leveranciers.
 
@@ -108,9 +106,9 @@ De ZIB-profielen voorzien niet in kernconcepten zoals:
 
 Om die reden zouden zowel Procedure als Encounter moeten worden uitgebreid met meerdere extensies en afwijkende interpretaties, wat leidt tot inconsistenties, verwarring tussen leveranciers en een verhoogd risico op foutieve declaratiegegevens.
 
-ChargeItem daarentegen is specifiek ontworpen voor het beschrijven van leveringen, prestaties en declarabele zorgactiviteiten. Het biedt standaard ondersteuning voor hoeveelheid, type prestatie (uursoort), uitvoerende partij, verantwoordelijke medewerker, patiëntcontext en administratieve metadata. Hierdoor sluit ChargeItem direct en semantisch juist aan op het ANW-tijdregistratieproces zonder dat er constructies of extensies nodig zijn die buiten de bedoeling van het model vallen.
+ChargeItem daarentegen is specifiek ontworpen voor het beschrijven van leveringen, prestaties en declarabele zorgactiviteiten. Het biedt standaard ondersteuning voor hoeveelheid, type prestatie (uursoort), uitvoerende partij, verantwoordelijke medewerker, patiëntcontext en administratieve metadata. Hierdoor sluit ChargeItem direct en semantisch juist aan op het tijdregistratieproces zonder dat er constructies of extensies nodig zijn die buiten de bedoeling van het model vallen.
 
-Kortom: ChargeItem is niet alleen de best passende resource, maar ook de enige die de ANW-tijdregistratie op een gestandaardiseerde, uitwisselbare en declaratie-kloppende manier kan representeren. Hierdoor wordt een uniforme, toekomstbestendige implementatie mogelijk voor alle betrokken regio’s en leveranciers.
+Kortom: ChargeItem is niet alleen de best passende resource, maar ook de enige die de tijdregistratie op een gestandaardiseerde, uitwisselbare en declaratie-kloppende manier kan representeren. Hierdoor wordt een uniforme, toekomstbestendige implementatie mogelijk voor alle betrokken regio’s en leveranciers.
 
 ### Afweging alternatieve resources
 
@@ -147,7 +145,7 @@ Deze resources zijn onderzocht vanuit het perspectief van declaratie en financie
 
 ### Conclusie
 
-Hoewel deze resources technisch toepasbaar zouden kunnen worden gemaakt, sluiten ze semantisch niet aan op ANW-tijdregistratie. ChargeItem is de enige resource die natively ondersteunt:
+Hoewel deze resources technisch toepasbaar zouden kunnen worden gemaakt, sluiten ze semantisch niet aan op tijdregistratie. ChargeItem is de enige resource die natively ondersteunt:
 
 * prestatie + tijdseenheid,
 * uursoorten,
