@@ -7,7 +7,7 @@
 
 # Tijdregistratie (voorstel)
 
-Datum 19 januari 2026
+Datum 20 januari 2026
 
 ## FHIR resources
 
@@ -181,27 +181,51 @@ Ondanks de lagere maturity in STU3 sluit ChargeItem inhoudelijk het beste aan. M
 
 ## Uursoorten
 
-De uursoorten die binnen een regio gebruikt worden, worden regionaal vastgesteld. Zo kan bijvoorbeeld de regio Achterhoek eigen uursoorten hanteren, zoals NORMAL en EXTRA. Deze uursoorten moeten zowel bij de bronorganisatie als bij de uitvoerende zorgorganisatie correct worden geconfigureerd, zodat beide partijen dezelfde set uursoorten gebruiken.
+De uursoorten die binnen een regio gebruikt worden, worden regionaal vastgesteld. Een regio kan daarbij eigen uursoorten definiëren, zoals bijvoorbeeld NORMAL, EXTRA en CONSULT. Deze afspraken gelden voor zowel bronorganisaties als uitvoerende zorgorganisaties en vormen de basis voor tijdregistratie en declaratie.
 
-Een juiste en eenduidige configuratie is essentieel: wanneer uursoorten onvolledig of onjuist zijn ingesteld, kan de tijdregistratie niet gevalideerd worden en is facturatie op basis van deze gegevens niet mogelijk.
+Om correcte validatie en facturatie mogelijk te maken, is het essentieel dat beide partijen dezelfde set uursoorten hanteren. Wanneer uursoorten ontbreken of onjuist zijn geconfigureerd, kan de tijdregistratie niet gevalideerd worden en is facturatie op basis van deze gegevens niet mogelijk.
 
-De uursoorten die binnen een regio gebruikt worden, worden regionaal vastgesteld. Zo kan bijvoorbeeld de regio Achterhoek eigen uursoorten hanteren, zoals NORMAL, EXTRA en CONSULT. Deze uursoorten moeten zowel bij de bronorganisatie als bij de uitvoerende zorgorganisatie correct worden geconfigureerd, zodat beide partijen dezelfde set uursoorten gebruiken. Een juiste en eenduidige configuratie is essentieel: wanneer uursoorten onjuist zijn ingesteld, kan de tijdregistratie niet gevalideerd worden en is facturatie op basis van deze gegevens niet mogelijk.
+#### Regionale afspraken versus systeemimplementaties
 
-Omdat de uursoorten per regio gezamenlijk worden vastgesteld, maar individuele systemen niet altijd alle afgesproken uursoorten hebben geïmplementeerd, is het noodzakelijk om bij het bronsysteem op te vragen welke subset van deze uursoorten daadwerkelijk beschikbaar is. Een systeem kan bijvoorbeeld regionaal afgesproken uursoorten NORMAL, EXTRA en CONSULT ondersteunen, maar slechts NORMAL en CONSULT geïmplementeerd hebben.
+Hoewel uursoorten regionaal gezamenlijk worden afgesproken, hebben individuele systemen niet altijd alle afgesproken uursoorten geïmplementeerd. Een bronsysteem kan bijvoorbeeld regionaal afgesproken uursoorten NORMAL, EXTRA en CONSULT ondersteunen, maar in de praktijk slechts NORMAL en EXTRA hebben geconfigureerd.
 
-Om dit eenduidig en FHIR-conform uit te wisselen, maken we gebruik van een ValueSet die door het bronsysteem wordt gepubliceerd. Deze ValueSet bevat precies de uursoorten die in het betreffende systeem aanwezig en geconfigureerd zijn. Door deze ValueSet via FHIR op te vragen, kan het ontvangende systeem vaststellen welke afgesproken uursoorten ondersteund worden en welke ontbreken.
+Om dit verschil tussen regionale afspraak en feitelijke systeemondersteuning eenduidig uit te wisselen, is het noodzakelijk om bij het bronsysteem op te kunnen vragen welke subset van uursoorten daadwerkelijk beschikbaar is.
 
-In deze aanpak wordt bewust gekozen voor een lichtgewicht variant van het FHIR-terminologiemodel, waarbij:
+#### Gebruik van FHIR ValueSet
 
-* geen CodeSystem-resources worden gepubliceerd of beheerd;
-* één uniforme system-URI wordt gebruikt voor alle ANW-uursoorten;
-* elk bronsysteem een eigen ValueSet aanbiedt met de door dat systeem ondersteunde subset van uursoorten.
+Voor deze uitwisseling wordt gebruikgemaakt van een FHIR ValueSet die door het bronsysteem wordt gepubliceerd. Deze ValueSet bevat **exact de uursoorten die in het betreffende systeem aanwezig en geconfigureerd zijn**.
 
-Deze werkwijze maakt het mogelijk om nauwkeurig, dynamisch en zonder extra beheer te bepalen welke uursoorten bij het bronsysteem aanwezig zijn, en zorgt ervoor dat het zorgproces en de declaratieketen uitsluitend gebruikmaken van gevalideerde en overeengekomen uursoorten.
+Door deze ValueSet via FHIR op te vragen, kan het ontvangende systeem vaststellen:
 
-### Ophalen van de uursoorten ValueSet
+* welke regionaal afgesproken uursoorten ondersteund worden;
+* welke uursoorten ontbreken;
+* welke uursoorten valide gebruikt mogen worden in tijdregistratie en declaratie.
 
-Voor het ophalen van de uursoorten die het bronsysteem daadwerkelijk ondersteunt, wordt gebruikgemaakt van de FHIR-terminologie-operatie `$expand`. Hiermee kan een systeem dynamisch de lijst met uursoorten opvragen die het bronsysteem beschikbaar heeft.
+#### Lichtgewicht terminologiemodel
+
+In deze aanpak is bewust gekozen voor een lichtgewicht toepassing van het FHIR-terminologiemodel:
+
+* er worden **geen CodeSystem-resources gepubliceerd of beheerd**;
+* er wordt **één uniforme system-URI** gebruikt voor alle ANW-uursoorten;
+* elk bronsysteem publiceert **een eigen ValueSet** met daarin de door dat systeem ondersteunde subset van uursoorten binnen de regio afspraken.
+
+Deze werkwijze maakt het mogelijk om zonder extra beheer of centrale synchronisatie nauwkeurig te bepalen welke uursoorten binnen een regio bij een bronsysteem beschikbaar zijn.
+
+## Ophalen van de uursoorten ValueSet
+
+Voor het ophalen van de uursoorten die het bronsysteem daadwerkelijk ondersteunt, wordt gebruikgemaakt van de FHIR-terminologie-operatie **`$expand`**. Met deze operatie kan een systeem dynamisch de volledige lijst met beschikbare uursoorten opvragen.
+
+### Waarom $expand
+
+Een FHIR ValueSet beschrijft welke codes geldig zijn, maar bevat in zijn definitie niet altijd een expliciete opsomming van deze codes. De [$expand](https://fhir.hl7.org/fhir/valueset-operation-expand.html) operatie zorgt ervoor dat het ValueSet wordt uitgewerkt tot een concrete lijst van codes, gebaseerd op de interne configuratie van het bronsysteem.
+
+Het ontvangende systeem hoeft hierdoor:
+
+* geen aannames te doen over beschikbare uursoorten;
+* geen filters of interne configuraties te interpreteren;
+* geen aanvullende terminologiebronnen te beheren.
+
+De response is direct bruikbaar voor validatie, gebruikersinterfaces en declaratieprocessen.
 
 **Request**
 
@@ -218,7 +242,11 @@ curl -X GET \
 
 ```
 
-**Response**
+De url parameter verwijst naar de canonieke identificatie van het ValueSet en geeft functioneel aan:
+
+> “Geef de volledige lijst met uursoorten terug die horen bij dit ValueSet, zoals deze in dit bronsysteem beschikbaar zijn.
+
+**Response** De response bevat een FHIR ValueSet resource met daarin een expansion. Dit element bevat de expliciete lijst van uursoorten die door het bronsysteem worden ondersteund.
 
 ```
 {
@@ -241,6 +269,8 @@ curl -X GET \
 }
 
 ```
+
+In dit voorbeeld ondersteunt het bronsysteem uitsluitend de uursoorten NORMAL en EXTRA, terwijl regionaal mogelijk meer uursoorten zijn afgesproken. Het ontvangende systeem kan deze informatie gebruiken om alleen valide en ondersteunde uursoorten toe te passen.
 
 #### Context afhankelijke uursoorten (toekomst)
 

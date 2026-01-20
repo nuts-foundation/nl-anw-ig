@@ -27,7 +27,7 @@ Custom named query on Practitioner or Patient, invoked with _query=ANW-zorg
   "name" : "ANW-zorg",
   "status" : "active",
   "kind" : "query",
-  "date" : "2026-01-20T10:02:20+00:00",
+  "date" : "2026-01-20T11:44:25+00:00",
   "publisher" : "Stichting Nuts",
   "contact" : [
     {

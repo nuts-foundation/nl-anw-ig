@@ -158,8 +158,9 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
           <li><a href="#conclusie" id="markdown-toc-conclusie">Conclusie</a></li>
         </ul>
       </li>
-      <li><a href="#uursoorten" id="markdown-toc-uursoorten">Uursoorten</a>        <ul>
-          <li><a href="#ophalen-van-de-uursoorten-valueset" id="markdown-toc-ophalen-van-de-uursoorten-valueset">Ophalen van de uursoorten ValueSet</a></li>
+      <li><a href="#uursoorten" id="markdown-toc-uursoorten">Uursoorten</a></li>
+      <li><a href="#ophalen-van-de-uursoorten-valueset" id="markdown-toc-ophalen-van-de-uursoorten-valueset">Ophalen van de uursoorten ValueSet</a>        <ul>
+          <li><a href="#waarom-expand" id="markdown-toc-waarom-expand">Waarom $expand</a></li>
         </ul>
       </li>
     </ul>
@@ -169,7 +170,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 </div>
 <h1 id="tijdregistratie-voorstel">Tijdregistratie (voorstel)</h1>
 
-<p>Datum 19 januari 2026</p>
+<p>Datum 20 januari 2026</p>
 
 <h2 id="fhir-resources">FHIR resources</h2>
 
@@ -385,29 +386,55 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <h2 id="uursoorten">Uursoorten</h2>
 
-<p>De uursoorten die binnen een regio gebruikt worden, worden regionaal vastgesteld. Zo kan bijvoorbeeld de regio Achterhoek eigen uursoorten hanteren, zoals NORMAL en EXTRA. Deze uursoorten moeten zowel bij de bronorganisatie als bij de uitvoerende zorgorganisatie correct worden geconfigureerd, zodat beide partijen dezelfde set uursoorten gebruiken.</p>
+<p>De uursoorten die binnen een regio gebruikt worden, worden regionaal vastgesteld. Een regio kan daarbij eigen uursoorten definiëren, zoals bijvoorbeeld NORMAL, EXTRA en CONSULT. Deze afspraken gelden voor zowel bronorganisaties als uitvoerende zorgorganisaties en vormen de basis voor tijdregistratie en declaratie.</p>
 
-<p>Een juiste en eenduidige configuratie is essentieel: wanneer uursoorten onvolledig of onjuist zijn ingesteld, kan de tijdregistratie niet gevalideerd worden en is facturatie op basis van deze gegevens niet mogelijk.</p>
+<p>Om correcte validatie en facturatie mogelijk te maken, is het essentieel dat beide partijen dezelfde set uursoorten hanteren. Wanneer uursoorten ontbreken of onjuist zijn geconfigureerd, kan de tijdregistratie niet gevalideerd worden en is facturatie op basis van deze gegevens niet mogelijk.</p>
 
-<p>De uursoorten die binnen een regio gebruikt worden, worden regionaal vastgesteld. Zo kan bijvoorbeeld de regio Achterhoek eigen uursoorten hanteren, zoals NORMAL, EXTRA en CONSULT. Deze uursoorten moeten zowel bij de bronorganisatie als bij de uitvoerende zorgorganisatie correct worden geconfigureerd, zodat beide partijen dezelfde set uursoorten gebruiken. Een juiste en eenduidige configuratie is essentieel: wanneer uursoorten onjuist zijn ingesteld, kan de tijdregistratie niet gevalideerd worden en is facturatie op basis van deze gegevens niet mogelijk.</p>
+<h4 id="regionale-afspraken-versus-systeemimplementaties">Regionale afspraken versus systeemimplementaties</h4>
 
-<p>Omdat de uursoorten per regio gezamenlijk worden vastgesteld, maar individuele systemen niet altijd alle afgesproken uursoorten hebben geïmplementeerd, is het noodzakelijk om bij het bronsysteem op te vragen welke subset van deze uursoorten daadwerkelijk beschikbaar is. Een systeem kan bijvoorbeeld regionaal afgesproken uursoorten NORMAL, EXTRA en CONSULT ondersteunen, maar slechts NORMAL en CONSULT geïmplementeerd hebben.</p>
+<p>Hoewel uursoorten regionaal gezamenlijk worden afgesproken, hebben individuele systemen niet altijd alle afgesproken uursoorten geïmplementeerd. Een bronsysteem kan bijvoorbeeld regionaal afgesproken uursoorten NORMAL, EXTRA en CONSULT ondersteunen, maar in de praktijk slechts NORMAL en EXTRA hebben geconfigureerd.</p>
 
-<p>Om dit eenduidig en FHIR-conform uit te wisselen, maken we gebruik van een ValueSet die door het bronsysteem wordt gepubliceerd. Deze ValueSet bevat precies de uursoorten die in het betreffende systeem aanwezig en geconfigureerd zijn. Door deze ValueSet via FHIR op te vragen, kan het ontvangende systeem vaststellen welke afgesproken uursoorten ondersteund worden en welke ontbreken.</p>
+<p>Om dit verschil tussen regionale afspraak en feitelijke systeemondersteuning eenduidig uit te wisselen, is het noodzakelijk om bij het bronsysteem op te kunnen vragen welke subset van uursoorten daadwerkelijk beschikbaar is.</p>
 
-<p>In deze aanpak wordt bewust gekozen voor een lichtgewicht variant van het FHIR-terminologiemodel, waarbij:</p>
+<h4 id="gebruik-van-fhir-valueset">Gebruik van FHIR ValueSet</h4>
 
+<p>Voor deze uitwisseling wordt gebruikgemaakt van een FHIR ValueSet die door het bronsysteem wordt gepubliceerd. Deze ValueSet bevat <strong>exact de uursoorten die in het betreffende systeem aanwezig en geconfigureerd zijn</strong>.</p>
+
+<p>Door deze ValueSet via FHIR op te vragen, kan het ontvangende systeem vaststellen:</p>
 <ul>
-  <li>geen CodeSystem-resources worden gepubliceerd of beheerd;</li>
-  <li>één uniforme system-URI wordt gebruikt voor alle ANW-uursoorten;</li>
-  <li>elk bronsysteem een eigen ValueSet aanbiedt met de door dat systeem ondersteunde subset van uursoorten.</li>
+  <li>welke regionaal afgesproken uursoorten ondersteund worden;</li>
+  <li>welke uursoorten ontbreken;</li>
+  <li>welke uursoorten valide gebruikt mogen worden in tijdregistratie en declaratie.</li>
 </ul>
 
-<p>Deze werkwijze maakt het mogelijk om nauwkeurig, dynamisch en zonder extra beheer te bepalen welke uursoorten bij het bronsysteem aanwezig zijn, en zorgt ervoor dat het zorgproces en de declaratieketen uitsluitend gebruikmaken van gevalideerde en overeengekomen uursoorten.</p>
+<h4 id="lichtgewicht-terminologiemodel">Lichtgewicht terminologiemodel</h4>
 
-<h3 id="ophalen-van-de-uursoorten-valueset">Ophalen van de uursoorten ValueSet</h3>
+<p>In deze aanpak is bewust gekozen voor een lichtgewicht toepassing van het FHIR-terminologiemodel:</p>
 
-<p>Voor het ophalen van de uursoorten die het bronsysteem daadwerkelijk ondersteunt, wordt gebruikgemaakt van de FHIR-terminologie-operatie <code class="language-plaintext highlighter-rouge">$expand</code>. Hiermee kan een systeem dynamisch de lijst met uursoorten opvragen die het bronsysteem beschikbaar heeft.</p>
+<ul>
+  <li>er worden <strong>geen CodeSystem-resources gepubliceerd of beheerd</strong>;</li>
+  <li>er wordt <strong>één uniforme system-URI</strong> gebruikt voor alle ANW-uursoorten;</li>
+  <li>elk bronsysteem publiceert <strong>een eigen ValueSet</strong> met daarin de door dat systeem ondersteunde subset van uursoorten binnen de regio afspraken.</li>
+</ul>
+
+<p>Deze werkwijze maakt het mogelijk om zonder extra beheer of centrale synchronisatie nauwkeurig te bepalen welke uursoorten binnen een regio bij een bronsysteem beschikbaar zijn.</p>
+
+<h2 id="ophalen-van-de-uursoorten-valueset">Ophalen van de uursoorten ValueSet</h2>
+
+<p>Voor het ophalen van de uursoorten die het bronsysteem daadwerkelijk ondersteunt, wordt gebruikgemaakt van de FHIR-terminologie-operatie <strong><code class="language-plaintext highlighter-rouge">$expand</code></strong>. Met deze operatie kan een systeem dynamisch de volledige lijst met beschikbare uursoorten opvragen.</p>
+
+<h3 id="waarom-expand">Waarom $expand</h3>
+
+<p>Een FHIR ValueSet beschrijft welke codes geldig zijn, maar bevat in zijn definitie niet altijd een expliciete opsomming van deze codes. De <a href="https://fhir.hl7.org/fhir/valueset-operation-expand.html">$expand</a> operatie zorgt ervoor dat het ValueSet wordt uitgewerkt tot een concrete lijst van codes, gebaseerd op de interne configuratie van het bronsysteem.</p>
+
+<p>Het ontvangende systeem hoeft hierdoor:</p>
+<ul>
+  <li>geen aannames te doen over beschikbare uursoorten;</li>
+  <li>geen filters of interne configuraties te interpreteren;</li>
+  <li>geen aanvullende terminologiebronnen te beheren.</li>
+</ul>
+
+<p>De response is direct bruikbaar voor validatie, gebruikersinterfaces en declaratieprocessen.</p>
 
 <p><strong>Request</strong></p>
 
@@ -420,7 +447,14 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <span class="nt">-H</span> <span class="s2">"Accept: application/fhir+json"</span>
 </code></pre></div></div>
 
-<p><strong>Response</strong></p>
+<p>De url parameter verwijst naar de canonieke identificatie van het ValueSet en geeft functioneel aan:</p>
+
+<blockquote>
+  <p>“Geef de volledige lijst met uursoorten terug die horen bij dit ValueSet, zoals deze in dit bronsysteem beschikbaar zijn.</p>
+</blockquote>
+
+<p><strong>Response</strong> 
+De response bevat een FHIR ValueSet resource met daarin een expansion. Dit element bevat de expliciete lijst van uursoorten die door het bronsysteem worden ondersteund.</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ValueSet"</span><span class="p">,</span><span class="w">
@@ -441,6 +475,8 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
+
+<p>In dit voorbeeld ondersteunt het bronsysteem uitsluitend de uursoorten NORMAL en EXTRA, terwijl regionaal mogelijk meer uursoorten zijn afgesproken. Het ontvangende systeem kan deze informatie gebruiken om alleen valide en ondersteunde uursoorten toe te passen.</p>
 
 <h4 id="context-afhankelijke-uursoorten-toekomst">Context afhankelijke uursoorten (toekomst)</h4>
 
@@ -486,7 +522,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.nuts.nl">Stichting Nuts</a>.  Package nl.nuts.anw#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Jan 20, 2026 10:02+0000">2026-01-20</span>
+          IG &#169; 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.nuts.nl">Stichting Nuts</a>.  Package nl.nuts.anw#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Jan 20, 2026 11:44+0000">2026-01-20</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
