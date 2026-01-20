@@ -4,7 +4,7 @@ Datum 19 januari 2026
 
 ## FHIR resources
 
-Om tijdregistraties op een uniforme manier te kunnen versturen, maken we gebruik van FHIR STU3 en het [ChargeItem-resource](https://simplifier.net/packages/simplifier.core.stu3.resources/3.0.3/files/8278) .
+Om tijdregistraties op een uniforme manier te kunnen versturen, maken we gebruik van FHIR STU3 en het [ChargeItem-resource](https://simplifier.net/hl7.fhir.r3/chargeitem) .
 
 De ChargeItem-resource beschrijft welke zorg een zorgverlener aan een patiënt heeft geleverd. Het gaat dus niet alleen om wat er geleverd is, maar ook om belangrijke details zoals hoeveelheid en welke organisaties of personen erbij betrokken waren. ChargeItem wordt vooral gebruikt om het declaratieproces soepel te laten verlopen.
 
@@ -39,6 +39,16 @@ Voorbeeld FHIR resource:
     "system": "http://unitsofmeasure.org",
     "code": "min"
   },
+  "code": {
+    "coding": [
+      {
+        "system": "https://nuts.nl/fhir/CodeSystem/anw-uursoort",
+        "code": "NORMAL",
+        "display": "Normaal"
+      }
+    ],
+    "text": "Normaal ANW-tarief"
+  },
   "subject": {
     "reference": "Patient/Client.123",
     "display": "J.A.C. Jansen"
@@ -61,12 +71,18 @@ Voorbeeld FHIR resource:
     }
   ],
   "performingOrganization": {
-    "reference": "Organization/Organization.789",
-    "display": "Organisatie B"
+    "identifier": {
+      "system": "http://nuts.nl",
+      "value": "{DID performing organization}"
+    },
+    "display": "Organisatie A"
   },
   "requestingOrganization": {
-    "reference": "Organization/Organization.123",
-    "display": "Organisatie A"
+    "identifier": {
+        "system": "http://nuts.nl",
+        "value": "{DID requesting organization}"
+    },
+    "display": "Organisatie B"
   }
 }
 ```
@@ -201,11 +217,13 @@ curl -X GET \
     "contains": [
       {
         "system": "https://nuts.nl/fhir/CodeSystem/anw-uursoort",
-        "code": "NORMAL"
+        "code": "NORMAL",
+        "display": "Normaal"
       },
       {
         "system": "https://nuts.nl/fhir/CodeSystem/anw-uursoort",
-        "code": "EXTRA"
+        "code": "EXTRA",
+        "display": "Extra"
       }
     ]
   }
