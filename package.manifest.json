@@ -1,7 +1,7 @@
 {
   "version" : "0.1.0",
   "fhirVersion" : ["4.0.1"],
-  "date" : "20251204125211",
+  "date" : "20260120100220",
   "name" : "nl.nuts.anw",
   "jurisdiction" : "urn:iso:std:iso:3166#NL"
 }

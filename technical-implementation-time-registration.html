@@ -56,7 +56,7 @@
 
 
 
-  <img alt="Netherlands flag" src="assets/images/nld.svg" height="16" title="Netherlands"/>
+  Netherlands
 
 
             </span>
@@ -93,6 +93,9 @@
     <ul class="dropdown-menu">
       <li>
         <a href="technical-documentation-v1.html">Technical Documentation v1</a>
+      </li>
+      <li>
+        <a href="technical-implementation-time-registration.html">Tijdregistratie (Voorlopig voorstel)</a>
       </li>
     </ul>
   </li>
@@ -149,32 +152,28 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <p><!-- white space is critical inside of capture --></p>
 <div class="markdown-toc">
 <ul id="markdown-toc">
-  <li><a href="#technisch-voorstel-eigen-idee" id="markdown-toc-technisch-voorstel-eigen-idee">Technisch voorstel (eigen idee)</a></li>
-  <li><a href="#fhir-resources" id="markdown-toc-fhir-resources">FHIR resources</a>    <ul>
-      <li><a href="#tijdregistratie" id="markdown-toc-tijdregistratie">Tijdregistratie</a></li>
-      <li><a href="#afweging-alternatieve-resources" id="markdown-toc-afweging-alternatieve-resources">Afweging alternatieve resources</a>        <ul>
-          <li><a href="#encounter-fmm56" id="markdown-toc-encounter-fmm56">Encounter (FMM5–6)</a></li>
-          <li><a href="#procedure-fmm5" id="markdown-toc-procedure-fmm5">Procedure (FMM5)</a></li>
-          <li><a href="#observation-fmm6" id="markdown-toc-observation-fmm6">Observation (FMM6)</a></li>
-          <li><a href="#claim--coverage--paymentnotice--eligibilityrequest-financial-resources" id="markdown-toc-claim--coverage--paymentnotice--eligibilityrequest-financial-resources">Claim / Coverage / PaymentNotice / EligibilityRequest (Financial resources)</a></li>
+  <li><a href="#tijdregistratie-voorstel" id="markdown-toc-tijdregistratie-voorstel">Tijdregistratie (voorstel)</a>    <ul>
+      <li><a href="#fhir-resources" id="markdown-toc-fhir-resources">FHIR resources</a>        <ul>
+          <li><a href="#afweging-alternatieve-resources" id="markdown-toc-afweging-alternatieve-resources">Afweging alternatieve resources</a></li>
           <li><a href="#conclusie" id="markdown-toc-conclusie">Conclusie</a></li>
         </ul>
       </li>
-      <li><a href="#uursoorten" id="markdown-toc-uursoorten">Uursoorten</a></li>
+      <li><a href="#uursoorten" id="markdown-toc-uursoorten">Uursoorten</a>        <ul>
+          <li><a href="#ophalen-van-de-uursoorten-valueset" id="markdown-toc-ophalen-van-de-uursoorten-valueset">Ophalen van de uursoorten ValueSet</a></li>
+        </ul>
+      </li>
     </ul>
   </li>
 </ul>
 
 </div>
-<h1 id="technisch-voorstel-eigen-idee">Technisch voorstel (eigen idee)</h1>
+<h1 id="tijdregistratie-voorstel">Tijdregistratie (voorstel)</h1>
 
-<p>Datum 20 november 2025</p>
+<p>Datum 19 januari 2026</p>
 
-<h1 id="fhir-resources">FHIR resources</h1>
+<h2 id="fhir-resources">FHIR resources</h2>
 
-<h2 id="tijdregistratie">Tijdregistratie</h2>
-
-<p>Om tijdregistraties op een uniforme manier te kunnen versturen, maken we gebruik van FHIR STU3 en het <a href="https://simplifier.net/packages/simplifier.core.stu3.resources/3.0.3/files/8278">ChargeItem-resource</a> .</p>
+<p>Om tijdregistraties op een uniforme manier te kunnen versturen, maken we gebruik van FHIR STU3 en het <a href="https://simplifier.net/hl7.fhir.r3/chargeitem">ChargeItem-resource</a> .</p>
 
 <p>De ChargeItem-resource beschrijft welke zorg een zorgverlener aan een patiënt heeft geleverd. Het gaat dus niet alleen om wat er geleverd is, maar ook om belangrijke details zoals hoeveelheid en welke organisaties of personen erbij betrokken waren. ChargeItem wordt vooral gebruikt om het declaratieproces soepel te laten verlopen.</p>
 
@@ -192,7 +191,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <tbody>
     <tr>
       <td>ChargeItem.status</td>
-      <td>Geeft aan dat deze tijdregistratie declarabel is en als geleverd mag worden beschouwd. Is <strong>billable.</strong></td>
+      <td>Geeft aan dat deze tijdregistratie declarabel is en als geleverd mag worden beschouwd. Is billable.</td>
     </tr>
     <tr>
       <td>ChargeItem.code</td>
@@ -226,11 +225,12 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 </table>
 
 <p>Voorbeeld FHIR resource:</p>
+
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ChargeItem"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"profile"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"http://example.org/fhir/StructureDefinition/chargeitem-anw"</span><span class="w">
+      </span><span class="s2">"http://example.org/fhir/StructureDefinition/nl-time-charge-item"</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"billable"</span><span class="p">,</span><span class="w">
@@ -238,6 +238,16 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">90</span><span class="p">,</span><span class="w">
     </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://unitsofmeasure.org"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"min"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://nuts.nl/fhir/CodeSystem/anw-uursoort"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NORMAL"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Normaal"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Normaal ANW-tarief"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"subject"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient/Client.123"</span><span class="p">,</span><span class="w">
@@ -261,36 +271,43 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"performingOrganization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Organization/Organization.789"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Organisatie B"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"requestingOrganization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Organization/Organization.123"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://nuts.nl"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{DID performing organization}"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Organisatie A"</span><span class="w">
   </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"requestingOrganization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://nuts.nl"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{DID requesting organization}"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Organisatie B"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
 <p>Aangepast ChargeItem profiel waarbij bestaande velden verplicht zijn gemaakt.</p>
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">Profile:</span><span class="w"> </span><span class="err">ChargeItemAnw</span><span class="w">
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">Profile:</span><span class="w"> </span><span class="err">NLTimeChargeItem</span><span class="w">
 </span><span class="err">Parent:</span><span class="w"> </span><span class="err">ChargeItem</span><span class="w">
-</span><span class="err">Id:</span><span class="w"> </span><span class="err">chargeitem-anw</span><span class="w">
-</span><span class="err">Title:</span><span class="w"> </span><span class="s2">"ChargeItem ANW"</span><span class="w">
-</span><span class="err">Description:</span><span class="w"> </span><span class="s2">"ChargeItem-profiel voor ANW-registratie."</span><span class="w">
+</span><span class="err">Id:</span><span class="w"> </span><span class="err">nl-time-charge-item</span><span class="w">
+</span><span class="err">Title:</span><span class="w"> </span><span class="s2">"NL Tijdregistratie"</span><span class="w">
+</span><span class="err">Description:</span><span class="w"> </span><span class="s2">"Generiek NL-profiel voor declarabele tijdregistraties op basis van ChargeItem."</span><span class="w">
 
 </span><span class="err">//</span><span class="w"> </span><span class="err">Verplichte</span><span class="w"> </span><span class="err">elementen</span><span class="w">
-</span><span class="err">*</span><span class="w"> </span><span class="err">quantity</span><span class="w"> </span><span class="mi">1</span><span class="err">..</span><span class="mi">1</span><span class="w">                   </span><span class="err">//</span><span class="w"> </span><span class="err">quantity</span><span class="w"> </span><span class="err">verplicht</span><span class="w">
-</span><span class="err">*</span><span class="w"> </span><span class="err">occurence</span><span class="w"> </span><span class="mi">1</span><span class="err">..</span><span class="mi">1</span><span class="w">                  </span><span class="err">//</span><span class="w"> </span><span class="err">occurence</span><span class="w"> </span><span class="err">verplicht</span><span class="w"> </span><span class="err">ivm</span><span class="w"> </span><span class="err">datum</span><span class="w"> </span><span class="err">uitgevoerd</span><span class="w"> </span><span class="err">werk</span><span class="w">
-</span><span class="err">*</span><span class="w"> </span><span class="err">performingOrganization</span><span class="w"> </span><span class="mi">1</span><span class="err">..</span><span class="mi">1</span><span class="w">     </span><span class="err">//</span><span class="w"> </span><span class="err">uitvoerende</span><span class="w"> </span><span class="err">organisatie</span><span class="w"> </span><span class="err">verplicht</span><span class="w">
-</span><span class="err">*</span><span class="w"> </span><span class="err">requestingOrganization</span><span class="w"> </span><span class="mi">1</span><span class="err">..</span><span class="mi">1</span><span class="w">     </span><span class="err">//</span><span class="w"> </span><span class="err">aanvragende</span><span class="w"> </span><span class="err">/</span><span class="w"> </span><span class="err">declarerende</span><span class="w"> </span><span class="err">organisatie</span><span class="w"> </span><span class="err">verplicht</span><span class="w">
+</span><span class="err">*</span><span class="w"> </span><span class="err">quantity</span><span class="w"> </span><span class="mi">1</span><span class="err">..</span><span class="mi">1</span><span class="w">
+</span><span class="err">*</span><span class="w"> </span><span class="err">occurence</span><span class="w"> </span><span class="mi">1</span><span class="err">..</span><span class="mi">1</span><span class="w">
+</span><span class="err">*</span><span class="w"> </span><span class="err">performingOrganization</span><span class="w"> </span><span class="mi">1</span><span class="err">..</span><span class="mi">1</span><span class="w">
+</span><span class="err">*</span><span class="w"> </span><span class="err">requestingOrganization</span><span class="w"> </span><span class="mi">1</span><span class="err">..</span><span class="mi">1</span><span class="w">
 
-</span><span class="err">*</span><span class="w"> </span><span class="err">quantity</span><span class="w"> </span><span class="err">^short</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="s2">"Aantal minuten ANW."</span><span class="w">
+</span><span class="err">*</span><span class="w"> </span><span class="err">quantity</span><span class="w"> </span><span class="err">^short</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="s2">"Aantal geleverde minuten."</span><span class="w">
 </span><span class="err">*</span><span class="w"> </span><span class="err">occurence</span><span class="w"> </span><span class="err">^short</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="s2">"De eind datum en tijd van werkzaamheden
 * performingOrganization ^short = "</span><span class="err">Uitvoerende</span><span class="w"> </span><span class="err">organisatie.</span><span class="s2">"
 * requestingOrganization ^short = "</span><span class="err">Aanvragende</span><span class="w"> </span><span class="err">organisatie.</span><span class="s2">"
 </span></code></pre></div></div>
 
-<p>Bij de keuze voor een passende FHIR-resource voor ANW-tijdregistraties is gekeken naar bestaande ZIB-profielen zoals <a href="https://simplifier.net/nictizstu3-zib2017/zib-procedure">zib-Procedure</a> en <a href="https://simplifier.net/nictizstu3-zib2017/zib-encounter">zib-Encounter</a> . Hoewel deze profielen uitstekend geschikt zijn voor hun oorspronkelijke doel — namelijk het vastleggen van medische handelingen (Procedure) of contactmomenten tussen cliënt en zorgverlener (Encounter) — sluiten ze onvoldoende aan bij de functionele eisen van ANW-tijdregistratie.</p>
+<p>Bij de keuze voor een passende FHIR-resource voor tijdregistraties is gekeken naar bestaande ZIB-profielen zoals <a href="https://simplifier.net/nictizstu3-zib2017/zib-procedure">zib-Procedure</a> en <a href="https://simplifier.net/nictizstu3-zib2017/zib-encounter">zib-Encounter</a> . Hoewel deze profielen uitstekend geschikt zijn voor hun oorspronkelijke doel, namelijk het vastleggen van medische handelingen (Procedure) of contactmomenten tussen cliënt en zorgverlener (Encounter), sluiten ze onvoldoende aan bij de functionele eisen van een tijdregistratie.</p>
 
 <p>In de ANW-context draait het niet om het registreren van een medisch proces of een zorgcontact op zich, maar om het vastleggen van declarabele tijdseenheden, inclusief uursoort, aantal minuten, betrokken organisaties, verantwoordelijke medewerker en de administratieve/declaratieve context. Daarmee is het primaire doel geen verslaglegging van zorginhoud, maar het uitwisselen van factureerbare prestaties tussen systemen van verschillende leveranciers.</p>
 
@@ -306,50 +323,57 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <p>Om die reden zouden zowel Procedure als Encounter moeten worden uitgebreid met meerdere extensies en afwijkende interpretaties, wat leidt tot inconsistenties, verwarring tussen leveranciers en een verhoogd risico op foutieve declaratiegegevens.</p>
 
-<p>ChargeItem daarentegen is specifiek ontworpen voor het beschrijven van leveringen, prestaties en declarabele zorgactiviteiten. Het biedt standaard ondersteuning voor hoeveelheid, type prestatie (uursoort), uitvoerende partij, verantwoordelijke medewerker, patiëntcontext en administratieve metadata. Hierdoor sluit ChargeItem direct en semantisch juist aan op het ANW-tijdregistratieproces zonder dat er constructies of extensies nodig zijn die buiten de bedoeling van het model vallen.</p>
+<p>ChargeItem daarentegen is specifiek ontworpen voor het beschrijven van leveringen, prestaties en declarabele zorgactiviteiten. Het biedt standaard ondersteuning voor hoeveelheid, type prestatie (uursoort), uitvoerende partij, verantwoordelijke medewerker, patiëntcontext en administratieve metadata. Hierdoor sluit ChargeItem direct en semantisch juist aan op het tijdregistratieproces zonder dat er constructies of extensies nodig zijn die buiten de bedoeling van het model vallen.</p>
 
-<p>Kortom: ChargeItem is niet alleen de best passende resource, maar ook de enige die de ANW-tijdregistratie op een gestandaardiseerde, uitwisselbare en declaratie-kloppende manier kan representeren. Hierdoor wordt een uniforme, toekomstbestendige implementatie mogelijk voor alle betrokken regio’s en leveranciers.</p>
+<p>Kortom: ChargeItem is niet alleen de best passende resource, maar ook de enige die de tijdregistratie op een gestandaardiseerde, uitwisselbare en declaratie-kloppende manier kan representeren. Hierdoor wordt een uniforme, toekomstbestendige implementatie mogelijk voor alle betrokken regio’s en leveranciers.</p>
 
-<h2 id="afweging-alternatieve-resources">Afweging alternatieve resources</h2>
+<h3 id="afweging-alternatieve-resources">Afweging alternatieve resources</h3>
 
 <p>Bij het bepalen van de juiste resource zijn ook andere FHIR-resources onderzocht:</p>
 
-<h3 id="encounter-fmm56">Encounter (FMM5–6)</h3>
+<h4 id="encounter-fmm56">Encounter (FMM5–6)</h4>
+
 <ul>
   <li><strong>Voordelen:</strong> zeer volwassen, ondersteunt zorgcontact en organisatie.</li>
   <li><strong>Nadelen:</strong> niet bedoeld voor declarabele tijd; minuten, uursoorten en declaratiecontext ontbreken.</li>
 </ul>
 
-<h3 id="procedure-fmm5">Procedure (FMM5)</h3>
+<h4 id="procedure-fmm5">Procedure (FMM5)</h4>
+
 <ul>
   <li><strong>Voordelen:</strong> stabiel en breed gebruikt voor zorgactiviteiten.</li>
   <li><strong>Nadelen:</strong> semantisch medisch; geen concept voor minuten of declaratie.</li>
 </ul>
 
-<h3 id="observation-fmm6">Observation (FMM6)</h3>
+<h4 id="observation-fmm6">Observation (FMM6)</h4>
+
 <ul>
   <li><strong>Voordelen:</strong> extreem flexibel.</li>
   <li><strong>Nadelen:</strong> bedoeld voor metingen; vervuilt het klinisch dossier met administratieve data.</li>
 </ul>
 
-<h3 id="claim--coverage--paymentnotice--eligibilityrequest-financial-resources">Claim / Coverage / PaymentNotice / EligibilityRequest (Financial resources)</h3>
+<h4 id="claim--coverage--paymentnotice--eligibilityrequest-financial-resources">Claim / Coverage / PaymentNotice / EligibilityRequest (Financial resources)</h4>
 
 <p>Deze resources zijn onderzocht vanuit het perspectief van declaratie en financiering:</p>
 
 <h4 id="claim">Claim</h4>
+
 <ul>
   <li><strong>Voordelen:</strong> ontworpen voor formele declaraties richting een verzekeraar of andere externe “payer”.</li>
   <li><strong>Nadelen:</strong> gaat uit van verzekerde zorg (Coverage), verzekeringsproducten en vaak landelijke declaratiestandaarden; past niet bij de interne ANW-tijdregistratie en onderlinge verrekening tussen organisaties binnen een regio. Te zwaar en te specifiek voor verzekeringsstromen.</li>
 </ul>
 
 <h4 id="coverage">Coverage</h4>
+
 <ul>
   <li><strong>Voordelen:</strong> geschikt om verzekeringsdekking te modelleren (verzekeraar, polis, dekkingsvorm).</li>
   <li><strong>Nadelen:</strong> ANW-tijdregistratie in deze context is niet direct gekoppeld aan verzekeringsgegevens. Coverage voegt niets toe aan het bronmodel voor minutenregistratie en maakt de oplossing complexer zonder functionele meerwaarde.</li>
 </ul>
 
 <h3 id="conclusie">Conclusie</h3>
-<p>Hoewel deze resources technisch toepasbaar zouden kunnen worden gemaakt, sluiten ze semantisch niet aan op ANW-tijdregistratie. ChargeItem is de enige resource die natively ondersteunt:</p>
+
+<p>Hoewel deze resources technisch toepasbaar zouden kunnen worden gemaakt, sluiten ze semantisch niet aan op tijdregistratie. ChargeItem is de enige resource die natively ondersteunt:</p>
+
 <ul>
   <li>prestatie + tijdseenheid,</li>
   <li>uursoorten,</li>
@@ -357,14 +381,91 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <li>medewerker + patiënt context.</li>
 </ul>
 
-<p>Ondanks de lagere maturity in STU3 sluit ChargeItem inhoudelijk het beste aan. Met de maturity-stijging naar FMM1 in 
-FHIR R5 lijkt de gekozen richting bovendien toekomstvast.</p>
+<p>Ondanks de lagere maturity in STU3 sluit ChargeItem inhoudelijk het beste aan. Met de maturity-stijging naar FMM1 in FHIR R5 lijkt de gekozen richting bovendien toekomstvast.</p>
 
 <h2 id="uursoorten">Uursoorten</h2>
 
 <p>De uursoorten die binnen een regio gebruikt worden, worden regionaal vastgesteld. Zo kan bijvoorbeeld de regio Achterhoek eigen uursoorten hanteren, zoals NORMAL en EXTRA. Deze uursoorten moeten zowel bij de bronorganisatie als bij de uitvoerende zorgorganisatie correct worden geconfigureerd, zodat beide partijen dezelfde set uursoorten gebruiken.</p>
 
 <p>Een juiste en eenduidige configuratie is essentieel: wanneer uursoorten onvolledig of onjuist zijn ingesteld, kan de tijdregistratie niet gevalideerd worden en is facturatie op basis van deze gegevens niet mogelijk.</p>
+
+<p>De uursoorten die binnen een regio gebruikt worden, worden regionaal vastgesteld. Zo kan bijvoorbeeld de regio Achterhoek eigen uursoorten hanteren, zoals NORMAL, EXTRA en CONSULT. Deze uursoorten moeten zowel bij de bronorganisatie als bij de uitvoerende zorgorganisatie correct worden geconfigureerd, zodat beide partijen dezelfde set uursoorten gebruiken. Een juiste en eenduidige configuratie is essentieel: wanneer uursoorten onjuist zijn ingesteld, kan de tijdregistratie niet gevalideerd worden en is facturatie op basis van deze gegevens niet mogelijk.</p>
+
+<p>Omdat de uursoorten per regio gezamenlijk worden vastgesteld, maar individuele systemen niet altijd alle afgesproken uursoorten hebben geïmplementeerd, is het noodzakelijk om bij het bronsysteem op te vragen welke subset van deze uursoorten daadwerkelijk beschikbaar is. Een systeem kan bijvoorbeeld regionaal afgesproken uursoorten NORMAL, EXTRA en CONSULT ondersteunen, maar slechts NORMAL en CONSULT geïmplementeerd hebben.</p>
+
+<p>Om dit eenduidig en FHIR-conform uit te wisselen, maken we gebruik van een ValueSet die door het bronsysteem wordt gepubliceerd. Deze ValueSet bevat precies de uursoorten die in het betreffende systeem aanwezig en geconfigureerd zijn. Door deze ValueSet via FHIR op te vragen, kan het ontvangende systeem vaststellen welke afgesproken uursoorten ondersteund worden en welke ontbreken.</p>
+
+<p>In deze aanpak wordt bewust gekozen voor een lichtgewicht variant van het FHIR-terminologiemodel, waarbij:</p>
+
+<ul>
+  <li>geen CodeSystem-resources worden gepubliceerd of beheerd;</li>
+  <li>één uniforme system-URI wordt gebruikt voor alle ANW-uursoorten;</li>
+  <li>elk bronsysteem een eigen ValueSet aanbiedt met de door dat systeem ondersteunde subset van uursoorten.</li>
+</ul>
+
+<p>Deze werkwijze maakt het mogelijk om nauwkeurig, dynamisch en zonder extra beheer te bepalen welke uursoorten bij het bronsysteem aanwezig zijn, en zorgt ervoor dat het zorgproces en de declaratieketen uitsluitend gebruikmaken van gevalideerde en overeengekomen uursoorten.</p>
+
+<h3 id="ophalen-van-de-uursoorten-valueset">Ophalen van de uursoorten ValueSet</h3>
+
+<p>Voor het ophalen van de uursoorten die het bronsysteem daadwerkelijk ondersteunt, wordt gebruikgemaakt van de FHIR-terminologie-operatie <code class="language-plaintext highlighter-rouge">$expand</code>. Hiermee kan een systeem dynamisch de lijst met uursoorten opvragen die het bronsysteem beschikbaar heeft.</p>
+
+<p><strong>Request</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET https://bronhouder.example.org/fhir/ValueSet/<span class="nv">$expand</span>
+  ?url<span class="o">=</span>https://bronhouder.example.org/fhir/ValueSet/anw-uursoorten
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-X</span> GET <span class="se">\</span>
+  <span class="s2">"https://bronhouder.example.org/fhir/ValueSet/</span><span class="se">\$</span><span class="s2">expand?url=https://bronhouder.example.org/fhir/ValueSet/anw-uursoorten"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Accept: application/fhir+json"</span>
+</code></pre></div></div>
+
+<p><strong>Response</strong></p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ValueSet"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://bronhouder.example.org/fhir/ValueSet/anw-uursoorten"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"expansion"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"contains"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://nuts.nl/fhir/CodeSystem/anw-uursoort"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NORMAL"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Normaal"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://nuts.nl/fhir/CodeSystem/anw-uursoort"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXTRA"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Extra"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h4 id="context-afhankelijke-uursoorten-toekomst">Context afhankelijke uursoorten (toekomst)</h4>
+
+<p>Omdat we de tijdregistratie en uursoorten generiek willen houden binnen de zorg-toepassingen, en er in de toekomst mogelijk behoefte ontstaat om uursoorten patiënt afhankelijk terug te geven (bijvoorbeeld vanwege cliënt-specifieke regels), hebben we onderzocht of FHIR STU3 dit ondersteunt binnen het gebruik van ValueSets.</p>
+
+<p>Binnen FHIR is dit technisch geen probleem. De STU3-specificatie staat toe dat operaties, waaronder ValueSet/$expand, worden uitgebreid met optionele, server-specifieke parameters. Deze parameters kunnen gebruikt worden om extra context mee te geven, zoals:</p>
+
+<ul>
+  <li>de patiënt (patient=Patient/123);</li>
+  <li>de regio</li>
+</ul>
+
+<p>FHIR bepaalt dat onbekende parameters genegeerd moeten worden door servers die deze niet ondersteunen, waardoor dit mechanisme backwards compatible blijft. Dit betekent dat wij veilig een optionele parameter kunnen introduceren om de context van de patiënt mee te geven zonder dat dit invloed heeft op bestaande implementaties.</p>
+
+<p>Een voorbeeld van een contextuele $expand-aanroep:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET https://bronhouder.example.org/fhir/ValueSet/<span class="nv">$expand</span>
+    ?url<span class="o">=</span>https://bronhouder.example.org/fhir/ValueSet/anw-uursoorten
+    &amp;patient<span class="o">=</span>Patient/123
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-X</span> GET <span class="se">\</span>
+  <span class="s2">"https://bronhouder.example.org/fhir/ValueSet/</span><span class="se">\$</span><span class="s2">expand?url=https://bronhouder.example.org/fhir/ValueSet/anw-uursoorten&amp;patient=Patient/123"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Accept: application/fhir+json"</span>
+</code></pre></div></div>
 
 
 
@@ -385,7 +486,7 @@ FHIR R5 lijkt de gekozen richting bovendien toekomstvast.</p>
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.nuts.nl">Stichting Nuts</a>.  Package nl.nuts.anw#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Dec 4, 2025 12:52+0000">2025-12-04</span>
+          IG &#169; 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.nuts.nl">Stichting Nuts</a>.  Package nl.nuts.anw#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Jan 20, 2026 10:02+0000">2026-01-20</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
