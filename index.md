@@ -8,12 +8,12 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://nuts-foundation.github.io/nl-generic-anw-ig/ImplementationGuide/nl.nuts.anw | *Version*:0.1.0 |
-| Draft as of 2026-01-20 | *Computable Name*:NLAnwIG |
+| Draft as of 2026-02-16 | *Computable Name*:NLAnwIG |
 
 ## ⚠️ Disclaimer
 
 > **Belangerijk:**
-Op plekken op deze site kan verwezen worden naar fhir versie r4, dit is onterecht en een limitatie van de gebruikte technologie voor het modeleren van de capability statements en documentatie. Binnen de ANW use case die hier beschreven wordt, wordt er enkel gebruik gemaakt van fhir**STU3**.
+ Op plekken op deze site kan verwezen worden naar fhir versie r4, dit is onterecht en een limitatie van de gebruikte technologie voor het modeleren van de capability statements en documentatie. Binnen de ANW use case die hier beschreven wordt, wordt er enkel gebruik gemaakt van fhir **STU3**.
 
 # ANW Implementation Guide
 
@@ -48,7 +48,7 @@ The ANW use case covers evening, night, and weekend care services. This implemen
   "name" : "NLAnwIG",
   "title" : "Netherlands - ANW implementation guide",
   "status" : "draft",
-  "date" : "2026-01-20T11:44:25+00:00",
+  "date" : "2026-02-16T12:39:36+00:00",
   "publisher" : "Stichting Nuts",
   "contact" : [
     {
@@ -797,6 +797,20 @@ The ANW use case covers evening, night, and weekend care services. This implemen
         },
         "name" : "ANW Bronhouder Capability Statement v1.0.0",
         "description" : "Capability statement describing the basic requirements for ANW FHIR servers  (version 1.0.0, ANW-bronhouder)",
+        "exampleBoolean" : false
+      },
+      {
+        "extension" : [
+          {
+            "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+            "valueString" : "CapabilityStatement"
+          }
+        ],
+        "reference" : {
+          "reference" : "CapabilityStatement/ANWBronhouderCapabilityStatement-v1.1.0"
+        },
+        "name" : "ANW Bronhouder Capability Statement v1.1.0",
+        "description" : "Capability statement describing the basic requirements for ANW FHIR servers  (version 1.1.0, ANW-bronhouder)",
         "exampleBoolean" : false
       },
       {

@@ -3,15 +3,22 @@
 ## Pages
 
 * [Home](index.md)
-* [Artifacts Summary](artifacts.md)
+* [ANW Bronhouder Capability Statement v1.0.0](CapabilityStatement-ANWBronhouderCapabilityStatement-v1.0.0.md)
 * [Technical Documentation v 1](technical-documentation-v1.md)
+* [ANW Bronhouder Capability Statement v1.0.0 - JSON Representation](CapabilityStatement-ANWBronhouderCapabilityStatement-v1.0.0.json.md)
 * [Technical Implementation Time Registration](technical-implementation-time-registration.md)
+* [](CapabilityStatement-ANWBronhouderCapabilityStatement-v1.0.0.change.history.md)
+* [ANW Bronhouder Capability Statement v1.0.0 - Testing](CapabilityStatement-ANWBronhouderCapabilityStatement-v1.0.0-testing.md)
+* [Artifacts Summary](artifacts.md)
+* [ANW Bronhouder Capability Statement v1.0.0 - XML Representation](CapabilityStatement-ANWBronhouderCapabilityStatement-v1.0.0.xml.md)
+* [ANW Bronhouder Capability Statement v1.0.0 - TTL Representation](CapabilityStatement-ANWBronhouderCapabilityStatement-v1.0.0.ttl.md)
 
 ## Resources
 
 ### CapabilityStatements
 
-* [ANW Bronhouder Capability Statement v1.0.0](CapabilityStatement-ANWBronhouderCapabilityStatement-v1.0.0.md)
+* [ANW Bronhouder Capability Statement v1.0.0](CapabilityStatement-ANWBronhouderCapabilityStatement-v1.1.0.md)
+* [ANW Bronhouder Capability Statement v1.1.0](CapabilityStatement-ANWBronhouderCapabilityStatement-v1.1.0.md)
 * [ANW Regisseur Capability Statement v1.0.0](CapabilityStatement-ANWRegisseurCapabilityStatement-v1.0.0.md)
 * [ANW Zorgverlener Capability Statement v1.0.0](CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1.0.0.md)
 

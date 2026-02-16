@@ -7,6 +7,13 @@
     "name" : "ANW-Bronhouder"
   },
   {
+    "id" : "ANWBronhouderCapabilityStatement-v1.1.0",
+    "type" : "CapabilityStatement",
+    "url" : "http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Bronhouder",
+    "version" : "1.1.0",
+    "name" : "ANW-Bronhouder"
+  },
+  {
     "id" : "ANWRegisseurCapabilityStatement-v1.0.0",
     "type" : "CapabilityStatement",
     "url" : "http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Regisseur",
