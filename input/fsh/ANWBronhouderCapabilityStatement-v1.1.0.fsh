@@ -1,8 +1,8 @@
-Instance: ANWBronhouderCapabilityStatement-v1.0.0
+Instance: ANWBronhouderCapabilityStatement-v1.1.0
 InstanceOf: CapabilityStatement
 Usage: #definition
-Title: "ANW Bronhouder Capability Statement v1.0.0"
-Description: "Capability statement describing the basic requirements for ANW FHIR servers  (version 1.0.0, ANW-bronhouder)"
+Title: "ANW Bronhouder Capability Statement v1.1.0"
+Description: "Capability statement describing the basic requirements for ANW FHIR servers  (version 1.1.0, ANW-bronhouder)"
 * url = "http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Bronhouder"
 * version = "1.1.0"
 * name = "ANW-Bronhouder"
