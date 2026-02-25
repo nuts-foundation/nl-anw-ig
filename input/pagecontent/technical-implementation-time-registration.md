@@ -273,8 +273,7 @@ Een voorbeeld van een contextuele $expand-aanroep:
 
 ```bash
 GET https://bronhouder.example.org/fhir/ValueSet/anw-uursoorten/$expand
-    ?url=https://bronhouder.example.org/fhir/ValueSet
-    &patient=Patient/123
+    ?patient=Patient/123
 ```
 
 ```bash
