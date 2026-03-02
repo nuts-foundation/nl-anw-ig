@@ -30,7 +30,7 @@ Voorbeeld FHIR resource:
   "resourceType": "ChargeItem",
   "meta": {
     "profile": [
-      "http://example.org/fhir/StructureDefinition/nl-time-charge-item"
+      "http://nuts.nl/fhir/StructureDefinition/nl-time-charge-item"
     ]
   },
   "status": "billable",
@@ -219,13 +219,12 @@ De response is direct bruikbaar voor validatie, gebruikersinterfaces en declarat
 **Request**
 
 ```bash
-GET https://bronhouder.example.org/fhir/ValueSet/$expand
-  ?url=https://bronhouder.example.org/fhir/ValueSet/anw-uursoorten
+GET https://bronhouder.example.org/fhir/ValueSet/anw-uursoorten$expand
 ```
 
 ```bash
 curl -X GET \
-  "https://bronhouder.example.org/fhir/ValueSet/\$expand?url=https://bronhouder.example.org/fhir/ValueSet/anw-uursoorten" \
+  "https://bronhouder.example.org/fhir/ValueSet/anw-uursoorten\$expand" \
   -H "Accept: application/fhir+json"
 ```
 
@@ -273,13 +272,12 @@ FHIR bepaalt dat onbekende parameters genegeerd moeten worden door servers die d
 Een voorbeeld van een contextuele $expand-aanroep:
 
 ```bash
-GET https://bronhouder.example.org/fhir/ValueSet/$expand
-    ?url=https://bronhouder.example.org/fhir/ValueSet/anw-uursoorten
-    &patient=Patient/123
+GET https://bronhouder.example.org/fhir/ValueSet/anw-uursoorten/$expand
+    ?patient=Patient/123
 ```
 
 ```bash
 curl -X GET \
-  "https://bronhouder.example.org/fhir/ValueSet/\$expand?url=https://bronhouder.example.org/fhir/ValueSet/anw-uursoorten&patient=Patient/123" \
+  "https://bronhouder.example.org/fhir/ValueSet/anw-uursoorten/\$expand?patient=Patient/123" \
   -H "Accept: application/fhir+json"
 ```

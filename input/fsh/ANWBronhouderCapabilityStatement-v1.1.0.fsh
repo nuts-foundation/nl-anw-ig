@@ -173,4 +173,16 @@ Description: "Capability statement describing the basic requirements for ANW FHI
 * rest.operation[1].name = "ANW-zorg"
 * rest.operation[1].definition = "http://nuts-foundation.github.io/nl-generic-anw-ig/OperationDefinition/ANW-zorg"
 
-// TODO: Add new time registration resources
+// VERSION 1.1.0 resources
+// Time registration
+* rest.resource[12].type = #ChargeItem
+* rest.resource[12].profile = "http://nuts.nl/fhir/StructureDefinition/nl-time-charge-item"
+* rest.resource[12].interaction[0].code = #create
+
+// ValueSet (uursoorten)
+* rest.resource[13].type = #ValueSet
+* rest.resource[13].interaction[0].code = #read
+
+// $expand operation on ValueSet
+* rest.operation[2].name = "expand"
+* rest.operation[2].definition = "http://hl7.org/fhir/OperationDefinition/ValueSet-expand"
