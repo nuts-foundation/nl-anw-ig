@@ -176,7 +176,7 @@ Description: "Capability statement describing the basic requirements for ANW FHI
 // VERSION 1.1.0 resources
 // Time registration
 * rest.resource[12].type = #ChargeItem
-* rest.resource[12].profile = "http://example.org/fhir/StructureDefinition/nl-time-charge-item"
+* rest.resource[12].profile = "http://nuts.nl/fhir/StructureDefinition/nl-time-charge-item"
 * rest.resource[12].interaction[0].code = #create
 
 // ValueSet (uursoorten)

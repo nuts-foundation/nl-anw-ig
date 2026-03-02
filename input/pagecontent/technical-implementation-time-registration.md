@@ -30,7 +30,7 @@ Voorbeeld FHIR resource:
   "resourceType": "ChargeItem",
   "meta": {
     "profile": [
-      "http://example.org/fhir/StructureDefinition/nl-time-charge-item"
+      "http://nuts.nl/fhir/StructureDefinition/nl-time-charge-item"
     ]
   },
   "status": "billable",
