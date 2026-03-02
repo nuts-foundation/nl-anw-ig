@@ -31,58 +31,42 @@ Version 1.0 capability statement defining the basic requirements for ANW FHIR se
   "status" : "active",
   "date" : "2025-10-15",
   "publisher" : "Stichting Nuts",
-  "contact" : [
-    {
-      "name" : "Stichting Nuts",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.nuts.nl"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "Stichting Nuts",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.nuts.nl"
+    }]
+  }],
   "description" : "Version 1.0 capability statement defining the basic requirements for ANW FHIR servers wanting to support the ANW-Zorgverlener usecase.",
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "NL",
-          "display" : "Netherlands"
-        }
-      ]
-    }
-  ],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "NL",
+      "display" : "Netherlands"
+    }]
+  }],
   "kind" : "requirements",
   "fhirVersion" : "3.0.2",
   "format" : ["json", "xml"],
-  "rest" : [
+  "rest" : [{
+    "mode" : "server",
+    "documentation" : "ANW FHIR Server v1.0 - supporting Patient resources with ANW-specific profiles",
+    "resource" : [{
+      "type" : "Practitioner",
+      "interaction" : [{
+        "code" : "search-type"
+      }]
+    }],
+    "operation" : [{
+      "name" : "zorgverlener-notification-endpoint",
+      "definition" : "https://github.com/nuts-foundation/bolts/blob/master/anw/TD-ANWv2024.1.md#anw-zorgverlener"
+    },
     {
-      "mode" : "server",
-      "documentation" : "ANW FHIR Server v1.0 - supporting Patient resources with ANW-specific profiles",
-      "resource" : [
-        {
-          "type" : "Practitioner",
-          "interaction" : [
-            {
-              "code" : "search-type"
-            }
-          ]
-        }
-      ],
-      "operation" : [
-        {
-          "name" : "zorgverlener-notification-endpoint",
-          "definition" : "https://github.com/nuts-foundation/bolts/blob/master/anw/TD-ANWv2024.1.md#anw-zorgverlener"
-        },
-        {
-          "name" : "ANW-zorg",
-          "definition" : "http://nuts-foundation.github.io/nl-generic-anw-ig/OperationDefinition/ANW-zorg"
-        }
-      ]
-    }
-  ]
+      "name" : "ANW-zorg",
+      "definition" : "http://nuts-foundation.github.io/nl-generic-anw-ig/OperationDefinition/ANW-zorg"
+    }]
+  }]
 }
 
 ```

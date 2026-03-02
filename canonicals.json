@@ -1,44 +1,42 @@
-[
-  {
-    "id" : "ANWBronhouderCapabilityStatement-v1.0.0",
-    "type" : "CapabilityStatement",
-    "url" : "http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Bronhouder",
-    "version" : "1.0.0",
-    "name" : "ANW-Bronhouder"
-  },
-  {
-    "id" : "ANWBronhouderCapabilityStatement-v1.1.0",
-    "type" : "CapabilityStatement",
-    "url" : "http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Bronhouder",
-    "version" : "1.1.0",
-    "name" : "ANW-Bronhouder"
-  },
-  {
-    "id" : "ANWRegisseurCapabilityStatement-v1.0.0",
-    "type" : "CapabilityStatement",
-    "url" : "http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Regisseur",
-    "version" : "1.0.0",
-    "name" : "ANW-Regisseur"
-  },
-  {
-    "id" : "ANWZorgverlenerCapabilityStatement-v1.0.0",
-    "type" : "CapabilityStatement",
-    "url" : "http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Zorgverlener",
-    "version" : "1.0.0",
-    "name" : "ANW-Zorgverlener"
-  },
-  {
-    "id" : "nl.nuts.anw",
-    "type" : "ImplementationGuide",
-    "url" : "http://nuts-foundation.github.io/nl-generic-anw-ig/ImplementationGuide/nl.nuts.anw",
-    "version" : "0.1.0",
-    "name" : "NLAnwIG"
-  },
-  {
-    "id" : "ANW-zorg",
-    "type" : "OperationDefinition",
-    "url" : "http://nuts-foundation.github.io/nl-generic-anw-ig/OperationDefinition/ANW-zorg",
-    "version" : "0.1.0",
-    "name" : "ANW-zorg"
-  }
-]
+[{
+  "id" : "ANWBronhouderCapabilityStatement-v1.0.0",
+  "type" : "CapabilityStatement",
+  "url" : "http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Bronhouder",
+  "version" : "1.0.0",
+  "name" : "ANW-Bronhouder"
+},
+{
+  "id" : "ANWBronhouderCapabilityStatement-v1.1.0",
+  "type" : "CapabilityStatement",
+  "url" : "http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Bronhouder",
+  "version" : "1.1.0",
+  "name" : "ANW-Bronhouder"
+},
+{
+  "id" : "ANWRegisseurCapabilityStatement-v1.0.0",
+  "type" : "CapabilityStatement",
+  "url" : "http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Regisseur",
+  "version" : "1.0.0",
+  "name" : "ANW-Regisseur"
+},
+{
+  "id" : "ANWZorgverlenerCapabilityStatement-v1.0.0",
+  "type" : "CapabilityStatement",
+  "url" : "http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Zorgverlener",
+  "version" : "1.0.0",
+  "name" : "ANW-Zorgverlener"
+},
+{
+  "id" : "nl.nuts.anw",
+  "type" : "ImplementationGuide",
+  "url" : "http://nuts-foundation.github.io/nl-generic-anw-ig/ImplementationGuide/nl.nuts.anw",
+  "version" : "0.1.0",
+  "name" : "NLAnwIG"
+},
+{
+  "id" : "ANW-zorg",
+  "type" : "OperationDefinition",
+  "url" : "http://nuts-foundation.github.io/nl-generic-anw-ig/OperationDefinition/ANW-zorg",
+  "version" : "0.1.0",
+  "name" : "ANW-zorg"
+}]

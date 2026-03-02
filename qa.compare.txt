@@ -1,12 +1,12 @@
 NLAnwIG : Validation Results
 =========================================
 
-err = 31, warn = 34, info = 6
+err = 31, warn = 35, info = 6
 $--
 Generated $--. FHIR version $-- for nl.nuts.anw#$-- (canonical = http://nuts-foundation.github.io/nl-generic-anw-ig)
  Build Errors : 4 / 4 / 0
  /github/workspace/fsh-generated/resources/CapabilityStatement-ANWBronhouderCapabilityStatement-v1.0.0 : 8 / 13 / 2
- /github/workspace/fsh-generated/resources/CapabilityStatement-ANWBronhouderCapabilityStatement-v1.1.0 : 8 / 13 / 2
+ /github/workspace/fsh-generated/resources/CapabilityStatement-ANWBronhouderCapabilityStatement-v1.1.0 : 8 / 14 / 2
  /github/workspace/fsh-generated/resources/CapabilityStatement-ANWRegisseurCapabilityStatement-v1.0.0 : 6 / 1 / 2
  /github/workspace/fsh-generated/resources/CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1.0.0 : 6 / 2 / 2
  /github/workspace/fsh-generated/resources/ImplementationGuide-nl.nuts.anw : 1 / 0 / 2
@@ -63,6 +63,7 @@ WARNING: CapabilityStatement/ANWBronhouderCapabilityStatement-v1.1.0: Capability
 WARNING: CapabilityStatement/ANWBronhouderCapabilityStatement-v1.1.0: CapabilityStatement.rest[0].resource[9].profile: A definition could not be found for Canonical URL 'http://nictiz.nl/fhir/StructureDefinition/zib-Alert'
 WARNING: CapabilityStatement/ANWBronhouderCapabilityStatement-v1.1.0: CapabilityStatement.rest[0].resource[10].profile: A definition could not be found for Canonical URL 'http://nictiz.nl/fhir/StructureDefinition/zib-AdvanceDirective'
 WARNING: CapabilityStatement/ANWBronhouderCapabilityStatement-v1.1.0: CapabilityStatement.rest[0].resource[11].profile: A definition could not be found for Canonical URL 'http://nictiz.nl/fhir/StructureDefinition/zib-AllergyIntolerance'
+WARNING: CapabilityStatement/ANWBronhouderCapabilityStatement-v1.1.0: CapabilityStatement.rest[0].resource[12].profile: A definition could not be found for Canonical URL 'http://nuts.nl/fhir/StructureDefinition/nl-time-charge-item'
 WARNING: CapabilityStatement/ANWBronhouderCapabilityStatement-v1.1.0: CapabilityStatement.rest[0].operation[0].definition: A definition could not be found for Canonical URL 'https://github.com/nuts-foundation/bolts/blob/master/anw/TD-ANWv2024.1.md#anw-bronhouder'
 WARNING: CapabilityStatement/ANWBronhouderCapabilityStatement-v1.1.0: CapabilityStatement: Constraint failed: cpb-0: 'Name should be usable as an identifier for the module by machine processing applications such as code generation (name.matches('[A-Z]([A-Za-z0-9_]){0,254}'))'
 ERROR: Resource: The URL 'http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Bronhouder' has already been used by ANWBronhouderCapabilityStatement-v1.0.0 in /github/workspace/fsh-generated/resources/CapabilityStatement-ANWBronhouderCapabilityStatement-v1.0.0

@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://nuts-foundation.github.io/nl-generic-anw-ig/OperationDefinition/ANW-zorg | *Version*:0.1.0 |
-| Active as of 2026-02-16 | *Computable Name*:ANW-zorg |
+| Active as of 2026-03-02 | *Computable Name*:ANW-zorg |
 
  
 Custom named query on Practitioner or Patient, invoked with _query=ANW-zorg 
@@ -27,31 +27,23 @@ Custom named query on Practitioner or Patient, invoked with _query=ANW-zorg
   "name" : "ANW-zorg",
   "status" : "active",
   "kind" : "query",
-  "date" : "2026-02-16T12:39:36+00:00",
+  "date" : "2026-03-02T14:32:43+00:00",
   "publisher" : "Stichting Nuts",
-  "contact" : [
-    {
-      "name" : "Stichting Nuts",
-      "telecom" : [
-        {
-          "system" : "url",
-          "value" : "https://www.nuts.nl"
-        }
-      ]
-    }
-  ],
+  "contact" : [{
+    "name" : "Stichting Nuts",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.nuts.nl"
+    }]
+  }],
   "description" : "Custom named query on Practitioner or Patient, invoked with _query=ANW-zorg",
-  "jurisdiction" : [
-    {
-      "coding" : [
-        {
-          "system" : "urn:iso:std:iso:3166",
-          "code" : "NL",
-          "display" : "Netherlands"
-        }
-      ]
-    }
-  ],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "NL",
+      "display" : "Netherlands"
+    }]
+  }],
   "code" : "ANW-zorg",
   "resource" : ["Practitioner", "Patient"],
   "system" : false,
