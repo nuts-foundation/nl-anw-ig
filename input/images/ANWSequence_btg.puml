@@ -1,0 +1,33 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+title Sequentie voor autorisatie en notificatie aan ANW-medewerker
+
+autonumber
+actor ANWEmpl as "medewerker \nANW-zorgverlener"<<geauthenticeerd>>
+control nNodeB as "Nuts-Node \nANW-Zorgverlener"
+participant VVTA as "ECD \nANW-zorgverlener"
+participant VVTB as "ECD \nANW-Bronhouder"
+
+ANWEmpl -> VVTA++: Koppelt zichzelf\naan patiënt
+VVTA -> VVTA : Maakt een Task \nmet status "requested" \nmet bijbehorende credentials
+VVTA -> VVTB++: Notificeert dat er een nieuwe Task is aangemaakt voor Client
+VVTB --> VVTA: Accepted
+VVTB -> VVTA ++: Haalt Task op
+VVTA --> VVTB: Task
+VVTA --
+VVTB -> VVTB: Creëert benodige credentials \nvoor ANW-Zorgverlener uit Task
+VVTB --> VVTA: Update de Task met VC-ID, location reference en status "ready"
+VVTA --> VVTA--: Maak BTG aan in systeem.
+VVTA --
+VVTA --
+VVTA -> ANWEmpl ++: Aangemaakte BTG
+
+ANWEmpl -> VVTA: Opent ANW / BTG-dossier
+VVTA -> nNodeB: Zoekt VC met VC-ID uit Task
+nNodeB --> VVTA: VC
+VVTA -> VVTB ++: Haalt dossier op
+return dossier volgens ANW-specificiaties
+VVTA --> ANWEmpl: Toont ANW / BTG-dossier
+
+@enduml

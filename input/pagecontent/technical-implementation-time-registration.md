@@ -1,4 +1,4 @@
-# Tijdregistratie (voorstel)
+# Tijdregistratie
 
 Datum 20 januari 2026
 
