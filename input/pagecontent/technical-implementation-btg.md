@@ -160,3 +160,39 @@ De BTG-Task verschilt op twee punten van de ANW-Task:
 
 - **`code`** — De code `BTG-autorisatie-verzoek` onderscheidt dit verzoek expliciet van een regulier ANW-autorisatieverzoek. De bronhouder gebruikt deze code om de juiste verwerkingslogica toe te passen.
 - **`reason.text`** — Dit veld is bij de BTG-Task verplicht. Waar het veld bij de reguliere ANW-Task wordt gebruikt voor instructies, bevat het hier een door de gebruiker ingevulde toelichting op de reden voor het toepassen van breaking the glass.
+
+## Gegevensinzage credential
+
+Nadat de bronhouder het BTG-autorisatieverzoek heeft verwerkt en goedgekeurd, geeft de bronhouder een `NutsAuthorizationCredential` uit voor de betreffende patiënt. In dit credential wordt de `purposeOfUse` ingesteld op `BTG-Bronhouder-Gegevensinzage`. Hierdoor is voor alle betrokken partijen expliciet zichtbaar dat de toegang is verleend in het kader van breaking the glass en niet via de reguliere ANW-flow.
+
+Voorbeeld NutsAuthorizationCredential gegevensinzage:
+
+```json
+{
+  "verifiableCredential": {
+    "@context": [
+      "https://nuts.nl/credentials/v1",
+      "https://www.w3.org/2018/credentials/v1",
+      "https://w3c-ccg.github.io/lds-jws2020/contexts/lds-jws2020-v1.json"
+    ],
+    "type": [
+      "NutsAuthorizationCredential",
+      "VerifiableCredential"
+    ],
+    "credentialSubject": {
+      "id": "did:nuts:{DID van ANW-Zorgverlener}",
+      "purposeOfUse": "BTG-Bronhouder-Gegevensinzage",
+      "resources": [
+        ...
+      ]
+    },
+    "proof": {
+      "created": "2026-04-29T15:39:46.873044983+02:00",
+      "jws": "eyJhbGciOiJFU......",
+      "proofPurpose": "assertionMethod",
+      "type": "JsonWebSignature2020",
+      "verificationMethod": "did:nuts:Eb1U3ap94wcziQhUfZSW........"
+    }
+  }
+}
+```
