@@ -18,7 +18,7 @@ Onderstaand de beschrijving van de relevante velden:
 | `purposeOfUse` | Identificeert dit credential als een BTG-toestemming (`BTG-Bronhouder-ZorgverlenerToegang`). |
 | `resources[].path` | Het FHIR-pad waarop de operatie is toegestaan, bijvoorbeeld voor het zoeken naar patiënten of het versturen van een notificatie. |
 | `resources[].operations` | De toegestane FHIR-operaties op het opgegeven pad (`search`, `create`). |
-| `resources[].userContext` | Geeft aan of de operatie een gebruikerscontext vereist. Bij BTG is dit `false`. |
+| `resources[].userContext` | Geeft aan of de operatie een gebruikerscontext vereist. Bij BTG is dit `NOG BEPALEN`. |
 
 Voorbeeld NutsAuthorizationCredential:
 
@@ -64,6 +64,10 @@ Voorbeeld NutsAuthorizationCredential:
   }
 }
 ```
+
+#### Openstaand punt: patiëntselectie
+
+Het is nog niet definitief bepaald hoe de ANW-Zorgverlener de juiste patiënt selecteert voordat het BTG-autorisatieverzoek wordt ingediend. Specifiek is nog open of bij het ophalen van de patiëntenlijst de gebruikersidentiteit van de ingelogde zorgverlener meegestuurd moet worden, bijvoorbeeld om de lijst te filteren op basis van de context van de zorgverlener.
 
 ## Proces
 
