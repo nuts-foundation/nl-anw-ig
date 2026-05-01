@@ -1,11 +1,28 @@
-# Breaking the glass voorstel (BTG)
+# Breaking the glass (BTG) (CONCEPT)
 
 Datum 15 April 2026
 
-Voor de technische implementatie van breaking the glass (BTG) wordt er gebruik gemaakt van dezelfde technieken als bij de ANW maar is in het process geen regisseur aanwezig en daarmee het technisch process ook versimpeld. Breaking the glass betekend ook immers dat een medewerker toegang geeft aan zichzelf i.p.v. dit te laten gebeuren d.m.v. een aparte regisseur rol. Bij de breaking the glass functionaliteit komt dan ook geen ANW-Regisseur rol meer kijken en gaat het enkel nog tussen de ANW-Zorgverlener en ANW-Bronhouder.
+Breaking the glass (BTG) maakt het mogelijk dat een ANW-zorgverlener zichzelf tijdelijk toegang verleent tot de gegevens van een patiënt, zonder tussenkomst van een regisseur. Dit onderscheidt BTG van de reguliere ANW-flow: er is geen ANW-Regisseur betrokken en het proces verloopt uitsluitend tussen de ANW-Zorgverlener en de ANW-Bronhouder.
 
-De breaking the glass functionaliteit begint net als bij de reguliere ANW met het vastleggen van een expliciete toestemming door de ANW-Bronhouder aan de ANW-Zorgverlener. Dit gebeurt d.m.v. het volgende credential welke de bronhouder (eenmalig) moet uitgeven:
- ```json 
+Net als bij de reguliere ANW begint BTG met een expliciete toestemming van de bronhouder aan de zorgverlener. Deze toestemming wordt eenmalig vastgelegd in een `NutsAuthorizationCredential`. Op basis van dit credential weet het systeem van de ANW-Zorgverlener bij welke bronhouders breaking the glass toegepast mag worden.
+
+## NutsAuthorizationCredential
+
+De ANW-Bronhouder geeft eenmalig een `NutsAuthorizationCredential` uit aan de ANW-Zorgverlener. Het primaire doel van dit credential is het toestaan dat de zorgverlener de patiënten van de bronhouder kan ophalen en doorzoeken, zodat de juiste patiënt geselecteerd kan worden voordat het BTG-autorisatieverzoek wordt ingediend. Daarnaast bevat het credential de toestemming om een notificatie te versturen naar de bronhouder als onderdeel van de BTG-flow.
+
+Onderstaand de beschrijving van de relevante velden:
+
+| Veld | Omschrijving |
+| ---- | ------------ |
+| `credentialSubject.id` | Het DID van de ANW-Zorgverlener die gemachtigd is om BTG toe te passen. |
+| `purposeOfUse` | Identificeert dit credential als een BTG-toestemming (`BTG-Bronhouder-ZorgverlenerToegang`). |
+| `resources[].path` | Het FHIR-pad waarop de operatie is toegestaan, bijvoorbeeld voor het zoeken naar patiënten of het versturen van een notificatie. |
+| `resources[].operations` | De toegestane FHIR-operaties op het opgegeven pad (`search`, `create`). |
+| `resources[].userContext` | Geeft aan of de operatie een gebruikerscontext vereist. Bij BTG is dit `false`. |
+
+Voorbeeld NutsAuthorizationCredential:
+
+```json
 {
   "verifiableCredential": {
     "@context": [
@@ -18,7 +35,7 @@ De breaking the glass functionaliteit begint net als bij de reguliere ANW met he
       "VerifiableCredential"
     ],
     "credentialSubject": {
-      "id": "did:nuts:{Did van ANW-Zorgverlener}",
+      "id": "did:nuts:{DID van ANW-Zorgverlener}",
       "purposeOfUse": "BTG-Bronhouder-ZorgverlenerToegang",
       "resources": [
         {
@@ -47,14 +64,33 @@ De breaking the glass functionaliteit begint net als bij de reguliere ANW met he
   }
 }
 ```
-Met deze credential weet een ANW-Zorgverlener systeem van wie die toegang heeft om breaking the glass toe te passen. 
 
-Het vinden van de patienten waar een zorgverlener zich aan kan koppelen is nog een TODO om helder te krijgen. Hier is nog onduidelijkheid voor het uit te zoeken of gebruikers identeit toegevoegd zal worden bij het ophalen van de Patienten.
+## Proces
 
-Nadat de juise Patient gekozen is, loopt het process op de manier afgebeeld in de sequentie diagram:
+Nadat de zorgverlener de juiste patiënt heeft geselecteerd, verloopt de BTG-flow zoals weergegeven in het onderstaande sequentiediagram. Omdat er geen regisseur aanwezig is, communiceert het systeem van de zorgverlener rechtstreeks met de bronhouder.
+
 {% include img.html img="ANWSequence_btg.png" %}
 
-Wat hier afwijkt van de reguliere ANW is dat hier gebruik gemaakt wordt van een afgeleide van de Task gedifineerd bij de ANW:
+## FHIR Task
+
+De BTG-flow maakt gebruik van een Task-resource die is afgeleid van de ANW-Task. De Task wordt door het systeem van de ANW-Zorgverlener aangemaakt en bij de ANW-Bronhouder ingediend als autorisatieverzoek.
+
+Onderstaand de beschrijving van de relevante velden:
+
+| Veld | Omschrijving |
+| ---- | ------------ |
+| `code.coding[].code` | Identificeert dit verzoek als een BTG-autorisatieverzoek (`BTG-autorisatie-verzoek`). Hiermee kan de bronhouder onderscheid maken tussen een reguliere ANW-flow en een BTG-flow. |
+| `for` | Verwijzing naar de patiënt voor wie toegang wordt gevraagd. |
+| `authoredOn` | Tijdstip waarop het autorisatieverzoek is aangemaakt. |
+| `requester.agent` | Het systeem of de organisatie van de ANW-Zorgverlener die het verzoek indient. |
+| `requester.onBehalfOf` | De autoriserende partij (de bronhouder als data-eigenaar). |
+| `owner` | De partij die toegang vraagt tot de gegevens. |
+| `reason.text` | Verplicht veld waarin de zorgverlener de reden voor het BTG-verzoek toelicht. Dit is vrije tekst die door de gebruiker wordt ingevuld. |
+| `restriction.period` | De periode waarvoor de tijdelijke toegang wordt gevraagd. |
+| `restriction.recipient` | De zorgverlener die de toegang ontvangt. |
+
+Voorbeeld FHIR Task:
+
 ```json
 {
   "resourceType": "Task",
@@ -101,7 +137,7 @@ Wat hier afwijkt van de reguliere ANW is dat hier gebruik gemaakt wordt van een 
     "display": "Accessing party B (data accessor)"
   },
   "reason": {
-    "text": "{required user input of the zorgverlener}"
+    "text": "{verplichte toelichting van de zorgverlener}"
   },
   "restriction": {
     "period": {
@@ -118,4 +154,9 @@ Wat hier afwijkt van de reguliere ANW is dat hier gebruik gemaakt wordt van een 
 }
 ```
 
-Het verschil hier tussen de fhir Task bij de ANW is dat deze een code heeft 'BTG-autorisatie-verzoek' welke gebruikt kan worden door de bronhouder om onderscheid te maken of het gaat om een normale ANW flow of BTG flow. Daarnaast is het reason text veld verplicht en zijn het geen instructies zoals het veld wordt gebruikt bij de reguliere ANW maar wordt verwacht dat hier door de gebruiker informatie wordt gevuld met wat de reden is voor het doen van een BTG.
+### Verschil met de reguliere ANW-Task
+
+De BTG-Task verschilt op twee punten van de ANW-Task:
+
+- **`code`** — De code `BTG-autorisatie-verzoek` onderscheidt dit verzoek expliciet van een regulier ANW-autorisatieverzoek. De bronhouder gebruikt deze code om de juiste verwerkingslogica toe te passen.
+- **`reason.text`** — Dit veld is bij de BTG-Task verplicht. Waar het veld bij de reguliere ANW-Task wordt gebruikt voor instructies, bevat het hier een door de gebruiker ingevulde toelichting op de reden voor het toepassen van breaking the glass.
