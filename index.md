@@ -8,7 +8,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://nuts-foundation.github.io/nl-generic-anw-ig/ImplementationGuide/nl.nuts.anw | *Version*:0.1.0 |
-| Draft as of 2026-03-02 | *Computable Name*:NLAnwIG |
+| Draft as of 2026-05-13 | *Computable Name*:NLAnwIG |
 
 ## ⚠️ Disclaimer
 
@@ -48,7 +48,7 @@ The ANW use case covers evening, night, and weekend care services. This implemen
   "name" : "NLAnwIG",
   "title" : "Netherlands - ANW implementation guide",
   "status" : "draft",
-  "date" : "2026-03-02T14:32:43+00:00",
+  "date" : "2026-05-13T07:58:06+00:00",
   "publisher" : "Stichting Nuts",
   "contact" : [{
     "name" : "Stichting Nuts",
@@ -75,7 +75,7 @@ The ANW use case covers evening, night, and weekend care services. This implemen
     }],
     "uri" : "http://terminology.hl7.org/ImplementationGuide/hl7.terminology",
     "packageId" : "hl7.terminology.r4",
-    "version" : "7.0.1"
+    "version" : "7.1.0"
   },
   {
     "id" : "hl7ext",
@@ -376,7 +376,7 @@ The ANW use case covers evening, night, and weekend care services. This implemen
     },
     {
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-internal-dependency",
-      "valueCode" : "hl7.fhir.uv.tools.r4#0.9.0"
+      "valueCode" : "hl7.fhir.uv.tools.r4#1.1.2"
     },
     {
       "extension" : [{
@@ -748,6 +748,15 @@ The ANW use case covers evening, night, and weekend care services. This implemen
         }],
         "nameUrl" : "technical-documentation-v1.html",
         "title" : "Technical Documentation v 1",
+        "generation" : "markdown"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+          "valueUrl" : "technical-implementation-btg.html"
+        }],
+        "nameUrl" : "technical-implementation-btg.html",
+        "title" : "Technical Implementation Btg",
         "generation" : "markdown"
       },
       {

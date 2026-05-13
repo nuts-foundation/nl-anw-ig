@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <title>Technical Implementation Btg - Netherlands - ANW implementation guide v0.1.0</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="http://hl7.org/fhir"/>
+
+    <link href="fhir.css" rel="stylesheet"/>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap-fhir.css" rel="stylesheet"/>
+
+    <!-- Project extras -->
+    <link href="assets/css/project.css" rel="stylesheet"/>
+    <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
+    <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
+  	<link href="assets/css/prism.css" rel="stylesheet" />
+  	<link href="assets/css/cqf.css" rel="stylesheet" />
+    <!-- Placeholder for child template CSS declarations -->
+
+    <script type="text/javascript" src="fhir-table-scripts.js"> </script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+  </head>
+  <body onload="document.body.style.opacity='1'">
+
+	  <script src="assets/js/prism.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
+    <style type="text/css">h2{--heading-prefix:"3"}
+    h3,h4,h5,h6{--heading-prefix:"3"}</style>
+    <div id="segment-header" class="segment">  <!-- segment-header -->
+      <div class="container">  <!-- container -->
+
+        <!-- Placeholder for child template header declarations -->
+
+
+        <div id="ig-status">
+          <p><span style="font-size:12pt;font-weight:bold">Netherlands - ANW implementation guide</span>
+            <br/>
+            <span style="display:inline-block;">0.1.0 - ci-build
+
+
+
+  <span title="">NL</span>
+
+
+            </span>
+          </p>
+        </div>
+      </div> <!-- /container -->
+    </div>  <!-- /segment-header -->
+
+    <div id="segment-navbar" class="segment">  <!-- segment-navbar -->
+      <div id="stripe"> </div>
+      <div class="container">  <!-- container -->
+        <!-- HEADER CONTENT -->
+
+        <nav class="navbar navbar-inverse">
+          <!--status-bar-->
+          <div class="container">
+            <button data-target=".navbar-inverse-collapse" class="navbar-toggle" data-toggle="collapse" type="button">
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+            </button>
+            <a class="navbar-brand hidden" href="http://hl7.org/fhir/R4/index.html">FHIR</a>
+            <div class="nav-collapse collapse navbar-inverse-collapse">
+              <!-- menu.xml  -->
+
+<ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+  <li>
+    <a href="index.html">Home</a>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Documentation
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="technical-documentation-v1.html">Technical Documentation v1</a>
+      </li>
+      <li>
+        <a href="technical-implementation-time-registration.html">Tijdregistratie</a>
+      </li>
+      <li>
+        <a href="technical-implementation-btg.html">Breaking the glass (BTG) Voorstel</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="artifacts.html">Artifacts</a>
+  </li>
+</ul>
+            </div>  <!-- /.nav-collapse -->
+          </div>  <!-- /.container -->
+        </nav>  <!-- /.navbar -->
+      <!-- /HEADER CONTENT -->
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-navbar -->
+    <!--status-bar-->
+
+    <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
+      <div class="container">  <!-- container -->
+        <ul class="breadcrumb">
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><b>Technical Implementation Btg</b></li>
+
+        </ul>
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-breadcrumb -->
+
+    <a name="top"> </a>
+    <div id="segment-content" class="segment">  <!-- segment-content -->
+      <div class="container">  <!-- container -->
+        <div class="row">
+          <div class="inner-wrapper">
+
+<style type="text/css">
+h2:before{color:silver;counter-increment:section;content:var(--heading-prefix) " ";}
+h3:before{color:silver;counter-increment:sub-section;content:var(--heading-prefix) "." counter(sub-section) " ";}
+h4:before{color:silver;counter-increment:composite;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) " ";}
+h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) " ";}
+h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
+</style>
+<div class="col-12">
+  <!--ReleaseHeader--><p id="publish-box">Netherlands - ANW implementation guide - Local Development build (v0.1.0) built by the FHIR (HL7® FHIR® Standard) Build Tools. See the <a href='http://nuts-foundation.github.io/nl-generic-anw-ig/history.html'>Directory of published versions</a></p><!--EndReleaseHeader-->
+  <h2>Technical Implementation Btg</h2>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+    <p><!-- white space is critical inside of capture --></p>
+<div>
+<!-- do not remove - needed to prevent Jekyll from adding a p tag to any non block level element in the markdown.-->
+</div>
+<h1 id="breaking-the-glass-btg-concept">Breaking the glass (BTG) (CONCEPT)</h1>
+
+<p>Datum 15 April 2026</p>
+
+<p>Breaking the glass (BTG) maakt het mogelijk dat een ANW-zorgverlener zichzelf tijdelijk toegang verleent tot de gegevens van een patiënt, zonder tussenkomst van een regisseur. Dit onderscheidt BTG van de reguliere ANW-flow: er is geen ANW-Regisseur betrokken en het proces verloopt uitsluitend tussen de ANW-Zorgverlener en de ANW-Bronhouder.</p>
+
+<p>Net als bij de reguliere ANW begint BTG met een expliciete toestemming van de bronhouder aan de zorgverlener. Deze toestemming wordt eenmalig vastgelegd in een <code class="language-plaintext highlighter-rouge">NutsAuthorizationCredential</code>. Op basis van dit credential weet het systeem van de ANW-Zorgverlener bij welke bronhouders breaking the glass toegepast mag worden.</p>
+
+<h2 id="nutsauthorizationcredential">NutsAuthorizationCredential</h2>
+
+<p>De ANW-Bronhouder geeft eenmalig een <code class="language-plaintext highlighter-rouge">NutsAuthorizationCredential</code> uit aan de ANW-Zorgverlener. Het primaire doel van dit credential is het toestaan dat de zorgverlener de patiënten van de bronhouder kan ophalen en doorzoeken, zodat de juiste patiënt geselecteerd kan worden voordat het BTG-autorisatieverzoek wordt ingediend. Daarnaast bevat het credential de toestemming om een notificatie te versturen naar de bronhouder als onderdeel van de BTG-flow.</p>
+
+<p>Onderstaand de beschrijving van de relevante velden:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Veld</th>
+      <th>Omschrijving</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">credentialSubject.id</code></td>
+      <td>Het DID van de ANW-Zorgverlener die gemachtigd is om BTG toe te passen.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">purposeOfUse</code></td>
+      <td>Identificeert dit credential als een BTG-toestemming (<code class="language-plaintext highlighter-rouge">BTG-Bronhouder-ZorgverlenerToegang</code>).</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">resources[].path</code></td>
+      <td>Het FHIR-pad waarop de operatie is toegestaan, bijvoorbeeld voor het zoeken naar patiënten of het versturen van een notificatie.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">resources[].operations</code></td>
+      <td>De toegestane FHIR-operaties op het opgegeven pad (<code class="language-plaintext highlighter-rouge">search</code>, <code class="language-plaintext highlighter-rouge">create</code>).</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">resources[].userContext</code></td>
+      <td>Geeft aan of de operatie een gebruikerscontext vereist. Bij BTG is dit <code class="language-plaintext highlighter-rouge">NOG BEPALEN</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Voorbeeld NutsAuthorizationCredential:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"verifiableCredential"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"@context"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"https://nuts.nl/credentials/v1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"https://www.w3.org/2018/credentials/v1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"https://w3c-ccg.github.io/lds-jws2020/contexts/lds-jws2020-v1.json"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"NutsAuthorizationCredential"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"VerifiableCredential"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"credentialSubject"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"did:nuts:{DID van ANW-Zorgverlener}"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"purposeOfUse"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTG-Bronhouder-ZorgverlenerToegang"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"resources"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"search"</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/Patient?_query=ANW-zorg"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"userContext"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"create"</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/notification"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"userContext"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"proof"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-01-18T16:27:52.939738279+01:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"jws"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJhbGciOiJFU......"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"proofPurpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"assertionMethod"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JsonWebSignature2020"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"verificationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"did:nuts:Eb1U3ap94wcziQhUfZSW........"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h4 id="openstaand-punt-patiëntselectie">Openstaand punt: patiëntselectie</h4>
+
+<p>Het is nog niet definitief bepaald hoe de ANW-Zorgverlener de juiste patiënt selecteert voordat het BTG-autorisatieverzoek wordt ingediend. Specifiek is nog open of bij het ophalen van de patiëntenlijst de gebruikersidentiteit van de ingelogde zorgverlener meegestuurd moet worden, bijvoorbeeld om de lijst te filteren op basis van de context van de zorgverlener.</p>
+
+<h2 id="proces">Proces</h2>
+
+<p>Nadat de zorgverlener de juiste patiënt heeft geselecteerd, verloopt de BTG-flow zoals weergegeven in het onderstaande sequentiediagram. Omdat er geen regisseur aanwezig is, communiceert het systeem van de zorgverlener rechtstreeks met de bronhouder.</p>
+
+<figure class="figure">
+  <img src="ANWSequence_btg.png" class="figure-img img-responsive img-rounded center-block" alt="" />
+  
+</figure>
+
+<h2 id="fhir-task">FHIR Task</h2>
+
+<p>De BTG-flow maakt gebruik van een Task-resource die is afgeleid van de ANW-Task. De Task wordt door het systeem van de ANW-Zorgverlener aangemaakt en bij de ANW-Bronhouder ingediend als autorisatieverzoek.</p>
+
+<p>Onderstaand de beschrijving van de relevante velden:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Veld</th>
+      <th>Omschrijving</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">code.coding[].code</code></td>
+      <td>Identificeert dit verzoek als een BTG-autorisatieverzoek (<code class="language-plaintext highlighter-rouge">BTG-autorisatie-verzoek</code>). Hiermee kan de bronhouder onderscheid maken tussen een reguliere ANW-flow en een BTG-flow.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">for</code></td>
+      <td>Verwijzing naar de patiënt voor wie toegang wordt gevraagd.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">authoredOn</code></td>
+      <td>Tijdstip waarop het autorisatieverzoek is aangemaakt.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">requester.agent</code></td>
+      <td>Het systeem of de organisatie van de ANW-Zorgverlener die het verzoek indient.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">requester.onBehalfOf</code></td>
+      <td>De autoriserende partij (de bronhouder als data-eigenaar).</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">owner</code></td>
+      <td>De partij die toegang vraagt tot de gegevens.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">reason.text</code></td>
+      <td>Verplicht veld waarin de zorgverlener de reden voor het BTG-verzoek toelicht. Dit is vrije tekst die door de gebruiker wordt ingevuld.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">restriction.period</code></td>
+      <td>De periode waarvoor de tijdelijke toegang wordt gevraagd.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">restriction.recipient</code></td>
+      <td>De zorgverlener die de toegang ontvangt.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Voorbeeld FHIR Task:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Task"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"af10c4c8-bc4d-40c7-a335-fb63fe7158d3"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"profile"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"https://nuts.nl/fhir/StructureDefinition/nl-core-authorization-request"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"intent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTG-autorisatie-verzoek"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"for"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient/{patientId}"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"patient display name"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"authoredOn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-01-23T13:23:42.1885689+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"requester"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"agent"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://nuts.nl"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{DID ANW-Zorgverlener}"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANW-Zorgverlener A"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"onBehalfOf"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://nuts.nl"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{DID authorizing party}"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Authorizing party C (data owner)"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://nuts.nl"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{DID accessing party}"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Accessing party B (data accessor)"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"reason"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{verplichte toelichting van de zorgverlener}"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"restriction"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"period"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-01-23T14:23:42.2264869+01:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-01-26T13:23:42.2295674+00:00"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"recipient"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Practitioner/{practitioner with access Id}"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"anw practitioner display name"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="verschil-met-de-reguliere-anw-task">Verschil met de reguliere ANW-Task</h3>
+
+<p>De BTG-Task verschilt op twee punten van de ANW-Task:</p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">code</code></strong> — De code <code class="language-plaintext highlighter-rouge">BTG-autorisatie-verzoek</code> onderscheidt dit verzoek expliciet van een regulier ANW-autorisatieverzoek. De bronhouder gebruikt deze code om de juiste verwerkingslogica toe te passen.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">reason.text</code></strong> — Dit veld is bij de BTG-Task verplicht. Waar het veld bij de reguliere ANW-Task wordt gebruikt voor instructies, bevat het hier een door de gebruiker ingevulde toelichting op de reden voor het toepassen van breaking the glass.</li>
+</ul>
+
+<h2 id="gegevensinzage-credential">Gegevensinzage credential</h2>
+
+<p>Nadat de bronhouder het BTG-autorisatieverzoek heeft verwerkt en goedgekeurd, geeft de bronhouder een <code class="language-plaintext highlighter-rouge">NutsAuthorizationCredential</code> uit voor de betreffende patiënt. In dit credential wordt de <code class="language-plaintext highlighter-rouge">purposeOfUse</code> ingesteld op <code class="language-plaintext highlighter-rouge">BTG-Bronhouder-Gegevensinzage</code>. Hierdoor is voor alle betrokken partijen expliciet zichtbaar dat de toegang is verleend in het kader van breaking the glass en niet via de reguliere ANW-flow.</p>
+
+<p>Voorbeeld NutsAuthorizationCredential gegevensinzage:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"verifiableCredential"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"@context"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"https://nuts.nl/credentials/v1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"https://www.w3.org/2018/credentials/v1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"https://w3c-ccg.github.io/lds-jws2020/contexts/lds-jws2020-v1.json"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"NutsAuthorizationCredential"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"VerifiableCredential"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"credentialSubject"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"did:nuts:{DID van ANW-Zorgverlener}"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"purposeOfUse"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTG-Bronhouder-Gegevensinzage"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"resources"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="err">...</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"proof"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-04-29T15:39:46.873044983+02:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"jws"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJhbGciOiJFU......"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"proofPurpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"assertionMethod"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JsonWebSignature2020"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"verificationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"did:nuts:Eb1U3ap94wcziQhUfZSW........"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+
+
+
+</div>
+        </div>  <!-- /inner-wrapper -->
+      </div>  <!-- /row -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-content -->
+
+  <script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+  <script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
+
+  <script type="text/javascript" src="assets/js/window-hash.js"> </script>
+  <a name="bottom"> </a>
+  <div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
+    <div class="container">  <!-- container -->
+
+      <div class="inner-wrapper">
+        <p>
+          IG &#169; 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.nuts.nl">Stichting Nuts</a>.  Package nl.nuts.anw#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, May 13, 2026 07:58+0000">2026-05-13</span>
+          <br/>
+          <span style="color: var(--footer-highlight-text-color)">
+                      Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
+                 
+                
+          </span>
+        </p>
+      </div>  <!-- /inner-wrapper -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-footer -->
+  
+  <div id="segment-post-footer" class="segment hidden">  <!-- segment-post-footer -->
+    <div class="container">  <!-- container -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-post-footer -->
+
+  <!-- JS and analytics only. -->
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script type="text/javascript" src="assets/js/bootstrap.min.js"> </script>
+  <script type="text/javascript" src="assets/js/respond.min.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
+  <!-- Analytics Below
+  ================================================== -->
+  </body>
+</html>
+
