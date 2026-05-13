@@ -26,5 +26,6 @@ menu:
   Home: index.html
   Documentation:
     Technical Documentation v1: technical-documentation-v1.html
-    Tijdregistratie (Voorlopig voorstel): technical-implementation-time-registration.html
+    Tijdregistratie: technical-implementation-time-registration.html
+    Breaking the glass (BTG) Voorstel: technical-implementation-btg.html
   Artifacts: artifacts.html

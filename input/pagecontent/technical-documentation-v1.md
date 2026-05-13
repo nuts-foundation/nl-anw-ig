@@ -121,7 +121,7 @@ gebruiken om zelf te filteren op de gewenste cliënten / medewerkers.
 
 #### Sequentie diagram
 
-{% include img.html img="ANW_regisseur_sequence.png" %}
+{% include img.html img="ANW_Regisseur_sequence.png" %}
 
 #### Voorbeeld verifiable credential Regisseur (om cliënten/medewerkers op te halen)
 
