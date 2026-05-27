@@ -2,8 +2,8 @@ NLAnwIG : Validation Results
 =========================================
 
 err = 25, warn = 35, info = 0
-IG Publisher Version: 2.2.7
-Generated Wed May 13 07:58:57 UTC 2026. FHIR version 4.0.1 for nl.nuts.anw#0.1.0 (canonical = http://nuts-foundation.github.io/nl-generic-anw-ig)
+IG Publisher Version: 2.2.8
+Generated Wed May 27 07:12:51 UTC 2026. FHIR version 4.0.1 for nl.nuts.anw#0.1.0 (canonical = http://nuts-foundation.github.io/nl-generic-anw-ig)
  Build Errors : 3 / 4 / 0
  /github/workspace/fsh-generated/resources/CapabilityStatement-ANWBronhouderCapabilityStatement-v1.0.0 : 7 / 13 / 1
  /github/workspace/fsh-generated/resources/CapabilityStatement-ANWBronhouderCapabilityStatement-v1.1.0 : 7 / 14 / 1

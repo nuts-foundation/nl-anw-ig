@@ -196,7 +196,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">resources[].userContext</code></td>
-      <td>Geeft aan of de operatie een gebruikerscontext vereist. Bij BTG is dit <code class="language-plaintext highlighter-rouge">NOG BEPALEN</code>.</td>
+      <td>Geeft aan of de operatie een gebruikerscontext vereist. Bij BTG is dit <code class="language-plaintext highlighter-rouge">true</code>: bij het opvragen van de patiënten wordt de gebruikerscontext van de ingelogde zorgverlener meegestuurd, zodat de bronhouder de aanvraag aan een geïdentificeerde gebruiker kan koppelen.</td>
     </tr>
   </tbody>
 </table>
@@ -222,8 +222,8 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
           </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="s2">"search"</span><span class="w">
           </span><span class="p">],</span><span class="w">
-          </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/Patient?_query=ANW-zorg"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"userContext"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/Patient?_query=anw-zorg-v2"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"userContext"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -245,9 +245,47 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
-<h4 id="openstaand-punt-patiëntselectie">Openstaand punt: patiëntselectie</h4>
+<h4 id="patiëntselectie-en-data-minimalisatie">Patiëntselectie en data-minimalisatie</h4>
 
-<p>Het is nog niet definitief bepaald hoe de ANW-Zorgverlener de juiste patiënt selecteert voordat het BTG-autorisatieverzoek wordt ingediend. Specifiek is nog open of bij het ophalen van de patiëntenlijst de gebruikersidentiteit van de ingelogde zorgverlener meegestuurd moet worden, bijvoorbeeld om de lijst te filteren op basis van de context van de zorgverlener.</p>
+<p>Bij het ophalen van de patiënten door de ANW-Zorgverlener wordt gebruik gemaakt van de <strong>gebruikerscontext</strong> van de ingelogde zorgverlener. Deze context wordt meegestuurd met de FHIR-aanvraag zodat de bronhouder de aanvraag aan een geïdentificeerde gebruiker kan koppelen en de afhandeling daarop kan afstemmen.</p>
+
+<p>Daarnaast worden bij het zoeken <strong>zoekparameters</strong> gebruikt zodat gericht op de betreffende patiënt gezocht kan worden in plaats van een volledige patiëntenlijst op te halen. Hierdoor wordt voorkomen dat onnodig brede sets met patiëntgegevens over de lijn gaan.</p>
+
+<p>Tot slot wordt <strong>data-minimalisatie</strong> toegepast: de respons bevat alleen de velden die nodig zijn voor de patiëntselectie (bijvoorbeeld <code class="language-plaintext highlighter-rouge">identifier</code>, <code class="language-plaintext highlighter-rouge">name</code> en <code class="language-plaintext highlighter-rouge">birthDate</code>), waardoor niet de volledige <code class="language-plaintext highlighter-rouge">Patient</code>-resource over de lijn gaat. Deze beperking wordt <strong>server-side</strong> afgedwongen door de bronhouder als onderdeel van de named query, en niet via zoekparameters door de consumer. Hierdoor is de set met geretourneerde velden onderdeel van het contract van de query en kan deze niet door de consumer worden uitgebreid. Pas nadat het BTG-autorisatieverzoek is goedgekeurd, wordt op basis van het gegevensinzage-credential bredere patiëntdata opgehaald.</p>
+
+<h4 id="named-query-anw-zorg-v2">Named query: <code class="language-plaintext highlighter-rouge">anw-zorg-v2</code></h4>
+
+<p>Voor het zoeken naar patiënten in de BTG-flow wordt een nieuwe named query geïntroduceerd: <code class="language-plaintext highlighter-rouge">anw-zorg-v2</code>. Deze vervangt voor deze flow het gebruik van de bestaande <code class="language-plaintext highlighter-rouge">ANW-zorg</code>-query.</p>
+
+<p>In <code class="language-plaintext highlighter-rouge">anw-zorg-v2</code> worden aanvullende afspraken afgedwongen rondom:</p>
+<ul>
+  <li><strong>gebruikers-/clientcontext en logging</strong> - de gebruikerscontext van de ingelogde zorgverlener is verplicht en wordt vastgelegd;</li>
+  <li><strong>verplichte zoekcontext</strong> - de aanvraag moet zoekparameters bevatten zodat gericht op de betreffende patiënt gezocht wordt. De filters liggen op de <strong>achternaam</strong> (<code class="language-plaintext highlighter-rouge">family</code>) en/of het <strong>BSN</strong> (<code class="language-plaintext highlighter-rouge">identifier</code>); minimaal één van beide moet worden meegegeven, maar ze mogen ook gecombineerd worden;</li>
+  <li><strong>filtering</strong> - de resultaten worden beperkt tot de patiënten die binnen de scope van de zorgverlener en bronhouder vallen;</li>
+  <li><strong>beperkte responsevelden</strong> - de respons bevat alleen de velden die nodig zijn voor de patiëntselectie; deze beperking wordt server-side afgedwongen als onderdeel van de query en niet door de consumer via zoekparameters meegegeven.</li>
+</ul>
+
+<p>Voorbeeld van een request:</p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">GET</span> <span class="nn">/Patient?_query=anw-zorg-v2&amp;family=Jansen&amp;identifier=http://fhir.nl/fhir/NamingSystem/bsn|123456782</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">bronhouder.example.nl</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/fhir+json</span>
+</code></pre></div></div>
+
+<p>De reden om hiervoor een aparte named query te introduceren in plaats van de bestaande query aan te passen, is dat het gedrag inhoudelijk afwijkt van de huidige <code class="language-plaintext highlighter-rouge">ANW-zorg</code>-query. Bestaande conversies en integraties zijn afhankelijk van het huidige gedrag; aanpassen daarvan zou kunnen leiden tot afwijkende responses, strengere filtering of gewijzigde logging, met impact op de huidige consumers.</p>
+
+<p>Door een aparte query te introduceren:</p>
+
+<ul>
+  <li>blijven bestaande conversies en integraties stabiel</li>
+  <li>worden breaking changes voor huidige consumers voorkomen</li>
+  <li>ontstaat er een duidelijk contract voor de nieuwe functionaliteit</li>
+  <li>kunnen de nieuwe afspraken gecontroleerd ingevoerd worden</li>
+  <li>kan de oude query later gefaseerd uitgefaseerd worden</li>
+  <li>ontstaat een generieke query die ook bruikbaar is voor andere consumers, zoals de regisseur.</li>
+</ul>
+
+<p>De naam <code class="language-plaintext highlighter-rouge">anw-zorg-v2</code> maakt daarnaast expliciet dat het om een nieuwe versie van het zoekgedrag gaat, zonder direct gekoppeld te zijn aan één specifieke consumer of implementatie.</p>
 
 <h2 id="proces">Proces</h2>
 
@@ -380,8 +418,8 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <p>De BTG-Task verschilt op twee punten van de ANW-Task:</p>
 
 <ul>
-  <li><strong><code class="language-plaintext highlighter-rouge">code</code></strong> — De code <code class="language-plaintext highlighter-rouge">BTG-autorisatie-verzoek</code> onderscheidt dit verzoek expliciet van een regulier ANW-autorisatieverzoek. De bronhouder gebruikt deze code om de juiste verwerkingslogica toe te passen.</li>
-  <li><strong><code class="language-plaintext highlighter-rouge">reason.text</code></strong> — Dit veld is bij de BTG-Task verplicht. Waar het veld bij de reguliere ANW-Task wordt gebruikt voor instructies, bevat het hier een door de gebruiker ingevulde toelichting op de reden voor het toepassen van breaking the glass.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">code</code></strong> - De code <code class="language-plaintext highlighter-rouge">BTG-autorisatie-verzoek</code> onderscheidt dit verzoek expliciet van een regulier ANW-autorisatieverzoek. De bronhouder gebruikt deze code om de juiste verwerkingslogica toe te passen.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">reason.text</code></strong> - Dit veld is bij de BTG-Task verplicht. Waar het veld bij de reguliere ANW-Task wordt gebruikt voor instructies, bevat het hier een door de gebruiker ingevulde toelichting op de reden voor het toepassen van breaking the glass.</li>
 </ul>
 
 <h2 id="gegevensinzage-credential">Gegevensinzage credential</h2>
@@ -438,7 +476,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.nuts.nl">Stichting Nuts</a>.  Package nl.nuts.anw#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, May 13, 2026 07:58+0000">2026-05-13</span>
+          IG &#169; 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.nuts.nl">Stichting Nuts</a>.  Package nl.nuts.anw#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, May 27, 2026 07:11+0000">2026-05-27</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

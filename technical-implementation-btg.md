@@ -25,7 +25,7 @@ Onderstaand de beschrijving van de relevante velden:
 | `purposeOfUse` | Identificeert dit credential als een BTG-toestemming (`BTG-Bronhouder-ZorgverlenerToegang`). |
 | `resources[].path` | Het FHIR-pad waarop de operatie is toegestaan, bijvoorbeeld voor het zoeken naar patiënten of het versturen van een notificatie. |
 | `resources[].operations` | De toegestane FHIR-operaties op het opgegeven pad (`search`,`create`). |
-| `resources[].userContext` | Geeft aan of de operatie een gebruikerscontext vereist. Bij BTG is dit`NOG BEPALEN`. |
+| `resources[].userContext` | Geeft aan of de operatie een gebruikerscontext vereist. Bij BTG is dit`true`: bij het opvragen van de patiënten wordt de gebruikerscontext van de ingelogde zorgverlener meegestuurd, zodat de bronhouder de aanvraag aan een geïdentificeerde gebruiker kan koppelen. |
 
 Voorbeeld NutsAuthorizationCredential:
 
@@ -49,8 +49,8 @@ Voorbeeld NutsAuthorizationCredential:
           "operations": [
             "search"
           ],
-          "path": "/Patient?_query=ANW-zorg",
-          "userContext": false
+          "path": "/Patient?_query=anw-zorg-v2",
+          "userContext": true
         },
         {
           "operations": [
@@ -73,9 +73,46 @@ Voorbeeld NutsAuthorizationCredential:
 
 ```
 
-#### Openstaand punt: patiëntselectie
+#### Patiëntselectie en data-minimalisatie
 
-Het is nog niet definitief bepaald hoe de ANW-Zorgverlener de juiste patiënt selecteert voordat het BTG-autorisatieverzoek wordt ingediend. Specifiek is nog open of bij het ophalen van de patiëntenlijst de gebruikersidentiteit van de ingelogde zorgverlener meegestuurd moet worden, bijvoorbeeld om de lijst te filteren op basis van de context van de zorgverlener.
+Bij het ophalen van de patiënten door de ANW-Zorgverlener wordt gebruik gemaakt van de **gebruikerscontext** van de ingelogde zorgverlener. Deze context wordt meegestuurd met de FHIR-aanvraag zodat de bronhouder de aanvraag aan een geïdentificeerde gebruiker kan koppelen en de afhandeling daarop kan afstemmen.
+
+Daarnaast worden bij het zoeken **zoekparameters** gebruikt zodat gericht op de betreffende patiënt gezocht kan worden in plaats van een volledige patiëntenlijst op te halen. Hierdoor wordt voorkomen dat onnodig brede sets met patiëntgegevens over de lijn gaan.
+
+Tot slot wordt **data-minimalisatie** toegepast: de respons bevat alleen de velden die nodig zijn voor de patiëntselectie (bijvoorbeeld `identifier`, `name` en `birthDate`), waardoor niet de volledige `Patient`-resource over de lijn gaat. Deze beperking wordt **server-side** afgedwongen door de bronhouder als onderdeel van de named query, en niet via zoekparameters door de consumer. Hierdoor is de set met geretourneerde velden onderdeel van het contract van de query en kan deze niet door de consumer worden uitgebreid. Pas nadat het BTG-autorisatieverzoek is goedgekeurd, wordt op basis van het gegevensinzage-credential bredere patiëntdata opgehaald.
+
+#### Named query: anw-zorg-v2
+
+Voor het zoeken naar patiënten in de BTG-flow wordt een nieuwe named query geïntroduceerd: `anw-zorg-v2`. Deze vervangt voor deze flow het gebruik van de bestaande `ANW-zorg`-query.
+
+In `anw-zorg-v2` worden aanvullende afspraken afgedwongen rondom:
+
+* **gebruikers-/clientcontext en logging** - de gebruikerscontext van de ingelogde zorgverlener is verplicht en wordt vastgelegd;
+* **verplichte zoekcontext** - de aanvraag moet zoekparameters bevatten zodat gericht op de betreffende patiënt gezocht wordt. De filters liggen op de **achternaam** (`family`) en/of het **BSN** (`identifier`); minimaal één van beide moet worden meegegeven, maar ze mogen ook gecombineerd worden;
+* **filtering** - de resultaten worden beperkt tot de patiënten die binnen de scope van de zorgverlener en bronhouder vallen;
+* **beperkte responsevelden** - de respons bevat alleen de velden die nodig zijn voor de patiëntselectie; deze beperking wordt server-side afgedwongen als onderdeel van de query en niet door de consumer via zoekparameters meegegeven.
+
+Voorbeeld van een request:
+
+```
+GET /Patient?_query=anw-zorg-v2&family=Jansen&identifier=http://fhir.nl/fhir/NamingSystem/bsn|123456782 HTTP/1.1
+Host: bronhouder.example.nl
+Accept: application/fhir+json
+
+```
+
+De reden om hiervoor een aparte named query te introduceren in plaats van de bestaande query aan te passen, is dat het gedrag inhoudelijk afwijkt van de huidige `ANW-zorg`-query. Bestaande conversies en integraties zijn afhankelijk van het huidige gedrag; aanpassen daarvan zou kunnen leiden tot afwijkende responses, strengere filtering of gewijzigde logging, met impact op de huidige consumers.
+
+Door een aparte query te introduceren:
+
+* blijven bestaande conversies en integraties stabiel
+* worden breaking changes voor huidige consumers voorkomen
+* ontstaat er een duidelijk contract voor de nieuwe functionaliteit
+* kunnen de nieuwe afspraken gecontroleerd ingevoerd worden
+* kan de oude query later gefaseerd uitgefaseerd worden
+* ontstaat een generieke query die ook bruikbaar is voor andere consumers, zoals de regisseur.
+
+De naam `anw-zorg-v2` maakt daarnaast expliciet dat het om een nieuwe versie van het zoekgedrag gaat, zonder direct gekoppeld te zijn aan één specifieke consumer of implementatie.
 
 ## Proces
 
@@ -169,8 +206,8 @@ Voorbeeld FHIR Task:
 
 De BTG-Task verschilt op twee punten van de ANW-Task:
 
-* **`code`** — De code `BTG-autorisatie-verzoek` onderscheidt dit verzoek expliciet van een regulier ANW-autorisatieverzoek. De bronhouder gebruikt deze code om de juiste verwerkingslogica toe te passen.
-* **`reason.text`** — Dit veld is bij de BTG-Task verplicht. Waar het veld bij de reguliere ANW-Task wordt gebruikt voor instructies, bevat het hier een door de gebruiker ingevulde toelichting op de reden voor het toepassen van breaking the glass.
+* **`code`** - De code `BTG-autorisatie-verzoek` onderscheidt dit verzoek expliciet van een regulier ANW-autorisatieverzoek. De bronhouder gebruikt deze code om de juiste verwerkingslogica toe te passen.
+* **`reason.text`** - Dit veld is bij de BTG-Task verplicht. Waar het veld bij de reguliere ANW-Task wordt gebruikt voor instructies, bevat het hier een door de gebruiker ingevulde toelichting op de reden voor het toepassen van breaking the glass.
 
 ## Gegevensinzage credential
 
