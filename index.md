@@ -8,7 +8,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://nuts-foundation.github.io/nl-generic-anw-ig/ImplementationGuide/nl.nuts.anw | *Version*:0.1.0 |
-| Draft as of 2026-05-27 | *Computable Name*:NLAnwIG |
+| Draft as of 2026-06-24 | *Computable Name*:NLAnwIG |
 
 ## ⚠️ Disclaimer
 
@@ -48,7 +48,7 @@ The ANW use case covers evening, night, and weekend care services. This implemen
   "name" : "NLAnwIG",
   "title" : "Netherlands - ANW implementation guide",
   "status" : "draft",
-  "date" : "2026-05-27T07:11:44+00:00",
+  "date" : "2026-06-24T08:25:04+00:00",
   "publisher" : "Stichting Nuts",
   "contact" : [{
     "name" : "Stichting Nuts",
@@ -75,7 +75,7 @@ The ANW use case covers evening, night, and weekend care services. This implemen
     }],
     "uri" : "http://terminology.hl7.org/ImplementationGuide/hl7.terminology",
     "packageId" : "hl7.terminology.r4",
-    "version" : "7.1.0"
+    "version" : "7.2.0"
   },
   {
     "id" : "hl7ext",
