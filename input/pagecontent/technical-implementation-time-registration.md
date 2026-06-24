@@ -219,12 +219,12 @@ De response is direct bruikbaar voor validatie, gebruikersinterfaces en declarat
 **Request**
 
 ```bash
-GET https://bronhouder.example.org/fhir/ValueSet/anw-uursoorten$expand
+GET https://bronhouder.example.org/fhir/ValueSet/anw-uursoorten/$expand
 ```
 
 ```bash
 curl -X GET \
-  "https://bronhouder.example.org/fhir/ValueSet/anw-uursoorten\$expand" \
+  "https://bronhouder.example.org/fhir/ValueSet/anw-uursoorten/\$expand" \
   -H "Accept: application/fhir+json"
 ```
 
