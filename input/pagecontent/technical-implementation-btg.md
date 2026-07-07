@@ -71,7 +71,7 @@ Bij het ophalen van de patiënten door de ANW-Zorgverlener wordt gebruik gemaakt
 
 Daarnaast worden bij het zoeken **zoekparameters** gebruikt zodat gericht op de betreffende patiënt gezocht kan worden in plaats van een volledige patiëntenlijst op te halen. Hierdoor wordt voorkomen dat onnodig brede sets met patiëntgegevens over de lijn gaan.
 
-Tot slot wordt **data-minimalisatie** toegepast: de respons bevat alleen de velden die nodig zijn voor de patiëntselectie (bijvoorbeeld `identifier`, `name` en `birthDate`), waardoor niet de volledige `Patient`-resource over de lijn gaat. Deze beperking wordt **server-side** afgedwongen door de bronhouder als onderdeel van de named query, en niet via zoekparameters door de consumer. Hierdoor is de set met geretourneerde velden onderdeel van het contract van de query en kan deze niet door de consumer worden uitgebreid. Pas nadat het BTG-autorisatieverzoek is goedgekeurd, wordt op basis van het gegevensinzage-credential bredere patiëntdata opgehaald.
+Tot slot wordt **data-minimalisatie** toegepast: de respons bevat alleen de velden die nodig zijn voor de patiëntselectie en -verificatie (`identifier`, `name`, `birthDate` en `address`), waardoor niet de volledige `Patient`-resource over de lijn gaat. Naast de basisgegevens worden `birthDate` en `address` teruggegeven zodat de zorgverlener kan verifiëren of de juiste client is geselecteerd. Deze beperking wordt **server-side** afgedwongen door de bronhouder als onderdeel van de named query, en niet via zoekparameters door de consumer. Hierdoor is de set met geretourneerde velden onderdeel van het contract van de query en kan deze niet door de consumer worden uitgebreid. Pas nadat het BTG-autorisatieverzoek is goedgekeurd, wordt op basis van het gegevensinzage-credential bredere patiëntdata opgehaald.
 
 #### Named query: `anw-zorg-v2`
 
@@ -79,14 +79,18 @@ Voor het zoeken naar patiënten in de BTG-flow wordt een nieuwe named query geï
 
 In `anw-zorg-v2` worden aanvullende afspraken afgedwongen rondom:
 - **gebruikers-/clientcontext en logging** - de gebruikerscontext van de ingelogde zorgverlener is verplicht en wordt vastgelegd;
-- **verplichte zoekcontext** - de aanvraag moet zoekparameters bevatten zodat gericht op de betreffende patiënt gezocht wordt. De filters liggen op de **achternaam** (`family`) en/of het **BSN** (`identifier`); minimaal één van beide moet worden meegegeven, maar ze mogen ook gecombineerd worden;
+- **verplichte zoekcontext** - de aanvraag moet zoekparameters bevatten zodat gericht op de betreffende patiënt gezocht wordt. Hiervoor zijn twee zoekparameters beschikbaar:
+  - `name` - zoekt via `contains` op de volledige naam. De zoekterm `Jan` geeft bijvoorbeeld zowel `Jan Verberg` als `Henk Jansen` terug;
+  - `birthDate` - de geboortedatum in het formaat `YYYY-MM-DD` (bijvoorbeeld `1988-06-26`).
+
+  Minimaal één van beide moet worden meegegeven, maar ze mogen ook gecombineerd worden;
 - **filtering** - de resultaten worden beperkt tot de patiënten die binnen de scope van de zorgverlener en bronhouder vallen;
-- **beperkte responsevelden** - de respons bevat alleen de velden die nodig zijn voor de patiëntselectie; deze beperking wordt server-side afgedwongen als onderdeel van de query en niet door de consumer via zoekparameters meegegeven.
+- **beperkte responsevelden** - de respons bevat alleen de velden die nodig zijn voor de patiëntselectie en -verificatie (`identifier`, `name`, `birthDate` en `address`); deze beperking wordt server-side afgedwongen als onderdeel van de query en niet door de consumer via zoekparameters meegegeven.
 
 Voorbeeld van een request:
 
 ```http
-GET /Patient?_query=anw-zorg-v2&family=Jansen&identifier=http://fhir.nl/fhir/NamingSystem/bsn|123456782 HTTP/1.1
+GET /Patient?_query=anw-zorg-v2&name=Jansen&birthDate=1988-06-26 HTTP/1.1
 Host: bronhouder.example.nl
 Accept: application/fhir+json
 ```
