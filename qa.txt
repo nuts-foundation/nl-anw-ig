@@ -1,16 +1,16 @@
 NLAnwIG : Validation Results
 =========================================
 
-err = 25, warn = 35, info = 0
-IG Publisher Version: 2.2.9
-Generated Wed Jun 24 08:26:12 UTC 2026. FHIR version 4.0.1 for nl.nuts.anw#0.1.0 (canonical = http://nuts-foundation.github.io/nl-generic-anw-ig)
+err = 25, warn = 35, info = 6
+IG Publisher Version: 2.2.10
+Generated Thu Jul 09 13:24:55 UTC 2026. FHIR version 4.0.1 for nl.nuts.anw#0.1.0 (canonical = http://nuts-foundation.github.io/nl-generic-anw-ig)
  Build Errors : 3 / 4 / 0
- /github/workspace/fsh-generated/resources/CapabilityStatement-ANWBronhouderCapabilityStatement-v1.0.0 : 7 / 13 / 1
- /github/workspace/fsh-generated/resources/CapabilityStatement-ANWBronhouderCapabilityStatement-v1.1.0 : 7 / 14 / 1
- /github/workspace/fsh-generated/resources/CapabilityStatement-ANWRegisseurCapabilityStatement-v1.0.0 : 5 / 1 / 1
- /github/workspace/fsh-generated/resources/CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1.0.0 : 5 / 2 / 1
- /github/workspace/fsh-generated/resources/ImplementationGuide-nl.nuts.anw : 0 / 0 / 1
- /github/workspace/fsh-generated/resources/OperationDefinition-ANW-zorg : 0 / 1 / 1
+ /github/workspace/fsh-generated/resources/CapabilityStatement-ANWBronhouderCapabilityStatement-v1.0.0 : 7 / 13 / 2
+ /github/workspace/fsh-generated/resources/CapabilityStatement-ANWBronhouderCapabilityStatement-v1.1.0 : 7 / 14 / 2
+ /github/workspace/fsh-generated/resources/CapabilityStatement-ANWRegisseurCapabilityStatement-v1.0.0 : 5 / 1 / 2
+ /github/workspace/fsh-generated/resources/CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1.0.0 : 5 / 2 / 2
+ /github/workspace/fsh-generated/resources/ImplementationGuide-nl.nuts.anw : 0 / 0 / 2
+ /github/workspace/fsh-generated/resources/OperationDefinition-ANW-zorg : 0 / 1 / 2
 </table>
 == n/a ==
 ERROR: ImplementationGuide.definition.parameter[25].value: Supressed messages file not found
@@ -40,6 +40,7 @@ WARNING: CapabilityStatement/ANWBronhouderCapabilityStatement-v1.0.0: Capability
 WARNING: CapabilityStatement/ANWBronhouderCapabilityStatement-v1.0.0: CapabilityStatement.rest[0].operation[0].definition: A definition could not be found for Canonical URL 'https://github.com/nuts-foundation/bolts/blob/master/anw/TD-ANWv2024.1.md#anw-bronhouder'
 WARNING: CapabilityStatement/ANWBronhouderCapabilityStatement-v1.0.0: CapabilityStatement: Constraint failed: cpb-0: 'Name should be usable as an identifier for the module by machine processing applications such as code generation (name.matches('[A-Z]([A-Za-z0-9_]){0,254}'))'
 ERROR: Resource: The URL 'http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Bronhouder' is also used by ANWBronhouderCapabilityStatement-v1.1.0 in /github/workspace/fsh-generated/resources/CapabilityStatement-ANWBronhouderCapabilityStatement-v1.1.0
+INFORMATION: Resource: The resource CapabilityStatement/ANWBronhouderCapabilityStatement-v1.0.0 could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
 ERROR: /github/workspace/fsh-generated/resources/CapabilityStatement-ANWBronhouderCapabilityStatement-v1.0.0: URL Mismatch http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWBronhouderCapabilityStatement-v1.0.0 vs http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Bronhouder
 == fsh-generated/resources/CapabilityStatement-ANWBronhouderCapabilityStatement-v1.1.0.json ==
 ERROR: CapabilityStatement.where(url = 'http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Bronhouder'): Conformance resource /github/workspace/fsh-generated/resources/CapabilityStatement-ANWBronhouderCapabilityStatement-v1.1.0.json - the canonical URL (http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWBronhouderCapabilityStatement-v1.1.0) does not match the URL (http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Bronhouder). Use the special-url parameter if you really mean for it not to match
@@ -62,6 +63,7 @@ WARNING: CapabilityStatement/ANWBronhouderCapabilityStatement-v1.1.0: Capability
 WARNING: CapabilityStatement/ANWBronhouderCapabilityStatement-v1.1.0: CapabilityStatement.rest[0].operation[0].definition: A definition could not be found for Canonical URL 'https://github.com/nuts-foundation/bolts/blob/master/anw/TD-ANWv2024.1.md#anw-bronhouder'
 WARNING: CapabilityStatement/ANWBronhouderCapabilityStatement-v1.1.0: CapabilityStatement: Constraint failed: cpb-0: 'Name should be usable as an identifier for the module by machine processing applications such as code generation (name.matches('[A-Z]([A-Za-z0-9_]){0,254}'))'
 ERROR: Resource: The URL 'http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Bronhouder' has already been used by ANWBronhouderCapabilityStatement-v1.0.0 in /github/workspace/fsh-generated/resources/CapabilityStatement-ANWBronhouderCapabilityStatement-v1.0.0
+INFORMATION: Resource: The resource CapabilityStatement/ANWBronhouderCapabilityStatement-v1.1.0 could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
 ERROR: /github/workspace/fsh-generated/resources/CapabilityStatement-ANWBronhouderCapabilityStatement-v1.1.0: URL Mismatch http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWBronhouderCapabilityStatement-v1.1.0 vs http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Bronhouder
 == fsh-generated/resources/CapabilityStatement-ANWRegisseurCapabilityStatement-v1.0.0.json ==
 ERROR: CapabilityStatement.where(url = 'http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Regisseur'): Conformance resource /github/workspace/fsh-generated/resources/CapabilityStatement-ANWRegisseurCapabilityStatement-v1.0.0.json - the canonical URL (http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWRegisseurCapabilityStatement-v1.0.0) does not match the URL (http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Regisseur). Use the special-url parameter if you really mean for it not to match
@@ -69,6 +71,7 @@ ERROR: CapabilityStatement.url: Resource id/url mismatch: ANWRegisseurCapability
 ERROR: CapabilityStatement/ANWRegisseurCapabilityStatement-v1.0.0: CapabilityStatement.fhirVersion: The System URI could not be determined for the code '3.0.2' in the ValueSet 'http://hl7.org/fhir/ValueSet/FHIR-version|4.0.1'
 ERROR: CapabilityStatement/ANWRegisseurCapabilityStatement-v1.0.0: CapabilityStatement.fhirVersion: The value provided ('3.0.2') was not found in the value set 'FHIRVersion' (http://hl7.org/fhir/ValueSet/FHIR-version|4.0.1), and a code is required from this value set  (error message = The System URI could not be determined for the code '3.0.2' in the ValueSet 'http://hl7.org/fhir/ValueSet/FHIR-version|4.0.1'; The provided code '#3.0.2' was not found in the value set 'http://hl7.org/fhir/ValueSet/FHIR-version|4.0.1')
 WARNING: CapabilityStatement/ANWRegisseurCapabilityStatement-v1.0.0: CapabilityStatement: Constraint failed: cpb-0: 'Name should be usable as an identifier for the module by machine processing applications such as code generation (name.matches('[A-Z]([A-Za-z0-9_]){0,254}'))'
+INFORMATION: Resource: The resource CapabilityStatement/ANWRegisseurCapabilityStatement-v1.0.0 could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
 ERROR: /github/workspace/fsh-generated/resources/CapabilityStatement-ANWRegisseurCapabilityStatement-v1.0.0: URL Mismatch http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWRegisseurCapabilityStatement-v1.0.0 vs http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Regisseur
 == fsh-generated/resources/CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1.0.0.json ==
 ERROR: CapabilityStatement.where(url = 'http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Zorgverlener'): Conformance resource /github/workspace/fsh-generated/resources/CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1.0.0.json - the canonical URL (http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWZorgverlenerCapabilityStatement-v1.0.0) does not match the URL (http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Zorgverlener). Use the special-url parameter if you really mean for it not to match
@@ -77,7 +80,10 @@ ERROR: CapabilityStatement/ANWZorgverlenerCapabilityStatement-v1.0.0: Capability
 ERROR: CapabilityStatement/ANWZorgverlenerCapabilityStatement-v1.0.0: CapabilityStatement.fhirVersion: The value provided ('3.0.2') was not found in the value set 'FHIRVersion' (http://hl7.org/fhir/ValueSet/FHIR-version|4.0.1), and a code is required from this value set  (error message = The System URI could not be determined for the code '3.0.2' in the ValueSet 'http://hl7.org/fhir/ValueSet/FHIR-version|4.0.1'; The provided code '#3.0.2' was not found in the value set 'http://hl7.org/fhir/ValueSet/FHIR-version|4.0.1')
 WARNING: CapabilityStatement/ANWZorgverlenerCapabilityStatement-v1.0.0: CapabilityStatement.rest[0].operation[0].definition: A definition could not be found for Canonical URL 'https://github.com/nuts-foundation/bolts/blob/master/anw/TD-ANWv2024.1.md#anw-zorgverlener'
 WARNING: CapabilityStatement/ANWZorgverlenerCapabilityStatement-v1.0.0: CapabilityStatement: Constraint failed: cpb-0: 'Name should be usable as an identifier for the module by machine processing applications such as code generation (name.matches('[A-Z]([A-Za-z0-9_]){0,254}'))'
+INFORMATION: Resource: The resource CapabilityStatement/ANWZorgverlenerCapabilityStatement-v1.0.0 could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
 ERROR: /github/workspace/fsh-generated/resources/CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1.0.0: URL Mismatch http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWZorgverlenerCapabilityStatement-v1.0.0 vs http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Zorgverlener
 == fsh-generated/resources/ImplementationGuide-nl.nuts.anw.json ==
+INFORMATION: Resource: The resource ImplementationGuide/nl.nuts.anw could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
 == fsh-generated/resources/OperationDefinition-ANW-zorg.json ==
 WARNING: OperationDefinition/ANW-zorg: OperationDefinition: Constraint failed: opd-0: 'Name should be usable as an identifier for the module by machine processing applications such as code generation (name.matches('[A-Z]([A-Za-z0-9_]){0,254}'))'
+INFORMATION: Resource: The resource OperationDefinition/ANW-zorg could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
