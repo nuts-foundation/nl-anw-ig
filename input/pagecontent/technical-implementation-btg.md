@@ -6,7 +6,7 @@ Breaking the glass (BTG) maakt het mogelijk dat een ANW-zorgverlener zichzelf ti
 
 Net als bij de reguliere ANW begint BTG met een expliciete toestemming van de bronhouder aan de zorgverlener. Deze toestemming wordt eenmalig vastgelegd in een `NutsAuthorizationCredential`. Op basis van dit credential weet het systeem van de ANW-Zorgverlener bij welke bronhouders breaking the glass toegepast mag worden.
 
-## NutsAuthorizationCredential
+## Stap 1 – De bronhouder machtigt de zorgverlener
 
 De ANW-Bronhouder geeft eenmalig een `NutsAuthorizationCredential` uit aan de ANW-Zorgverlener. Het primaire doel van dit credential is het toestaan dat de zorgverlener de patiënten van de bronhouder kan ophalen en doorzoeken, zodat de juiste patiënt geselecteerd kan worden voordat het BTG-autorisatieverzoek wordt ingediend. Daarnaast bevat het credential de toestemming om een notificatie te versturen naar de bronhouder als onderdeel van de BTG-flow.
 
@@ -65,7 +65,7 @@ Voorbeeld NutsAuthorizationCredential:
 }
 ```
 
-### Patiëntselectie en data-minimalisatie
+## Stap 2 – De zorgverlener zoekt en selecteert de patiënt
 
 Bij het ophalen van de patiënten door de ANW-Zorgverlener, wordt gebruik gemaakt van de **gebruikerscontext** van de ingelogde zorgverlener. Deze context wordt meegestuurd met de FHIR-aanvraag zodat de bronhouder de aanvraag aan een geïdentificeerde gebruiker kan koppelen en de afhandeling daarop kan afstemmen.
 
@@ -73,7 +73,7 @@ Daarnaast worden bij het zoeken **zoekparameters** gebruikt zodat gericht op de 
 
 Tot slot wordt **data-minimalisatie** toegepast: de respons bevat alleen de velden die nodig zijn voor de patiëntselectie (`name`, `address` en `birthDate`), waardoor niet de volledige `Patient`-resource over de lijn gaat. Deze beperking wordt door de consumer meegegeven via de FHIR-parameter `_elements`. Op use-case-niveau valideert de bronhouder of deze parameter aanwezig is. Pas nadat het BTG-autorisatieverzoek is goedgekeurd, wordt op basis van het gegevensinzage-credential bredere patiëntdata opgehaald.
 
-##### `Named` query: `anw-zorg-v2`
+### Zoeken met de query `anw-zorg-v2`
 
 Voor het zoeken naar patiënten in de BTG-flow wordt een nieuwe named query geïntroduceerd: `anw-zorg-v2`. Deze vervangt voor deze flow het gebruik van de bestaande `ANW-zorg`-query.
 
@@ -104,15 +104,13 @@ Door een aparte query te introduceren:
 
 De naam `anw-zorg-v2` maakt daarnaast expliciet dat het om een nieuwe versie van het zoekgedrag gaat, zonder direct gekoppeld te zijn aan één specifieke consumer of implementatie.
 
-## Proces
+## Stap 3 – De zorgverlener dient het BTG-verzoek in
 
 Nadat de zorgverlener de juiste patiënt heeft geselecteerd, verloopt de BTG-flow zoals weergegeven in het onderstaande sequentiediagram. Omdat er geen regisseur aanwezig is, communiceert het systeem van de zorgverlener rechtstreeks met de bronhouder.
 
 {% include img.html img="ANWSequence_btg.png" %}
 
-## FHIR Task
-
-De BTG-flow maakt gebruik van een Task-resource die is afgeleid van de ANW-Task. De Task wordt door het systeem van de ANW-Zorgverlener aangemaakt en bij de ANW-Bronhouder ingediend als autorisatieverzoek.
+De zorgverlener dient het verzoek in met een Task-resource die is afgeleid van de ANW-Task. De Task wordt door het systeem van de ANW-Zorgverlener aangemaakt en bij de ANW-Bronhouder ingediend als autorisatieverzoek.
 
 Onderstaand de beschrijving van de relevante velden:
 
@@ -193,14 +191,14 @@ Voorbeeld FHIR Task:
 }
 ```
 
-### Verschil met de reguliere ANW-Task
+### Verschil met het reguliere ANW-verzoek
 
 De BTG-Task verschilt op twee punten van de ANW-Task:
 
 - **`code`** - De code `BTG-autorisatie-verzoek` onderscheidt dit verzoek expliciet van een regulier ANW-autorisatieverzoek. De bronhouder gebruikt deze code om de juiste verwerkingslogica toe te passen.
 - **`reason.text`** - Dit veld is bij de BTG-Task verplicht. Waar het veld bij de reguliere ANW-Task wordt gebruikt voor instructies, bevat het hier een door de gebruiker ingevulde toelichting op de reden voor het toepassen van breaking the glass.
 
-## Gegevensinzage credential
+## Stap 4 – De bronhouder verleent inzage in de gegevens
 
 Nadat de bronhouder het BTG-autorisatieverzoek heeft verwerkt en goedgekeurd, geeft de bronhouder een `NutsAuthorizationCredential` uit voor de betreffende patiënt. In dit credential wordt de `purposeOfUse` ingesteld op `BTG-Bronhouder-Gegevensinzage`. Hierdoor is voor alle betrokken partijen expliciet zichtbaar dat de toegang is verleend in het kader van breaking the glass en niet via de reguliere ANW-flow.
 
