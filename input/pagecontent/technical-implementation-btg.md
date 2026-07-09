@@ -65,28 +65,28 @@ Voorbeeld NutsAuthorizationCredential:
 }
 ```
 
-#### Patiëntselectie en data-minimalisatie
+### Patiëntselectie en data-minimalisatie
 
-Bij het ophalen van de patiënten door de ANW-Zorgverlener wordt gebruik gemaakt van de **gebruikerscontext** van de ingelogde zorgverlener. Deze context wordt meegestuurd met de FHIR-aanvraag zodat de bronhouder de aanvraag aan een geïdentificeerde gebruiker kan koppelen en de afhandeling daarop kan afstemmen.
+Bij het ophalen van de patiënten door de ANW-Zorgverlener, wordt gebruik gemaakt van de **gebruikerscontext** van de ingelogde zorgverlener. Deze context wordt meegestuurd met de FHIR-aanvraag zodat de bronhouder de aanvraag aan een geïdentificeerde gebruiker kan koppelen en de afhandeling daarop kan afstemmen.
 
-Daarnaast worden bij het zoeken **zoekparameters** gebruikt zodat gericht op de betreffende patiënt gezocht kan worden in plaats van een volledige patiëntenlijst op te halen. Hierdoor wordt voorkomen dat onnodig brede sets met patiëntgegevens over de lijn gaan.
+Daarnaast worden bij het zoeken **zoekparameters** gebruikt zodat gericht op de betreffende patiënt gezocht kan worden in plaats van een volledige patiëntenlijst op te halen (zoals nu bij ANW). Hierdoor wordt voorkomen dat onnodig brede sets met patiëntgegevens over de lijn gaan.
 
-Tot slot wordt **data-minimalisatie** toegepast: de respons bevat alleen de velden die nodig zijn voor de patiëntselectie (bijvoorbeeld `identifier`, `name` en `birthDate`), waardoor niet de volledige `Patient`-resource over de lijn gaat. Deze beperking wordt **server-side** afgedwongen door de bronhouder als onderdeel van de named query, en niet via zoekparameters door de consumer. Hierdoor is de set met geretourneerde velden onderdeel van het contract van de query en kan deze niet door de consumer worden uitgebreid. Pas nadat het BTG-autorisatieverzoek is goedgekeurd, wordt op basis van het gegevensinzage-credential bredere patiëntdata opgehaald.
+Tot slot wordt **data-minimalisatie** toegepast: de respons bevat alleen de velden die nodig zijn voor de patiëntselectie (`name`, `address` en `birthDate`), waardoor niet de volledige `Patient`-resource over de lijn gaat. Deze beperking wordt door de consumer meegegeven via de FHIR-parameter `_elements`. Op use-case-niveau valideert de bronhouder of deze parameter aanwezig is. Pas nadat het BTG-autorisatieverzoek is goedgekeurd, wordt op basis van het gegevensinzage-credential bredere patiëntdata opgehaald.
 
-#### Named query: `anw-zorg-v2`
+##### `Named` query: `anw-zorg-v2`
 
 Voor het zoeken naar patiënten in de BTG-flow wordt een nieuwe named query geïntroduceerd: `anw-zorg-v2`. Deze vervangt voor deze flow het gebruik van de bestaande `ANW-zorg`-query.
 
 In `anw-zorg-v2` worden aanvullende afspraken afgedwongen rondom:
 - **gebruikers-/clientcontext en logging** - de gebruikerscontext van de ingelogde zorgverlener is verplicht en wordt vastgelegd;
-- **verplichte zoekcontext** - de aanvraag moet zoekparameters bevatten zodat gericht op de betreffende patiënt gezocht wordt. De filters liggen op de **achternaam** (`family`) en/of het **BSN** (`identifier`); minimaal één van beide moet worden meegegeven, maar ze mogen ook gecombineerd worden;
+- **verplichte velden** - de aanvraag moet zoekparameters bevatten zodat gericht op de betreffende patiënt gezocht wordt. De filters liggen op de **naam** (`name`) en/of de **geboortedatum** (`birthdate`); minimaal één van beide moet worden meegegeven, maar ze mogen ook gecombineerd worden;
 - **filtering** - de resultaten worden beperkt tot de patiënten die binnen de scope van de zorgverlener en bronhouder vallen;
-- **beperkte responsevelden** - de respons bevat alleen de velden die nodig zijn voor de patiëntselectie; deze beperking wordt server-side afgedwongen als onderdeel van de query en niet door de consumer via zoekparameters meegegeven.
+- **beperkte responsevelden** - de consumer beperkt de respons via de FHIR-parameter `_elements` tot alleen de velden die nodig zijn voor de patiëntselectie (`name`, `address` en `birthDate`). Op use-case-niveau wordt gevalideerd of de `_elements`-parameter aanwezig is.
 
 Voorbeeld van een request:
 
 ```http
-GET /Patient?_query=anw-zorg-v2&family=Jansen&identifier=http://fhir.nl/fhir/NamingSystem/bsn|123456782 HTTP/1.1
+GET /Patient?_query=anw-zorg-v2&name=Jansen&birthdate=1980-01-01&_elements=name,address,birthDate HTTP/1.1
 Host: bronhouder.example.nl
 Accept: application/fhir+json
 ```
