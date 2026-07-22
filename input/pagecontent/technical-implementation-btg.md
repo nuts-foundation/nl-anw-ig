@@ -42,7 +42,7 @@ Voorbeeld NutsAuthorizationCredential:
           "operations": [
             "search"
           ],
-          "path": "/Patient?_query=anw-zorg-v2",
+          "path": "/Patient?_query=anw",
           "userContext": true
         },
         {
@@ -86,7 +86,7 @@ In `anw-zorg-v2` worden aanvullende afspraken afgedwongen rondom:
 Voorbeeld van een request:
 
 ```http
-GET /Patient?_query=anw-zorg-v2&name=Jansen&birthdate=1980-01-01&_elements=name,address,birthDate HTTP/1.1
+GET /Patient?_query=anw&name=Jansen&birthdate=1980-01-01&_elements=name,address,birthDate HTTP/1.1
 Host: bronhouder.example.nl
 Accept: application/fhir+json
 ```
