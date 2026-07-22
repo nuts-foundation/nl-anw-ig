@@ -15,7 +15,7 @@ Onderstaand de beschrijving van de relevante velden:
 | Veld | Omschrijving                                                                                                                                                                                                                                                            |
 | ---- |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `credentialSubject.id` | Het DID van de ANW-Zorgverlener die gemachtigd is om BTG toe te passen.                                                                                                                                                                                                 |
-| `purposeOfUse` | Identificeert dit credential als een BTG-toestemming (`BTG-Bronhouder-ZorgverlenerToegang`).                                                                                                                                                                            |
+| `purposeOfUse` | Identificeert dit credential als een BTG-toestemming (`ANW-BTG-Bronhouder-ZorgverlenerToegang`).                                                                                                                                                                        |
 | `resources[].path` | Het FHIR-pad waarop de operatie is toegestaan, bijvoorbeeld voor het zoeken naar patiënten of het versturen van een notificatie.                                                                                                                                        |
 | `resources[].operations` | De toegestane FHIR-operaties op het opgegeven pad (`search`, `create`).                                                                                                                                                                                                 |
 | `resources[].userContext` | Geeft aan of de operatie een gebruikerscontext vereist. Bij BTG is dit `true`: bij het opvragen van de patiënten wordt de gebruikerscontext van de ingelogde zorgverlener meegestuurd, zodat de bronhouder de aanvraag aan een geïdentificeerde gebruiker kan koppelen. |
@@ -36,7 +36,7 @@ Voorbeeld NutsAuthorizationCredential:
     ],
     "credentialSubject": {
       "id": "did:nuts:{DID van ANW-Zorgverlener}",
-      "purposeOfUse": "BTG-Bronhouder-ZorgverlenerToegang",
+      "purposeOfUse": "ANW-BTG-Bronhouder-ZorgverlenerToegang",
       "resources": [
         {
           "operations": [
@@ -114,17 +114,17 @@ De zorgverlener dient het verzoek in met een Task-resource die is afgeleid van d
 
 Onderstaand de beschrijving van de relevante velden:
 
-| Veld | Omschrijving |
-| ---- | ------------ |
-| `code.coding[].code` | Identificeert dit verzoek als een BTG-autorisatieverzoek (`BTG-autorisatie-verzoek`). Hiermee kan de bronhouder onderscheid maken tussen een reguliere ANW-flow en een BTG-flow. |
-| `for` | Verwijzing naar de patiënt voor wie toegang wordt gevraagd. |
-| `authoredOn` | Tijdstip waarop het autorisatieverzoek is aangemaakt. |
-| `requester.agent` | Het systeem of de organisatie van de ANW-Zorgverlener die het verzoek indient. |
-| `requester.onBehalfOf` | De autoriserende partij (de bronhouder als data-eigenaar). |
-| `owner` | De partij die toegang vraagt tot de gegevens. |
-| `reason.text` | Verplicht veld waarin de zorgverlener de reden voor het BTG-verzoek toelicht. Dit is vrije tekst die door de gebruiker wordt ingevuld. |
-| `restriction.period` | De periode waarvoor de tijdelijke toegang wordt gevraagd. |
-| `restriction.recipient` | De zorgverlener die de toegang ontvangt. |
+| Veld | Omschrijving                                                                                                                                                                         |
+| ---- |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `code.coding[].code` | Identificeert dit verzoek als een BTG-autorisatieverzoek (`ANW-BTG-autorisatie-verzoek`). Hiermee kan de bronhouder onderscheid maken tussen een reguliere ANW-flow en een BTG-flow. |
+| `for` | Verwijzing naar de patiënt voor wie toegang wordt gevraagd.                                                                                                                          |
+| `authoredOn` | Tijdstip waarop het autorisatieverzoek is aangemaakt.                                                                                                                                |
+| `requester.agent` | Het systeem of de organisatie van de ANW-Zorgverlener die het verzoek indient.                                                                                                       |
+| `requester.onBehalfOf` | De autoriserende partij (de bronhouder als data-eigenaar).                                                                                                                           |
+| `owner` | De partij die toegang vraagt tot de gegevens.                                                                                                                                        |
+| `reason.text` | Verplicht veld waarin de zorgverlener de reden voor het BTG-verzoek toelicht. Dit is vrije tekst die door de gebruiker wordt ingevuld.                                               |
+| `restriction.period` | De periode waarvoor de tijdelijke toegang wordt gevraagd.                                                                                                                            |
+| `restriction.recipient` | De zorgverlener die de toegang ontvangt.                                                                                                                                             |
 
 Voorbeeld FHIR Task:
 
@@ -141,7 +141,7 @@ Voorbeeld FHIR Task:
   "code": {
     "coding": [
       {
-        "code": "BTG-autorisatie-verzoek"
+        "code": "ANW-BTG-autorisatie-verzoek"
       }
     ]
   },
@@ -195,12 +195,12 @@ Voorbeeld FHIR Task:
 
 De BTG-Task verschilt op twee punten van de ANW-Task:
 
-- **`code`** - De code `BTG-autorisatie-verzoek` onderscheidt dit verzoek expliciet van een regulier ANW-autorisatieverzoek. De bronhouder gebruikt deze code om de juiste verwerkingslogica toe te passen.
+- **`code`** - De code `ANW-BTG-autorisatie-verzoek` onderscheidt dit verzoek expliciet van een regulier ANW-autorisatieverzoek. De bronhouder gebruikt deze code om de juiste verwerkingslogica toe te passen.
 - **`reason.text`** - Dit veld is bij de BTG-Task verplicht. Waar het veld bij de reguliere ANW-Task wordt gebruikt voor instructies, bevat het hier een door de gebruiker ingevulde toelichting op de reden voor het toepassen van breaking the glass.
 
 ## Stap 4 – De bronhouder verleent inzage in de gegevens
 
-Nadat de bronhouder het BTG-autorisatieverzoek heeft verwerkt en goedgekeurd, geeft de bronhouder een `NutsAuthorizationCredential` uit voor de betreffende patiënt. In dit credential wordt de `purposeOfUse` ingesteld op `BTG-Bronhouder-Gegevensinzage`. Hierdoor is voor alle betrokken partijen expliciet zichtbaar dat de toegang is verleend in het kader van breaking the glass en niet via de reguliere ANW-flow.
+Nadat de bronhouder het BTG-autorisatieverzoek heeft verwerkt en goedgekeurd, geeft de bronhouder een `NutsAuthorizationCredential` uit voor de betreffende patiënt. In dit credential wordt de `purposeOfUse` ingesteld op `ANW-BTG-Bronhouder-Gegevensinzage`. Hierdoor is voor alle betrokken partijen expliciet zichtbaar dat de toegang is verleend in het kader van breaking the glass en niet via de reguliere ANW-flow.
 
 Voorbeeld NutsAuthorizationCredential gegevensinzage:
 
@@ -218,7 +218,7 @@ Voorbeeld NutsAuthorizationCredential gegevensinzage:
     ],
     "credentialSubject": {
       "id": "did:nuts:{DID van ANW-Zorgverlener}",
-      "purposeOfUse": "BTG-Bronhouder-Gegevensinzage",
+      "purposeOfUse": "ANW-BTG-Bronhouder-Gegevensinzage",
       "resources": [
         ...
       ]
