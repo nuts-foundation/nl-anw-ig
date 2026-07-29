@@ -73,11 +73,11 @@ Daarnaast worden bij het zoeken **zoekparameters** gebruikt zodat gericht op de 
 
 Tot slot wordt **data-minimalisatie** toegepast: de respons bevat alleen de velden die nodig zijn voor de patiëntselectie (`name`, `address` en `birthDate`), waardoor niet de volledige `Patient`-resource over de lijn gaat. Deze beperking wordt door de consumer meegegeven via de FHIR-parameter `_elements`. Op use-case-niveau valideert de bronhouder of deze parameter aanwezig is. Pas nadat het BTG-autorisatieverzoek is goedgekeurd, wordt op basis van het gegevensinzage-credential bredere patiëntdata opgehaald.
 
-### Zoeken met de query `anw-zorg-v2`
+### Zoeken met de query `anw`
 
-Voor het zoeken naar patiënten in de BTG-flow wordt een nieuwe named query geïntroduceerd: `anw-zorg-v2`. Deze vervangt voor deze flow het gebruik van de bestaande `ANW-zorg`-query.
+Voor het zoeken naar patiënten in de BTG-flow wordt een nieuwe named query geïntroduceerd: `anw`. Deze vervangt voor deze flow het gebruik van de bestaande `ANW-zorg`-query.
 
-In `anw-zorg-v2` worden aanvullende afspraken afgedwongen rondom:
+In `anw` worden aanvullende afspraken afgedwongen rondom:
 - **gebruikers-/clientcontext en logging** - de gebruikerscontext van de ingelogde zorgverlener is verplicht en wordt vastgelegd;
 - **verplichte velden** - de aanvraag moet zoekparameters bevatten zodat gericht op de betreffende patiënt gezocht wordt. De filters liggen op de **naam** (`name`) en/of de **geboortedatum** (`birthdate`); minimaal één van beide moet worden meegegeven, maar ze mogen ook gecombineerd worden;
 - **filtering** - de resultaten worden beperkt tot de patiënten die binnen de scope van de zorgverlener en bronhouder vallen;
@@ -102,7 +102,7 @@ Door een aparte query te introduceren:
 - kan de oude query later gefaseerd uitgefaseerd worden
 - ontstaat een generieke query die ook bruikbaar is voor andere consumers, zoals de regisseur.
 
-De naam `anw-zorg-v2` maakt daarnaast expliciet dat het om een nieuwe versie van het zoekgedrag gaat, zonder direct gekoppeld te zijn aan één specifieke consumer of implementatie.
+De naam `anw` maakt daarnaast expliciet dat het om een nieuwe versie van het zoekgedrag gaat, zonder direct gekoppeld te zijn aan één specifieke consumer of implementatie.
 
 ## Stap 3 – De zorgverlener dient het BTG-verzoek in
 
