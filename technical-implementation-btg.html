@@ -158,7 +158,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <li><a href="#breaking-the-glass-btg-concept" id="markdown-toc-breaking-the-glass-btg-concept">Breaking the glass (BTG) (CONCEPT)</a>    <ul>
       <li><a href="#stap-1--de-bronhouder-machtigt-de-zorgverlener" id="markdown-toc-stap-1--de-bronhouder-machtigt-de-zorgverlener">Stap 1 – De bronhouder machtigt de zorgverlener</a></li>
       <li><a href="#stap-2--de-zorgverlener-zoekt-en-selecteert-de-patiënt" id="markdown-toc-stap-2--de-zorgverlener-zoekt-en-selecteert-de-patiënt">Stap 2 – De zorgverlener zoekt en selecteert de patiënt</a>        <ul>
-          <li><a href="#zoeken-met-de-query-anw-zorg-v2" id="markdown-toc-zoeken-met-de-query-anw-zorg-v2">Zoeken met de query <code class="language-plaintext highlighter-rouge">anw-zorg-v2</code></a></li>
+          <li><a href="#zoeken-met-de-query-anw" id="markdown-toc-zoeken-met-de-query-anw">Zoeken met de query <code class="language-plaintext highlighter-rouge">anw</code></a></li>
         </ul>
       </li>
       <li><a href="#stap-3--de-zorgverlener-dient-het-btg-verzoek-in" id="markdown-toc-stap-3--de-zorgverlener-dient-het-btg-verzoek-in">Stap 3 – De zorgverlener dient het BTG-verzoek in</a>        <ul>
@@ -268,11 +268,11 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <p>Tot slot wordt <strong>data-minimalisatie</strong> toegepast: de respons bevat alleen de velden die nodig zijn voor de patiëntselectie (<code class="language-plaintext highlighter-rouge">name</code>, <code class="language-plaintext highlighter-rouge">address</code> en <code class="language-plaintext highlighter-rouge">birthDate</code>), waardoor niet de volledige <code class="language-plaintext highlighter-rouge">Patient</code>-resource over de lijn gaat. Deze beperking wordt door de consumer meegegeven via de FHIR-parameter <code class="language-plaintext highlighter-rouge">_elements</code>. Op use-case-niveau valideert de bronhouder of deze parameter aanwezig is. Pas nadat het BTG-autorisatieverzoek is goedgekeurd, wordt op basis van het gegevensinzage-credential bredere patiëntdata opgehaald.</p>
 
-<h3 id="zoeken-met-de-query-anw-zorg-v2">Zoeken met de query <code class="language-plaintext highlighter-rouge">anw-zorg-v2</code></h3>
+<h3 id="zoeken-met-de-query-anw">Zoeken met de query <code class="language-plaintext highlighter-rouge">anw</code></h3>
 
-<p>Voor het zoeken naar patiënten in de BTG-flow wordt een nieuwe named query geïntroduceerd: <code class="language-plaintext highlighter-rouge">anw-zorg-v2</code>. Deze vervangt voor deze flow het gebruik van de bestaande <code class="language-plaintext highlighter-rouge">ANW-zorg</code>-query.</p>
+<p>Voor het zoeken naar patiënten in de BTG-flow wordt een nieuwe named query geïntroduceerd: <code class="language-plaintext highlighter-rouge">anw</code>. Deze vervangt voor deze flow het gebruik van de bestaande <code class="language-plaintext highlighter-rouge">ANW-zorg</code>-query.</p>
 
-<p>In <code class="language-plaintext highlighter-rouge">anw-zorg-v2</code> worden aanvullende afspraken afgedwongen rondom:</p>
+<p>In <code class="language-plaintext highlighter-rouge">anw</code> worden aanvullende afspraken afgedwongen rondom:</p>
 <ul>
   <li><strong>gebruikers-/clientcontext en logging</strong> - de gebruikerscontext van de ingelogde zorgverlener is verplicht en wordt vastgelegd;</li>
   <li><strong>verplichte velden</strong> - de aanvraag moet zoekparameters bevatten zodat gericht op de betreffende patiënt gezocht wordt. De filters liggen op de <strong>naam</strong> (<code class="language-plaintext highlighter-rouge">name</code>) en/of de <strong>geboortedatum</strong> (<code class="language-plaintext highlighter-rouge">birthdate</code>); minimaal één van beide moet worden meegegeven, maar ze mogen ook gecombineerd worden;</li>
@@ -300,7 +300,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <li>ontstaat een generieke query die ook bruikbaar is voor andere consumers, zoals de regisseur.</li>
 </ul>
 
-<p>De naam <code class="language-plaintext highlighter-rouge">anw-zorg-v2</code> maakt daarnaast expliciet dat het om een nieuwe versie van het zoekgedrag gaat, zonder direct gekoppeld te zijn aan één specifieke consumer of implementatie.</p>
+<p>De naam <code class="language-plaintext highlighter-rouge">anw</code> maakt daarnaast expliciet dat het om een nieuwe versie van het zoekgedrag gaat, zonder direct gekoppeld te zijn aan één specifieke consumer of implementatie.</p>
 
 <h2 id="stap-3--de-zorgverlener-dient-het-btg-verzoek-in">Stap 3 – De zorgverlener dient het BTG-verzoek in</h2>
 
@@ -489,7 +489,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.nuts.nl">Stichting Nuts</a>.  Package nl.nuts.anw#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Jul 22, 2026 07:05+0000">2026-07-22</span>
+          IG &#169; 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.nuts.nl">Stichting Nuts</a>.  Package nl.nuts.anw#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Jul 29, 2026 13:10+0000">2026-07-29</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
