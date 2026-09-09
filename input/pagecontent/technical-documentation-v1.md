@@ -38,6 +38,7 @@
 - [Uitbreidingen (gemaakt zonder versiebeheer)](#uitbreidingen-gemaakt-zonder-versiebeheer)
   - [Registeren van metingen](#registeren-van-metingen)
   - [Foutafhandeling van registraties naar het brondossier](#foutafhandeling-van-registraties-naar-het-brondossier)
+  - [Maximale lengte van `reason.text`](#maximale-lengte-van-reasontext)
   - [Woningtoegang](#woningtoegang)
     - [TODO](#todo)
 <!-- TOC -->
@@ -793,6 +794,13 @@ systeem gebruikt worden om aan te geven richting de
 zorgverlener wat er fout is gegaan. In het geval van inhoudelijke fouten die niet zijn toegestaan volgens de
 Nictiz-profielen geeft de operationoutcome aan welke fout dit betreft. Zodat de zorgverlener de nodige aanpassing kan
 doen.
+
+## Maximale lengte van `reason.text`
+
+Het veld `reason.text` van de Task bevat vrije tekst die door een gebruiker wordt ingevuld: bij de reguliere ANW-flow
+een toelichting of instructie van de regisseur, bij [breaking the glass](technical-implementation-btg.html) de
+verplichte onderbouwing van de zorgverlener. Om te voorkomen dat systemen onderling verschillende grenzen hanteren, is
+afgesproken dat `reason.text` **maximaal 2000 karakters** bevat.
 
 ## Woningtoegang
 
