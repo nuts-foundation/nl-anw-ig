@@ -4,14 +4,14 @@
   "language" : "en-US",
   "text" : {
     "status" : "generated",
-    "div" : "<div xml:lang=\"en-US\" xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en-US\"><p class=\"res-header-id\"><b>Generated Narrative: ImplementationGuide nl.nuts.anw</b></p><a name=\"nl.nuts.anw\"> </a><a name=\"hcnl.nuts.anw\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Language: en-US</p></div><h2>NLAnwIG</h2><p>The official URL for this implementation guide is: </p><pre>http://nuts-foundation.github.io/nl-generic-anw-ig/ImplementationGuide/nl.nuts.anw</pre></div>"
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en-US\" lang=\"en-US\"><p class=\"res-header-id\"><b>Generated Narrative: ImplementationGuide nl.nuts.anw</b></p><a name=\"nl.nuts.anw\"> </a><a name=\"hcnl.nuts.anw\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Language: en-US</p></div><h2>NLAnwIG</h2><p>The official URL for this implementation guide is: </p><pre>http://nuts-foundation.github.io/nl-generic-anw-ig/ImplementationGuide/nl.nuts.anw</pre></div>"
   },
   "url" : "http://nuts-foundation.github.io/nl-generic-anw-ig/ImplementationGuide/nl.nuts.anw",
   "version" : "0.1.0",
   "name" : "NLAnwIG",
   "title" : "Netherlands - ANW implementation guide",
   "status" : "draft",
-  "date" : "2026-07-29T13:10:49+00:00",
+  "date" : "2026-09-09T07:22:02+00:00",
   "publisher" : "Stichting Nuts",
   "contact" : [{
     "name" : "Stichting Nuts",

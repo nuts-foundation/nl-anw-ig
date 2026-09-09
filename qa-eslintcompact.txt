@@ -2,8 +2,8 @@ NLAnwIG
 =========================================
 
 Generic: line 0, col 0, Error - Supressed messages file not found (NOTFOUND)
-Generic: line 0, col 0, Error - The link '#ANW-Regisseur' for "Endpoints voor data regisseur" cannot be resolved (valid targets: 76 targets) - case is wrong ('anw-regisseur') (NOTFOUND)
-Generic: line 0, col 0, Error - The link '#Endpoints-voor-data-overdracht' for "GET endpoints" cannot be resolved (valid targets: 76 targets) - case is wrong ('endpoints-voor-data-overdracht') (NOTFOUND)
+Generic: line 0, col 0, Error - The link '#ANW-Regisseur' for "Endpoints voor data regisseur" cannot be resolved (valid targets: 79 targets) - case is wrong ('anw-regisseur') (NOTFOUND)
+Generic: line 0, col 0, Error - The link '#Endpoints-voor-data-overdracht' for "GET endpoints" cannot be resolved (valid targets: 79 targets) - case is wrong ('endpoints-voor-data-overdracht') (NOTFOUND)
 Generic: line 0, col 0, Warning - The HTML fragment 'ip-statements.xhtml' is not included anywhere in the produced implementation guide (NOTFOUND)
 Generic: line 0, col 0, Warning - An HTML fragment from the set [cross-version-analysis.xhtml, cross-version-analysis-inline.xhtml] is not included anywhere in the produced implementation guide (NOTFOUND)
 Generic: line 0, col 0, Warning - An HTML fragment from the set [dependency-table.xhtml, dependency-table-short.xhtml, dependency-table-nontech.xhtml] is not included anywhere in the produced implementation guide (NOTFOUND)
@@ -71,4 +71,4 @@ Generic: line 0, col 0, Warning - The HTML fragment 'globals-table.xhtml' is not
 /github/workspace/fsh-generated/resources/OperationDefinition-ANW-zorg.json: line 0, col 0, Info - The resource OperationDefinition/ANW-zorg could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root) (BUSINESSRULE)
 
 err = 25, warn = 35, info = 6
-IG Publisher Version: 2.2.11
+IG Publisher Version: 2.3.4

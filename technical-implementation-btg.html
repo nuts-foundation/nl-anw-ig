@@ -349,7 +349,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">reason.text</code></td>
-      <td>Verplicht veld waarin de zorgverlener de reden voor het BTG-verzoek toelicht. Dit is vrije tekst die door de gebruiker wordt ingevuld.</td>
+      <td>Verplicht veld waarin de zorgverlener de reden voor het BTG-verzoek toelicht. Dit is vrije tekst die door de gebruiker wordt ingevuld, met een maximum van 2000 karakters.</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">restriction.period</code></td>
@@ -432,7 +432,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <ul>
   <li><strong><code class="language-plaintext highlighter-rouge">code</code></strong> - De code <code class="language-plaintext highlighter-rouge">ANW-BTG-autorisatie-verzoek</code> onderscheidt dit verzoek expliciet van een regulier ANW-autorisatieverzoek. De bronhouder gebruikt deze code om de juiste verwerkingslogica toe te passen.</li>
-  <li><strong><code class="language-plaintext highlighter-rouge">reason.text</code></strong> - Dit veld is bij de BTG-Task verplicht. Waar het veld bij de reguliere ANW-Task wordt gebruikt voor instructies, bevat het hier een door de gebruiker ingevulde toelichting op de reden voor het toepassen van breaking the glass.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">reason.text</code></strong> - Dit veld is bij de BTG-Task verplicht. Waar het veld bij de reguliere ANW-Task wordt gebruikt voor instructies, bevat het hier een door de gebruiker ingevulde toelichting op de reden voor het toepassen van breaking the glass. De toelichting bevat maximaal 2000 karakters; zie <a href="technical-documentation-v1.html#maximale-lengte-van-reasontext">Maximale lengte van <code class="language-plaintext highlighter-rouge">reason.text</code></a>.</li>
 </ul>
 
 <h2 id="stap-4--de-bronhouder-verleent-inzage-in-de-gegevens">Stap 4 – De bronhouder verleent inzage in de gegevens</h2>
@@ -489,7 +489,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.nuts.nl">Stichting Nuts</a>.  Package nl.nuts.anw#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Jul 29, 2026 13:10+0000">2026-07-29</span>
+          IG &#169; 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.nuts.nl">Stichting Nuts</a>.  Package nl.nuts.anw#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Sep 9, 2026 07:22+0000">2026-09-09</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

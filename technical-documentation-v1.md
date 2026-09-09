@@ -54,6 +54,7 @@
 * [Uitbreidingen (gemaakt zonder versiebeheer)](#uitbreidingen-gemaakt-zonder-versiebeheer) 
 * [Registeren van metingen](#registeren-van-metingen)
 * [Foutafhandeling van registraties naar het brondossier](#foutafhandeling-van-registraties-naar-het-brondossier)
+* [Maximale lengte van `reason.text`](#maximale-lengte-van-reasontext)
 * [Woningtoegang](#woningtoegang) 
 * [TODO](#todo) 
  
@@ -743,6 +744,10 @@ Eerste uitbreiding op ANW is het registreren van metingen richting het brondossi
 ## Foutafhandeling van registraties naar het brondossier
 
 In het geval van een fout bij de registratie antwoord het bronsysteem met een OperationOutcome. Zie [Fout afhandeling/Handling Errors](https://informatiestandaarden.nictiz.nl/wiki/FHIR:V1.0_FHIR_IG_STU3#Handling_errors) in de implementatiegids van Nictiz. De [operation outcome](https://hl7.org/fhir/STU3/operationoutcome.html) kan door een systeem gebruikt worden om aan te geven richting de zorgverlener wat er fout is gegaan. In het geval van inhoudelijke fouten die niet zijn toegestaan volgens de Nictiz-profielen geeft de operationoutcome aan welke fout dit betreft. Zodat de zorgverlener de nodige aanpassing kan doen.
+
+## Maximale lengte van reason.text
+
+Het veld `reason.text` van de Task bevat vrije tekst die door een gebruiker wordt ingevuld: bij de reguliere ANW-flow een toelichting of instructie van de regisseur, bij [breaking the glass](technical-implementation-btg.md) de verplichte onderbouwing van de zorgverlener. Om te voorkomen dat systemen onderling verschillende grenzen hanteren, is afgesproken dat `reason.text` **maximaal 2000 karakters** bevat.
 
 ## Woningtoegang
 

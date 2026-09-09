@@ -17,7 +17,7 @@
   fhir:OperationDefinition.name [ fhir:value "ANW-zorg"] ;
   fhir:OperationDefinition.status [ fhir:value "active"] ;
   fhir:OperationDefinition.kind [ fhir:value "query"] ;
-  fhir:OperationDefinition.date [ fhir:value "2026-07-29T13:10:49+00:00"^^xsd:dateTime] ;
+  fhir:OperationDefinition.date [ fhir:value "2026-09-09T07:22:02+00:00"^^xsd:dateTime] ;
   fhir:OperationDefinition.publisher [ fhir:value "Stichting Nuts"] ;
   fhir:OperationDefinition.contact [
      fhir:index 0 ;
