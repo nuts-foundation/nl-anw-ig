@@ -25,7 +25,8 @@ parameters:
 menu:
   Home: index.html
   Documentation:
-    Technical Documentation v1: technical-documentation-v1.html
+    Technische documentatie: technical-documentation-v1.html
     Tijdregistratie: technical-implementation-time-registration.html
-    Breaking the glass (BTG) Voorstel: technical-implementation-btg.html
+    Breaking the glass (BTG): technical-implementation-btg.html
+    Versionering: technical-implementation-versioning.html
   Artifacts: artifacts.html
