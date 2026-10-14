@@ -5,7 +5,7 @@
 
 ## Technical Implementation Btg
 
-# Breaking the glass (BTG) (CONCEPT)
+# Breaking the glass (BTG)
 
 Datum 15 April 2026
 
