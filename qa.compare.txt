@@ -12,6 +12,7 @@ Generated $--. FHIR version $-- for nl.nuts.anw#$-- (canonical = http://nuts-fou
  /github/workspace/fsh-generated/resources/ImplementationGuide-nl.nuts.anw : 0 / 0 / 2
  /github/workspace/fsh-generated/resources/OperationDefinition-ANW-zorg : 0 / 1 / 2
 </table>
+
 == n/a ==
 ERROR: ImplementationGuide.definition.parameter[25].value: Supressed messages file not found
 ERROR: /github/workspace/output/index.html: The page has more than one top level heading: <h2> '⚠️ Disclaimer' (id=️-disclaimer) is at the same level as the first heading on the page (<h2> 'Home'). A page must have exactly one top level heading, with every other heading beneath it (WCAG compliance test)
@@ -56,12 +57,14 @@ ERROR: /github/workspace/output/technical-implementation-time-registration.html:
 ERROR: /github/workspace/output/technical-implementation-versioning.html: The heading <h1> 'Versionering (voorstel)' (id=versionering-voorstel) is at a higher level than the first heading on the page (<h2> 'Technical Implementation Versioning'). The first heading on a page must be its top level heading (WCAG compliance test)
 ERROR: /github/workspace/output/technical-implementation-versioning.html: The page has more than one top level heading: <h2> 'Ondersteuning bekendmaken' (id=ondersteuning-bekendmaken) is at the same level as the first heading on the page (<h2> 'Technical Implementation Versioning'). A page must have exactly one top level heading, with every other heading beneath it (WCAG compliance test)
 ERROR: /github/workspace/output/technical-implementation-versioning.html: The page has more than one top level heading: <h2> 'Proces per taak' (id=proces-per-taak) is at the same level as the first heading on the page (<h2> 'Technical Implementation Versioning'). A page must have exactly one top level heading, with every other heading beneath it (WCAG compliance test)
-ERROR: /github/workspace/output/technical-implementation-versioning.html: The page has more than one top level heading: <h2> 'Overlap bepalen' (id=overlap-bepalen) is at the same level as the first heading on the page (<h2> 'Technical Implementation Versioning'). A page must have exactly one top level heading, with every other heading beneath it (WCAG compliance test)
+ERROR: /github/workspace/output/technical-implementation-versioning.html: The page has more than one top level heading: <h2> 'Beschikbare functionaliteit bepalen' (id=beschikbare-functionaliteit-bepalen) is at the same level as the first heading on the page (<h2> 'Technical Implementation Versioning'). A page must have exactly one top level heading, with every other heading beneath it (WCAG compliance test)
 ERROR: /github/workspace/output/technical-implementation-versioning.html: The page has more than one top level heading: <h2> 'Ondersteuning en toegang' (id=ondersteuning-en-toegang) is at the same level as the first heading on the page (<h2> 'Technical Implementation Versioning'). A page must have exactly one top level heading, with every other heading beneath it (WCAG compliance test)
 WARNING: 1: The HTML fragment 'ip-statements.xhtml' is not included anywhere in the produced implementation guide
 WARNING: 2: An HTML fragment from the set [cross-version-analysis.xhtml, cross-version-analysis-inline.xhtml] is not included anywhere in the produced implementation guide
 WARNING: 3: An HTML fragment from the set [dependency-table.xhtml, dependency-table-short.xhtml, dependency-table-nontech.xhtml] is not included anywhere in the produced implementation guide
 WARNING: 4: The HTML fragment 'globals-table.xhtml' is not included anywhere in the produced implementation guide
+
+
 == fsh-generated/resources/CapabilityStatement-ANWBronhouderCapabilityStatement-v1.0.0.json ==
 ERROR: CapabilityStatement.where(url = 'http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Bronhouder'): Conformance resource /github/workspace/fsh-generated/resources/CapabilityStatement-ANWBronhouderCapabilityStatement-v1.0.0.json - the canonical URL (http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWBronhouderCapabilityStatement-v1.0.0) does not match the URL (http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Bronhouder). Use the special-url parameter if you really mean for it not to match
 ERROR: CapabilityStatement.url: Resource id/url mismatch: ANWBronhouderCapabilityStatement-v1.0.0/http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Bronhouder
@@ -84,6 +87,8 @@ WARNING: CapabilityStatement/ANWBronhouderCapabilityStatement-v1.0.0: Capability
 ERROR: Resource: The URL 'http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Bronhouder' is also used by ANWBronhouderCapabilityStatement-v1.1.0 in /github/workspace/fsh-generated/resources/CapabilityStatement-ANWBronhouderCapabilityStatement-v1.1.0
 INFORMATION: Resource: The resource CapabilityStatement/ANWBronhouderCapabilityStatement-v1.0.0 could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 ERROR: /github/workspace/fsh-generated/resources/CapabilityStatement-ANWBronhouderCapabilityStatement-v1.0.0: URL Mismatch http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWBronhouderCapabilityStatement-v1.0.0 vs http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Bronhouder
+
+
 == fsh-generated/resources/CapabilityStatement-ANWBronhouderCapabilityStatement-v1.1.0.json ==
 ERROR: CapabilityStatement.where(url = 'http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Bronhouder'): Conformance resource /github/workspace/fsh-generated/resources/CapabilityStatement-ANWBronhouderCapabilityStatement-v1.1.0.json - the canonical URL (http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWBronhouderCapabilityStatement-v1.1.0) does not match the URL (http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Bronhouder). Use the special-url parameter if you really mean for it not to match
 ERROR: CapabilityStatement.url: Resource id/url mismatch: ANWBronhouderCapabilityStatement-v1.1.0/http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Bronhouder
@@ -107,6 +112,8 @@ WARNING: CapabilityStatement/ANWBronhouderCapabilityStatement-v1.1.0: Capability
 ERROR: Resource: The URL 'http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Bronhouder' has already been used by ANWBronhouderCapabilityStatement-v1.0.0 in /github/workspace/fsh-generated/resources/CapabilityStatement-ANWBronhouderCapabilityStatement-v1.0.0
 INFORMATION: Resource: The resource CapabilityStatement/ANWBronhouderCapabilityStatement-v1.1.0 could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 ERROR: /github/workspace/fsh-generated/resources/CapabilityStatement-ANWBronhouderCapabilityStatement-v1.1.0: URL Mismatch http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWBronhouderCapabilityStatement-v1.1.0 vs http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Bronhouder
+
+
 == fsh-generated/resources/CapabilityStatement-ANWRegisseurCapabilityStatement-v1.0.0.json ==
 ERROR: CapabilityStatement.where(url = 'http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Regisseur'): Conformance resource /github/workspace/fsh-generated/resources/CapabilityStatement-ANWRegisseurCapabilityStatement-v1.0.0.json - the canonical URL (http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWRegisseurCapabilityStatement-v1.0.0) does not match the URL (http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Regisseur). Use the special-url parameter if you really mean for it not to match
 ERROR: CapabilityStatement.url: Resource id/url mismatch: ANWRegisseurCapabilityStatement-v1.0.0/http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Regisseur
@@ -115,6 +122,8 @@ ERROR: CapabilityStatement/ANWRegisseurCapabilityStatement-v1.0.0: CapabilitySta
 WARNING: CapabilityStatement/ANWRegisseurCapabilityStatement-v1.0.0: CapabilityStatement: Constraint failed: cpb-0: 'Name should be usable as an identifier for the module by machine processing applications such as code generation (name.matches('[A-Z]([A-Za-z0-9_]){0,254}'))'
 INFORMATION: Resource: The resource CapabilityStatement/ANWRegisseurCapabilityStatement-v1.0.0 could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 ERROR: /github/workspace/fsh-generated/resources/CapabilityStatement-ANWRegisseurCapabilityStatement-v1.0.0: URL Mismatch http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWRegisseurCapabilityStatement-v1.0.0 vs http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Regisseur
+
+
 == fsh-generated/resources/CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1.0.0.json ==
 ERROR: CapabilityStatement.where(url = 'http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Zorgverlener'): Conformance resource /github/workspace/fsh-generated/resources/CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1.0.0.json - the canonical URL (http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWZorgverlenerCapabilityStatement-v1.0.0) does not match the URL (http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Zorgverlener). Use the special-url parameter if you really mean for it not to match
 ERROR: CapabilityStatement.url: Resource id/url mismatch: ANWZorgverlenerCapabilityStatement-v1.0.0/http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Zorgverlener
@@ -124,8 +133,14 @@ WARNING: CapabilityStatement/ANWZorgverlenerCapabilityStatement-v1.0.0: Capabili
 WARNING: CapabilityStatement/ANWZorgverlenerCapabilityStatement-v1.0.0: CapabilityStatement: Constraint failed: cpb-0: 'Name should be usable as an identifier for the module by machine processing applications such as code generation (name.matches('[A-Z]([A-Za-z0-9_]){0,254}'))'
 INFORMATION: Resource: The resource CapabilityStatement/ANWZorgverlenerCapabilityStatement-v1.0.0 could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 ERROR: /github/workspace/fsh-generated/resources/CapabilityStatement-ANWZorgverlenerCapabilityStatement-v1.0.0: URL Mismatch http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANWZorgverlenerCapabilityStatement-v1.0.0 vs http://nuts-foundation.github.io/nl-generic-anw-ig/CapabilityStatement/ANW-Zorgverlener
+
+
 == fsh-generated/resources/ImplementationGuide-nl.nuts.anw.json ==
 INFORMATION: Resource: The resource ImplementationGuide/nl.nuts.anw could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
+
+
 == fsh-generated/resources/OperationDefinition-ANW-zorg.json ==
 WARNING: OperationDefinition/ANW-zorg: OperationDefinition: Constraint failed: opd-0: 'Name should be usable as an identifier for the module by machine processing applications such as code generation (name.matches('[A-Z]([A-Za-z0-9_]){0,254}'))'
 INFORMATION: Resource: The resource OperationDefinition/ANW-zorg could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
+
+

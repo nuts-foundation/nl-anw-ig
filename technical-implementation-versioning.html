@@ -165,7 +165,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
         </ul>
       </li>
       <li><a href="#proces-per-taak" id="markdown-toc-proces-per-taak">Proces per taak</a></li>
-      <li><a href="#overlap-bepalen" id="markdown-toc-overlap-bepalen">Overlap bepalen</a></li>
+      <li><a href="#beschikbare-functionaliteit-bepalen" id="markdown-toc-beschikbare-functionaliteit-bepalen">Beschikbare functionaliteit bepalen</a></li>
       <li><a href="#ondersteuning-en-toegang" id="markdown-toc-ondersteuning-en-toegang">Ondersteuning en toegang</a></li>
     </ul>
   </li>
@@ -174,7 +174,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 </div>
 <h1 id="versionering-voorstel">Versionering (voorstel)</h1>
 
-<p>Binnen ANW gebruiken we het <strong>CapabilityStatement van de FHIR-server als menukaart</strong>. Iedere deelnemer beschrijft hierin welke gegevens en functionaliteiten hij ondersteunt. Bronhouder en zorgverlener vergelijken hun CapabilityStatements om per taak vast te stellen welke functionaliteit zij gezamenlijk kunnen gebruiken.</p>
+<p>Binnen ANW gebruiken we het <strong>CapabilityStatement van de FHIR-server als menukaart</strong>. Iedere deelnemer beschrijft hierin welke gegevens en functionaliteiten hij ondersteunt. De zorgverlener haalt het CapabilityStatement van de bronhouder op om te bepalen welke resources en functionaliteit gebruikt kunnen worden.</p>
 
 <p>Hiermee kunnen leveranciers onafhankelijk doorontwikkelen. Nieuwe optionele functionaliteit kan worden gebruikt zodra beide partijen deze ondersteunen, zonder dat alle leveranciers tegelijkertijd een volledige nieuwe versie hoeven te implementeren.</p>
 
@@ -182,7 +182,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <h2 id="ondersteuning-bekendmaken">Ondersteuning bekendmaken</h2>
 
-<p>De meeste leveranciers bieden momenteel een CapabilityStatement aan dat alle resources beschrijft die hun FHIR-server ondersteunt. Voor ANW moet duidelijk zijn welke ondersteuning specifiek binnen deze usecase beschikbaar is. Iedere leverancier is daarom verantwoordelijk voor een correct en actueel CapabilityStatement voor de betreffende usecase. Dit beschrijft uitsluitend de resources, profielen en handelingen die daar daadwerkelijk worden ondersteund en aangeboden.</p>
+<p>Leveranciers bieden een CapabilityStatement aan dat alle resources beschrijft die hun FHIR-server ondersteunt. Voor ANW moet duidelijk zijn welke ondersteuning specifiek binnen deze usecase beschikbaar is. Iedere leverancier is daarom verantwoordelijk voor een correct en actueel CapabilityStatement voor de betreffende usecase. Dit beschrijft uitsluitend de resources, profielen en handelingen die daar daadwerkelijk worden ondersteund en aangeboden.</p>
 
 <p>Deze richting wordt ook binnen andere usecases besproken, bijvoorbeeld bij <a href="https://build.fhir.org/ig/nuts-foundation/nl-360-ig/vol2b.html">360-graden</a> het CapabilityStatement gebruiken om vast te stellen welke resources een aanbieder beschikbaar heeft. Het mechanisme kan worden hergebruikt, terwijl iedere usecase zijn eigen inhoudelijke afspraken behoudt.</p>
 
@@ -211,11 +211,14 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <h3 id="declaratieafspraken">Declaratieafspraken</h3>
 
-<p>In STU3 worden ondersteunde profielen opgenomen in <code class="language-plaintext highlighter-rouge">CapabilityStatement.profile</code>. Resource-types, interacties en zoekparameters worden beschreven onder <code class="language-plaintext highlighter-rouge">CapabilityStatement.rest</code>.</p>
+<p>De bronhouder beschrijft in het CapabilityStatement wat hij voor ANW aanbiedt:</p>
 
-<p>Ook de ondersteuning als afnemer moet expliciet worden beschreven. De serverinteracties van een zorgverlener bewijzen niet automatisch wat zijn applicatie kan ophalen, verwerken of versturen. STU3 kan server- en clientgedrag onderscheiden via <code class="language-plaintext highlighter-rouge">rest.mode</code>. <a href="https://hl7.org/fhir/STU3/capabilitystatement-definitions.html">FHIR STU3 CapabilityStatement</a></p>
+<ul>
+  <li>welke profielen worden ondersteund, in <code class="language-plaintext highlighter-rouge">CapabilityStatement.profile</code>;</li>
+  <li>welke resource-types, interacties (zoals <code class="language-plaintext highlighter-rouge">read</code>, <code class="language-plaintext highlighter-rouge">search</code> en <code class="language-plaintext highlighter-rouge">create</code>) en zoekparameters beschikbaar zijn, onder <code class="language-plaintext highlighter-rouge">CapabilityStatement.rest</code>.</li>
+</ul>
 
-<p>De ANW Implementation Guide legt vast hoe deelnemers hun ondersteuning declareren en vergelijken. Dit omvat ook de relatie tussen profielen, handelingen en code/categorie-combinaties. Waar standaardvelden onvoldoende zijn, worden gepubliceerde FHIR-extensions gebruikt. Het CapabilityStatement blijft beschikbaar via het standaard metadata-endpoint. <a href="https://hl7.org/fhir/STU3/extensibility.html">FHIR-extensibility</a></p>
+<p>Waar standaardvelden onvoldoende zijn, bijvoorbeeld om aan te geven welke code/categorie-combinatie bij een ZIB hoort, worden gepubliceerde FHIR-extensions gebruikt. De ANW Implementation Guide legt vast hoe dit wordt ingevuld. <a href="https://hl7.org/fhir/STU3/capabilitystatement-definitions.html">FHIR STU3 CapabilityStatement</a> · <a href="https://hl7.org/fhir/STU3/extensibility.html">FHIR-extensibility</a></p>
 
 <h2 id="proces-per-taak">Proces per taak</h2>
 
@@ -226,13 +229,13 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   
 </figure>
 
-<h2 id="overlap-bepalen">Overlap bepalen</h2>
+<h2 id="beschikbare-functionaliteit-bepalen">Beschikbare functionaliteit bepalen</h2>
 
-<p>De overlap wordt per ZIB of functie bepaald op basis van de FHIR-interactions in het CapabilityStatement. Een resource is alleen beschikbaar voor de interactions die beide partijen ondersteunen.</p>
+<p>De zorgverlener bepaalt per ZIB of functie op basis van de FHIR-interactions in het CapabilityStatement van de bronhouder welke functionaliteit beschikbaar is. Een resource kan alleen worden gebruikt voor de interactions die de bronhouder aanbiedt.</p>
 
 <p>Een bronhouder kan bijvoorbeeld bloeddruk aanbieden via <code class="language-plaintext highlighter-rouge">read</code>, maar <code class="language-plaintext highlighter-rouge">create</code> voor bloeddruk niet ondersteunen. De zorgverlener kan bloeddruk dan ophalen, maar geen nieuwe bloeddrukmeting aanmaken bij de bronhouder.</p>
 
-<p>Alleen ondersteuning van hetzelfde resource-type, zoals <code class="language-plaintext highlighter-rouge">Observation</code>, is onvoldoende. Ook de profielen moeten overeenkomen.</p>
+<p>Daarbij is niet alleen het resource-type, zoals <code class="language-plaintext highlighter-rouge">Observation</code>, van belang, maar ook het profiel dat de bronhouder aanbiedt.</p>
 
 <h2 id="ondersteuning-en-toegang">Ondersteuning en toegang</h2>
 
@@ -259,7 +262,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.nuts.nl">Stichting Nuts</a>.  Package nl.nuts.anw#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Oct 14, 2026 09:32+0000">2026-10-14</span>
+          IG &#169; 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.nuts.nl">Stichting Nuts</a>.  Package nl.nuts.anw#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Oct 20, 2026 10:51+0000">2026-10-20</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
