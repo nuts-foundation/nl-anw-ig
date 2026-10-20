@@ -12,15 +12,7 @@ control NutsNodeZorgverlener as "Nuts-Node \nANW-Zorgverlener"
 Regisseur -> Bronhouder ++: Stuurt Task naar bronhouder
 Bronhouder -> Bronhouder: Stelt patiënt, zorgverlener\nen opdracht vast
 
-group CapabilityStatement zorgverlener ophalen
-Bronhouder -> NutsNodeBronhouder ++: Vraagt FHIR-URL van zorgverlener op\nvia Nuts ANW-service
-return FHIR-URL (FHIR-base) zorgverlener
-Bronhouder -> Zorgverlener ++: GET [FHIR-base]/metadata
-return CapabilityStatement zorgverlener
-end
-
-Bronhouder -> Bronhouder: Bepaalt overlap tussen eigen\nCapabilityStatement en dat\nvan de zorgverlener
-Bronhouder -> NutsNodeBronhouder: Maakt VC's aan voor de\noverlappende resources
+Bronhouder -> NutsNodeBronhouder: Maakt VC's aan
 Bronhouder --> Regisseur --: Rondt taakverwerking af
 
 Regisseur -> Zorgverlener ++: Notificeert dat Task klaar staat
@@ -32,9 +24,9 @@ Zorgverlener -> Bronhouder ++: GET [FHIR-base]/metadata
 return CapabilityStatement bronhouder
 end
 
-Zorgverlener -> Zorgverlener: Bepaalt overlap tussen eigen\nCapabilityStatement en dat\nvan de bronhouder
+Zorgverlener -> Zorgverlener: Bepaalt welke resources en\nfunctionaliteit beschikbaar zijn
 Zorgverlener -> Zorgverlener: Past interface hierop aan
 
-ref over Bronhouder, Zorgverlener: Bestaand ANW-proces:\nophalen en versturen van resources\nbinnen de overlap en de verleende toegang
+ref over Bronhouder, Zorgverlener: Bestaand ANW-proces:\nophalen en versturen van resources\nbinnen de aangeboden functionaliteit\nen de verleende toegang
 
 @enduml
