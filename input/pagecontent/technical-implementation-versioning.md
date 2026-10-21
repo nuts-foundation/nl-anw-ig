@@ -1,6 +1,6 @@
 # Versionering (voorstel)
 
-Binnen ANW gebruiken we het **CapabilityStatement van de FHIR-server als menukaart**. Iedere deelnemer beschrijft hierin welke gegevens en functionaliteiten hij ondersteunt. Bronhouder en zorgverlener vergelijken hun CapabilityStatements om per taak vast te stellen welke functionaliteit zij gezamenlijk kunnen gebruiken.
+Binnen ANW gebruiken we het **CapabilityStatement van de FHIR-server als menukaart**. Iedere deelnemer beschrijft hierin welke gegevens en functionaliteiten hij ondersteunt. De zorgverlener haalt het CapabilityStatement van de bronhouder op om te bepalen welke resources en functionaliteit gebruikt kunnen worden.
 
 Hiermee kunnen leveranciers onafhankelijk doorontwikkelen. Nieuwe optionele functionaliteit kan worden gebruikt zodra beide partijen deze ondersteunen, zonder dat alle leveranciers tegelijkertijd een volledige nieuwe versie hoeven te implementeren.
 
@@ -8,7 +8,7 @@ De oplossing gebruikt het standaard metadata-endpoint (CapabilityStatement) van 
 
 ## Ondersteuning bekendmaken
 
-De meeste leveranciers bieden momenteel een CapabilityStatement aan dat alle resources beschrijft die hun FHIR-server ondersteunt. Voor ANW moet duidelijk zijn welke ondersteuning specifiek binnen deze usecase beschikbaar is. Iedere leverancier is daarom verantwoordelijk voor een correct en actueel CapabilityStatement voor de betreffende usecase. Dit beschrijft uitsluitend de resources, profielen en handelingen die daar daadwerkelijk worden ondersteund en aangeboden.
+Leveranciers bieden een CapabilityStatement aan dat alle resources beschrijft die hun FHIR-server ondersteunt. Voor ANW moet duidelijk zijn welke ondersteuning specifiek binnen deze usecase beschikbaar is. Iedere leverancier is daarom verantwoordelijk voor een correct en actueel CapabilityStatement voor de betreffende usecase. Dit beschrijft uitsluitend de resources, profielen en handelingen die daar daadwerkelijk worden ondersteund en aangeboden.
 
 Deze richting wordt ook binnen andere usecases besproken, bijvoorbeeld bij [360-graden](https://build.fhir.org/ig/nuts-foundation/nl-360-ig/vol2b.html) het CapabilityStatement gebruiken om vast te stellen welke resources een aanbieder beschikbaar heeft. Het mechanisme kan worden hergebruikt, terwijl iedere usecase zijn eigen inhoudelijke afspraken behoudt.
 
@@ -40,11 +40,12 @@ Het CapabilityStatement beschrijft de ondersteunde volledige ZIB’s en aanvulle
 
 ### Declaratieafspraken
 
-In STU3 worden ondersteunde profielen opgenomen in `CapabilityStatement.profile`. Resource-types, interacties en zoekparameters worden beschreven onder `CapabilityStatement.rest`.
+De bronhouder beschrijft in het CapabilityStatement wat hij voor ANW aanbiedt:
 
-Ook de ondersteuning als afnemer moet expliciet worden beschreven. De serverinteracties van een zorgverlener bewijzen niet automatisch wat zijn applicatie kan ophalen, verwerken of versturen. STU3 kan server- en clientgedrag onderscheiden via `rest.mode`. [FHIR STU3 CapabilityStatement](https://hl7.org/fhir/STU3/capabilitystatement-definitions.html)
+- welke profielen worden ondersteund, in `CapabilityStatement.profile`;
+- welke resource-types, interacties (zoals `read`, `search` en `create`) en zoekparameters beschikbaar zijn, onder `CapabilityStatement.rest`.
 
-De ANW Implementation Guide legt vast hoe deelnemers hun ondersteuning declareren en vergelijken. Dit omvat ook de relatie tussen profielen, handelingen en code/categorie-combinaties. Waar standaardvelden onvoldoende zijn, worden gepubliceerde FHIR-extensions gebruikt. Het CapabilityStatement blijft beschikbaar via het standaard metadata-endpoint. [FHIR-extensibility](https://hl7.org/fhir/STU3/extensibility.html)
+Waar standaardvelden onvoldoende zijn, bijvoorbeeld om aan te geven welke code/categorie-combinatie bij een ZIB hoort, worden gepubliceerde FHIR-extensions gebruikt. De ANW Implementation Guide legt vast hoe dit wordt ingevuld. [FHIR STU3 CapabilityStatement](https://hl7.org/fhir/STU3/capabilitystatement-definitions.html) · [FHIR-extensibility](https://hl7.org/fhir/STU3/extensibility.html)
 
 ## Proces per taak
 
@@ -52,13 +53,13 @@ Het proces verloopt als volgt:
 
 {% include img.html img="versioning-sequence.png" %}
 
-## Overlap bepalen
+## Beschikbare functionaliteit bepalen
 
-De overlap wordt per ZIB of functie bepaald op basis van de FHIR-interactions in het CapabilityStatement. Een resource is alleen beschikbaar voor de interactions die beide partijen ondersteunen.
+De zorgverlener bepaalt per ZIB of functie op basis van de FHIR-interactions in het CapabilityStatement van de bronhouder welke functionaliteit beschikbaar is. Een resource kan alleen worden gebruikt voor de interactions die de bronhouder aanbiedt.
 
 Een bronhouder kan bijvoorbeeld bloeddruk aanbieden via `read`, maar `create` voor bloeddruk niet ondersteunen. De zorgverlener kan bloeddruk dan ophalen, maar geen nieuwe bloeddrukmeting aanmaken bij de bronhouder.
 
-Alleen ondersteuning van hetzelfde resource-type, zoals `Observation`, is onvoldoende. Ook de profielen moeten overeenkomen.
+Daarbij is niet alleen het resource-type, zoals `Observation`, van belang, maar ook het profiel dat de bronhouder aanbiedt.
 
 ## Ondersteuning en toegang
 
