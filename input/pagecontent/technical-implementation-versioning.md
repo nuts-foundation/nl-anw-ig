@@ -1,68 +1,97 @@
 # Versionering (voorstel)
 
-Binnen ANW gebruiken we het **CapabilityStatement van de FHIR-server als menukaart**. Iedere deelnemer beschrijft hierin welke gegevens en functionaliteiten hij ondersteunt. De zorgverlener haalt het CapabilityStatement van de bronhouder op om te bepalen welke resources en functionaliteit gebruikt kunnen worden.
+Dit voorstel beschrijft hoe ANW-systemen het **CapabilityStatement van de FHIR-server** als menukaart kunnen gebruiken. Hiermee maakt een leverancier zichtbaar welke aanvullende mogelijkheden het systeem binnen ANW aanbiedt, zoals bijvoorbeeld het ophalen en wegschrijven van een meting. Het systeem van de ANW-Zorgverlener haalt het CapabilityStatement van de ANW-Bronhouder op om te bepalen welke gegevens de bronhouder aanbiedt en welke handelingen deze kan verwerken. Zo weet het welke mogelijkheden het bij de bronhouder kan gebruiken.
 
-Hiermee kunnen leveranciers onafhankelijk doorontwikkelen. Nieuwe optionele functionaliteit kan worden gebruikt zodra beide partijen deze ondersteunen, zonder dat alle leveranciers tegelijkertijd een volledige nieuwe versie hoeven te implementeren.
+Hiermee kunnen leveranciers onafhankelijk doorontwikkelen, ook buiten de functionaliteit die in de vaste ANW-afspraken zijn opgenomen. Een aanvullende mogelijkheid kan worden gebruikt zodra beide systemen deze ondersteunen en de benodigde toegang is verleend. De betrokken leveranciers hoeven daarvoor niet te wachten op een nieuwe ANW-versie of op implementatie door andere leveranciers.
 
-De oplossing gebruikt het standaard metadata-endpoint (CapabilityStatement) van de FHIR-server om de ondersteuning van iedere deelnemer te beschrijven.
+## ANW-versies en de menukaart
+
+De menukaart vormt een aanvulling op het [bestaande versiebeheer per ANW-rol](technical-documentation-v1.html#implementeren-van-een-nieuwe-versie). Volledige functionaliteiten met gezamenlijke proces- en implementatieafspraken, zoals [tijdregistratie](technical-implementation-time-registration.html) en [BTG](technical-implementation-btg.html), kunnen binnen ANW-versies worden gedefinieerd.
+
+| Onderdeel | Doel |
+| --- | --- |
+| ANW-versie | Legt de gezamenlijke afspraken vast, waaronder volledige functionaliteiten zoals tijdregistratie en BTG. |
+| Menukaart via het CapabilityStatement | Maakt zichtbaar welke mogelijkheden een systeem daadwerkelijk aanbiedt, waaronder aanvullende mogelijkheden die leveranciers onafhankelijk ontwikkelen. |
+
+De afspraken van een ondersteunde ANW-versie blijven gelden. De menukaart maakt daarnaast zichtbaar welke aanvullende ZIB’s en handelingen beschikbaar zijn. Een leverancier kan bijvoorbeeld het registreren van een meting toevoegen en dit bekendmaken via het CapabilityStatement.
+
+De [functionele uitwerking](https://docs.google.com/document/d/19m7vntWtGZFd7ynddN4wTdreIjeIfmXgjBNAzhV6eDU/edit?tab=t.0) voorziet de introductie van de menukaart in ANW-versie 1.4, waarbij ook tijdregistratie wordt meegenomen. Dit geeft aan wanneer de menukaart wordt geïntroduceerd, afzonderlijke aanvullende mogelijkheden kunnen leveranciers vervolgens onafhankelijk aanbieden.
 
 ## Ondersteuning bekendmaken
 
-Leveranciers bieden een CapabilityStatement aan dat alle resources beschrijft die hun FHIR-server ondersteunt. Voor ANW moet duidelijk zijn welke ondersteuning specifiek binnen deze usecase beschikbaar is. Iedere leverancier is daarom verantwoordelijk voor een correct en actueel CapabilityStatement voor de betreffende usecase. Dit beschrijft uitsluitend de resources, profielen en handelingen die daar daadwerkelijk worden ondersteund en aangeboden.
+Iedere leverancier publiceert een correct en actueel CapabilityStatement voor de FHIR-server. Hierin staan de resources, profielen en handelingen die de server daadwerkelijk aanbiedt. Voor ANW moet duidelijk zijn welke daarvan binnen de ANW-usecase beschikbaar zijn.
 
-Deze richting wordt ook binnen andere usecases besproken, bijvoorbeeld bij [360-graden](https://build.fhir.org/ig/nuts-foundation/nl-360-ig/vol2b.html) het CapabilityStatement gebruiken om vast te stellen welke resources een aanbieder beschikbaar heeft. Het mechanisme kan worden hergebruikt, terwijl iedere usecase zijn eigen inhoudelijke afspraken behoudt.
+Ook [360-graden](https://build.fhir.org/ig/nuts-foundation/nl-360-ig/vol2b.html) gebruikt het CapabilityStatement om de ondersteuning van de FHIR-server van een bronhouder op te vragen. Hetzelfde mechanisme kan binnen ANW worden gebruikt, met behoud van de eigen inhoudelijke afspraken.
 
 ### CapabilityStatement opvragen
 
-Binnen de Nuts ANW-service wordt het FHIR-endpoint gepubliceerd. Dit verwijst naar de FHIR-base die de ANW-ondersteuning aanbiedt. Het bijbehorende CapabilityStatement wordt opgevraagd via het standaard metadata-endpoint:
+Binnen de Nuts ANW-service publiceert de ANW-Bronhouder het FHIR-endpoint. Dit verwijst naar de FHIR-base waar de ANW-functionaliteit beschikbaar is. Het systeem van de ANW-Zorgverlener vraagt het bijbehorende CapabilityStatement op via het standaard metadata-endpoint:
 
 ```
 GET [FHIR-base]/metadata
 ```
 
-Dezelfde base wordt gebruikt voor de daadwerkelijke gegevensuitwisseling. Een aparte capability-API of afwijkend metadata-endpoint is niet nodig.
+Het systeem gebruikt dezelfde FHIR-base voor de gegevensuitwisseling.
 
-Afhankelijk van de inrichting kan een leverancier hiervoor een andere FHIR-base gebruiken. De FHIR-base kan dan bijvoorbeeld veranderen van:
-
-```
-GET [server-url]/fhir
-```
-
-naar:
+Een leverancier kan hiervoor een aparte FHIR-base inrichten. Bijvoorbeeld:
 
 ```
-GET [server-url]/fhir/anw
+[server-url]/fhir/anw
 ```
 
-Dit is uitsluitend een mogelijke implementatiekeuze van de leverancier en geen voorgeschreven ANW-inrichting. De afspraak is dat het FHIR-endpoint binnen de Nuts ANW-service naar de juiste base verwijst en dat het standaard `/metadata`-endpoint een correct CapabilityStatement voor ANW aanbiedt. Of daarvoor een URL-wijziging nodig is en hoe dit wordt gerealiseerd, bepaalt de leverancier zelf.
+Het bijbehorende metadata-endpoint is dan:
 
-Het CapabilityStatement beschrijft de ondersteunde volledige ZIB’s en aanvullende functies, met de bijbehorende profielen, handelingen en zoekmogelijkheden. De inhoud van de ZIB’s blijft leidend. Een minimale gezamenlijke ANW-basis blijft verplicht om het bestaande zorgproces uit te voeren. Aanvullende functies, zoals tijdregistratie, kunnen afzonderlijk worden ondersteund.
+```
+GET [server-url]/fhir/anw/metadata
+```
+
+Een aparte FHIR-base is een implementatiekeuze van de leverancier. De bestaande FHIR-base kan ook worden gebruikt. In beide gevallen verwijst het endpoint in de Nuts ANW-service naar de juiste base en biedt `[FHIR-base]/metadata` het bijbehorende CapabilityStatement aan.
+
+Het CapabilityStatement maakt zichtbaar welke ZIB’s en aanvullende functies beschikbaar zijn, met de bijbehorende FHIR-profielen, handelingen en zoekmogelijkheden. De integrale ZIB’s en de bijbehorende profielen blijven leidend. De keuzevrijheid betreft welke ZIB’s en functies een systeem ondersteunt. De menukaart geeft geen keuze op veldniveau en biedt geen ruimte om de inhoud van een ZIB naar eigen inzicht aan te passen.
 
 ### Declaratieafspraken
 
-De bronhouder beschrijft in het CapabilityStatement wat hij voor ANW aanbiedt:
+Dit voorstel gebruikt de standaardvelden van FHIR STU3. De ANW-Bronhouder beschrijft de ondersteuning met de volgende velden:
 
-- welke profielen worden ondersteund, in `CapabilityStatement.profile`;
-- welke resource-types, interacties (zoals `read`, `search` en `create`) en zoekparameters beschikbaar zijn, onder `CapabilityStatement.rest`.
+| Onderdeel | Veld |
+| --- | --- |
+| Ondersteunde profielen | `CapabilityStatement.profile` |
+| Resourcetype | `CapabilityStatement.rest.resource.type` |
+| Overkoepelend profiel voor een resourcetype | `CapabilityStatement.rest.resource.profile` |
+| Ondersteunde interacties, zoals `read`, `search-type` en `create` | `CapabilityStatement.rest.resource.interaction.code` |
+| Zoekparameters | `CapabilityStatement.rest.resource.searchParam` |
+| Operaties en named queries | `CapabilityStatement.rest.operation` |
 
-Waar standaardvelden onvoldoende zijn, bijvoorbeeld om aan te geven welke code/categorie-combinatie bij een ZIB hoort, worden gepubliceerde FHIR-extensions gebruikt. De ANW Implementation Guide legt vast hoe dit wordt ingevuld. [FHIR STU3 CapabilityStatement](https://hl7.org/fhir/STU3/capabilitystatement-definitions.html) · [FHIR-extensibility](https://hl7.org/fhir/STU3/extensibility.html)
+In FHIR STU3 wordt ieder resourcetype per REST-modus één keer beschreven. De interacties gelden op het niveau van dat resourcetype. Een lijst met profielen en interacties legt daarom niet vanzelf vast welke interactie voor welk profiel beschikbaar is. Die koppeling moet nog worden uitgewerkt voor functies die hetzelfde resourcetype gebruiken. Zie [FHIR STU3 CapabilityStatement](https://hl7.org/fhir/STU3/capabilitystatement-definitions.html).
 
 ## Proces per taak
 
-Het proces verloopt als volgt:
+Het sequentiediagram toont wanneer het systeem van de ANW-Zorgverlener de ondersteuning van de ANW-Bronhouder opvraagt:
 
 {% include img.html img="versioning-sequence.png" %}
 
+Na de notificatie dat de Task klaarstaat, bepaalt het systeem van de ANW-Zorgverlener de FHIR-base via de Nuts ANW-service. Het haalt het CapabilityStatement op, bepaalt welke functies beschikbaar zijn en past de gebruikersinterface daarop aan. De gegevensuitwisseling verloopt vervolgens binnen de aangeboden functionaliteit en de verleende toegang.
+
 ## Beschikbare functionaliteit bepalen
 
-De zorgverlener bepaalt per ZIB of functie op basis van de FHIR-interactions in het CapabilityStatement van de bronhouder welke functionaliteit beschikbaar is. Een resource kan alleen worden gebruikt voor de interactions die de bronhouder aanbiedt.
+Het systeem van de ANW-Zorgverlener vergelijkt de eigen ondersteuning met die van de ANW-Bronhouder. Het gebruikt daarvoor het resourcetype, het profiel en de bijbehorende interacties. Een functie is alleen bruikbaar als beide systemen de bijbehorende afspraken ondersteunen.
 
-Een bronhouder kan bijvoorbeeld bloeddruk aanbieden via `read`, maar `create` voor bloeddruk niet ondersteunen. De zorgverlener kan bloeddruk dan ophalen, maar geen nieuwe bloeddrukmeting aanmaken bij de bronhouder.
+Als de ANW-Bronhouder bijvoorbeeld het lezen van bloeddrukmetingen ondersteunt, maar het aanmaken ervan niet, kan het systeem van de ANW-Zorgverlener bestaande metingen ophalen. Het kan dan geen nieuwe bloeddrukmeting bij de bronhouder registreren. De declaratieafspraken moeten dit onderscheid voor het betreffende profiel herkenbaar maken.
 
-Daarbij is niet alleen het resource-type, zoals `Observation`, van belang, maar ook het profiel dat de bronhouder aanbiedt.
+Voegt de ANW-Bronhouder het registreren van bloeddrukmetingen toe, dan maakt deze de ondersteuning bekend via het CapabilityStatement. Een systeem van de ANW-Zorgverlener dat deze mogelijkheid ook ondersteunt, kan die vervolgens gebruiken binnen de verleende toegang. Andere leveranciers kunnen deze mogelijkheid op een later moment implementeren.
+
+Alleen de aanwezigheid van het resourcetype `Observation` of de interactie `create` is daarvoor onvoldoende: meerdere ZIB’s gebruiken dit resourcetype.
+
+## Functionele afspraken en gezamenlijk testen
+
+Onafhankelijke doorontwikkeling vraagt om gedeelde inhoudelijke afspraken waar de bestaande ZIB’s en profielen niet voldoende houvast bieden. Dit geldt bijvoorbeeld voor tijdregistratie, rapportage en functies waarvoor geen expliciete ZIB beschikbaar is. De betrokken leveranciers stemmen de betekenis en verwerking van deze functies af.
+
+Leveranciers maken voor dergelijke functies ook gezamenlijke testafspraken, vooral wanneer meerdere interpretaties mogelijk zijn of de interoperabiliteit expliciet moet worden aangetoond. Het CapabilityStatement maakt de aangeboden ondersteuning zichtbaar, de gezamenlijke afspraken en tests onderbouwen dat de systemen de functie op dezelfde manier uitvoeren.
 
 ## Ondersteuning en toegang
 
-Het CapabilityStatement beschrijft systeemmogelijkheden. Het verleent zelf geen toegang en zegt niet of voor een patiënt gegevens aanwezig zijn. De `NutsAuthorizationCredential` bepaalt welke toegang voor de resource is verleend. De bronhouder controleert bij ieder verzoek of de handeling binnen die toegang valt.
+Het CapabilityStatement beschrijft de mogelijkheden van het systeem. Het verleent geen toegang en zegt niet of voor een patiënt gegevens aanwezig zijn. De `NutsAuthorizationCredential` legt de verleende toegang vast. De ANW-Bronhouder controleert bij ieder verzoek of de gevraagde handeling binnen die toegang valt.
 
-Als een CapabilityStatement niet kan worden opgehaald, wordt geen nieuwe ondersteuning aangenomen. Wijzigingen in ondersteuning geven bestaande taken niet automatisch ruimere toegang. Waar nodig beoordeelt de bronhouder de overeenkomsten en autorisatie opnieuw.
+Als het CapabilityStatement niet kan worden opgehaald, neemt het systeem van de ANW-Zorgverlener geen nieuwe ondersteuning aan. Het gebruik van eerder opgehaalde informatie en de gevolgen voor lopende taken moeten nog worden vastgelegd.
+
+Een uitbreiding van de aangeboden functionaliteit verruimt de toegang voor bestaande taken niet automatisch. Waar nodig beoordeelt de ANW-Bronhouder de overeenkomsten en autorisatie opnieuw.
