@@ -6,9 +6,9 @@
   "status" : "draft",
   "package-id" : "nl.nuts.anw",
   "ig-ver" : "0.1.0",
-  "date" : "Thu, 22 Oct, 2026 11:40:04 +0000",
-  "dateISO8601" : "2026-10-22T11:40:04+00:00",
-  "errs" : 59,
+  "date" : "Thu, 22 Oct, 2026 12:30:09 +0000",
+  "dateISO8601" : "2026-10-22T12:30:09+00:00",
+  "errs" : 61,
   "warnings" : 43,
   "hints" : 6,
   "broken-links" : 2,
@@ -16,5 +16,5 @@
   "suppressed-warnings" : 0,
   "version" : "4.0.1",
   "tool" : "6.0.0-snapshot1 (3)",
-  "maxMemory" : 719125128
+  "maxMemory" : 694648544
 }

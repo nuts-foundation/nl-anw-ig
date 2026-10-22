@@ -1,10 +1,10 @@
 NLAnwIG : Validation Results
 =========================================
 
-err = 59, warn = 43, info = 6, broken links = 2
+err = 61, warn = 43, info = 6, broken links = 2
 IG Publisher Version: 3.0.1
-Generated Thu Oct 22 11:40:51 UTC 2026. FHIR version 4.0.1 for nl.nuts.anw#0.1.0 (canonical = http://nuts-foundation.github.io/nl-generic-anw-ig)
- Build Errors : 37 / 12 / 0
+Generated Thu Oct 22 12:31:06 UTC 2026. FHIR version 4.0.1 for nl.nuts.anw#0.1.0 (canonical = http://nuts-foundation.github.io/nl-generic-anw-ig)
+ Build Errors : 39 / 12 / 0
  /github/workspace/fsh-generated/resources/CapabilityStatement-ANWBronhouderCapabilityStatement-v1.0.0 : 7 / 13 / 2
  /github/workspace/fsh-generated/resources/CapabilityStatement-ANWBronhouderCapabilityStatement-v1.1.0 : 7 / 14 / 2
  /github/workspace/fsh-generated/resources/CapabilityStatement-ANWRegisseurCapabilityStatement-v1.0.0 : 5 / 1 / 2
@@ -55,9 +55,11 @@ ERROR: /github/workspace/output/technical-implementation-time-registration.html:
 ERROR: /github/workspace/output/technical-implementation-time-registration.html: The page skips a heading level: <h4> 'Regionale afspraken versus systeemimplementaties' (id=regionale-afspraken-versus-systeemimplementaties) follows <h2> 'Uursoorten' (id=uursoorten), so it should be <h3>. Heading levels must not skip a level going down (WCAG compliance test)
 ERROR: /github/workspace/output/technical-implementation-time-registration.html: The page has more than one top level heading: <h2> 'Ophalen van de uursoorten ValueSet' (id=ophalen-van-de-uursoorten-valueset) is at the same level as the first heading on the page (<h2> 'Technical Implementation Time Registration'). A page must have exactly one top level heading, with every other heading beneath it (WCAG compliance test)
 ERROR: /github/workspace/output/technical-implementation-versioning.html: The heading <h1> 'Versionering (voorstel)' (id=versionering-voorstel) is at a higher level than the first heading on the page (<h2> 'Technical Implementation Versioning'). The first heading on a page must be its top level heading (WCAG compliance test)
+ERROR: /github/workspace/output/technical-implementation-versioning.html: The page has more than one top level heading: <h2> 'ANW-versies en de menukaart' (id=anw-versies-en-de-menukaart) is at the same level as the first heading on the page (<h2> 'Technical Implementation Versioning'). A page must have exactly one top level heading, with every other heading beneath it (WCAG compliance test)
 ERROR: /github/workspace/output/technical-implementation-versioning.html: The page has more than one top level heading: <h2> 'Ondersteuning bekendmaken' (id=ondersteuning-bekendmaken) is at the same level as the first heading on the page (<h2> 'Technical Implementation Versioning'). A page must have exactly one top level heading, with every other heading beneath it (WCAG compliance test)
 ERROR: /github/workspace/output/technical-implementation-versioning.html: The page has more than one top level heading: <h2> 'Proces per taak' (id=proces-per-taak) is at the same level as the first heading on the page (<h2> 'Technical Implementation Versioning'). A page must have exactly one top level heading, with every other heading beneath it (WCAG compliance test)
 ERROR: /github/workspace/output/technical-implementation-versioning.html: The page has more than one top level heading: <h2> 'Beschikbare functionaliteit bepalen' (id=beschikbare-functionaliteit-bepalen) is at the same level as the first heading on the page (<h2> 'Technical Implementation Versioning'). A page must have exactly one top level heading, with every other heading beneath it (WCAG compliance test)
+ERROR: /github/workspace/output/technical-implementation-versioning.html: The page has more than one top level heading: <h2> 'Functionele afspraken en gezamenlijk testen' (id=functionele-afspraken-en-gezamenlijk-testen) is at the same level as the first heading on the page (<h2> 'Technical Implementation Versioning'). A page must have exactly one top level heading, with every other heading beneath it (WCAG compliance test)
 ERROR: /github/workspace/output/technical-implementation-versioning.html: The page has more than one top level heading: <h2> 'Ondersteuning en toegang' (id=ondersteuning-en-toegang) is at the same level as the first heading on the page (<h2> 'Technical Implementation Versioning'). A page must have exactly one top level heading, with every other heading beneath it (WCAG compliance test)
 WARNING: 1: The HTML fragment 'ip-statements.xhtml' is not included anywhere in the produced implementation guide
 WARNING: 2: An HTML fragment from the set [cross-version-analysis.xhtml, cross-version-analysis-inline.xhtml] is not included anywhere in the produced implementation guide
