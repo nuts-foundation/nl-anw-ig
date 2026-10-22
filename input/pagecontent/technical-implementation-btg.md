@@ -1,16 +1,16 @@
 # Breaking the glass (BTG)
 
-Datum 15 April 2026
+Datum 15 april 2026
 
-Breaking the glass (BTG) maakt het mogelijk dat een ANW-zorgverlener zichzelf tijdelijk toegang verleent tot de gegevens van een patiënt, zonder tussenkomst van een regisseur. Dit onderscheidt BTG van de reguliere ANW-flow: er is geen ANW-Regisseur betrokken en het proces verloopt uitsluitend tussen de ANW-Zorgverlener en de ANW-Bronhouder.
+Breaking the glass (BTG) maakt het mogelijk dat een zorgverlener tijdelijk toegang aanvraagt tot de gegevens van een patiënt, zonder tussenkomst van een ANW-Regisseur. Het proces verloopt rechtstreeks tussen het systeem van de ANW-Zorgverlener en de ANW-Bronhouder. De ANW-Bronhouder verwerkt het verzoek en geeft het credential uit waarmee de zorgverlener toegang krijgt.
 
 Net als bij de reguliere ANW begint BTG met een expliciete toestemming van de bronhouder aan de zorgverlener. Deze toestemming wordt eenmalig vastgelegd in een `NutsAuthorizationCredential`. Op basis van dit credential weet het systeem van de ANW-Zorgverlener bij welke bronhouders breaking the glass toegepast mag worden.
 
 ## Stap 1 – De bronhouder machtigt de zorgverlener
 
-De ANW-Bronhouder geeft eenmalig een `NutsAuthorizationCredential` uit aan de ANW-Zorgverlener. Het primaire doel van dit credential is het toestaan dat de zorgverlener de patiënten van de bronhouder kan ophalen en doorzoeken, zodat de juiste patiënt geselecteerd kan worden voordat het BTG-autorisatieverzoek wordt ingediend. Daarnaast bevat het credential de toestemming om een notificatie te versturen naar de bronhouder als onderdeel van de BTG-flow.
+De ANW-Bronhouder geeft eenmalig een `NutsAuthorizationCredential` uit aan de ANW-Zorgverlener. Dit credential geeft het systeem van de ANW-Zorgverlener toestemming om gericht naar patiënten bij de bronhouder te zoeken. Zo kan de zorgverlener de juiste patiënt selecteren voordat het BTG-autorisatieverzoek wordt ingediend. Het credential geeft daarnaast toestemming om de bronhouder over dat verzoek te notificeren.
 
-Onderstaand de beschrijving van de relevante velden:
+De volgende velden zijn relevant:
 
 | Veld | Omschrijving                                                                                                                                                                                                                                                            |
 | ---- |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -18,7 +18,7 @@ Onderstaand de beschrijving van de relevante velden:
 | `purposeOfUse` | Identificeert dit credential als een BTG-toestemming (`ANW-BTG-Bronhouder-ZorgverlenerToegang`).                                                                                                                                                                        |
 | `resources[].path` | Het FHIR-pad waarop de operatie is toegestaan, bijvoorbeeld voor het zoeken naar patiënten of het versturen van een notificatie.                                                                                                                                        |
 | `resources[].operations` | De toegestane FHIR-operaties op het opgegeven pad (`search`, `create`).                                                                                                                                                                                                 |
-| `resources[].userContext` | Geeft aan of de operatie een gebruikerscontext vereist. Bij BTG is dit `true`: bij het opvragen van de patiënten wordt de gebruikerscontext van de ingelogde zorgverlener meegestuurd, zodat de bronhouder de aanvraag aan een geïdentificeerde gebruiker kan koppelen. |
+| `resources[].userContext` | Geeft per operatie aan of een gebruikerscontext vereist is. Voor het zoeken naar patiënten is dit `true`: het systeem stuurt de context van de ingelogde zorgverlener mee. Voor het versturen van de notificatie is dit `false`, zoals in het onderstaande voorbeeld. |
 
 Voorbeeld NutsAuthorizationCredential:
 
@@ -42,7 +42,7 @@ Voorbeeld NutsAuthorizationCredential:
           "operations": [
             "search"
           ],
-          "path": "/Patient?_query=anw",
+          "path": "/Patient/_search?_query=anw",
           "userContext": true
         },
         {
@@ -67,42 +67,41 @@ Voorbeeld NutsAuthorizationCredential:
 
 ## Stap 2 – De zorgverlener zoekt en selecteert de patiënt
 
-Bij het ophalen van de patiënten door de ANW-Zorgverlener, wordt gebruik gemaakt van de **gebruikerscontext** van de ingelogde zorgverlener. Deze context wordt meegestuurd met de FHIR-aanvraag zodat de bronhouder de aanvraag aan een geïdentificeerde gebruiker kan koppelen en de afhandeling daarop kan afstemmen.
+Het systeem van de ANW-Zorgverlener stuurt bij het zoeken naar patiënten de **gebruikerscontext** van de ingelogde zorgverlener mee. Daarmee kan de ANW-Bronhouder de aanvraag aan een geïdentificeerde gebruiker koppelen.
 
-Daarnaast worden bij het zoeken **zoekparameters** gebruikt zodat gericht op de betreffende patiënt gezocht kan worden in plaats van een volledige patiëntenlijst op te halen (zoals nu bij ANW). Hierdoor wordt voorkomen dat onnodig brede sets met patiëntgegevens over de lijn gaan.
+De aanvraag bevat **zoekparameters** om gericht naar de betreffende patiënt te zoeken. In de reguliere ANW-flow haalt de regisseur een patiëntenlijst op en filtert die zelf. Bij BTG voert de ANW-Bronhouder de zoekopdracht uit voordat de resultaten worden teruggestuurd.
 
-Tot slot wordt **data-minimalisatie** toegepast: de respons bevat alleen de velden die nodig zijn voor de patiëntselectie (`name`, `address` en `birthDate`), waardoor niet de volledige `Patient`-resource over de lijn gaat. Deze beperking wordt door de consumer meegegeven via de FHIR-parameter `_elements`. Op use-case-niveau valideert de bronhouder of deze parameter aanwezig is. Pas nadat het BTG-autorisatieverzoek is goedgekeurd, wordt op basis van het gegevensinzage-credential bredere patiëntdata opgehaald.
+Voor **dataminimalisatie** vraagt het systeem van de ANW-Zorgverlener via `_elements` de patiëntgegevens op die nodig zijn voor de selectie: `name`, `address` en `birthDate`. De ANW-Bronhouder controleert of deze parameter aanwezig is. De afspraken voor deze query beperken de patiëntgegevens in de respons tot deze velden. Pas nadat het BTG-autorisatieverzoek is goedgekeurd, kan het systeem met het credential voor gegevensinzage aanvullende patiëntgegevens ophalen.
 
 ### Zoeken met de query `anw`
 
 Voor het zoeken naar patiënten in de BTG-flow wordt een nieuwe named query geïntroduceerd: `anw`. Deze vervangt voor deze flow het gebruik van de bestaande `ANW-zorg`-query.
 
-In `anw` worden aanvullende afspraken afgedwongen rondom:
-- **gebruikers-/clientcontext en logging** - de gebruikerscontext van de ingelogde zorgverlener is verplicht en wordt vastgelegd;
-- **verplichte velden** - de aanvraag moet zoekparameters bevatten zodat gericht op de betreffende patiënt gezocht wordt. De filters liggen op de **naam** (`name`) en/of de **geboortedatum** (`birthdate`); minimaal één van beide moet worden meegegeven, maar ze mogen ook gecombineerd worden;
-- **filtering** - de resultaten worden beperkt tot de patiënten die binnen de scope van de zorgverlener en bronhouder vallen;
-- **beperkte responsevelden** - de consumer beperkt de respons via de FHIR-parameter `_elements` tot alleen de velden die nodig zijn voor de patiëntselectie (`name`, `address` en `birthDate`). Op use-case-niveau wordt gevalideerd of de `_elements`-parameter aanwezig is.
+Het systeem van de ANW-Zorgverlener voert deze query uit bij de ANW-Bronhouder via `POST /Patient/_search?_query=anw`. De parameters `_query` en `_elements` staan in de URL. De patiëntgebonden zoekparameters (`name` en `birthdate`) worden als `application/x-www-form-urlencoded` in de requestbody meegestuurd. Deze aanroep maakt gebruik van de standaard [FHIR STU3 POST-search](https://hl7.org/fhir/STU3/http.html#search).
 
-Voorbeeld van een request:
+Door patiëntgebonden zoekwaarden in de body te versturen, komen deze niet in de request-URL terecht. Dit beperkt het risico dat de waarden in URL-logs worden opgeslagen. Dezelfde aanroep kan in de toekomst worden uitgebreid met zoeken op BSN. Een BSN-filter maakt nog geen deel uit van deze query.
+
+Voor de query `anw` gelden de volgende afspraken:
+
+- **Gebruikerscontext en logging**: de gebruikerscontext van de ingelogde zorgverlener is verplicht en wordt vastgelegd.
+- **Verplichte zoekparameters**: de aanvraag bevat `name` en/of `birthdate`. Minimaal één van beide is verplicht; een combinatie is toegestaan.
+- **Afbakening van de resultaten**: de resultaten worden beperkt tot de patiënten die binnen de scope van de zorgverlener en bronhouder vallen.
+- **Beperkte responsvelden**: het systeem van de ANW-Zorgverlener vraagt via `_elements` alleen de patiëntgegevens `name`, `address` en `birthDate` op. De ANW-Bronhouder controleert of de parameter aanwezig is.
+
+De zoekparameter `name` bepaalt waarop wordt gezocht. In `_elements=name,address,birthDate` verwijst `name` naar het veld dat in de respons wordt teruggegeven. De zoekparameter en de selectie van responsvelden hebben dus elk een eigen functie.
+
+Voorbeeld van een zoekaanvraag:
 
 ```http
-GET /Patient?_query=anw&name=Jansen&birthdate=1980-01-01&_elements=name,address,birthDate HTTP/1.1
+POST /Patient/_search?_query=anw&_elements=name,address,birthDate HTTP/1.1
 Host: bronhouder.example.nl
 Accept: application/fhir+json
+Content-Type: application/x-www-form-urlencoded
+
+name=Jansen&birthdate=1980-01-01
 ```
 
-De reden om hiervoor een aparte named query te introduceren in plaats van de bestaande query aan te passen, is dat het gedrag inhoudelijk afwijkt van de huidige `ANW-zorg`-query. Bestaande conversies en integraties zijn afhankelijk van het huidige gedrag; aanpassen daarvan zou kunnen leiden tot afwijkende responses, strengere filtering of gewijzigde logging, met impact op de huidige consumers.
-
-Door een aparte query te introduceren:
-
-- blijven bestaande conversies en integraties stabiel
-- worden breaking changes voor huidige consumers voorkomen
-- ontstaat er een duidelijk contract voor de nieuwe functionaliteit
-- kunnen de nieuwe afspraken gecontroleerd ingevoerd worden
-- kan de oude query later gefaseerd uitgefaseerd worden
-- ontstaat een generieke query die ook bruikbaar is voor andere consumers, zoals de regisseur.
-
-De naam `anw` maakt daarnaast expliciet dat het om een nieuwe versie van het zoekgedrag gaat, zonder direct gekoppeld te zijn aan één specifieke consumer of implementatie.
+De aparte named query voorkomt dat bestaande integraties met `ANW-zorg` door deze aanvullende afspraken veranderen. De nieuwe query heeft een eigen contract voor gericht zoeken, gebruikerscontext en beperkte responsvelden. De naam `anw` koppelt de query aan de ANW-usecase. Daardoor kan ook het systeem van de ANW-Regisseur deze query gebruiken zodra het de bijbehorende afspraken ondersteunt.
 
 ## Stap 3 – De zorgverlener dient het BTG-verzoek in
 
@@ -110,12 +109,13 @@ Nadat de zorgverlener de juiste patiënt heeft geselecteerd, verloopt de BTG-flo
 
 {% include img.html img="ANWSequence_btg.png" %}
 
-De zorgverlener dient het verzoek in met een Task-resource die is afgeleid van de ANW-Task. De Task wordt door het systeem van de ANW-Zorgverlener aangemaakt en bij de ANW-Bronhouder ingediend als autorisatieverzoek.
+Het systeem van de ANW-Zorgverlener maakt een Task-resource aan die is afgeleid van de ANW-Task, met status `requested`. Het stelt de Task beschikbaar en stuurt de ANW-Bronhouder een notificatie. De ANW-Bronhouder haalt vervolgens de Task op en verwerkt deze als BTG-autorisatieverzoek, zoals weergegeven in het sequentiediagram.
 
-Onderstaand de beschrijving van de relevante velden:
+De volgende velden zijn relevant:
 
 | Veld | Omschrijving                                                                                                                                                                         |
 | ---- |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `status` | De status van het autorisatieverzoek. Bij het aanmaken van de Task is dit `requested`. |
 | `code.coding[].code` | Identificeert dit verzoek als een BTG-autorisatieverzoek (`ANW-BTG-autorisatie-verzoek`). Hiermee kan de bronhouder onderscheid maken tussen een reguliere ANW-flow en een BTG-flow. |
 | `for` | Verwijzing naar de patiënt voor wie toegang wordt gevraagd.                                                                                                                          |
 | `authoredOn` | Tijdstip waarop het autorisatieverzoek is aangemaakt.                                                                                                                                |
@@ -137,6 +137,7 @@ Voorbeeld FHIR Task:
       "https://nuts.nl/fhir/StructureDefinition/nl-core-authorization-request"
     ]
   },
+  "status": "requested",
   "intent": "order",
   "code": {
     "coding": [
@@ -147,7 +148,7 @@ Voorbeeld FHIR Task:
   },
   "for": {
     "reference": "Patient/{patientId}",
-    "display": "patient display name"
+    "display": "Naam van de geselecteerde patiënt"
   },
   "authoredOn": "2024-01-23T13:23:42.1885689+00:00",
   "requester": {
@@ -161,17 +162,17 @@ Voorbeeld FHIR Task:
     "onBehalfOf": {
       "identifier": {
         "system": "http://nuts.nl",
-        "value": "{DID authorizing party}"
+        "value": "{DID van ANW-Bronhouder}"
       },
-      "display": "Authorizing party C (data owner)"
+      "display": "ANW-Bronhouder"
     }
   },
   "owner": {
     "identifier": {
       "system": "http://nuts.nl",
-      "value": "{DID accessing party}"
+      "value": "{DID van ANW-Zorgverlener}"
     },
-    "display": "Accessing party B (data accessor)"
+    "display": "ANW-Zorgverlener A"
   },
   "reason": {
     "text": "{verplichte toelichting van de zorgverlener}"
@@ -183,8 +184,8 @@ Voorbeeld FHIR Task:
     },
     "recipient": [
       {
-        "reference": "Practitioner/{practitioner with access Id}",
-        "display": "anw practitioner display name"
+        "reference": "Practitioner/{practitionerId}",
+        "display": "Zorgverlener die toegang krijgt"
       }
     ]
   }
@@ -200,11 +201,13 @@ De BTG-Task verschilt op twee punten van de ANW-Task:
 
 ## Stap 4 – De bronhouder verleent inzage in de gegevens
 
-Nadat de bronhouder het BTG-autorisatieverzoek heeft verwerkt en goedgekeurd, geeft de bronhouder een `NutsAuthorizationCredential` uit voor de betreffende patiënt. In dit credential wordt de `purposeOfUse` ingesteld op `ANW-BTG-Bronhouder-Gegevensinzage`. Hierdoor is voor alle betrokken partijen expliciet zichtbaar dat de toegang is verleend in het kader van breaking the glass en niet via de reguliere ANW-flow.
+Nadat de ANW-Bronhouder het BTG-autorisatieverzoek heeft verwerkt en goedgekeurd, geeft deze een `NutsAuthorizationCredential` uit voor de betreffende patiënt. De `purposeOfUse` is `ANW-BTG-Bronhouder-Gegevensinzage`. Daarmee is herkenbaar dat het om toegang via BTG gaat.
 
-Voorbeeld NutsAuthorizationCredential gegevensinzage:
+De ANW-Bronhouder werkt de Task bij naar status `ready` en voegt de verwijzing naar het uitgegeven credential toe. Het systeem van de ANW-Zorgverlener gebruikt deze verwijzing om het credential op te halen en de patiëntgegevens bij de ANW-Bronhouder op te vragen.
 
-```json
+Schematisch voorbeeld van het credential voor gegevensinzage. De patiëntgebonden toegangsrechten in `resources` zijn nog niet uitgewerkt:
+
+```jsonc
 {
   "verifiableCredential": {
     "@context": [
@@ -220,7 +223,7 @@ Voorbeeld NutsAuthorizationCredential gegevensinzage:
       "id": "did:nuts:{DID van ANW-Zorgverlener}",
       "purposeOfUse": "ANW-BTG-Bronhouder-Gegevensinzage",
       "resources": [
-        ...
+        // Patiëntgebonden toegangsrechten: nog uit te werken.
       ]
     },
     "proof": {
