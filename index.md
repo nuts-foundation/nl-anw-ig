@@ -8,28 +8,28 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://nuts-foundation.github.io/nl-generic-anw-ig/ImplementationGuide/nl.nuts.anw | *Version*:0.1.0 |
-| Draft as of 2026-10-22 | *Computable Name*:NLAnwIG |
+| Draft as of 2026-11-05 | *Computable Name*:NLAnwIG |
 
-## ⚠️ Disclaimer
+#### ⚠️ Disclaimer
 
 > **Belangerijk:**
  Op plekken op deze site kan verwezen worden naar fhir versie r4, dit is onterecht en een limitatie van de gebruikte technologie voor het modeleren van de capability statements en documentatie. Binnen de ANW use case die hier beschreven wordt, wordt er enkel gebruik gemaakt van fhir **STU3**.
 
-# ANW Implementation Guide
+### ANW Implementation Guide
 
 
 This implementation guide defines FHIR profiles, extensions, and other resources needed for the ANW (Avond-, Nacht- en Weekendzorg) use case in the Netherlands.
 
-## Overview
+#### Overview
 
 The ANW use case covers evening, night, and weekend care services. This implementation guide provides the necessary FHIR resources to support data exchange for these healthcare services.
 
-## Contents
+#### Contents
 
 * [Artifacts](artifacts.md) - Profiles, extensions, and other FHIR artifacts defined in this IG
 * [Technical documentation (NL)](technical-documentation-v1.md) - Technical documentation in Dutch
 
-## Authors and Contributors
+#### Authors and Contributors
 
 * **Publisher**: Stichting Nuts
 * **Contact**: [https://www.nuts.nl](https://www.nuts.nl)
@@ -48,7 +48,7 @@ The ANW use case covers evening, night, and weekend care services. This implemen
   "name" : "NLAnwIG",
   "title" : "Netherlands - ANW implementation guide",
   "status" : "draft",
-  "date" : "2026-10-22T12:30:09+00:00",
+  "date" : "2026-11-05T10:57:10+00:00",
   "publisher" : "Stichting Nuts",
   "contact" : [{
     "name" : "Stichting Nuts",
@@ -75,7 +75,7 @@ The ANW use case covers evening, night, and weekend care services. This implemen
     }],
     "uri" : "http://terminology.hl7.org/ImplementationGuide/hl7.terminology",
     "packageId" : "hl7.terminology.r4",
-    "version" : "7.4.0"
+    "version" : "7.5.0"
   },
   {
     "id" : "hl7ext",
@@ -85,7 +85,7 @@ The ANW use case covers evening, night, and weekend care services. This implemen
     }],
     "uri" : "http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions",
     "packageId" : "hl7.fhir.uv.extensions.r4",
-    "version" : "5.3.0"
+    "version" : "5.4.0"
   }],
   "definition" : {
     "extension" : [{

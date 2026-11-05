@@ -156,31 +156,16 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 
     <p><!-- white space is critical inside of capture --></p>
-<div class="markdown-toc">
-<ul id="markdown-toc">
-  <li><a href="#versionering-voorstel" id="markdown-toc-versionering-voorstel">Versionering (voorstel)</a>    <ul>
-      <li><a href="#anw-versies-en-de-menukaart" id="markdown-toc-anw-versies-en-de-menukaart">ANW-versies en de menukaart</a></li>
-      <li><a href="#ondersteuning-bekendmaken" id="markdown-toc-ondersteuning-bekendmaken">Ondersteuning bekendmaken</a>        <ul>
-          <li><a href="#capabilitystatement-opvragen" id="markdown-toc-capabilitystatement-opvragen">CapabilityStatement opvragen</a></li>
-          <li><a href="#declaratieafspraken" id="markdown-toc-declaratieafspraken">Declaratieafspraken</a></li>
-        </ul>
-      </li>
-      <li><a href="#proces-per-taak" id="markdown-toc-proces-per-taak">Proces per taak</a></li>
-      <li><a href="#beschikbare-functionaliteit-bepalen" id="markdown-toc-beschikbare-functionaliteit-bepalen">Beschikbare functionaliteit bepalen</a></li>
-      <li><a href="#functionele-afspraken-en-gezamenlijk-testen" id="markdown-toc-functionele-afspraken-en-gezamenlijk-testen">Functionele afspraken en gezamenlijk testen</a></li>
-      <li><a href="#ondersteuning-en-toegang" id="markdown-toc-ondersteuning-en-toegang">Ondersteuning en toegang</a></li>
-    </ul>
-  </li>
-</ul>
-
+<div>
+<!-- do not remove - needed to prevent Jekyll from adding a p tag to any non block level element in the markdown.-->
 </div>
-<h1 id="versionering-voorstel">Versionering (voorstel)</h1>
+<h3 id="versionering-voorstel">Versionering (voorstel)</h3>
 
 <p>Dit voorstel beschrijft hoe ANW-systemen het <strong>CapabilityStatement van de FHIR-server</strong> als menukaart kunnen gebruiken. Hiermee maakt een leverancier zichtbaar welke aanvullende mogelijkheden het systeem binnen ANW aanbiedt, zoals bijvoorbeeld het ophalen en wegschrijven van een meting. Het systeem van de ANW-Zorgverlener haalt het CapabilityStatement van de ANW-Bronhouder op om te bepalen welke gegevens de bronhouder aanbiedt en welke handelingen deze kan verwerken. Zo weet het welke mogelijkheden het bij de bronhouder kan gebruiken.</p>
 
 <p>Hiermee kunnen leveranciers onafhankelijk doorontwikkelen, ook buiten de functionaliteit die in de vaste ANW-afspraken zijn opgenomen. Een aanvullende mogelijkheid kan worden gebruikt zodra beide systemen deze ondersteunen en de benodigde toegang is verleend. De betrokken leveranciers hoeven daarvoor niet te wachten op een nieuwe ANW-versie of op implementatie door andere leveranciers.</p>
 
-<h2 id="anw-versies-en-de-menukaart">ANW-versies en de menukaart</h2>
+<h4 id="anw-versies-en-de-menukaart">ANW-versies en de menukaart</h4>
 
 <p>De menukaart vormt een aanvulling op het <a href="technical-documentation-v1.html#implementeren-van-een-nieuwe-versie">bestaande versiebeheer per ANW-rol</a>. Volledige functionaliteiten met gezamenlijke proces- en implementatieafspraken, zoals <a href="technical-implementation-time-registration.html">tijdregistratie</a> en <a href="technical-implementation-btg.html">BTG</a>, kunnen binnen ANW-versies worden gedefinieerd.</p>
 
@@ -207,13 +192,13 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <p>De <a href="https://docs.google.com/document/d/19m7vntWtGZFd7ynddN4wTdreIjeIfmXgjBNAzhV6eDU/edit?tab=t.0">functionele uitwerking</a> voorziet de introductie van de menukaart in ANW-versie 1.4, waarbij ook tijdregistratie wordt meegenomen. Dit geeft aan wanneer de menukaart wordt geïntroduceerd, afzonderlijke aanvullende mogelijkheden kunnen leveranciers vervolgens onafhankelijk aanbieden.</p>
 
-<h2 id="ondersteuning-bekendmaken">Ondersteuning bekendmaken</h2>
+<h4 id="ondersteuning-bekendmaken">Ondersteuning bekendmaken</h4>
 
 <p>Iedere leverancier publiceert een correct en actueel CapabilityStatement voor de FHIR-server. Hierin staan de resources, profielen en handelingen die de server daadwerkelijk aanbiedt. Voor ANW moet duidelijk zijn welke daarvan binnen de ANW-usecase beschikbaar zijn.</p>
 
 <p>Ook <a href="https://build.fhir.org/ig/nuts-foundation/nl-360-ig/vol2b.html">360-graden</a> gebruikt het CapabilityStatement om de ondersteuning van de FHIR-server van een bronhouder op te vragen. Hetzelfde mechanisme kan binnen ANW worden gebruikt, met behoud van de eigen inhoudelijke afspraken.</p>
 
-<h3 id="capabilitystatement-opvragen">CapabilityStatement opvragen</h3>
+<h5 id="capabilitystatement-opvragen">CapabilityStatement opvragen</h5>
 
 <p>Binnen de Nuts ANW-service publiceert de ANW-Bronhouder het FHIR-endpoint. Dit verwijst naar de FHIR-base waar de ANW-functionaliteit beschikbaar is. Het systeem van de ANW-Zorgverlener vraagt het bijbehorende CapabilityStatement op via het standaard metadata-endpoint:</p>
 
@@ -236,7 +221,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <p>Het CapabilityStatement maakt zichtbaar welke ZIB’s en aanvullende functies beschikbaar zijn, met de bijbehorende FHIR-profielen, handelingen en zoekmogelijkheden. De integrale ZIB’s en de bijbehorende profielen blijven leidend. De keuzevrijheid betreft welke ZIB’s en functies een systeem ondersteunt. De menukaart geeft geen keuze op veldniveau en biedt geen ruimte om de inhoud van een ZIB naar eigen inzicht aan te passen.</p>
 
-<h3 id="declaratieafspraken">Declaratieafspraken</h3>
+<h5 id="declaratieafspraken">Declaratieafspraken</h5>
 
 <p>Dit voorstel gebruikt de standaardvelden van FHIR STU3. De ANW-Bronhouder beschrijft de ondersteuning met de volgende velden:</p>
 
@@ -277,7 +262,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <p>In FHIR STU3 wordt ieder resourcetype per REST-modus één keer beschreven. De interacties gelden op het niveau van dat resourcetype. Een lijst met profielen en interacties legt daarom niet vanzelf vast welke interactie voor welk profiel beschikbaar is. Die koppeling moet nog worden uitgewerkt voor functies die hetzelfde resourcetype gebruiken. Zie <a href="https://hl7.org/fhir/STU3/capabilitystatement-definitions.html">FHIR STU3 CapabilityStatement</a>.</p>
 
-<h2 id="proces-per-taak">Proces per taak</h2>
+<h4 id="proces-per-taak">Proces per taak</h4>
 
 <p>Het sequentiediagram toont wanneer het systeem van de ANW-Zorgverlener de ondersteuning van de ANW-Bronhouder opvraagt:</p>
 
@@ -288,7 +273,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <p>Na de notificatie dat de Task klaarstaat, bepaalt het systeem van de ANW-Zorgverlener de FHIR-base via de Nuts ANW-service. Het haalt het CapabilityStatement op, bepaalt welke functies beschikbaar zijn en past de gebruikersinterface daarop aan. De gegevensuitwisseling verloopt vervolgens binnen de aangeboden functionaliteit en de verleende toegang.</p>
 
-<h2 id="beschikbare-functionaliteit-bepalen">Beschikbare functionaliteit bepalen</h2>
+<h4 id="beschikbare-functionaliteit-bepalen">Beschikbare functionaliteit bepalen</h4>
 
 <p>Het systeem van de ANW-Zorgverlener vergelijkt de eigen ondersteuning met die van de ANW-Bronhouder. Het gebruikt daarvoor het resourcetype, het profiel en de bijbehorende interacties. Een functie is alleen bruikbaar als beide systemen de bijbehorende afspraken ondersteunen.</p>
 
@@ -298,13 +283,13 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <p>Alleen de aanwezigheid van het resourcetype <code class="language-plaintext highlighter-rouge">Observation</code> of de interactie <code class="language-plaintext highlighter-rouge">create</code> is daarvoor onvoldoende: meerdere ZIB’s gebruiken dit resourcetype.</p>
 
-<h2 id="functionele-afspraken-en-gezamenlijk-testen">Functionele afspraken en gezamenlijk testen</h2>
+<h4 id="functionele-afspraken-en-gezamenlijk-testen">Functionele afspraken en gezamenlijk testen</h4>
 
 <p>Onafhankelijke doorontwikkeling vraagt om gedeelde inhoudelijke afspraken waar de bestaande ZIB’s en profielen niet voldoende houvast bieden. Dit geldt bijvoorbeeld voor tijdregistratie, rapportage en functies waarvoor geen expliciete ZIB beschikbaar is. De betrokken leveranciers stemmen de betekenis en verwerking van deze functies af.</p>
 
 <p>Leveranciers maken voor dergelijke functies ook gezamenlijke testafspraken, vooral wanneer meerdere interpretaties mogelijk zijn of de interoperabiliteit expliciet moet worden aangetoond. Het CapabilityStatement maakt de aangeboden ondersteuning zichtbaar, de gezamenlijke afspraken en tests onderbouwen dat de systemen de functie op dezelfde manier uitvoeren.</p>
 
-<h2 id="ondersteuning-en-toegang">Ondersteuning en toegang</h2>
+<h4 id="ondersteuning-en-toegang">Ondersteuning en toegang</h4>
 
 <p>Het CapabilityStatement beschrijft de mogelijkheden van het systeem. Het verleent geen toegang en zegt niet of voor een patiënt gegevens aanwezig zijn. De <code class="language-plaintext highlighter-rouge">NutsAuthorizationCredential</code> legt de verleende toegang vast. De ANW-Bronhouder controleert bij ieder verzoek of de gevraagde handeling binnen die toegang valt.</p>
 
@@ -331,7 +316,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.nuts.nl">Stichting Nuts</a>.  Package nl.nuts.anw#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Oct 22, 2026 12:30+0000">2026-10-22</span>
+          IG &#169; 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.nuts.nl">Stichting Nuts</a>.  Package nl.nuts.anw#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Nov 5, 2026 10:57+0000">2026-11-05</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

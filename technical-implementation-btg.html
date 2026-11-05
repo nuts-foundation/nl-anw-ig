@@ -156,25 +156,10 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 
     <p><!-- white space is critical inside of capture --></p>
-<div class="markdown-toc">
-<ul id="markdown-toc">
-  <li><a href="#breaking-the-glass-btg" id="markdown-toc-breaking-the-glass-btg">Breaking the glass (BTG)</a>    <ul>
-      <li><a href="#stap-1--de-bronhouder-machtigt-de-zorgverlener" id="markdown-toc-stap-1--de-bronhouder-machtigt-de-zorgverlener">Stap 1 – De bronhouder machtigt de zorgverlener</a></li>
-      <li><a href="#stap-2--de-zorgverlener-zoekt-en-selecteert-de-patiënt" id="markdown-toc-stap-2--de-zorgverlener-zoekt-en-selecteert-de-patiënt">Stap 2 – De zorgverlener zoekt en selecteert de patiënt</a>        <ul>
-          <li><a href="#zoeken-met-de-query-anw" id="markdown-toc-zoeken-met-de-query-anw">Zoeken met de query <code class="language-plaintext highlighter-rouge">anw</code></a></li>
-        </ul>
-      </li>
-      <li><a href="#stap-3--de-zorgverlener-dient-het-btg-verzoek-in" id="markdown-toc-stap-3--de-zorgverlener-dient-het-btg-verzoek-in">Stap 3 – De zorgverlener dient het BTG-verzoek in</a>        <ul>
-          <li><a href="#verschil-met-het-reguliere-anw-verzoek" id="markdown-toc-verschil-met-het-reguliere-anw-verzoek">Verschil met het reguliere ANW-verzoek</a></li>
-        </ul>
-      </li>
-      <li><a href="#stap-4--de-bronhouder-verleent-inzage-in-de-gegevens" id="markdown-toc-stap-4--de-bronhouder-verleent-inzage-in-de-gegevens">Stap 4 – De bronhouder verleent inzage in de gegevens</a></li>
-    </ul>
-  </li>
-</ul>
-
+<div>
+<!-- do not remove - needed to prevent Jekyll from adding a p tag to any non block level element in the markdown.-->
 </div>
-<h1 id="breaking-the-glass-btg">Breaking the glass (BTG)</h1>
+<h3 id="breaking-the-glass-btg">Breaking the glass (BTG)</h3>
 
 <p>Datum 15 april 2026</p>
 
@@ -182,7 +167,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <p>Net als bij de reguliere ANW begint BTG met een expliciete toestemming van de bronhouder aan de zorgverlener. Deze toestemming wordt eenmalig vastgelegd in een <code class="language-plaintext highlighter-rouge">NutsAuthorizationCredential</code>. Op basis van dit credential weet het systeem van de ANW-Zorgverlener bij welke bronhouders breaking the glass toegepast mag worden.</p>
 
-<h2 id="stap-1--de-bronhouder-machtigt-de-zorgverlener">Stap 1 – De bronhouder machtigt de zorgverlener</h2>
+<h4 id="stap-1--de-bronhouder-machtigt-de-zorgverlener">Stap 1 – De bronhouder machtigt de zorgverlener</h4>
 
 <p>De ANW-Bronhouder geeft eenmalig een <code class="language-plaintext highlighter-rouge">NutsAuthorizationCredential</code> uit aan de ANW-Zorgverlener. Dit credential geeft het systeem van de ANW-Zorgverlener toestemming om gericht naar patiënten bij de bronhouder te zoeken. Zo kan de zorgverlener de juiste patiënt selecteren voordat het BTG-autorisatieverzoek wordt ingediend. Het credential geeft daarnaast toestemming om de bronhouder over dat verzoek te notificeren.</p>
 
@@ -263,7 +248,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
-<h2 id="stap-2--de-zorgverlener-zoekt-en-selecteert-de-patiënt">Stap 2 – De zorgverlener zoekt en selecteert de patiënt</h2>
+<h4 id="stap-2--de-zorgverlener-zoekt-en-selecteert-de-patiënt">Stap 2 – De zorgverlener zoekt en selecteert de patiënt</h4>
 
 <p>Het systeem van de ANW-Zorgverlener stuurt bij het zoeken naar patiënten de <strong>gebruikerscontext</strong> van de ingelogde zorgverlener mee. Daarmee kan de ANW-Bronhouder de aanvraag aan een geïdentificeerde gebruiker koppelen.</p>
 
@@ -271,11 +256,11 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <p>Voor <strong>dataminimalisatie</strong> vraagt het systeem van de ANW-Zorgverlener via <code class="language-plaintext highlighter-rouge">_elements</code> de patiëntgegevens op die nodig zijn voor de selectie: <code class="language-plaintext highlighter-rouge">name</code>, <code class="language-plaintext highlighter-rouge">address</code> en <code class="language-plaintext highlighter-rouge">birthDate</code>. De ANW-Bronhouder controleert of deze parameter aanwezig is. De afspraken voor deze query beperken de patiëntgegevens in de respons tot deze velden. Pas nadat het BTG-autorisatieverzoek is goedgekeurd, kan het systeem met het credential voor gegevensinzage aanvullende patiëntgegevens ophalen.</p>
 
-<h3 id="zoeken-met-de-query-anw">Zoeken met de query <code class="language-plaintext highlighter-rouge">anw</code></h3>
+<h5 id="zoeken-met-de-query-anw">Zoeken met de query <code class="language-plaintext highlighter-rouge">anw</code></h5>
 
 <p>Voor het zoeken naar patiënten in de BTG-flow wordt een nieuwe named query geïntroduceerd: <code class="language-plaintext highlighter-rouge">anw</code>. Deze vervangt voor deze flow het gebruik van de bestaande <code class="language-plaintext highlighter-rouge">ANW-zorg</code>-query.</p>
 
-<p>Het systeem van de ANW-Zorgverlener voert deze query uit bij de ANW-Bronhouder via <code class="language-plaintext highlighter-rouge">POST /Patient/_search?_query=anw</code>. De parameters <code class="language-plaintext highlighter-rouge">_query</code> en <code class="language-plaintext highlighter-rouge">_elements</code> staan in de URL. De patiëntgebonden zoekparameters (<code class="language-plaintext highlighter-rouge">name</code> en <code class="language-plaintext highlighter-rouge">birthdate</code>) worden als <code class="language-plaintext highlighter-rouge">application/x-www-form-urlencoded</code> in de requestbody meegestuurd. Deze aanroep maakt gebruik van de standaard <a href="https://hl7.org/fhir/STU3/http.html#search">FHIR STU3 POST-search</a>.</p>
+<p>Het systeem van de ANW-Zorgverlener voert deze query uit bij de ANW-Bronhouder via <code class="language-plaintext highlighter-rouge">POST /Patient/_search?_query=anw&amp;_elements=name,address,birthDate</code>. De parameters <code class="language-plaintext highlighter-rouge">_query</code> en <code class="language-plaintext highlighter-rouge">_elements</code> staan in de URL. De patiëntgebonden zoekparameters (<code class="language-plaintext highlighter-rouge">name</code> en <code class="language-plaintext highlighter-rouge">birthdate</code>) worden als <code class="language-plaintext highlighter-rouge">application/x-www-form-urlencoded</code> in de requestbody meegestuurd. Deze aanroep maakt gebruik van de standaard <a href="https://hl7.org/fhir/STU3/http.html#search">FHIR STU3 POST-search</a>.</p>
 
 <p>Door patiëntgebonden zoekwaarden in de body te versturen, komen deze niet in de request-URL terecht. Dit beperkt het risico dat de waarden in URL-logs worden opgeslagen. Dezelfde aanroep kan in de toekomst worden uitgebreid met zoeken op BSN. Een BSN-filter maakt nog geen deel uit van deze query.</p>
 
@@ -302,7 +287,7 @@ name=Jansen&amp;birthdate=1980-01-01
 
 <p>De aparte named query voorkomt dat bestaande integraties met <code class="language-plaintext highlighter-rouge">ANW-zorg</code> door deze aanvullende afspraken veranderen. De nieuwe query heeft een eigen contract voor gericht zoeken, gebruikerscontext en beperkte responsvelden. De naam <code class="language-plaintext highlighter-rouge">anw</code> koppelt de query aan de ANW-usecase. Daardoor kan ook het systeem van de ANW-Regisseur deze query gebruiken zodra het de bijbehorende afspraken ondersteunt.</p>
 
-<h2 id="stap-3--de-zorgverlener-dient-het-btg-verzoek-in">Stap 3 – De zorgverlener dient het BTG-verzoek in</h2>
+<h4 id="stap-3--de-zorgverlener-dient-het-btg-verzoek-in">Stap 3 – De zorgverlener dient het BTG-verzoek in</h4>
 
 <p>Nadat de zorgverlener de juiste patiënt heeft geselecteerd, verloopt de BTG-flow zoals weergegeven in het onderstaande sequentiediagram. Omdat er geen regisseur aanwezig is, communiceert het systeem van de zorgverlener rechtstreeks met de bronhouder.</p>
 
@@ -431,7 +416,7 @@ name=Jansen&amp;birthdate=1980-01-01
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
-<h3 id="verschil-met-het-reguliere-anw-verzoek">Verschil met het reguliere ANW-verzoek</h3>
+<h5 id="verschil-met-het-reguliere-anw-verzoek">Verschil met het reguliere ANW-verzoek</h5>
 
 <p>De BTG-Task verschilt op twee punten van de ANW-Task:</p>
 
@@ -440,7 +425,7 @@ name=Jansen&amp;birthdate=1980-01-01
   <li><strong><code class="language-plaintext highlighter-rouge">reason.text</code></strong> - Dit veld is bij de BTG-Task verplicht. Waar het veld bij de reguliere ANW-Task wordt gebruikt voor instructies, bevat het hier een door de gebruiker ingevulde toelichting op de reden voor het toepassen van breaking the glass. De toelichting bevat maximaal 2000 karakters; zie <a href="technical-documentation-v1.html#maximale-lengte-van-reasontext">Maximale lengte van <code class="language-plaintext highlighter-rouge">reason.text</code></a>.</li>
 </ul>
 
-<h2 id="stap-4--de-bronhouder-verleent-inzage-in-de-gegevens">Stap 4 – De bronhouder verleent inzage in de gegevens</h2>
+<h4 id="stap-4--de-bronhouder-verleent-inzage-in-de-gegevens">Stap 4 – De bronhouder verleent inzage in de gegevens</h4>
 
 <p>Nadat de ANW-Bronhouder het BTG-autorisatieverzoek heeft verwerkt en goedgekeurd, geeft deze een <code class="language-plaintext highlighter-rouge">NutsAuthorizationCredential</code> uit voor de betreffende patiënt. De <code class="language-plaintext highlighter-rouge">purposeOfUse</code> is <code class="language-plaintext highlighter-rouge">ANW-BTG-Bronhouder-Gegevensinzage</code>. Daarmee is herkenbaar dat het om toegang via BTG gaat.</p>
 
@@ -496,7 +481,7 @@ name=Jansen&amp;birthdate=1980-01-01
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.nuts.nl">Stichting Nuts</a>.  Package nl.nuts.anw#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Oct 22, 2026 12:30+0000">2026-10-22</span>
+          IG &#169; 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.nuts.nl">Stichting Nuts</a>.  Package nl.nuts.anw#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Nov 5, 2026 10:57+0000">2026-11-05</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

@@ -5,11 +5,11 @@
 
 ## Technical Implementation Time Registration
 
-# Tijdregistratie
+### Tijdregistratie
 
 Datum 20 januari 2026
 
-## FHIR resources
+#### FHIR resources
 
 Om tijdregistraties op een uniforme manier te kunnen versturen, maken we gebruik van FHIR STU3 en het [ChargeItem-resource](https://simplifier.net/hl7.fhir.r3/chargeitem) .
 
@@ -135,40 +135,40 @@ ChargeItem daarentegen is specifiek ontworpen voor het beschrijven van leveringe
 
 Kortom: ChargeItem is niet alleen de best passende resource, maar ook de enige die de tijdregistratie op een gestandaardiseerde, uitwisselbare en declaratie-kloppende manier kan representeren. Hierdoor wordt een uniforme, toekomstbestendige implementatie mogelijk voor alle betrokken regio’s en leveranciers.
 
-### Afweging alternatieve resources
+##### Afweging alternatieve resources
 
 Bij het bepalen van de juiste resource zijn ook andere FHIR-resources onderzocht:
 
-#### Encounter (FMM5–6)
+###### Encounter (FMM5–6)
 
 * **Voordelen:** zeer volwassen, ondersteunt zorgcontact en organisatie.
 * **Nadelen:** niet bedoeld voor declarabele tijd; minuten, uursoorten en declaratiecontext ontbreken.
 
-#### Procedure (FMM5)
+###### Procedure (FMM5)
 
 * **Voordelen:** stabiel en breed gebruikt voor zorgactiviteiten.
 * **Nadelen:** semantisch medisch; geen concept voor minuten of declaratie.
 
-#### Observation (FMM6)
+###### Observation (FMM6)
 
 * **Voordelen:** extreem flexibel.
 * **Nadelen:** bedoeld voor metingen; vervuilt het klinisch dossier met administratieve data.
 
-#### Claim / Coverage / PaymentNotice / EligibilityRequest (Financial resources)
+###### Claim / Coverage / PaymentNotice / EligibilityRequest (Financial resources)
 
 Deze resources zijn onderzocht vanuit het perspectief van declaratie en financiering:
 
-#### Claim
+###### Claim
 
 * **Voordelen:** ontworpen voor formele declaraties richting een verzekeraar of andere externe “payer”.
 * **Nadelen:** gaat uit van verzekerde zorg (Coverage), verzekeringsproducten en vaak landelijke declaratiestandaarden; past niet bij de interne ANW-tijdregistratie en onderlinge verrekening tussen organisaties binnen een regio. Te zwaar en te specifiek voor verzekeringsstromen.
 
-#### Coverage
+###### Coverage
 
 * **Voordelen:** geschikt om verzekeringsdekking te modelleren (verzekeraar, polis, dekkingsvorm).
 * **Nadelen:** ANW-tijdregistratie in deze context is niet direct gekoppeld aan verzekeringsgegevens. Coverage voegt niets toe aan het bronmodel voor minutenregistratie en maakt de oplossing complexer zonder functionele meerwaarde.
 
-### Conclusie
+##### Conclusie
 
 Hoewel deze resources technisch toepasbaar zouden kunnen worden gemaakt, sluiten ze semantisch niet aan op tijdregistratie. ChargeItem is de enige resource die natively ondersteunt:
 
@@ -179,19 +179,19 @@ Hoewel deze resources technisch toepasbaar zouden kunnen worden gemaakt, sluiten
 
 Ondanks de lagere maturity in STU3 sluit ChargeItem inhoudelijk het beste aan. Met de maturity-stijging naar FMM1 in FHIR R5 lijkt de gekozen richting bovendien toekomstvast.
 
-## Uursoorten
+#### Uursoorten
 
 De uursoorten die binnen een regio gebruikt worden, worden regionaal vastgesteld. Een regio kan daarbij eigen uursoorten definiëren, zoals bijvoorbeeld NORMAL, EXTRA en CONSULT. Deze afspraken gelden voor zowel bronorganisaties als uitvoerende zorgorganisaties en vormen de basis voor tijdregistratie en declaratie.
 
 Om correcte validatie en facturatie mogelijk te maken, is het essentieel dat beide partijen dezelfde set uursoorten hanteren. Wanneer uursoorten ontbreken of onjuist zijn geconfigureerd, kan de tijdregistratie niet gevalideerd worden en is facturatie op basis van deze gegevens niet mogelijk.
 
-#### Regionale afspraken versus systeemimplementaties
+###### Regionale afspraken versus systeemimplementaties
 
 Hoewel uursoorten regionaal gezamenlijk worden afgesproken, hebben individuele systemen niet altijd alle afgesproken uursoorten geïmplementeerd. Een bronsysteem kan bijvoorbeeld regionaal afgesproken uursoorten NORMAL, EXTRA en CONSULT ondersteunen, maar in de praktijk slechts NORMAL en EXTRA hebben geconfigureerd.
 
 Om dit verschil tussen regionale afspraak en feitelijke systeemondersteuning eenduidig uit te wisselen, is het noodzakelijk om bij het bronsysteem op te kunnen vragen welke subset van uursoorten daadwerkelijk beschikbaar is.
 
-#### Gebruik van FHIR ValueSet
+###### Gebruik van FHIR ValueSet
 
 Voor deze uitwisseling wordt gebruikgemaakt van een FHIR ValueSet die door het bronsysteem wordt gepubliceerd. Deze ValueSet bevat **exact de uursoorten die in het betreffende systeem aanwezig en geconfigureerd zijn**.
 
@@ -201,7 +201,7 @@ Door deze ValueSet via FHIR op te vragen, kan het ontvangende systeem vaststelle
 * welke uursoorten ontbreken;
 * welke uursoorten valide gebruikt mogen worden in tijdregistratie en declaratie.
 
-#### Lichtgewicht terminologiemodel
+###### Lichtgewicht terminologiemodel
 
 In deze aanpak is bewust gekozen voor een lichtgewicht toepassing van het FHIR-terminologiemodel:
 
@@ -211,11 +211,11 @@ In deze aanpak is bewust gekozen voor een lichtgewicht toepassing van het FHIR-t
 
 Deze werkwijze maakt het mogelijk om zonder extra beheer of centrale synchronisatie nauwkeurig te bepalen welke uursoorten binnen een regio bij een bronsysteem beschikbaar zijn.
 
-## Ophalen van de uursoorten ValueSet
+#### Ophalen van de uursoorten ValueSet
 
 Voor het ophalen van de uursoorten die het bronsysteem daadwerkelijk ondersteunt, wordt gebruikgemaakt van de FHIR-terminologie-operatie **`$expand`**. Met deze operatie kan een systeem dynamisch de volledige lijst met beschikbare uursoorten opvragen.
 
-### Waarom $expand
+##### Waarom $expand
 
 Een FHIR ValueSet beschrijft welke codes geldig zijn, maar bevat in zijn definitie niet altijd een expliciete opsomming van deze codes. De [$expand](https://fhir.hl7.org/fhir/valueset-operation-expand.html) operatie zorgt ervoor dat het ValueSet wordt uitgewerkt tot een concrete lijst van codes, gebaseerd op de interne configuratie van het bronsysteem.
 
@@ -271,7 +271,7 @@ De url parameter verwijst naar de canonieke identificatie van het ValueSet en ge
 
 In dit voorbeeld ondersteunt het bronsysteem uitsluitend de uursoorten NORMAL en EXTRA, terwijl regionaal mogelijk meer uursoorten zijn afgesproken. Het ontvangende systeem kan deze informatie gebruiken om alleen valide en ondersteunde uursoorten toe te passen.
 
-#### Context afhankelijke uursoorten (toekomst)
+###### Context afhankelijke uursoorten (toekomst)
 
 Omdat we de tijdregistratie en uursoorten generiek willen houden binnen de zorg-toepassingen, en er in de toekomst mogelijk behoefte ontstaat om uursoorten patiënt afhankelijk terug te geven (bijvoorbeeld vanwege cliënt-specifieke regels), hebben we onderzocht of FHIR STU3 dit ondersteunt binnen het gebruik van ValueSets.
 

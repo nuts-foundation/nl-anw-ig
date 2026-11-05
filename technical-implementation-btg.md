@@ -5,7 +5,7 @@
 
 ## Technical Implementation Btg
 
-# Breaking the glass (BTG)
+### Breaking the glass (BTG)
 
 Datum 15 april 2026
 
@@ -13,7 +13,7 @@ Breaking the glass (BTG) maakt het mogelijk dat een zorgverlener tijdelijk toega
 
 Net als bij de reguliere ANW begint BTG met een expliciete toestemming van de bronhouder aan de zorgverlener. Deze toestemming wordt eenmalig vastgelegd in een `NutsAuthorizationCredential`. Op basis van dit credential weet het systeem van de ANW-Zorgverlener bij welke bronhouders breaking the glass toegepast mag worden.
 
-## Stap 1 – De bronhouder machtigt de zorgverlener
+#### Stap 1 – De bronhouder machtigt de zorgverlener
 
 De ANW-Bronhouder geeft eenmalig een `NutsAuthorizationCredential` uit aan de ANW-Zorgverlener. Dit credential geeft het systeem van de ANW-Zorgverlener toestemming om gericht naar patiënten bij de bronhouder te zoeken. Zo kan de zorgverlener de juiste patiënt selecteren voordat het BTG-autorisatieverzoek wordt ingediend. Het credential geeft daarnaast toestemming om de bronhouder over dat verzoek te notificeren.
 
@@ -73,7 +73,7 @@ Voorbeeld NutsAuthorizationCredential:
 
 ```
 
-## Stap 2 – De zorgverlener zoekt en selecteert de patiënt
+#### Stap 2 – De zorgverlener zoekt en selecteert de patiënt
 
 Het systeem van de ANW-Zorgverlener stuurt bij het zoeken naar patiënten de **gebruikerscontext** van de ingelogde zorgverlener mee. Daarmee kan de ANW-Bronhouder de aanvraag aan een geïdentificeerde gebruiker koppelen.
 
@@ -81,11 +81,11 @@ De aanvraag bevat **zoekparameters** om gericht naar de betreffende patiënt te 
 
 Voor **dataminimalisatie** vraagt het systeem van de ANW-Zorgverlener via `_elements` de patiëntgegevens op die nodig zijn voor de selectie: `name`, `address` en `birthDate`. De ANW-Bronhouder controleert of deze parameter aanwezig is. De afspraken voor deze query beperken de patiëntgegevens in de respons tot deze velden. Pas nadat het BTG-autorisatieverzoek is goedgekeurd, kan het systeem met het credential voor gegevensinzage aanvullende patiëntgegevens ophalen.
 
-### Zoeken met de query anw
+##### Zoeken met de query anw
 
 Voor het zoeken naar patiënten in de BTG-flow wordt een nieuwe named query geïntroduceerd: `anw`. Deze vervangt voor deze flow het gebruik van de bestaande `ANW-zorg`-query.
 
-Het systeem van de ANW-Zorgverlener voert deze query uit bij de ANW-Bronhouder via `POST /Patient/_search?_query=anw`. De parameters `_query` en `_elements` staan in de URL. De patiëntgebonden zoekparameters (`name` en `birthdate`) worden als `application/x-www-form-urlencoded` in de requestbody meegestuurd. Deze aanroep maakt gebruik van de standaard [FHIR STU3 POST-search](https://hl7.org/fhir/STU3/http.html#search).
+Het systeem van de ANW-Zorgverlener voert deze query uit bij de ANW-Bronhouder via `POST /Patient/_search?_query=anw&_elements=name,address,birthDate`. De parameters `_query` en `_elements` staan in de URL. De patiëntgebonden zoekparameters (`name` en `birthdate`) worden als `application/x-www-form-urlencoded` in de requestbody meegestuurd. Deze aanroep maakt gebruik van de standaard [FHIR STU3 POST-search](https://hl7.org/fhir/STU3/http.html#search).
 
 Door patiëntgebonden zoekwaarden in de body te versturen, komen deze niet in de request-URL terecht. Dit beperkt het risico dat de waarden in URL-logs worden opgeslagen. Dezelfde aanroep kan in de toekomst worden uitgebreid met zoeken op BSN. Een BSN-filter maakt nog geen deel uit van deze query.
 
@@ -112,7 +112,7 @@ name=Jansen&birthdate=1980-01-01
 
 De aparte named query voorkomt dat bestaande integraties met `ANW-zorg` door deze aanvullende afspraken veranderen. De nieuwe query heeft een eigen contract voor gericht zoeken, gebruikerscontext en beperkte responsvelden. De naam `anw` koppelt de query aan de ANW-usecase. Daardoor kan ook het systeem van de ANW-Regisseur deze query gebruiken zodra het de bijbehorende afspraken ondersteunt.
 
-## Stap 3 – De zorgverlener dient het BTG-verzoek in
+#### Stap 3 – De zorgverlener dient het BTG-verzoek in
 
 Nadat de zorgverlener de juiste patiënt heeft geselecteerd, verloopt de BTG-flow zoals weergegeven in het onderstaande sequentiediagram. Omdat er geen regisseur aanwezig is, communiceert het systeem van de zorgverlener rechtstreeks met de bronhouder.
 
@@ -200,14 +200,14 @@ Voorbeeld FHIR Task:
 
 ```
 
-### Verschil met het reguliere ANW-verzoek
+##### Verschil met het reguliere ANW-verzoek
 
 De BTG-Task verschilt op twee punten van de ANW-Task:
 
 * **`code`** - De code `ANW-BTG-autorisatie-verzoek` onderscheidt dit verzoek expliciet van een regulier ANW-autorisatieverzoek. De bronhouder gebruikt deze code om de juiste verwerkingslogica toe te passen.
 * **`reason.text`** - Dit veld is bij de BTG-Task verplicht. Waar het veld bij de reguliere ANW-Task wordt gebruikt voor instructies, bevat het hier een door de gebruiker ingevulde toelichting op de reden voor het toepassen van breaking the glass. De toelichting bevat maximaal 2000 karakters; zie [Maximale lengte van `reason.text`](technical-documentation-v1.md#maximale-lengte-van-reasontext).
 
-## Stap 4 – De bronhouder verleent inzage in de gegevens
+#### Stap 4 – De bronhouder verleent inzage in de gegevens
 
 Nadat de ANW-Bronhouder het BTG-autorisatieverzoek heeft verwerkt en goedgekeurd, geeft deze een `NutsAuthorizationCredential` uit voor de betreffende patiënt. De `purposeOfUse` is `ANW-BTG-Bronhouder-Gegevensinzage`. Daarmee is herkenbaar dat het om toegang via BTG gaat.
 
