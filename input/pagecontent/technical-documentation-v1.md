@@ -818,6 +818,8 @@ richting de regisseur is gedaan.
 Het is belangrijk voor het zorgverlenersysteem dat de regisseur de inputs ook overneemt in de task. Dit betreft een
 absolute referentie. Zie hieronder een voorbeeld van input met de woningtoegang die binnen een task valt.
 
+`Task.input` kan meerdere soorten input bevatten. Bij [breaking the glass](technical-implementation-btg.html#reden-van-inzage-als-task-input) wordt ook de reden van inzage hierin opgenomen, met `type.text = "reden-van-inzage"` en de tekst in `valueString`. Woningtoegang blijft herkenbaar aan `type.text = "woningtoegang"` en gebruikt `valueReference`. Bij het toevoegen of overnemen van inputs blijven de bestaande elementen behouden; de volgorde van de elementen is niet bepalend.
+
 ```json
 {
   "...": "...",
