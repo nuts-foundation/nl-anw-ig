@@ -77,7 +77,7 @@ Voor **dataminimalisatie** vraagt het systeem van de ANW-Zorgverlener via `_elem
 
 Voor het zoeken naar patiënten in de BTG-flow wordt een nieuwe named query geïntroduceerd: `anw`. Deze vervangt voor deze flow het gebruik van de bestaande `ANW-zorg`-query.
 
-Het systeem van de ANW-Zorgverlener voert deze query uit bij de ANW-Bronhouder via `POST /Patient/_search?_query=anw`. De parameters `_query` en `_elements` staan in de URL. De patiëntgebonden zoekparameters (`name` en `birthdate`) worden als `application/x-www-form-urlencoded` in de requestbody meegestuurd. Deze aanroep maakt gebruik van de standaard [FHIR STU3 POST-search](https://hl7.org/fhir/STU3/http.html#search).
+Het systeem van de ANW-Zorgverlener voert deze query uit bij de ANW-Bronhouder via `POST /Patient/_search?_query=anw&_elements=name,address,birthDate`. De parameters `_query` en `_elements` staan in de URL. De patiëntgebonden zoekparameters (`name` en `birthdate`) worden als `application/x-www-form-urlencoded` in de requestbody meegestuurd. Deze aanroep maakt gebruik van de standaard [FHIR STU3 POST-search](https://hl7.org/fhir/STU3/http.html#search).
 
 Door patiëntgebonden zoekwaarden in de body te versturen, komen deze niet in de request-URL terecht. Dit beperkt het risico dat de waarden in URL-logs worden opgeslagen. Dezelfde aanroep kan in de toekomst worden uitgebreid met zoeken op BSN. Een BSN-filter maakt nog geen deel uit van deze query.
 
