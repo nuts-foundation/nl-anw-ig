@@ -129,7 +129,9 @@ De volgende velden zijn relevant:
 | `requester.agent` | Het systeem of de organisatie van de ANW-Zorgverlener die het verzoek indient. |
 | `requester.onBehalfOf` | De autoriserende partij (de bronhouder als data-eigenaar). |
 | `owner` | De partij die toegang vraagt tot de gegevens. |
-| `reason.text` | Verplicht veld waarin de zorgverlener de reden voor het BTG-verzoek toelicht. Dit is vrije tekst die door de gebruiker wordt ingevuld, met een maximum van 2000 karakters. |
+| `reason.coding` | Verplichte reden van inzage: code`BTG`uit het codesysteem`http://terminology.hl7.org/CodeSystem/v3-ActReason`. |
+| `reason.text` | Verplichte escalatiereden waarom toegang tot de patiëntgegevens nodig is, als vrije tekst met maximaal 2000 karakters. |
+| `note[].text` | Optioneel triagebericht met de zorgvraag, de situatie van de cliënt en relevante zorginhoudelijke informatie, als vrije tekst met maximaal 2000 karakters. |
 | `restriction.period` | De periode waarvoor de tijdelijke toegang wordt gevraagd. |
 | `restriction.recipient` | De zorgverlener die de toegang ontvangt. |
 
@@ -182,8 +184,20 @@ Voorbeeld FHIR Task:
     "display": "ANW-Zorgverlener A"
   },
   "reason": {
-    "text": "{verplichte toelichting van de zorgverlener}"
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+        "code": "BTG",
+        "display": "break the glass"
+      }
+    ],
+    "text": "Directe zorg nodig na een val, reguliere toegang tot het dossier ontbreekt."
   },
+  "note": [
+    {
+      "text": "Cliënt is tijdens de nachtdienst gevallen en meldt pijn aan de heup. Kan naar eigen zeggen niet opstaan. Zorgverlener gevraagd om ter plaatse de situatie te beoordelen."
+    }
+  ],
   "restriction": {
     "period": {
       "start": "2024-01-23T14:23:42.2264869+01:00",
@@ -200,14 +214,28 @@ Voorbeeld FHIR Task:
 
 ```
 
+##### Reden van inzage en triagebericht
+
+In `Task.reason.text` wordt de escalatiereden vastgelegd: waarom toegang tot de patiëntgegevens nodig is. Dit veld is bij ieder BTG-verzoek verplicht ingevuld voordat het systeem de Task beschikbaar stelt en de bronhouder notificeert. De escalatiereden bevat maximaal 2000 karakters en mag niet leeg zijn of uitsluitend uit witruimte bestaan. De ActReason-code `BTG` in `Task.reason.coding` geeft aan dat breaking the glass wordt toegepast. Het triagebericht staat in `Task.note[].text` en beschrijft de zorgvraag, de situatie van de cliënt en relevante zorginhoudelijke informatie.
+
+Bij reguliere ANW koppelt de regisseur de zorgverlener aan de cliënt. Bij BTG vraagt de zorgverlener zelfstandig toegang aan, zonder tussenkomst van de regisseur. Daarom legt de zorgverlener expliciet vast waarvoor inzage nodig is, zodat de bronhouder de aanvraag achteraf kan beoordelen.
+
+De reden van inzage wordt gecodeerd vastgelegd in `Task.reason.coding`, met code `BTG` uit [HL7 ActReason](https://hl7.org/fhir/R4/v3/ActReason/cs.html#v3-ActReason-BTG). Het triagebericht in `Task.note[].text` is bij BTG optioneel; de Task mag zonder `note` worden aangeboden. Als een triagebericht wordt meegestuurd, bevat dit maximaal 2000 karakters en mag het niet leeg zijn of uitsluitend uit witruimte bestaan.
+
 ##### Verschil met het reguliere ANW-verzoek
 
-De BTG-Task verschilt op twee punten van de ANW-Task:
+De BTG-Task verschilt op de volgende punten van de huidige ANW-Task:
 
 * **`code`** - De code `ANW-BTG-autorisatie-verzoek` onderscheidt dit verzoek expliciet van een regulier ANW-autorisatieverzoek. De bronhouder gebruikt deze code om de juiste verwerkingslogica toe te passen.
-* **`reason.text`** - Dit veld is bij de BTG-Task verplicht. Waar het veld bij de reguliere ANW-Task wordt gebruikt voor instructies, bevat het hier een door de gebruiker ingevulde toelichting op de reden voor het toepassen van breaking the glass. De toelichting bevat maximaal 2000 karakters; zie [Maximale lengte van `reason.text`](technical-documentation-v1.md#maximale-lengte-van-reasontext).
+* **`reason.coding`** - De BTG-Task bevat verplicht de ActReason-code `BTG` als reden van inzage.
+* **`reason.text`** - De BTG-Task bevat verplicht een ingevulde escalatiereden, met maximaal 2000 karakters. Een lege waarde of uitsluitend witruimte is niet toegestaan.
+* **`note[].text`** - De BTG-Task kan een optioneel triagebericht bevatten, met maximaal 2000 karakters.
+
+Bij reguliere ANW staat het triagebericht momenteel nog in `reason.text`. Het is de bedoeling dit ook naar `note[].text` te migreren. Totdat die migratie is doorgevoerd, blijft voor reguliere ANW de bestaande afspraak gelden. Voor BTG geldt direct de hierboven beschreven verdeling tussen `reason.coding`, `reason.text` en `note[].text`.
 
 #### Stap 4 – De bronhouder verleent inzage in de gegevens
+
+De ANW-Bronhouder controleert of de ActReason-code `BTG` in `reason.coding` aanwezig is en of de escalatiereden in `reason.text` aan de bovenstaande eisen voldoet. Als een triagebericht in `note[].text` is meegestuurd, controleert de bronhouder ook of dit aan de bovenstaande eisen voldoet. Het ontbreken van `note` is geen reden om het verzoek af te wijzen. Bij een ongeldig verzoek wordt geen credential uitgegeven. De bronhouder bewaart de reden van inzage en het eventueel meegestuurde triagebericht bij het BTG-verzoek en behoudt deze bij het bijwerken van de Task.
 
 Nadat de ANW-Bronhouder het BTG-autorisatieverzoek heeft verwerkt en goedgekeurd, geeft deze een `NutsAuthorizationCredential` uit voor de betreffende patiënt. De `purposeOfUse` is `ANW-BTG-Bronhouder-Gegevensinzage`. Daarmee is herkenbaar dat het om toegang via BTG gaat.
 

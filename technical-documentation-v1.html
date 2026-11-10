@@ -1290,10 +1290,11 @@ doen.</p>
 
 <h2 id="maximale-lengte-van-reasontext">Maximale lengte van <code class="language-plaintext highlighter-rouge">reason.text</code></h2>
 
-<p>Het veld <code class="language-plaintext highlighter-rouge">reason.text</code> van de Task bevat vrije tekst die door een gebruiker wordt ingevuld: bij de reguliere ANW-flow
-een toelichting of instructie van de regisseur, bij <a href="technical-implementation-btg.html">breaking the glass</a> de
-verplichte onderbouwing van de zorgverlener. Om te voorkomen dat systemen onderling verschillende grenzen hanteren, is
+<p>Het veld <code class="language-plaintext highlighter-rouge">reason.text</code> van de Task bevat bij de reguliere ANW-flow een toelichting of instructie van de regisseur.
+Om te voorkomen dat systemen onderling verschillende grenzen hanteren, is
 afgesproken dat <code class="language-plaintext highlighter-rouge">reason.text</code> <strong>maximaal 2000 karakters</strong> bevat.</p>
+
+<p>Bij <a href="technical-implementation-btg.html#reden-van-inzage-en-triagebericht">breaking the glass</a> staat de reden van inzage gecodeerd in <code class="language-plaintext highlighter-rouge">reason.coding</code> (ActReason <code class="language-plaintext highlighter-rouge">BTG</code>), de escalatiereden in <code class="language-plaintext highlighter-rouge">reason.text</code> en het triagebericht in <code class="language-plaintext highlighter-rouge">note[].text</code>, eveneens met maximaal 2000 karakters. Voor reguliere ANW is de migratie van het triagebericht van <code class="language-plaintext highlighter-rouge">reason.text</code> naar <code class="language-plaintext highlighter-rouge">note[].text</code> voorgenomen; tot die tijd blijft de bestaande afspraak gelden.</p>
 
 <h2 id="woningtoegang">Woningtoegang</h2>
 
@@ -1310,6 +1311,8 @@ richting de regisseur is gedaan.</p>
 
 <p>Het is belangrijk voor het zorgverlenersysteem dat de regisseur de inputs ook overneemt in de task. Dit betreft een
 absolute referentie. Zie hieronder een voorbeeld van input met de woningtoegang die binnen een task valt.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Task.input</code> kan meerdere soorten input bevatten. Woningtoegang is herkenbaar aan <code class="language-plaintext highlighter-rouge">type.text = "woningtoegang"</code> en gebruikt <code class="language-plaintext highlighter-rouge">valueReference</code>. Bij het toevoegen of overnemen van inputs blijven de bestaande elementen behouden; de volgorde van de elementen is niet bepalend. De reden van inzage en het triagebericht bij <a href="technical-implementation-btg.html#reden-van-inzage-en-triagebericht">breaking the glass</a> worden in <code class="language-plaintext highlighter-rouge">reason</code> en <code class="language-plaintext highlighter-rouge">note</code> vastgelegd.</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"..."</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
@@ -1366,7 +1369,7 @@ woorden, Nuts-elevatie is verplicht alvorens het regisseursscherm geopend kan wo
 
       <div class="inner-wrapper">
         <p>
-          IG &copy; 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.nuts.nl">Stichting Nuts</a>.  Package nl.nuts.anw#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Nov 5, 2026 10:57+0000">2026-11-05</span>
+          IG &copy; 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.nuts.nl">Stichting Nuts</a>.  Package nl.nuts.anw#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Nov 10, 2026 10:20+0000">2026-11-10</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

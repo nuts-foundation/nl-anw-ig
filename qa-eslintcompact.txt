@@ -95,4 +95,4 @@ Generic: line 0, col 0, Warning - The HTML fragment 'globals-table.xhtml' is not
 /github/workspace/fsh-generated/resources/OperationDefinition-ANW-zorg.json: line 0, col 0, Info - The resource OperationDefinition/ANW-zorg could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html) (BUSINESSRULE)
 
 err = 41, warn = 43, info = 6, broken links = 2
-IG Publisher Version: 3.0.2
+IG Publisher Version: 3.0.3
