@@ -797,10 +797,11 @@ doen.
 
 ## Maximale lengte van `reason.text`
 
-Het veld `reason.text` van de Task bevat vrije tekst die door een gebruiker wordt ingevuld: bij de reguliere ANW-flow
-een toelichting of instructie van de regisseur, bij [breaking the glass](technical-implementation-btg.html) de
-verplichte onderbouwing van de zorgverlener. Om te voorkomen dat systemen onderling verschillende grenzen hanteren, is
+Het veld `reason.text` van de Task bevat bij de reguliere ANW-flow een toelichting of instructie van de regisseur.
+Om te voorkomen dat systemen onderling verschillende grenzen hanteren, is
 afgesproken dat `reason.text` **maximaal 2000 karakters** bevat.
+
+Bij [breaking the glass](technical-implementation-btg.html#reden-van-inzage-en-triagebericht) staat de reden van inzage gecodeerd in `reason.coding` (ActReason `BTG`), de escalatiereden in `reason.text` en het triagebericht in `note[].text`, eveneens met maximaal 2000 karakters. Voor reguliere ANW is de migratie van het triagebericht van `reason.text` naar `note[].text` voorgenomen; tot die tijd blijft de bestaande afspraak gelden.
 
 ## Woningtoegang
 
@@ -817,6 +818,8 @@ richting de regisseur is gedaan.
 
 Het is belangrijk voor het zorgverlenersysteem dat de regisseur de inputs ook overneemt in de task. Dit betreft een
 absolute referentie. Zie hieronder een voorbeeld van input met de woningtoegang die binnen een task valt.
+
+`Task.input` kan meerdere soorten input bevatten. Woningtoegang is herkenbaar aan `type.text = "woningtoegang"` en gebruikt `valueReference`. Bij het toevoegen of overnemen van inputs blijven de bestaande elementen behouden; de volgorde van de elementen is niet bepalend. De reden van inzage en het triagebericht bij [breaking the glass](technical-implementation-btg.html#reden-van-inzage-en-triagebericht) worden in `reason` en `note` vastgelegd.
 
 ```json
 {
