@@ -42,7 +42,7 @@ Voorbeeld NutsAuthorizationCredential:
           "operations": [
             "search"
           ],
-          "path": "/Patient/_search?_query=anw",
+          "path": "/Patient/_search?_query=anw&_elements=name,address,birthDate",
           "userContext": true
         },
         {
