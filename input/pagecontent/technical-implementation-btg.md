@@ -109,7 +109,49 @@ Nadat de zorgverlener de juiste patiënt heeft geselecteerd, verloopt de BTG-flo
 
 {% include img.html img="ANWSequence_btg.png" %}
 
-Het systeem van de ANW-Zorgverlener maakt een Task-resource aan die is afgeleid van de ANW-Task, met status `requested`. Het stelt de Task beschikbaar en stuurt de ANW-Bronhouder een notificatie. De ANW-Bronhouder haalt vervolgens de Task op en verwerkt deze als BTG-autorisatieverzoek, zoals weergegeven in het sequentiediagram.
+Het systeem van de ANW-Zorgverlener maakt een Task-resource aan die is afgeleid van de ANW-Task, met status `requested`. Het stelt de Task beschikbaar en maakt een verifiable credential aan voor de bronhouder zodat die deze task mag ophalen. Deze credential ziet er als volgt uit: 
+```json
+{
+  "verifiableCredential": {
+    "@context": [
+      "https://nuts.nl/credentials/v1",
+      "https://www.w3.org/2018/credentials/v1",
+      "https://w3c-ccg.github.io/lds-jws2020/contexts/lds-jws2020-v1.json"
+    ],
+    "credentialSubject": {
+      "id": "did:nuts:{DID van bronhouder}",
+      "purposeOfUse": "ANW-BTG-Zorgverlener-Autorisatieverzoek",
+      "resources": [
+        {
+          "operations": [
+            "read",
+            "update"
+          ],
+          "path": "/Task/3b63dc7f-b4d2-49bf-b8ca-a91cdafdc464",
+          "userContext": false
+        }
+      ]
+    },
+    "id": "did:nuts:AVoXh5Ls6kgFkENFqu6ag8jKgRVB9epvUoCuCTSqMKeb#f25de109-16bc-4323-bfda-dd36974777e1",
+    "issuanceDate": "2023-09-26T08:05:52.83885377Z",
+    "issuer": "did:nuts:AVoXh5Ls6kgFkENFqu6ag8jKgRVB9epvUoCuCTSqMKeb",
+    "proof": {
+      "created": "2023-09-26T08:05:52.839289486Z",
+      "jws": "eyJhbGciOiJFUzI1NiIsImI2NCI6ZmFsc2UsImNyaXQiOlsiYjY0Il0sImtpZCI6ImRpZDpudXRzOkFWb1hoNUxzNmtnRmtFTkZxdTZhZzhqS2dSVkI5ZXB2VW9DdUNUU3FNS2ViI0N1alVqQWlSdU1MSHQ3RV9KcTlueUJfc0tMRjQxc1paRklMSklpVFZxeFEifQ..e01dnQNAJ00L_iPj-TsAZvqWZrEEkZV3IRB9pSdTJd-kCzk450qMrf1l-k7iJ-T3zp4zOr1MuqUR0XnUf3cdKg",
+      "proofPurpose": "assertionMethod",
+      "type": "JsonWebSignature2020",
+      "verificationMethod": "did:nuts:AVoXh5Ls6kgFkENFqu6ag8jKgRVB9epvUoCuCTSqMKebCujUjAiRuMLHt7E_Jq9nyB_sKLF41sZZFILJIiTVqxQ"
+    },
+    "type": [
+      "NutsAuthorizationCredential",
+      "VerifiableCredential"
+    ]
+  }
+}
+```
+Na het aanmaken van de task met credential wordt het ANW-Bronhouder systeem genotificeerd.
+
+De ANW-Bronhouder haalt vervolgens de Task op en verwerkt deze als BTG-autorisatieverzoek, zoals weergegeven in het sequentiediagram.
 
 De volgende velden zijn relevant:
 
